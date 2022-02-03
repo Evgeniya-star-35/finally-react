@@ -1,0 +1,13 @@
+.googleBtn {
+    width: 122px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.14;
+    border: none;
+    border-radius: 26px;
+    cursor: pointer;
+    color: var(--main-title-color);
+    background-color: var(--auth-btn-bg);
+    filter: drop-shadow(1px 2px 3px rgba(170, 178, 197, 0.2));
+}
