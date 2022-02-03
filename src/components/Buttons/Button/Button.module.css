@@ -1,0 +1,24 @@
+.Btn {
+    width: 125px;
+    height: 44px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.167;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    border: none;
+    border-radius: 16px;
+    color: var(--main-txt-color);
+    background-color: var(--main-bg);
+    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+.Btn:hover,
+.Btn:focus {
+    color: var(--accent-btn-txt);
+    background-color: var(--accent-color);
+    filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+}

@@ -1,0 +1,34 @@
+@import '/node_modules/modern-normalize/modern-normalize.css';
+
+:root {
+    --main-txt-color: #52555f;
+    --main-title-color: #000;
+    --main-bg: #f5f6fb;
+
+    --accent-color: #ff751d;
+    --accent-btn-txt: #fff;
+
+    --negative-num: #e7192e;
+    --income-num: #407946;
+    --require-field-color: #eb5757;
+
+    --auth-input-bg: #f6f7fb;
+    --auth-btn-main-txt: #52555f;
+
+    --input-placeholder-txt: #a6abb9;
+
+    --select-main-txt: #c7ccdc;
+    --select-bg: #fff;
+    --select-accent-txt: #52555f;
+    --select-accent-bg: #f5f6fb;
+
+    --modal-balance-bg: linear-gradient(
+        117.84deg,
+        #1d346a 2.84%,
+        #031634 67.28%
+    );
+    --modal-balance-txt: #fff;
+    --modal-exit-bg: #fff;
+
+    --diagram-second-color: #ffdac0;
+}
