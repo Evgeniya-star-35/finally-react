@@ -1,7 +1,7 @@
 import Avatar from 'react-avatar';
 import Media from 'react-media';
-import logo from '../../img/logo-kapusta.svg';
-import logout from '../../img/logout.svg';
+import logo from '../../images/logo.png';
+import logout from '../../images/globalIcons/logout.svg';
 
 import s from './Header.module.css';
 
