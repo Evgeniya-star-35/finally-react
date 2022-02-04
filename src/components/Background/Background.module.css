@@ -1,0 +1,70 @@
+.Container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Topbox {
+    position: relative;
+    background-color: #f5f6fb;
+    overflow: hidden;
+    height: 286px;
+    border-radius: 0 0 0 45px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Bottombox {
+    height: 514px;
+    position: relative;
+}
+/* .TopImg {
+    position: absolute;
+    z-index: 2;
+    background-image: url('../../img/svg/Vector.svg');
+    width: 83px;
+    height: 89px;
+    top: 104px;
+    left: 271px;
+} */
+/* .BottomImg {
+    position: absolute;
+    width: 83px;
+    height: 89px;
+    top: 512px;
+    left: 35px;
+    background-image: url('../../img/svg/Vectorcab.svg');
+} */
+@media screen and (min-width: 320px) {
+    .Container {
+        width: 320px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .Container {
+        width: 768px;
+    }
+    .Topbox {
+        height: 526px;
+    }
+    .BottomImg {
+        /* width: 100%; */
+        position: absolute;
+        width: 183px;
+        height: 142px;
+        top: 451px;
+        left: 497px;
+        background-image: url('../../img/svg/Group.svg');
+    }
+}
+@media screen and (min-width: 1280px) {
+    .Container {
+        width: 1280px;
+    }
+    .BottomImg {
+        width: 100%;
+        position: absolute;
+        /* width: 183px; */
+        height: 142px;
+        top: 74px;
+        left: 10px;
+        background-image: url('../../img/svg/groupcab.svg');
+    }
+}
