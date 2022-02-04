@@ -51,7 +51,7 @@
         height: 232px;
         top: 28px;
         left: 10px;
-        background-image: url(../../img/svg/groupcab.svg);
+        background-image: url('../../img/svg/groupcab.svg');
     }
     .BottomImg {
         /* width: 100%; */
@@ -59,7 +59,7 @@
         height: 142px;
         top: 244px;
         left: 103px;
-        background-image: url(../../img/svg/Group.svg);
+        background-image: url('../../img/svg/Group.svg');
     }
 }
 @media screen and (min-width: 1280px) {
