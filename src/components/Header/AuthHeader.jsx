@@ -22,7 +22,11 @@ export default function AuthHeader() {
                 <Media
                     query="(max-width: 767.98px)"
                     render={() => (
-                        <img src={logout} alt="logout" className={s.logout} />
+                        <img
+                            src={logout}
+                            alt="logout"
+                            className={s.logoutSvg}
+                        />
                     )}
                 />
                 <Media
@@ -30,8 +34,7 @@ export default function AuthHeader() {
                     render={() => (
                         <>
                             <span className={s.userName}>User Name</span>
-                            <span className={s.stick}></span>
-                            <p className={s.logoutText}>Выйти</p>
+                            <button className={s.logoutBtn}>Выйти</button>
                         </>
                     )}
                 />
