@@ -18,7 +18,7 @@ const HomePageView = ({ location }) => {
             dispatch(loginGoogleSuccess(token));
             dispatch(refreshLoginGoogleSuccess(refreshToken));
         }
-    }, []);
+    }, [dispatch, token, refreshToken]);
 
     const [login, setLogin] = useState(true);
     const onRegisterClick = () => {
