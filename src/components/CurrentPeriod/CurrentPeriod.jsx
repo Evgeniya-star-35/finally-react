@@ -12,23 +12,32 @@ const CurrentPeriod = ({
     onHandleClickRight,
     onHandleClickLeft,
 }) => {
-    const monthToSytring = String(currentMonth);
-    const selectMonth = month.filter(el => el.id === monthToSytring);
+    const monthToString = String(currentMonth);
+    const selectMonth = month.filter(el => el.id === monthToString);
     return (
-        <div classNamme={s.reviewMonth}>
-            <h5 className={s.titleReviewMonth}>Current Period:</h5>
+        <div className={s.reviewMonth}>
+            <h5 className={s.titleReviewMonth}>Текущий период:</h5>
             <div className={s.reviewMonthWrapper}>
                 <ArrowBackIos
-                    className={s.ArrowBackIos}
+                    style={{
+                        color: '#FF751D',
+                        width: '12',
+                        cursor: 'pointer',
+                    }}
                     onClick={onHandleClickLeft}
                 />
 
                 <span className={s.reviewMonthTitle}>
-                    {`${selectMonth[0].name} ${currentYear}`}
+                    ноябрь 2019
+                    {/* {`${selectMonth[0].name} ${currentYear}`} */}
                 </span>
 
                 <ArrowForwardIos
-                    className={s.ArrowForwardIos}
+                    style={{
+                        color: '#FF751D',
+                        width: '12',
+                        cursor: 'pointer',
+                    }}
                     onClick={onHandleClickRight}
                 />
             </div>
