@@ -1,10 +1,13 @@
-// import s from './HomePage.module.css'
-import BackgroundHome from '../../components/BackgroundHome';
 
+
+import AuthHeader from 'components/Header/AuthHeader';
+import Header from 'components/Header/Header';
 const HomePage = () => {
     return (
         <>
-            <BackgroundHome />
+            <Header />
+            <AuthHeader />
+
         </>
     );
 };
