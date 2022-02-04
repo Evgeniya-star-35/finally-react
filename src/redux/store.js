@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {},
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
