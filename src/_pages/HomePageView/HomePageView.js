@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import queryString from 'query-string';
 
-import s from './HomePage.module.css';
+import s from './HomePageView.module.css';
 
 import imgText from '../../img/svg/Union.svg';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
-import LoginForm from '../../components/LogInForm/LoginForm';
-import { loginGoogleSuccess, refreshLoginGoogleSuccess } from '../../redux/';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import {
+    loginGoogleSuccess,
+    refreshLoginGoogleSuccess,
+} from '../../redux/auth';
 
 const HomePageView = ({ location }) => {
     const { refreshToken, token } = queryString.parse(location.search);
