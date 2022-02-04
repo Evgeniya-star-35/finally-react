@@ -1,4 +1,11 @@
+// import s from './HomePage.module.css'
+import BackgroundHome from '../../components/BackgroundHome';
+
 const HomePage = () => {
-    return <p>Hello!</p>;
+    return (
+        <>
+            <BackgroundHome />
+        </>
+    );
 };
 export default HomePage;
