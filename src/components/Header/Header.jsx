@@ -1,4 +1,4 @@
-import logo from '../../img/logo-kapusta.svg';
+import logo from '../../images/logo.png';
 
 import s from './Header.module.css';
 
