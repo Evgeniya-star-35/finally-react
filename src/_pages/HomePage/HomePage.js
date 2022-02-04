@@ -1,3 +1,5 @@
+
+
 import AuthHeader from 'components/Header/AuthHeader';
 import Header from 'components/Header/Header';
 const HomePage = () => {
@@ -5,6 +7,7 @@ const HomePage = () => {
         <>
             <Header />
             <AuthHeader />
+
         </>
     );
 };
