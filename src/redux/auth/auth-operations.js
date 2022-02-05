@@ -1,4 +1,4 @@
-// import Alert from '../../components/Alert';
+import { toast } from 'react-toastify';
 import {
     registerRequest,
     registerSuccess,
@@ -23,7 +23,7 @@ import {
     fetchLogout,
     fetchCurrent,
     fetchRefreshToken,
-} from 'services/fetchApi';
+} from 'services/authApi';
 
 const register = credentials => async dispatch => {
     dispatch(registerRequest());
@@ -32,7 +32,7 @@ const register = credentials => async dispatch => {
         dispatch(registerSuccess(response.data));
     } catch ({ response }) {
         dispatch(registerError(response.data.message));
-        // Alert(response.data.message);
+        toast.error(response.data.message);
     }
 };
 
@@ -44,7 +44,7 @@ const logIn = credentials => async dispatch => {
         dispatch(loginSuccess(response.data.data));
     } catch ({ response }) {
         dispatch(loginError(response.data.message));
-        // Alert(response.data.message);
+        toast.error(response.data.message);
     }
 };
 
@@ -56,7 +56,7 @@ const logOut = () => async dispatch => {
         dispatch(logoutSuccess());
     } catch ({ response }) {
         dispatch(logoutError(response.data.message));
-        // Alert(response.data.message);
+        toast.error(response.data.message);
     }
 };
 
@@ -89,8 +89,30 @@ const getCurrentUser = () => async (dispatch, getState) => {
             return;
         }
         dispatch(getCurrentUserError(response.data.message));
-        // Alert(response.data.message);
+        toast.error(response.data.message);
+    }
+};
+const refresh = async (dispatch, getState) => {
+    const {
+        auth: { refreshToken: persistedRefreshToken },
+    } = getState();
+    token.set(persistedRefreshToken);
+    try {
+        const response = await fetchRefreshToken();
+        token.set(response.data.data.token);
+        dispatch(getCurrentUserSuccess(response.data.data.user));
+        dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
+        dispatch(
+            loginSuccess({
+                token: response.data.data.token,
+                refreshToken: response.data.data.refreshToken,
+            }),
+        );
+    } catch (error) {
+        dispatch(logoutSuccess());
+        token.unset();
+        console.log(error.message);
     }
 };
 
-export { register, logOut, logIn, getCurrentUser };
+export { register, logOut, logIn, getCurrentUser, refresh };
