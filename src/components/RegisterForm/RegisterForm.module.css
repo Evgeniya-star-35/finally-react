@@ -1,3 +1,16 @@
+.form {
+    width: 300px;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 5px 10px 20px rgb(170 178 197 / 40%);
+}
+
 .FormContent {
     display: flex;
     flex-direction: column;
@@ -12,46 +25,58 @@
 }
 
 .FormContent_text {
-    width: 212px;
-    margin: 0 0 36px;
-    text-align: center;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 0.625rem;
-    line-height: 0.7325rem;
+    margin-top: 50px;
+    margin-left: 29px;
+    font-size: 10px;
+    line-height: 12px;
     letter-spacing: 0.04em;
+    font-weight: 400;
     color: #52555f;
 }
 
-.FormContent_button {
+.form_google {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    width: 122px;
-    height: 40px;
-    margin-bottom: 30px;
-    border: transparent;
+}
+.FormContent_button {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    height: 50px;
+    width: 148px;
+    border: none;
+    text-align: center;
+    box-shadow: rgb(0 0 0 / 25%) 0px 2px 4px 0px;
+    font-size: 16px;
+    line-height: 48px;
+    display: flex;
     border-radius: 26px;
-    box-shadow: 1px 2px 3px rgb(170 178 197 / 40%);
-    background-color: #f6f7fb;
-    font-size: 0.875rem;
-    font-weight: 500;
-    font-style: normal;
-    line-height: 1rem;
-    color: #000;
+    transition: background-color 0.218s ease 0s, border-color 0.218s ease 0s,
+        box-shadow 0.218s ease 0s;
+    font-family: Roboto, arial, sans-serif;
     cursor: pointer;
-    outline: none;
+    user-select: none;
+    justify-content: center;
+    margin: 20px auto auto;
+    font-weight: 600;
+    padding-right: 15px;
+    text-decoration: none;
+}
+.FormContent_button ::before {
+    content: url(../../img/svg/google.svg);
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
 }
 
 .FormContent_textA {
-    width: 242px;
-    margin: 0 0 26px;
-    text-align: center;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 0.625rem;
-    line-height: 0.7325rem;
+    margin-top: 30px;
+    margin-left: 29px;
+    font-size: 10px;
+    line-height: 12px;
     letter-spacing: 0.04em;
+    font-weight: 400;
     color: #52555f;
 }
 .AuthNav_wrapper {
@@ -64,25 +89,29 @@
     padding: 0 6px;
     font-family: 'Roboto';
 }
-.AuthNav_label__2 {
-    font-size: 0.625rem;
-    font-weight: 400;
-    line-height: 0.6875rem;
-    font-style: normal;
-    color: #000;
-}
+
 .AuthNav_label__3 {
-    font-size: 0.625rem;
-    font-weight: 400;
-    line-height: 0.6875rem;
-    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 29px;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
     color: #000;
 }
 .AuthNav_label__4 {
-    font-size: 0.625rem;
-    font-weight: 400;
-    line-height: 0.6875rem;
-    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 30px;
+    margin-left: 29px;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
     color: #000;
 }
 .AuthNav_description {
@@ -91,18 +120,18 @@
     padding: 4px 0 0 10px;
 }
 .AuthNav_input {
-    width: 208px;
-    height: 42px;
-    margin-bottom: 20px;
+    width: 213px;
+    height: 52px;
+    margin-top: 12px;
     padding-left: 20px;
-    border-radius: 30px;
-    border: transparent;
-    box-shadow: 1px 2px 3px rgb(170 178 197 / 10%);
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1rem;
-    text-align: left;
+    padding-right: 20px;
     background-color: #f6f7fb;
-    color: #a6abb9;
+    border: 0;
+    border-radius: 30px;
+}
+.Form_button__container {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 18px 53px 17px;
+    text-align: center;
 }
