@@ -31,5 +31,9 @@
 <symbol id="icon-bar_chart-24px" viewBox="0 0 32 32">
 <path d="M6.667 12.267h4v13.067h-4v-13.067zM14.133 6.667h3.733v18.667h-3.733v-18.667zM21.6 17.333h3.733v8h-3.733v-8z"></path>
 </symbol>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path fill="none" stroke="#52555f" style="stroke: var(--color1, #52555f)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 2.286l27.429 27.429"></path>
+<path fill="none" stroke="#52555f" style="stroke: var(--color1, #52555f)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 29.714l27.429-27.429"></path>
+</symbol>
 </defs>
 </svg>
