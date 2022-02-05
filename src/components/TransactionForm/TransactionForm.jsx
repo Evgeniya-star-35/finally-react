@@ -70,7 +70,7 @@ export default function TransactionForm() {
                                 name="sum"
                                 value={sum}
                                 type="text"
-                                placeholder="00.00 uah"
+                                placeholder="00.00"
                                 required
                                 className={s.sumInput}
                                 onChange={handleChange}
