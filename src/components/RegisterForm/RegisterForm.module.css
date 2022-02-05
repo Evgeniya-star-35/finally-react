@@ -1,8 +1,7 @@
-
 .FormContent_button {
     margin-top: 20px;
     margin-left: 80px;
-
+}
 .form {
     width: 300px;
     display: flex;
@@ -40,7 +39,6 @@
 }
 
 .form_google {
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +46,6 @@
     width: 122px;
     height: 40px;
     border: transparent;
-
 }
 .FormContent_button {
     background-color: rgb(255, 255, 255);
@@ -75,20 +72,6 @@
     .FormContent_button {
         margin-left: 157px;
     }
-
-    user-select: none;
-    justify-content: center;
-    margin: 20px auto auto;
-    font-weight: 600;
-    padding-right: 15px;
-    text-decoration: none;
-}
-.FormContent_button ::before {
-    content: url(../../img/svg/google.svg);
-    display: inline-flex;
-    width: 18px;
-    height: 18px;
-    margin-right: 10px;
 }
 
 .FormContent_textA {
@@ -102,7 +85,6 @@
 }
 .AuthNav_wrapper {
     width: 100%;
-
 }
 
 .form {
@@ -144,32 +126,6 @@
     width: 18px;
     height: 18px;
     margin-right: 10px;
-
-
-.AuthNav_label__3 {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-top: 20px;
-    margin-left: 29px;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: 0.04em;
-    font-weight: 500;
-    color: #000;
-}
-.AuthNav_label__4 {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-top: 30px;
-    margin-left: 29px;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: 0.04em;
-    font-weight: 500;
-    color: #000;
-
 }
 
 .textGoogle {
@@ -231,9 +187,6 @@
 }
 
 .input {
-
-.AuthNav_input {
-
     width: 213px;
     height: 52px;
     margin-top: 12px;
@@ -243,7 +196,6 @@
     border: 0;
     border-radius: 30px;
 }
-
 
 @media screen and (min-width: 768px) {
     .input {
@@ -263,16 +215,10 @@
     letter-spacing: 0.04em;
     font-weight: 500;
     color: #a6abb9;
-
-.Form_button__container {
-    display: flex;
-    justify-content: space-between;
-    margin: 40px 18px 53px 17px;
-    text-align: center;
-
 }
+
 .input :hover,
-:focus {
+.input:focus {
     border-color: #ff751d;
     box-shadow: 1px 3px 5px rgba(255, 107, 8, 0.35);
 }
