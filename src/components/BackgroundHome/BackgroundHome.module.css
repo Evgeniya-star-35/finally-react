@@ -59,7 +59,7 @@
         height: 142px;
         top: 244px;
         left: 103px;
-        background-image: url('../../img/svg/Group.svg');
+        /* background-image: url('../../img/svg/Group.svg'); */
     }
 }
 @media screen and (min-width: 1280px) {
