@@ -2,12 +2,18 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import Container from 'components/Container/Container';
+// import Header from 'components/Header';
+import AuthHeader from 'components/Header/AuthHeader';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
 import PrivateRoute from './routes/privateRouter';
 import { getCurrentToken, getFetchingCurrentUser } from './redux/auth';
 import { getCurrentUser } from './redux/auth';
+
 const HomePage = lazy(() =>
     import('./_pages/HomePage' /* webpackChunkName: "home-page" */),
 );
@@ -29,6 +35,12 @@ function App() {
     return (
         // !isFetchCurrentUser && (
         <>
+
+            {/* <Header /> */}
+            <AuthHeader />
+            <Container>
+                
+
             <ToastContainer />
             <Suspense fallback={'...Loading'}>
                 <Routes>
@@ -55,6 +67,8 @@ function App() {
                     />
                 </Routes>
             </Suspense>
+</Container>
+
         </>
         // )
     );

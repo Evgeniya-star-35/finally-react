@@ -1,4 +1,152 @@
 .transactionForm {
+    width: 300px;
+    height: 350px;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
+
+@media screen and (min-width: 768px) {
+    .transactionForm {
+        width: 604px;
+    }
+    .inputsWrapper {
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: row;
+        width: 470px;
+        height: 44px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 .productInput {
+    padding-left: 20px;
+    width: 252px;
+    height: 44px;
+    border: 2px solid #fff;
+    border-radius: 16px;
+    background-color: var(--auth-input-bg);
+}
+.productInput::placeholder {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.167;
+    letter-spacing: 0.02em;
+    color: var(--select-main-txt);
+}
+
+@media screen and (min-width: 768px) {
+    .productInput {
+        width: 160px;
+        height: 40px;
+        border: 2px solid #c7ccdc;
+        border-radius: 16px 0 0 0;
+        background-color: #fff;
+    }
+}
+.selectCategory {
+    padding-left: 20px;
+    width: 252px;
+    height: 44px;
+    border: 2px solid #fff;
+    border-radius: 16px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.167;
+    letter-spacing: 0.02em;
+    color: var(--select-main-txt);
+    outline: none;
+    background-color: var(--auth-input-bg);
+}
+@media screen and (min-width: 768px) {
+    .selectCategory {
+        width: 160px;
+        height: 40px;
+        border: 2px solid #c7ccdc;
+        border-radius: 0;
+        background-color: #fff;
+        border-left: none;
+    }
+}
+.sumWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.sumInput {
+    margin-bottom: 85px;
+    margin-top: 30px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 17px;
+    width: 125px;
+    height: 44px;
+    text-align: right;
+    border: 2px solid #ffffff;
+    border-radius: 22px 0px 0px 22px;
+    background-color: var(--auth-input-bg);
+}
+.sumInput::placeholder {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.167;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #000000;
+}
+@media screen and (min-width: 768px) {
+    .sumInput {
+        margin-bottom: 30px;
+        border: none;
+        width: 70px;
+        height: 40px;
+        padding-right: 0;
+        border-radius: 0;
+        border: 2px solid #c7ccdc;
+        border-left: none;
+        border-right: none;
+        background-color: #fff;
+    }
+    .sumInput::placeholder {
+        color: #c7ccdc;
+        font-weight: 400;
+        text-align: right;
+    }
+}
+.calcBtn {
+    margin-top: 30px;
+    width: 60px;
+    height: 44px;
+    border: 2px solid #ffffff;
+    border-radius: 22px 0px 0px 22px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    background-color: var(--auth-input-bg);
+}
+@media screen and (min-width: 768px) {
+    .calcBtn {
+        border: 2px solid #c7ccdc;
+        background-color: #fff;
+        width: 50px;
+        height: 40px;
+        border-right: none;
+        padding: 10px;
+    }
+}
+.wrapBtns {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+@media screen and (min-width: 1280px) {
+    .transactionForm {
+        width: 1060px;
+        display: flex;
+        flex-direction: row;
+    }
+    .wrapBtns {
+        display: inline;
+        margin-right: 27px;
+    }
 }
