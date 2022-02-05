@@ -1,3 +1,8 @@
+
+.FormContent_button {
+    margin-top: 20px;
+    margin-left: 80px;
+
 .form {
     width: 300px;
     display: flex;
@@ -35,9 +40,15 @@
 }
 
 .form_google {
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    width: 122px;
+    height: 40px;
+    border: transparent;
+
 }
 .FormContent_button {
     background-color: rgb(255, 255, 255);
@@ -50,11 +61,21 @@
     font-size: 16px;
     line-height: 48px;
     display: flex;
+
     border-radius: 26px;
     transition: background-color 0.218s ease 0s, border-color 0.218s ease 0s,
         box-shadow 0.218s ease 0s;
     font-family: Roboto, arial, sans-serif;
     cursor: pointer;
+
+    outline: none;
+    text-decoration: none;
+}
+@media screen and (min-width: 768px) {
+    .FormContent_button {
+        margin-left: 157px;
+    }
+
     user-select: none;
     justify-content: center;
     margin: 20px auto auto;
@@ -81,14 +102,49 @@
 }
 .AuthNav_wrapper {
     width: 100%;
+
 }
-.AuthNav_form {
+
+.form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 0 6px;
-    font-family: 'Roboto';
+    width: 300px;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
 }
+
+@media screen and (min-width: 320px) {
+    .form {
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .form {
+        margin-top: 240px;
+        width: 436px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .form {
+        margin-top: 117px;
+        margin-left: auto;
+        margin-right: 110px;
+    }
+}
+
+.FormContent_button::before {
+    content: url(../../img//svg/google.svg);
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+
 
 .AuthNav_label__3 {
     display: flex;
@@ -113,13 +169,71 @@
     letter-spacing: 0.04em;
     font-weight: 500;
     color: #000;
+
 }
-.AuthNav_description {
+
+.textGoogle {
+    margin-top: 30px;
+    margin-left: 29px;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    color: rgba(82, 85, 95, 0.7);
+}
+@media screen and (min-width: 768px) {
+    .textGoogle {
+        text-align: left;
+        margin-left: 86px;
+        margin-right: 85px;
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+.text {
+    margin-top: 30px;
+    margin-left: 29px;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    color: rgba(82, 85, 95, 0.7);
+}
+@media screen and (min-width: 768px) {
+    .text {
+        margin-left: 86px;
+        margin-right: 85px;
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    margin: 0 0 10px 8px;
-    padding: 4px 0 0 10px;
+    margin-top: 25px;
+    margin-left: 29px;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    color: #000000;
 }
+
+@media screen and (min-width: 768px) {
+    .label {
+        margin-left: 86px;
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+.input {
+
 .AuthNav_input {
+
     width: 213px;
     height: 52px;
     margin-top: 12px;
@@ -129,9 +243,80 @@
     border: 0;
     border-radius: 30px;
 }
+
+
+@media screen and (min-width: 768px) {
+    .input {
+        width: 225px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .input {
+        width: 265px;
+    }
+}
+
+.input ::placeholder {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    color: #a6abb9;
+
 .Form_button__container {
     display: flex;
     justify-content: space-between;
     margin: 40px 18px 53px 17px;
     text-align: center;
+
+}
+.input :hover,
+:focus {
+    border-color: #ff751d;
+    box-shadow: 1px 3px 5px rgba(255, 107, 8, 0.35);
+}
+.span_star {
+    position: absolute;
+    left: -7px;
+    color: #eb5757;
+    font-size: 10px;
+    line-height: 0.85;
+}
+@media screen and (min-width: 768px) {
+    .span_star {
+        font-size: 15px;
+    }
+}
+
+.title {
+    margin-left: 29px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-size: 24px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    color: #ff751d;
+}
+@media screen and (min-width: 768px) {
+    .title {
+        margin-left: 86px;
+        font-size: 28px;
+    }
+}
+.button__container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 17px;
+    margin-right: 18px;
+    margin-top: 40px;
+    margin-bottom: 53px;
+    text-align: center;
+}
+@media screen and (min-width: 768px) {
+    .button__container {
+        margin-left: 86px;
+        margin-right: 85px;
+    }
 }
