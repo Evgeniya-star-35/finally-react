@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from 'components/Buttons/Button';
 import GoBackArrow from '../GoBack';
-import optionsCosts from '../../data/costsCategories.json';
+// import optionsCosts from '../../data/costsCategories.json';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
 
