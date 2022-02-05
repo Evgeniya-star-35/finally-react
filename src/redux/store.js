@@ -12,7 +12,6 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/auth-reducer';
 import { transactions } from 'redux/transactions';
-console.log(authReducer);
 const authPersistConfig = {
     key: 'auth',
     storage,
