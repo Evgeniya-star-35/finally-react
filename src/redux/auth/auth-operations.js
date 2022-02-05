@@ -1,4 +1,4 @@
-import Alert from '../../components/Alert';
+// import Alert from '../../components/Alert';
 import {
     registerRequest,
     registerSuccess,
@@ -32,7 +32,7 @@ const register = credentials => async dispatch => {
         dispatch(registerSuccess(response.data));
     } catch ({ response }) {
         dispatch(registerError(response.data.message));
-        Alert(response.data.message);
+        // Alert(response.data.message);
     }
 };
 
@@ -44,7 +44,7 @@ const logIn = credentials => async dispatch => {
         dispatch(loginSuccess(response.data.data));
     } catch ({ response }) {
         dispatch(loginError(response.data.message));
-        Alert(response.data.message);
+        // Alert(response.data.message);
     }
 };
 
@@ -56,7 +56,7 @@ const logOut = () => async dispatch => {
         dispatch(logoutSuccess());
     } catch ({ response }) {
         dispatch(logoutError(response.data.message));
-        Alert(response.data.message);
+        // Alert(response.data.message);
     }
 };
 
@@ -89,7 +89,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
             return;
         }
         dispatch(getCurrentUserError(response.data.message));
-        Alert(response.data.message);
+        // Alert(response.data.message);
     }
 };
 

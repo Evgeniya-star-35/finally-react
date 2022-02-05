@@ -74,7 +74,7 @@ const isLogin = createReducer(false, {
     [logoutSuccess]: () => false,
 });
 
-const isFetchigCurrentUser = createReducer(false, {
+const isFetchingCurrentUser = createReducer(false, {
     [getCurrentUserRequest]: () => true,
     [getCurrentUserSuccess]: () => false,
     [getCurrentUserError]: () => false,
@@ -86,6 +86,6 @@ const authReducer = combineReducers({
     token,
     refreshToken,
     error,
-    isFetchigCurrentUser,
+    isFetchingCurrentUser,
 });
 export { authReducer };

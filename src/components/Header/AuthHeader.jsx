@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../redux/auth/auth-operations';
 import ModalLogout from 'components/Modal/Modal';
 import Button from '../../components/Buttons/Button';
 import Avatar from 'react-avatar';
@@ -12,10 +14,14 @@ import st from '../Modal/Modal.module.css';
 
 export default function AuthHeader() {
     const [showModal, setShowModal] = useState(false);
+    const dispatch = useDispatch();
     const toggleModal = () => {
         setShowModal(!showModal);
     };
-
+    const handleLogout = () => {
+        dispatch(logOut());
+        toggleModal();
+    };
     return (
         <header className={s.authHeader}>
             <img src={logo} alt="logo" className={s.logo} />
@@ -72,7 +78,11 @@ export default function AuthHeader() {
                     </p>
 
                     <div className={st.modalBtns}>
-                        <Button type="button" onClick={''} text={'да'} />
+                        <Button
+                            type="button"
+                            onClick={handleLogout}
+                            text={'да'}
+                        />
                         <Button
                             type="button"
                             onClick={toggleModal}
