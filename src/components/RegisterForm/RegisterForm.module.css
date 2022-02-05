@@ -1,148 +1,108 @@
-@media screen and (min-width: 768px) {
-    .formRegistr {
-        z-index: 4;
-        width: 436px;
-        height: 535px;
-        top: -64%;
-        padding: 50px 85px 53px 85px;
-    }
-    .fontText {
-        margin: 5px 0 0 225px;
-        font-size: 16px;
-        line-height: 19px;
-    }
-    .promtText {
-        font-size: 12px;
-        line-height: 14px;
-        margin-bottom: 20px;
-        text-align: left;
-    }
-    .labelText {
-        font-size: 12px;
-        line-height: 14px;
-    }
-}
-@media screen and (min-width: 1280px) {
-    .formRegistr {
-        margin: 0;
-        width: 436px;
-        min-height: 535px;
-        top: -409px;
-        left: 75%;
-    }
-}
-
-.formRegistr {
-    position: absolute;
-    left: 50%;
-    top: -84px;
-    transform: translate(-50%, 0);
-    z-index: 1;
+.FormContent {
     display: flex;
     flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 40px 18px 53px 18px;
+    align-items: center;
     width: 300px;
     height: 525px;
-    background-color: #fff;
-    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    margin: 0 auto;
+    padding-top: 41px;
     border-radius: 30px;
+    box-shadow: 5px 10px 20px rgb(170 178 197 / 40%);
+    background-color: #fff;
 }
-.promtText {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 12px;
+
+.FormContent_text {
+    width: 212px;
+    margin: 0 0 36px;
     text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.625rem;
+    line-height: 0.7325rem;
     letter-spacing: 0.04em;
     color: #52555f;
-    margin-bottom: 24px;
 }
-.btnGoogle {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-    display: inline-flex;
+
+.FormContent_button {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    cursor: pointer;
-    background-color: #f6f7fb;
-    border-radius: 26px;
-    border: 0;
     width: 122px;
     height: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: Roboto;
+    margin-bottom: 30px;
+    border: transparent;
+    border-radius: 26px;
+    box-shadow: 1px 2px 3px rgb(170 178 197 / 40%);
+    background-color: #f6f7fb;
+    font-size: 0.875rem;
+    font-weight: 500;
     font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 0.02em;
-    color: #000000;
+    line-height: 1rem;
+    color: #000;
+    cursor: pointer;
+    outline: none;
 }
-.btnGoogle::before {
-    content: '';
-    display: inline-block;
-    width: 18px;
-    height: 18px;
 
-    margin-right: 10px;
-    margin-left: 20px;
-    background-image: url(../../img/svg/Group.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
+.FormContent_textA {
+    width: 242px;
+    margin: 0 0 26px;
+    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.625rem;
+    line-height: 0.7325rem;
+    letter-spacing: 0.04em;
+    color: #52555f;
 }
-.formLabel {
+.AuthNav_wrapper {
+    width: 100%;
+}
+.AuthNav_form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    align-items: center;
+    padding: 0 6px;
+    font-family: 'Roboto';
 }
-.labelText {
-    margin-bottom: 12px;
-    width: 100%;
+.AuthNav_label__2 {
+    font-size: 0.625rem;
+    font-weight: 400;
+    line-height: 0.6875rem;
     font-style: normal;
-    font-weight: 600;
-    font-size: 10px;
-    line-height: 12px;
-    color: black;
+    color: #000;
 }
-.labelTextSecond {
-    text-align: left;
+.AuthNav_label__3 {
+    font-size: 0.625rem;
+    font-weight: 400;
+    line-height: 0.6875rem;
+    font-style: normal;
+    color: #000;
 }
-.formInput {
-    outline: none;
-    border: none;
+.AuthNav_label__4 {
+    font-size: 0.625rem;
+    font-weight: 400;
+    line-height: 0.6875rem;
+    font-style: normal;
+    color: #000;
+}
+.AuthNav_description {
+    position: relative;
+    margin: 0 0 10px 8px;
+    padding: 4px 0 0 10px;
+}
+.AuthNav_input {
+    width: 208px;
+    height: 42px;
+    margin-bottom: 20px;
+    padding-left: 20px;
     border-radius: 30px;
+    border: transparent;
+    box-shadow: 1px 2px 3px rgb(170 178 197 / 10%);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+    text-align: left;
     background-color: #f6f7fb;
-    padding: 20px 17px;
-}
-
-.containerButton {
-    display: flex;
-    justify-content: space-between;
-}
-.button {
-    width: 125px;
-    height: 44px;
-    background-color: #f5f6fb;
-    border-radius: 16px;
-    border: none;
-    padding: 0;
-    color: #52555f;
-    font-size: 12px;
-    font-weight: bold;
-    box-shadow: #52555f;
-    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
-    cursor: pointer;
-}
-.button:hover {
-    background-color: #ff751d;
-    color: #fff;
-    filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
-    transition: 0.5s linear;
-}
-.animationGoogle {
-    text-align: center;
+    color: #a6abb9;
 }
