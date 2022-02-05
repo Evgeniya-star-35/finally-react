@@ -5,7 +5,7 @@ import Avatar from 'react-avatar';
 import Media from 'react-media';
 import logo from '../../images/logo.png';
 import logout from '../../images/globalIcons/logout.svg';
-import close from '../../images/globalIcons/close.svg';
+import sprite from '../../images/globalIcons/symbol-defs.svg';
 
 import s from './Header.module.css';
 import st from '../Modal/Modal.module.css';
@@ -32,11 +32,17 @@ export default function AuthHeader() {
                 <Media
                     query="(max-width: 767.98px)"
                     render={() => (
-                        <img
-                            src={logout}
-                            alt="logout"
-                            className={s.logoutSvg}
-                        />
+                        <button
+                            className={s.logoutDoor}
+                            type="button"
+                            onClick={toggleModal}
+                        >
+                            <img
+                                src={logout}
+                                alt="logout"
+                                className={s.logoutSvg}
+                            />
+                        </button>
                     )}
                 />
                 <Media
@@ -57,19 +63,21 @@ export default function AuthHeader() {
             {showModal && (
                 <ModalLogout onClose={toggleModal}>
                     <button className={st.close} onClick={toggleModal}>
-                        <img src={close} alt={'close'} />
+                        <svg width="12" height="12">
+                            <use href={`${sprite}#icon-close`}></use>
+                        </svg>
                     </button>
                     <p className={st.modalTxt}>
                         Вы действительно хотите выйти?
                     </p>
 
                     <div className={st.modalBtns}>
-                        <Button type="button" onClick={''} text={'да'}></Button>
+                        <Button type="button" onClick={''} text={'да'} />
                         <Button
                             type="button"
                             onClick={toggleModal}
                             text={'нет'}
-                        ></Button>
+                        />
                     </div>
                 </ModalLogout>
             )}
