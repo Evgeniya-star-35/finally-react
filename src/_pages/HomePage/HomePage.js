@@ -3,6 +3,7 @@ import AuthHeader from 'components/Header/AuthHeader';
 import Header from 'components/Header/Header';
 import TransactionForm from 'components/TransactionForm';
 import RegisterForm from 'components/RegisterForm/RegisterForm';
+
 const HomePage = () => {
     return (
         <>
