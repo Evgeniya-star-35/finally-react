@@ -35,5 +35,14 @@
 <path fill="none" stroke="#52555f" style="stroke: var(--color1, #52555f)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 2.286l27.429 27.429"></path>
 <path fill="none" stroke="#52555f" style="stroke: var(--color1, #52555f)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 29.714l27.429-27.429"></path>
 </symbol>
+
+<symbol id="icon-back" viewBox="0 0 19 32">
+<path fill="none" stroke="#ff751d" style="stroke: var(--color1, #ff751d)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="5.3333" d="M16 2.667l-10.667 13.333 10.667 13.333"></path>
+</symbol>
+
+<symbol id="icon-forward" viewBox="0 0 19 32">
+<path fill="none" stroke="#ff751d" style="stroke: var(--color1, #ff751d)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="5.3333" d="M2.667 2.667l10.667 13.333-10.667 13.333"></path>
+</symbol>
+
 </defs>
 </svg>
