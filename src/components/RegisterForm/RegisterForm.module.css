@@ -49,7 +49,7 @@
     border: transparent;
 }
 .FormContent_button {
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     height: 50px;
     width: 148px;
@@ -67,7 +67,27 @@
     cursor: pointer;
 
     outline: none;
+    text-decoration: none; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: #f6f7fb;
+    border-radius: 26px;
+    border: 0;
+    width: 122px;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: #000;
     text-decoration: none;
+    line-height: 16px;
+    padding-left: 20px;
 }
 @media screen and (min-width: 768px) {
     .FormContent_button {
@@ -266,4 +286,12 @@
         margin-left: 86px;
         margin-right: 85px;
     }
+}
+.span_required {
+    display: inline-block;
+    margin-top: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    line-height: 0.83;
+    color: #eb5757;
 }
