@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '../Buttons/Button';
 import styles from './RegisterForm.module.css';
 import { Formik, Field, Form } from 'formik';
