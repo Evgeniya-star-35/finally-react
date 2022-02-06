@@ -225,15 +225,13 @@
 }
 .span_star {
     position: absolute;
-    left: -7px;
+    left: 90px;
     color: #eb5757;
     font-size: 10px;
-    line-height: 0.85;
-}
-@media screen and (min-width: 768px) {
-    .span_star {
-        font-size: 15px;
-    }
+    font-weight: 400;
+    margin-top: 5px;
+    font-size: 10px;
+    line-height: 12px;
 }
 
 .title {
