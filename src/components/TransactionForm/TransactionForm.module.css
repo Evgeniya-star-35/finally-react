@@ -103,13 +103,12 @@
         margin-bottom: 30px;
         border: none;
 
-        width: 70px;
+        width: 126px;
         height: 40px;
         padding-right: 0;
         border-radius: 0;
         border: 2px solid #c7ccdc;
         border-left: none;
-        border-right: none;
         background-color: #fff;
     }
     .sumInput::placeholder {
@@ -117,12 +116,13 @@
         font-weight: 400;
         text-align: right;
     }
-    .sumInput:focus-within {
-        outline: none;
+    .sumInput:hover,
+    .sumInput:focus {
         border: 2px solid var(--accent-color);
     }
 }
 .calcBtn {
+    position: relative;
     margin-top: 30px;
     width: 60px;
     height: 44px;
@@ -130,6 +130,15 @@
     border-radius: 22px 0px 0px 22px;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     background-color: var(--auth-input-bg);
+}
+.calcSvg {
+    position: absolute;
+    transform: translateY(-50%);
+    left: 12px;
+    top: 68%;
+}
+.calcBtn:hover,
+.calcBtn:focus {
 }
 @media screen and (min-width: 768px) {
     .calcBtn {
