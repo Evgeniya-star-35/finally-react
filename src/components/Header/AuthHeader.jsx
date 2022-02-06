@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/auth-operations';
+
 import ModalLogout from 'components/Modal/Modal';
 import Button from '../../components/Buttons/Button';
 import Avatar from 'react-avatar';
 import Media from 'react-media';
 import logo from '../../images/logo.png';
-import logout from '../../images/globalIcons/logout.svg';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 
 import s from './Header.module.css';
@@ -43,11 +43,9 @@ export default function AuthHeader() {
                             type="button"
                             onClick={toggleModal}
                         >
-                            <img
-                                src={logout}
-                                alt="logout"
-                                className={s.logoutSvg}
-                            />
+                            <svg width="16" height="16">
+                                <use href={`${sprite}#icon-logout`}></use>
+                            </svg>
                         </button>
                     )}
                 />

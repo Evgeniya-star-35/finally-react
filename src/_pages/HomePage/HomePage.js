@@ -1,12 +1,7 @@
-
-
-
-
-
-
-// import TransactionForm from 'components/TransactionForm';
+import TransactionForm from 'components/TransactionForm';
 
 import RegisterForm from 'components/RegisterForm/RegisterForm';
+
 
 
 
@@ -15,9 +10,9 @@ const HomePage = () => {
         <>
             
 
-            <RegisterForm />
+             <RegisterForm /> 
 
-            {/* <TransactionForm /> */}
+             <TransactionForm /> 
           
         </>
     );

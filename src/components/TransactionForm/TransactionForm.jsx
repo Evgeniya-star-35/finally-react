@@ -1,20 +1,26 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import transactionsOperations from '../../redux/transactions/transactions-operations';
 import Button from 'components/Buttons/Button';
 import GoBackArrow from '../GoBack';
-// import optionsCosts from '../../data/costsCategories.json';
+import Dropdown from 'components/Dropdown';
+
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
 
-export default function TransactionForm() {
+export default function TransactionForm({ date, type }) {
     const [product, setProduct] = useState('');
+    const [category, setCategory] = useState('');
     const [sum, setSum] = useState('');
+    const dispatch = useDispatch();
 
     const handleChange = e => {
         const { name, value } = e.target;
         switch (name) {
             case 'product':
                 return setProduct(value);
-
+            case 'category':
+                return setCategory(value);
             case 'sum':
                 return setSum(value);
 
@@ -25,10 +31,20 @@ export default function TransactionForm() {
 
     const handleSubmit = e => {
         e.preventDefault();
+        const transaction = {
+            type,
+            date,
+            category,
+            product,
+            sum,
+        };
+        dispatch(transactionsOperations.addTransactionOperation(transaction));
+        reset();
     };
     const reset = e => {
         setProduct('');
         setSum('');
+        setCategory('');
     };
 
     return (
@@ -48,7 +64,8 @@ export default function TransactionForm() {
                             onChange={handleChange}
                         />
                     </label>
-                    <select className={s.selectCategory}>
+                    <Dropdown />
+                    {/* <select className={s.selectCategory} name="category">
                         <option value="Категория товара">
                             Категория товара
                         </option>
@@ -63,7 +80,7 @@ export default function TransactionForm() {
                         <option>Образование</option>
                         <option>Спорт, хобби</option>
                         <option>Прочее</option>
-                    </select>
+                    </select> */}
                     <div className={s.sumWrapper}>
                         <label>
                             <input
