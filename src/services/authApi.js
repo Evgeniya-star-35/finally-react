@@ -12,15 +12,16 @@ const token = {
     },
 };
 
-const fetchSignUp = credentials => axios.post('/users/signup', credentials);
+const fetchSignUp = credentials =>
+    axios.post('/api/users/registration', credentials);
 
-const fetchLogin = credentials => axios.post('/users/login', credentials);
+const fetchLogin = credentials => axios.post('/api/users/login', credentials);
 
-const fetchLogout = () => axios.post('/users/logout');
+const fetchLogout = () => axios.post('/api/users/logout');
 
-const fetchCurrent = () => axios.get('/users/current');
+const fetchCurrent = () => axios.get('/api/users/current');
 
-const fetchRefreshToken = () => axios.get('/users/refresh');
+const fetchBalance = () => axios.patch('/api/users/balance');
 
 export {
     token,
@@ -28,5 +29,5 @@ export {
     fetchLogin,
     fetchLogout,
     fetchCurrent,
-    fetchRefreshToken,
+    fetchBalance,
 };

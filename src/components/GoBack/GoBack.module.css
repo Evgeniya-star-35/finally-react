@@ -1,0 +1,8 @@
+.GoBackArrow {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 17px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

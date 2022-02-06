@@ -1,5 +1,79 @@
-.Container {
+.BottomImg {
+    position: relative;
+    /* width: 100%; */
+    height: 800px;
+    background-image: url('../../images/bottomcab.svg');
+    background-repeat: no-repeat;
+    background-position: left 10% bottom;
+}
+.Topbox {
+    position: absolute;
+    z-index: -1;
     width: 100%;
+    background-color: #f5f6fb;
+    overflow: hidden;
+    height: 286px;
+    border-radius: 0 0 0 45px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.TopImg {
+    position: absolute;
+    z-index: -1;
+    height: 89px;
+    width: 44px;
+    /* top: 104px;
+    left: 271px; */
+    background-image: url('../../images/partcab.svg');
+    background-position: right 10% top;
+}
+.Title {
+    position: absolute;
+    width: 183px;
+    height: 63px;
+    margin-top: 86px;
+    margin-left: 49px;
+    background-image: url('../../images/title.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+@media screen and (min-width: 768px) {
+    .BottomImg {
+        height: 968px;
+        background-image: url('../../images/vectors2.svg');
+        background-position: left 10% bottom;
+    }
+    .Topbox {
+        height: 526px;
+    }
+    .TopImg {
+        background-image: url('../../images/groupcab.svg');
+        height: 232px;
+        width: 100%;
+        top: 28px;
+        left: 10px;
+    }
+    .Title {
+        width: 306px;
+        height: 101px;
+        margin-top: 90px;
+        margin-left: 171px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .BottomImg {
+        height: 744px;
+    }
+    .Title {
+        width: 377px;
+        height: 139px;
+        margin-top: 308px;
+        margin-left: 230px;
+    }
+}
+
+/* .Container {
+    width: 100%;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
 }
@@ -11,27 +85,32 @@
     border-radius: 0 0 0 45px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.Bottombox {
-    height: 514px;
-    position: relative;
-}
 .TopImg {
     position: absolute;
-    z-index: 2;
-    background-image: url('../../img/svg/Vector.svg');
+    background-image: url('../../images/vector.svg');
     width: 83px;
     height: 89px;
     top: 104px;
     left: 271px;
-    /* transform: rotate(-180deg); */
+    transform: rotateX(-180deg);
 }
 .BottomImg {
     position: absolute;
     width: 83px;
     height: 89px;
-    top: 512px;
+    top: 711px;
     left: 35px;
-    background-image: url('../../img/svg/Vectorcab.svg');
+    background-image: url('../../images/vectors2.svg');
+}
+.Title{
+    z-index: 2;
+    width: 183px;
+    height: 63px;
+    margin-top: 86px;
+    margin-left: 49px;
+    background-image: url('../../images/title.png');
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 @media screen and (min-width: 320px) {
     .Container {
@@ -51,15 +130,20 @@
         height: 232px;
         top: 28px;
         left: 10px;
-        background-image: url('../../img/svg/groupcab.svg');
+        background-image: url('../../images/groupcab.svg');
     }
     .BottomImg {
-        /* width: 100%; */
         width: 183px;
         height: 142px;
-        top: 244px;
+        top: 770px;
         left: 103px;
-        background-image: url('../../img/svg/Group.svg');
+    }
+    .Title{
+        width: 306px;
+        height: 101px;
+        margin-top: 90px;
+        margin-left: 171px;
+       
     }
 }
 @media screen and (min-width: 1280px) {
@@ -67,10 +151,16 @@
         width: 1280px;
     }
     .BottomImg {
-        /* width: 100%; */
         width: 183px;
         height: 142px;
-        top: 76px;
+        top: 602px;
         left: 230px;
     }
-}
+    .Title{
+        width: 377px;
+        height: 139px;
+        margin-top: 308px;
+        margin-left: 230px;
+       
+    }
+} */
