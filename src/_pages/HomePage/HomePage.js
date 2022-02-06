@@ -5,8 +5,7 @@ import RegisterForm from 'components/RegisterForm/RegisterForm';
 const HomePage = () => {
     return (
         <>
-            {/* <RegisterForm /> */}
-
+            <RegisterForm />
             <TransactionForm />
         </>
     );

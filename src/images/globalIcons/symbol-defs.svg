@@ -25,11 +25,27 @@
 <path d="M16.016 29.123c0.518 0 0.938-0.42 0.938-0.937v-16.9c0-0.518-0.42-0.938-0.938-0.938s-0.938 0.42-0.938 0.938v16.9c0 0.518 0.42 0.937 0.938 0.937z"></path>
 </symbol>
 <symbol id="icon-logout" viewBox="0 0 32 32">
-<path d="M20 28h-16v-24h16v2h4v-6h-24v32h24v-6h-4v2h-0z"></path>
-<path d="M24.586 8.586l-2.828 2.828 2.586 2.586h-10.344v4h10.344l-2.586 2.586 2.828 2.828 7.414-7.414-7.414-7.414z"></path>
+<path fill="#cbccd0" d="M20 28h-16v-24h16v2h4v-6h-24v32h24v-6h-4v2h-0z"></path>
+<path  fill="#cbccd0" d="M24.586 8.586l-2.828 2.828 2.586 2.586h-10.344v4h10.344l-2.586 2.586 2.828 2.828 7.414-7.414-7.414-7.414z"></path>
 </symbol>
 <symbol id="icon-bar_chart-24px" viewBox="0 0 32 32">
 <path d="M6.667 12.267h4v13.067h-4v-13.067zM14.133 6.667h3.733v18.667h-3.733v-18.667zM21.6 17.333h3.733v8h-3.733v-8z"></path>
 </symbol>
+
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path fill="none" stroke="#52555f" style="stroke: var(--color1, #52555f)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 2.286l27.429 27.429"></path>
+<path fill="none" stroke="#52555f" style="stroke: var(--color1, #52555f)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 29.714l27.429-27.429"></path>
+</symbol>
+<symbol id="icon-keyboard_backspace-24px-1" viewBox="0 0 32 32">
+<path fill="#ff751d" style="fill: var(--color1, #ff751d)" d="M28 14.667h-18.893l4.773-4.787-1.88-1.88-8 8 8 8 1.88-1.88-4.773-4.787h18.893v-2.667z"></path>
+</symbol>
+<symbol id="icon-arrow-down" viewBox="0 0 55 32">
+<path fill="none" stroke="#c7ccdc" style="stroke: var(--color1, #c7ccdc)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="9.1429" d="M4.571 4.571l22.857 18.286 22.857-18.286"></path>
+</symbol>
+<symbol id="icon-arrow-up" viewBox="0 0 55 32">
+<path fill="none" stroke="#c7ccdc" style="stroke: var(--color1, #c7ccdc)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="9.1429" d="M4.571 27.429l22.857-18.286 22.857 18.286"></path>
+</symbol>
+
+
 </defs>
 </svg>
