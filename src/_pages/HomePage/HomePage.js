@@ -1,6 +1,6 @@
 // import BackgroundHome from 'components/BackgroundHome/BackgroundHome';
 
-import RegisterForm from 'components/RegisterForm/RegisterForm';
+// import RegisterForm from 'components/RegisterForm/RegisterForm';
 import TransactionForm from 'components/TransactionForm';
 
 const HomePage = () => {
@@ -8,7 +8,7 @@ const HomePage = () => {
         <>
             {/* <BackgroundHome /> */}
 
-            <RegisterForm />
+            {/* <RegisterForm /> */}
 
             <TransactionForm />
         </>
