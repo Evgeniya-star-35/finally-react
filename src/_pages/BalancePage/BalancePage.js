@@ -4,6 +4,7 @@ const BalancePage = () => {
     return (
         <>
             <Background>
+                {/* сюди прописуємо компоненти */}
                 <Balance />
             </Background>
         </>
