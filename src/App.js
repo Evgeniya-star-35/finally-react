@@ -4,7 +4,6 @@ import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Container from 'components/Container/Container';
-// import Header from 'components/Header';
 import AuthHeader from 'components/Header/AuthHeader';
 
 import { ToastContainer } from 'react-toastify';
@@ -35,40 +34,42 @@ function App() {
     return (
         // !isFetchCurrentUser && (
         <>
-
             {/* <Header /> */}
             <AuthHeader />
             <Container>
-                
-
-            <ToastContainer />
-            <Suspense fallback={'...Loading'}>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <PublicRoute isAuth={isAuth} element={HomePage} />
-                        }
-                    />
-                    <Route
-                        path="/balance"
-                        element={
-                            <PrivateRoute
-                                isAuth={isAuth}
-                                element={BalancePage}
-                            />
-                        }
-                    />
-                    <Route
-                        path="/mainPage"
-                        element={
-                            <PrivateRoute isAuth={isAuth} element={MainPage} />
-                        }
-                    />
-                </Routes>
-            </Suspense>
-</Container>
-
+                <ToastContainer />
+                <Suspense fallback={'...Loading'}>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <PublicRoute
+                                    isAuth={isAuth}
+                                    element={HomePage}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/balance"
+                            element={
+                                <PrivateRoute
+                                    isAuth={isAuth}
+                                    element={BalancePage}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/mainPage"
+                            element={
+                                <PrivateRoute
+                                    isAuth={isAuth}
+                                    element={MainPage}
+                                />
+                            }
+                        />
+                    </Routes>
+                </Suspense>
+            </Container>
         </>
         // )
     );
