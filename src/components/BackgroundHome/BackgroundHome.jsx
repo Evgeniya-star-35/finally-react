@@ -2,7 +2,6 @@ import s from './BackgroundHome.module.css';
 const BackgroundHome = ({ children }) => {
     return (
         <>
-            {/* old */}
             {/* <div className={s.Container}> */}
             {/* <div className={s.Topbox}>
                 <div className={s.TopImg}></div>
