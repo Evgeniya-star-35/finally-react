@@ -1,16 +1,19 @@
-// import BackgroundHome from 'components/BackgroundHome/BackgroundHome';
-
-// import RegisterForm from 'components/RegisterForm/RegisterForm';
 import TransactionForm from 'components/TransactionForm';
+
+import RegisterForm from 'components/RegisterForm/RegisterForm';
+
+
+
 
 const HomePage = () => {
     return (
         <>
-            {/* <BackgroundHome /> */}
+            
 
-            {/* <RegisterForm /> */}
+             <RegisterForm /> 
 
-            <TransactionForm />
+             <TransactionForm /> 
+          
         </>
     );
 };

@@ -1,5 +1,5 @@
-import Background from 'components/Background/Background';
+// import Background from 'components/Background/Background';
 const MainPage = () => {
-    return <Background />;
+    return;
 };
 export default MainPage;

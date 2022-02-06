@@ -10,8 +10,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
 import PrivateRoute from './routes/privateRouter';
-import { getCurrentToken, getFetchingCurrentUser } from './redux/auth';
-import { getCurrentUser } from './redux/auth';
+import {
+    getCurrentToken,
+    getCurrentUser,
+    // getFetchingCurrentUser
+} from './redux/auth';
 
 const HomePage = lazy(() =>
     import('./_pages/HomePage' /* webpackChunkName: "home-page" */),
@@ -25,7 +28,7 @@ const MainPage = lazy(() =>
 
 function App() {
     const dispatch = useDispatch();
-    const isFetchCurrentUser = useSelector(getFetchingCurrentUser);
+    // const isFetchCurrentUser = useSelector(getFetchingCurrentUser);
     const isAuth = useSelector(getCurrentToken);
     useEffect(() => {
         dispatch(getCurrentUser());
@@ -36,6 +39,7 @@ function App() {
         <>
             {/* <Header /> */}
             <AuthHeader />
+            {}
             <Container>
                 <ToastContainer />
                 <Suspense fallback={'...Loading'}>
