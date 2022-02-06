@@ -28,6 +28,10 @@ const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
+const getUserBalanceRequest = createAction('auth/getUserBalanceRequest');
+const getUserBalanceSuccess = createAction('auth/getUserBalanceSuccess');
+const getUserBalanceError = createAction('auth/getUserBalanceError');
+
 export {
     registerRequest,
     registerSuccess,
@@ -47,4 +51,7 @@ export {
     refreshLoginGoogleRequest,
     refreshLoginGoogleSuccess,
     refreshLoginGoogleError,
+    getUserBalanceRequest,
+    getUserBalanceSuccess,
+    getUserBalanceError,
 };

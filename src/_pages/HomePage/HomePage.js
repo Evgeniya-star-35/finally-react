@@ -1,24 +1,13 @@
-
-
-
-
-
-
-// import TransactionForm from 'components/TransactionForm';
+import TransactionForm from 'components/TransactionForm';
 
 import RegisterForm from 'components/RegisterForm/RegisterForm';
-
-
 
 const HomePage = () => {
     return (
         <>
-            
+            {/* <RegisterForm /> */}
 
-            <RegisterForm />
-
-            {/* <TransactionForm /> */}
-          
+            <TransactionForm />
         </>
     );
 };

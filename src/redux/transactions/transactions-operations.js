@@ -28,20 +28,18 @@ import {
     editTransaction,
     getTransactionsByDate,
     getTransactionsByPeriod,
-    setBalance,
 } from 'services/transactionApi';
-import { refresh } from 'redux/auth';
+import { fetchBalance } from 'services/authApi';
 
 const setBalanceOperation = balance => async (dispatch, getState) => {
     dispatch(setTotalBalanceRequest());
 
     try {
-        const response = await setBalance(balance);
+        const response = await fetchBalance(balance);
         dispatch(setTotalBalanceSuccess(response.data.data.balance));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
-            await refresh(dispatch, getState);
-            const response = await setBalance(balance);
+            const response = await fetchBalance(balance);
             dispatch(setTotalBalanceSuccess(response.data.data.balance));
             return;
         }
@@ -64,7 +62,6 @@ const addTransactionOperation = transaction => async (dispatch, getState) => {
         dispatch(setTotalBalanceSuccess(response.data.balance));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
-            await refresh(dispatch, getState);
             const response = await addTransaction(
                 Object.assign(transaction, splitedDate),
                 balance,
@@ -84,14 +81,13 @@ const deleteTransactionOperation =
         const balance = calculateBalance(transaction, 'delete');
         try {
             await deleteTransaction(transaction._id);
-            const setBalanceData = await setBalance(balance);
+            const setBalanceData = await fetchBalance(balance);
             dispatch(deleteTransactionSuccess(transaction._id));
             dispatch(setTotalBalanceSuccess(setBalanceData.data.data.balance));
         } catch ({ response }) {
             if (response.data.message === 'Unvalid token') {
-                await refresh(dispatch, getState);
                 await deleteTransaction(transaction._id);
-                const setBalanceData = await setBalance(balance);
+                const setBalanceData = await fetchBalance(balance);
                 dispatch(deleteTransactionSuccess(transaction._id));
                 dispatch(
                     setTotalBalanceSuccess(setBalanceData.data.data.balance),
@@ -113,7 +109,6 @@ const editTransactionOperation = transaction => async (dispatch, getState) => {
         dispatch(setTotalBalanceSuccess(response.data.balance));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
-            await refresh(dispatch, getState);
             const response = await editTransaction(transaction, balance);
             dispatch(editTransactionSuccess(response.data.result));
             dispatch(setTotalBalanceSuccess(response.data.balance));
@@ -132,7 +127,6 @@ const getTransactionsDayOperation = date => async (dispatch, getState) => {
         dispatch(getTransactionsSuccess(response.data.result));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
-            await refresh(dispatch, getState);
             const response = await getTransactionsByDate(date);
 
             dispatch(getTransactionsSuccess(response.data.result));
@@ -151,7 +145,6 @@ const getTransactionsMonthYear =
             dispatch(getTransactionsMonthYearSuccess(response.data.result));
         } catch ({ response }) {
             if (response.data.message === 'Unvalid token') {
-                await refresh(dispatch, getState);
                 const response = await getTransactionsByPeriod(
                     `${month}-${year}`,
                 );
@@ -171,7 +164,6 @@ const getMonthlyBalancesYear = year => async (dispatch, getState) => {
         dispatch(getMonthlyBalanceSuccess(balances));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
-            await refresh(dispatch, getState);
             const response = await getTransactionsByPeriod(year);
             const balances = calculateBalancesPerMonth(response.data.result);
             dispatch(getMonthlyBalanceSuccess(balances));
