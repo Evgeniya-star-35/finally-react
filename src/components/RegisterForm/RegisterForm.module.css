@@ -49,25 +49,25 @@
     border: transparent;
 }
 .FormContent_button {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    height: 50px;
-    width: 148px;
-    border: none;
-    text-align: center;
-    box-shadow: rgb(0 0 0 / 25%) 0px 2px 4px 0px;
-    font-size: 16px;
-    line-height: 48px;
-    display: flex;
-
-    border-radius: 26px;
-    transition: background-color 0.218s ease 0s, border-color 0.218s ease 0s,
-        box-shadow 0.218s ease 0s;
-    font-family: Roboto, arial, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
-
-    outline: none;
+    background-color: #f6f7fb;
+    border-radius: 26px;
+    border: 0;
+    width: 122px;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: #000;
     text-decoration: none;
+    line-height: 16px;
+    padding-left: 20px;
 }
 @media screen and (min-width: 768px) {
     .FormContent_button {
@@ -225,15 +225,13 @@
 }
 .span_star {
     position: absolute;
-    left: -7px;
+    left: 90px;
     color: #eb5757;
     font-size: 10px;
-    line-height: 0.85;
-}
-@media screen and (min-width: 768px) {
-    .span_star {
-        font-size: 15px;
-    }
+    font-weight: 400;
+    margin-top: 5px;
+    font-size: 10px;
+    line-height: 12px;
 }
 
 .title {
@@ -266,4 +264,12 @@
         margin-left: 86px;
         margin-right: 85px;
     }
+}
+.span_required {
+    display: inline-block;
+    margin-top: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    line-height: 0.83;
+    color: #eb5757;
 }

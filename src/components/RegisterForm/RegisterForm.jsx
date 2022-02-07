@@ -1,48 +1,21 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth';
+import React from 'react';
 import Button from '../Buttons/Button';
 import styles from './RegisterForm.module.css';
+import { Formik, Field, Form } from 'formik';
+import * as Yup from 'yup';
 
-export default function RegisterForm() {
-    const dispatch = useDispatch();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [required, setRequired] = useState(false);
+const BasicFormSchema = Yup.object().shape({
+    email: Yup.string()
+        .email('Invalid email address')
+        .required('это обязательное поле'),
+    password: Yup.string()
+        .min(8, 'Must be longer than 8 characters')
+        .required('это обязательное поле'),
+});
 
-    const onLogIn = () => dispatch(register.logIn({ email, password }));
-
-    const handleChange = ({ target: { name, value } }) => {
-        switch (name) {
-            case 'email':
-                return setEmail(value);
-            case 'password':
-                return setPassword(value);
-            default:
-                return;
-        }
-    };
-
-    const reset = () => {
-        setEmail('');
-        setPassword('');
-    };
-
-    const handleSubmit = e => {
-        e.preventDefault();
-
-        if (email === '' || password === '') {
-            setRequired(true);
-            return;
-        } else {
-            setRequired(false);
-        }
-        onLogIn();
-        reset();
-    };
-
-    return (
-        <form onSubmit={handleSubmit} className={styles.form} autoComplete="on">
+const RegisterForm = () => (
+    <div className={styles.form}>
+        <div autoComplete="on">
             <p className={styles.textGoogle}>
                 Вы можете авторизоваться с помощью Google Account:
             </p>
@@ -51,7 +24,6 @@ export default function RegisterForm() {
                     className={styles.FormContent_button}
                     href="https://finally-node.herokuapp.com/api/auth/google"
                 >
-                    <span></span>
                     Google
                 </a>
             </div>
@@ -59,44 +31,56 @@ export default function RegisterForm() {
                 Или зайти с помощью e-mail и пароля, предварительно
                 зарегистрировавшись:
             </p>
-            <label className={styles.label}>
-                {required && <span className={styles.span_star}>*</span>}
-                Электронная почта:
-                <input
-                    className={styles.input}
-                    type="email"
-                    name="email"
-                    value={email}
-                    placeholder="your@email.com"
-                    onChange={handleChange}
-                />
-                {required && (
-                    <span className={styles.span_required}>
-                        это обязательное поле
-                    </span>
-                )}
-            </label>
-            <label className={styles.label}>
-                {required && <span className={styles.span_star}>*</span>}
-                Пароль:
-                <input
-                    className={styles.input}
-                    type="password"
-                    name="password"
-                    value={password}
-                    placeholder="Пароль"
-                    onChange={handleChange}
-                />
-                {required && (
-                    <span className={styles.span_required}>
-                        это обязательное поле
-                    </span>
-                )}
-            </label>
-            <div className={styles.button__container}>
-                <Button text={'войти'} type="submit" />
-                <Button text={'регистрация'} type="button" />
-            </div>
-        </form>
-    );
-}
+        </div>
+        <Formik
+            initialValues={{
+                email: '',
+                password: '',
+            }}
+            validationSchema={BasicFormSchema}
+            onSubmit={values => {
+                setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                }, 500);
+            }}
+            render={({ errors, touched }) => (
+                <Form className="form-container">
+                    <label className={styles.label} htmlFor="email">
+                        Электронная почта:
+                        <Field
+                            name="email"
+                            placeholder="your@email.com"
+                            type="email"
+                            className={styles.input}
+                        />
+                    </label>
+                    {errors.email && touched.email && (
+                        <div className={styles.span_star}>{errors.email}</div>
+                    )}
+
+                    <label className={styles.label} htmlFor="password">
+                        Пароль:
+                        <Field
+                            name="password"
+                            placeholder="Пароль"
+                            type="password"
+                            className={styles.input}
+                        />
+                    </label>
+                    {errors.password && touched.password && (
+                        <div className={styles.span_star}>
+                            {errors.password}
+                        </div>
+                    )}
+
+                    <div className={styles.button__container}>
+                        <Button text={'войти'} type="submit" />
+                        <Button text={'регистрация'} type="button" />
+                    </div>
+                </Form>
+            )}
+        />
+    </div>
+);
+
+export default RegisterForm;
