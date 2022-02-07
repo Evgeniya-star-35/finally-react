@@ -74,7 +74,11 @@
         margin-left: 157px;
     }
 }
-
+@media screen and (max-width: 767px) {
+    .FormContent_button {
+        margin-left: 75px;
+    }
+}
 .FormContent_textA {
     margin-top: 30px;
     margin-left: 29px;
@@ -100,8 +104,25 @@
     box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 767px) {
     .form {
+        width: 300px;
+        position: absolute;
+        left: 50%;
+        top: -84px;
+        -webkit-transform: translate(-50%);
+        transform: translate(-50%);
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px 18px 53px;
+        width: 300px;
+        height: 525px;
+        background-color: #fff;
+        box-shadow: 5px 10px 20px rgb(170 178 197 / 40%);
+        border-radius: 30px;
         width: 300px;
     }
 }
@@ -110,14 +131,32 @@
     .form {
         margin-top: 240px;
         width: 436px;
+
+        z-index: 4;
+        width: 436px;
+        height: 535px;
+        top: -25%;
+        /* padding: 50px 85px 53px; */
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #fff;
+        box-shadow: 5px 10px 20px rgb(170 178 197 / 40%);
+        border-radius: 30px;
+        padding-top: 25px;
     }
 }
 
 @media screen and (min-width: 1280px) {
     .form {
-        margin-top: 117px;
+        /* margin-top: 117px;
         margin-left: auto;
-        margin-right: 110px;
+        margin-right: 110px; */
+        left: 75%;
     }
 }
 
@@ -137,6 +176,11 @@
     letter-spacing: 0.04em;
     font-weight: 500;
     color: rgba(82, 85, 95, 0.7);
+}
+@media screen and (max-width: 767px) {
+    .textGoogle {
+        margin-top: 0;
+    }
 }
 @media screen and (min-width: 768px) {
     .textGoogle {
