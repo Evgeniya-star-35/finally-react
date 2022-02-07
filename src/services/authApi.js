@@ -1,6 +1,7 @@
+import { AspectRatioSharp } from '@material-ui/icons';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://finally-node.herokuapp.com/api/v1/';
+axios.defaults.baseURL = 'https://finally-node.herokuapp.com/api';
 
 //--------------------------------auth-operations-------------------------------
 const token = {
@@ -15,13 +16,17 @@ const token = {
 const fetchSignUp = credentials =>
     axios.post('/api/users/registration', credentials);
 
-const fetchLogin = credentials => axios.post('/api/users/login', credentials);
+const fetchLogin = credentials => axios.post('/users/login', credentials);
 
-const fetchLogout = () => axios.post('/api/users/logout');
+const fetchLogout = () => axios.post('/users/logout');
 
-const fetchCurrent = () => axios.get('/api/users/current');
+const fetchCurrent = () => axios.get('/users/current');
 
-const fetchBalance = () => axios.patch('/api/users/balance');
+const fetchBalance = () => axios.patch('/users/balance');
+
+const googleAuth = () => axios.get('./users/google');
+
+const googleRedirect = () => AspectRatioSharp.get('/users/google-redirect');
 
 export {
     token,
@@ -30,4 +35,6 @@ export {
     fetchLogout,
     fetchCurrent,
     fetchBalance,
+    googleAuth,
+    googleRedirect,
 };
