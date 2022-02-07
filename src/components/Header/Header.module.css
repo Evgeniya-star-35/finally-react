@@ -1,13 +1,15 @@
 .header {
     width: 100vw;
     height: 56px;
+
     padding: 0 20px;
     background-color: #fff;
 }
 .authHeader {
     width: 100vw;
     height: 56px;
-    padding: 0 20px;
+    padding: 12px 20px;
+
     background-color: #fff;
     display: flex;
     justify-content: space-between;
@@ -38,15 +40,13 @@
         margin-right: 10px;
     }
 }
-.logoutSvg {
-    width: 16px;
-    height: 16px;
-}
+
 .logoutDoor {
     width: 16px;
     height: 16px;
     margin-right: 15px;
     border: none;
+    cursor: pointer;
     background-color: transparent;
 }
 
@@ -63,6 +63,13 @@
     letter-spacing: 0.04em;
     text-decoration-line: underline;
     color: var(--main-txt-color);
+}
+.logoutBtn:hover,
+.logoutBtn:focus {
+    border-left: 2px solid var(--accent-color);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--accent-color);
 }
 
 .userName {

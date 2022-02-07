@@ -22,7 +22,7 @@ import {
     fetchLogin,
     fetchLogout,
     fetchCurrent,
-    fetchRefreshToken,
+    fetchBalance,
 } from 'services/authApi';
 
 const register = credentials => async dispatch => {
@@ -32,7 +32,10 @@ const register = credentials => async dispatch => {
         dispatch(registerSuccess(response.data));
     } catch ({ response }) {
         dispatch(registerError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -44,7 +47,10 @@ const logIn = credentials => async dispatch => {
         dispatch(loginSuccess(response.data.data));
     } catch ({ response }) {
         dispatch(loginError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -56,7 +62,10 @@ const logOut = () => async dispatch => {
         dispatch(logoutSuccess());
     } catch ({ response }) {
         dispatch(logoutError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -77,7 +86,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
             token.set(persistedRefreshToken);
-            const response = await fetchRefreshToken();
+
             dispatch(getCurrentUserSuccess(response.data.data.user));
             dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
             dispatch(
@@ -89,30 +98,45 @@ const getCurrentUser = () => async (dispatch, getState) => {
             return;
         }
         dispatch(getCurrentUserError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
-const refresh = async (dispatch, getState) => {
-    const {
-        auth: { refreshToken: persistedRefreshToken },
-    } = getState();
-    token.set(persistedRefreshToken);
+// const refresh = async (dispatch, getState) => {
+//     const {
+//         auth: { refreshToken: persistedRefreshToken },
+//     } = getState();
+//     token.set(persistedRefreshToken);
+//     try {
+//         const response = await fetchRefreshToken();
+//         token.set(response.data.data.token);
+//         dispatch(getCurrentUserSuccess(response.data.data.user));
+//         dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
+//         dispatch(
+//             loginSuccess({
+//                 token: response.data.data.token,
+//                 refreshToken: response.data.data.refreshToken,
+//             }),
+//         );
+//     } catch (error) {
+//         dispatch(logoutSuccess());
+//         token.unset();
+//         console.log(error.message);
+//     }
+// };
+const getBalance = async dispatch => {
+    dispatch(registerRequest());
     try {
-        const response = await fetchRefreshToken();
-        token.set(response.data.data.token);
-        dispatch(getCurrentUserSuccess(response.data.data.user));
-        dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
-        dispatch(
-            loginSuccess({
-                token: response.data.data.token,
-                refreshToken: response.data.data.refreshToken,
-            }),
-        );
-    } catch (error) {
-        dispatch(logoutSuccess());
-        token.unset();
-        console.log(error.message);
+        const response = await fetchBalance();
+        dispatch(registerSuccess(response.data));
+    } catch ({ response }) {
+        dispatch(registerError(response.data.message));
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
-
-export { register, logOut, logIn, getCurrentUser, refresh };
+export { register, logOut, logIn, getCurrentUser, getBalance };
