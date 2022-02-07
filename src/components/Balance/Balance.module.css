@@ -1,5 +1,85 @@
-/* .Form{
-    position: absolute;
-    margin-top: 100px;
-    margin-left: 50px;
-} */
+.InfoBalance {
+    position: relative;
+}
+.FormInfo {
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+}
+.Input {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    width: 125px;
+    height: 44px;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    border-radius: 22px 0 0 22px;
+    font-weight: 700;
+    padding-left: 20px;
+    padding-right: 20px;
+    outline: none;
+    margin: 0;
+}
+.Label {
+    position: relative;
+    display: block;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6px;
+    padding-top: 30px;
+}
+.Balancebtn {
+    width: 125px;
+    height: 44px;
+    border: 2px solid #ffffff;
+    border-left: 1px;
+    background-color: transparent;
+    border-radius: 0 22px 22px 0;
+    color: rgba(82, 85, 95, 0.7);
+    font-size: 12px;
+    line-height: 1.17;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .InfoBalance {
+        margin-bottom: 58px;
+    }
+    .Form {
+        display: flex;
+        align-items: baseline;
+    }
+    .Label {
+        margin: 0;
+    }
+    .Input {
+        margin-right: 15px;
+        height: 44px;
+        margin-left: 21px;
+        margin-top: 0px;
+        max-width: 105px;
+        border: 2px solid #ffffff;
+        background-color: transparent;
+        border-radius: 16px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.17;
+        font-weight: bold;
+        color: black;
+        padding: 12px 20px 12px;
+    }
+    .Modal {
+        width: 292px;
+        height: 263px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    s.InfoBalance {
+        margin-bottom: 9px;
+    }
+}
