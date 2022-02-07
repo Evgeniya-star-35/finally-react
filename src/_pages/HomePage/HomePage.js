@@ -1,10 +1,15 @@
+import RegisterForm from 'components/RegisterForm';
+import CategoriesCosts from 'components/CategoriesCosts';
+import CategoriesIncomes from 'components/CategoriesIncomes';
 import TransactionForm from 'components/TransactionForm';
-import RegisterForm from 'components/RegisterForm/RegisterForm';
-
 const HomePage = () => {
     return (
         <>
             <RegisterForm />
+
+            <CategoriesCosts />
+            <CategoriesIncomes />
+
             <TransactionForm />
         </>
     );
