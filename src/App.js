@@ -2,6 +2,7 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { Lines } from 'react-preloaders';
 
 import Container from 'components/Container/Container';
 import AuthHeader from 'components/Header/AuthHeader';
@@ -44,6 +45,7 @@ function App() {
             <AuthHeader />
             {}
             <Container>
+                <Lines />
                 <ToastContainer />
                 <Suspense fallback={'...Loading'}>
                     <Routes>
@@ -59,7 +61,8 @@ function App() {
                         <Route
                             path="/balance"
                             element={
-                                <PrivateRoute
+                                // <PrivateRoute
+                                <PublicRoute
                                     isAuth={isAuth}
                                     element={BalancePage}
                                 />
@@ -68,7 +71,8 @@ function App() {
                         <Route
                             path="/mainPage"
                             element={
-                                <PrivateRoute
+                                // <PrivateRoute
+                                <PublicRoute
                                     isAuth={isAuth}
                                     element={MainPage}
                                 />
@@ -77,7 +81,8 @@ function App() {
                         <Route
                             path="/reports"
                             element={
-                                <PrivateRoute
+                                // <PrivateRoute
+                                <PublicRoute
                                     isAuth={isAuth}
                                     element={ReportPage}
                                 />
