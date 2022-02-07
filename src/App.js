@@ -2,7 +2,6 @@ import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import { Lines } from 'react-preloaders';
 
 import Container from 'components/Container/Container';
 import AuthHeader from 'components/Header/AuthHeader';
@@ -45,7 +44,6 @@ function App() {
             <AuthHeader />
             {}
             <Container>
-                {/* <Lines /> */}
                 <ToastContainer />
                 <Suspense fallback={'...Loading'}>
                     <Routes>

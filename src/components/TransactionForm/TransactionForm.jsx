@@ -63,7 +63,6 @@ export default function TransactionForm({ date, type }) {
                             required
                             className={s.productInput}
                             onChange={handleChange}
-                            require
                         />
                     </label>
                     <Dropdown />
@@ -93,7 +92,6 @@ export default function TransactionForm({ date, type }) {
                                 required
                                 className={s.sumInput}
                                 onChange={handleChange}
-                                require
                             />
                         </label>
                         <Media
