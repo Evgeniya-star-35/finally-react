@@ -23,9 +23,11 @@
 
 .productInput {
     padding-left: 20px;
-    padding-bottom: 6px;
     width: 252px;
     height: 44px;
+    font-size: 15px;
+    line-height: 1.167;
+    font-weight: 500;
     border: 2px solid #fff;
     border-radius: 16px;
     background-color: var(--auth-input-bg);
@@ -72,11 +74,17 @@
         border-left: none;
     }
 }
-.sumWrapper {
-    display: flex;
-    justify-content: center;
+@media screen and (max-width: 767.98px) {
+    .sumWrapper {
+        display: flex;
+        justify-content: center;
+    }
 }
-
+@media screen and (min-width: 768px) {
+    .sumWrapper {
+        position: relative;
+    }
+}
 .sumInput {
     margin-bottom: 85px;
     margin-top: 30px;
@@ -86,6 +94,9 @@
     width: 125px;
     height: 44px;
     text-align: right;
+    font-size: 14px;
+    line-height: 1.167;
+    font-weight: 500;
     border: 2px solid #ffffff;
     border-radius: 22px 0px 0px 22px;
     background-color: var(--auth-input-bg);
@@ -102,10 +113,13 @@
     .sumInput {
         margin-bottom: 30px;
         border: none;
-
-        width: 126px;
+        position: relative;
+        width: 100px;
         height: 40px;
-        padding-right: 0;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.167;
+        font-weight: 500;
         border-radius: 0;
         border: 2px solid #c7ccdc;
         border-left: none;
@@ -114,7 +128,7 @@
     .sumInput::placeholder {
         color: #c7ccdc;
         font-weight: 400;
-        text-align: right;
+        text-align: center;
     }
     .sumInput:hover,
     .sumInput:focus {
@@ -126,20 +140,23 @@
     margin-top: 30px;
     width: 60px;
     height: 44px;
+    outline: none;
     border: 2px solid #ffffff;
     border-radius: 22px 0px 0px 22px;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     background-color: var(--auth-input-bg);
 }
+.calcBtn:hover,
+.calcBtn:focus {
+    border: 2px solid var(--accent-color);
+}
 .calcSvg {
     position: absolute;
     transform: translateY(-50%);
-    left: 12px;
-    top: 68%;
+    left: 36%;
+    top: 48%;
 }
-.calcBtn:hover,
-.calcBtn:focus {
-}
+
 @media screen and (min-width: 768px) {
     .calcBtn {
         border: 2px solid #c7ccdc;
@@ -148,6 +165,12 @@
         height: 40px;
         border-right: none;
         padding: 8px 10px 10px;
+    }
+    .calcSvg {
+        position: absolute;
+        transform: translateY(-50%);
+        left: 72%;
+        top: 50%;
     }
 }
 .wrapBtns {

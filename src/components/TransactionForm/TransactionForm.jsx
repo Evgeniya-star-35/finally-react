@@ -7,7 +7,6 @@ import GoBackArrow from '../GoBack';
 import Dropdown from 'components/Dropdown';
 
 import sprite from '../../images/globalIcons/symbol-defs.svg';
-import bokal from '../../images/costsIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
 
 export default function TransactionForm({ date, type }) {
@@ -98,7 +97,7 @@ export default function TransactionForm({ date, type }) {
                         <Media
                             query="(max-width: 767.98px)"
                             render={() => (
-                                <div className={s.calcBtn}>
+                                <button className={s.calcBtn}>
                                     <svg
                                         width="20"
                                         height="20"
@@ -108,13 +107,17 @@ export default function TransactionForm({ date, type }) {
                                             href={`${sprite}#icon-calculator`}
                                         ></use>
                                     </svg>
-                                </div>
+                                </button>
                             )}
                         />
                         <Media
                             query="(min-width: 768px)"
                             render={() => (
-                                <svg width="20" height="20">
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    className={s.calcSvg}
+                                >
                                     <use
                                         href={`${sprite}#icon-calculator`}
                                     ></use>
