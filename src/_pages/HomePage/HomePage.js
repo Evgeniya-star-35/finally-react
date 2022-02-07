@@ -9,7 +9,6 @@ const HomePage = () => {
 
             <CategoriesCosts />
             <CategoriesIncomes />
-
             <TransactionForm />
         </>
     );

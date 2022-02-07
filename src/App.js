@@ -25,6 +25,9 @@ const BalancePage = lazy(() =>
 const MainPage = lazy(() =>
     import('./_pages/MainPage' /*webpackChunkName: "main-page" */),
 );
+const ReportPage = lazy(() =>
+    import('./_pages/HomePage' /* webpackChunkName: "report-page" */),
+);
 
 function App() {
     const dispatch = useDispatch();
@@ -68,6 +71,15 @@ function App() {
                                 <PrivateRoute
                                     isAuth={isAuth}
                                     element={MainPage}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/balance"
+                            element={
+                                <PrivateRoute
+                                    isAuth={isAuth}
+                                    element={ReportPage}
                                 />
                             }
                         />

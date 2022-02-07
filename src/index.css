@@ -35,6 +35,7 @@
 
 body {
     background-color: #fff;
+    color: var(--main-txt-color);
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.02em;
 }
