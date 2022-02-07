@@ -22,7 +22,7 @@ const RegisterForm = () => (
             <div>
                 <a
                     className={styles.FormContent_button}
-                    href="https://finally-node.herokuapp.com/api/auth/google"
+                    href="https://finally-node.herokuapp.com/api/users/google"
                 >
                     Google
                 </a>
