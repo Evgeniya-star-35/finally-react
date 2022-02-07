@@ -7,7 +7,7 @@ import Summary from 'components/Summary';
 const HomePage = () => {
     return (
         <>
-            <RegisterForm />
+            {/* <RegisterForm /> */}
             <Summary />
             {/* <CategoriesCosts />
             <CategoriesIncomes /> */}
