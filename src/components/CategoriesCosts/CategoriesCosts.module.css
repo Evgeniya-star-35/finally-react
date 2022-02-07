@@ -66,12 +66,31 @@
 
 .icon {
     fill: #071f41;
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-image: radial-gradient(
+        75% 65% at 50% 50%,
+        #f5f6fb 15%,
+        #f5f6fb 5%,
+        #f5f6fb 40%,
+        #f5f6fb 0,
+        #f5f6fb 65%,
+        #fff 0
+    );
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-image 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon:hover,
 .icon:focus {
     fill: var(--accent-color);
+    background-image: radial-gradient(
+        75% 65% at 50% 50%,
+        #ffdac0 15%,
+        #ffdac0 5%,
+        #ffdac0 40%,
+        #ffdac0 0,
+        #ffdac0 65%,
+        #fff 0
+    );
     cursor: pointer;
 }
 
