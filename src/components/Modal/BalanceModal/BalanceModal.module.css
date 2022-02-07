@@ -1,0 +1,42 @@
+.Modal {
+    position: absolute;
+    width: 282px;
+    height: 263px;
+    background-size: contain;
+    top: 54px;
+    left: 19px;
+    background-image: url('../../../images/Union.svg');
+    color: #ffffff;
+    padding: 41px 20px;
+}
+.Text {
+    font-weight: normal;
+    /* width: 232px;
+height: 38px; */
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0;
+    margin-top: 30px;
+    margin-left: 13px;
+    /* or 143% */
+}
+.AddText {
+    font-size: 12px;
+    /* line-height: 16px; */
+    margin-top: 20px;
+    margin-left: 13px;
+}
+@media screen and (min-width: 768px) {
+    .Modal {
+        top: 16px;
+        left: 19px;
+        width: 292px;
+        height: 263px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .Modal {
+        top: 16px;
+        left: 50px;
+    }
+}

@@ -26,16 +26,6 @@
     background-image: url('../../images/partcab.svg');
     background-position: right 10% top;
 }
-.Title {
-    position: absolute;
-    width: 183px;
-    height: 63px;
-    margin-top: 86px;
-    margin-left: 49px;
-    background-image: url('../../images/title.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-}
 @media screen and (min-width: 768px) {
     .BottomImg {
         height: 968px;
@@ -52,22 +42,10 @@
         top: 28px;
         left: 10px;
     }
-    .Title {
-        width: 306px;
-        height: 101px;
-        margin-top: 90px;
-        margin-left: 171px;
-    }
 }
 @media screen and (min-width: 1280px) {
     .BottomImg {
         height: 744px;
-    }
-    .Title {
-        width: 377px;
-        height: 139px;
-        margin-top: 308px;
-        margin-left: 230px;
     }
 }
 
