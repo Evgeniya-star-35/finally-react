@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Media from 'react-media';
 import transactionsOperations from '../../redux/transactions/transactions-operations';
 import Button from 'components/Buttons/Button';
 import GoBackArrow from '../GoBack';
@@ -93,11 +94,36 @@ export default function TransactionForm({ date, type }) {
                                 onChange={handleChange}
                             />
                         </label>
-                        <button type="button" className={s.calcBtn}>
-                            <svg width="20" height="20">
-                                <use href={`${sprite}#icon-calculator`}></use>
-                            </svg>
-                        </button>
+                        <Media
+                            query="(max-width: 767.98px)"
+                            render={() => (
+                                <button className={s.calcBtn}>
+                                    <svg
+                                        width="20"
+                                        height="20"
+                                        className={s.calcSvg}
+                                    >
+                                        <use
+                                            href={`${sprite}#icon-calculator`}
+                                        ></use>
+                                    </svg>
+                                </button>
+                            )}
+                        />
+                        <Media
+                            query="(min-width: 768px)"
+                            render={() => (
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    className={s.calcSvg}
+                                >
+                                    <use
+                                        href={`${sprite}#icon-calculator`}
+                                    ></use>
+                                </svg>
+                            )}
+                        />
                     </div>
                 </div>
                 <div className={s.wrapBtns}>

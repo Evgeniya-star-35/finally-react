@@ -64,6 +64,13 @@
     text-decoration-line: underline;
     color: var(--main-txt-color);
 }
+.logoutBtn:hover,
+.logoutBtn:focus {
+    border-left: 2px solid var(--accent-color);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--accent-color);
+}
 
 .userName {
     font-weight: 400;
