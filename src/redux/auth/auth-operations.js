@@ -32,7 +32,10 @@ const register = credentials => async dispatch => {
         dispatch(registerSuccess(response.data));
     } catch ({ response }) {
         dispatch(registerError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -44,7 +47,10 @@ const logIn = credentials => async dispatch => {
         dispatch(loginSuccess(response.data.data));
     } catch ({ response }) {
         dispatch(loginError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -56,7 +62,10 @@ const logOut = () => async dispatch => {
         dispatch(logoutSuccess());
     } catch ({ response }) {
         dispatch(logoutError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -89,7 +98,10 @@ const getCurrentUser = () => async (dispatch, getState) => {
             return;
         }
         dispatch(getCurrentUserError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 // const refresh = async (dispatch, getState) => {
@@ -121,7 +133,10 @@ const getBalance = async dispatch => {
         dispatch(registerSuccess(response.data));
     } catch ({ response }) {
         dispatch(registerError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 export { register, logOut, logIn, getCurrentUser, getBalance };

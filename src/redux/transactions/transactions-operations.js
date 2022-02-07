@@ -44,7 +44,10 @@ const setBalanceOperation = balance => async (dispatch, getState) => {
             return;
         }
         dispatch(setTotalBalanceError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -71,7 +74,10 @@ const addTransactionOperation = transaction => async (dispatch, getState) => {
             return;
         }
         dispatch(addTransactionError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -95,7 +101,10 @@ const deleteTransactionOperation =
                 return;
             }
             dispatch(addTransactionError(response.data.message));
-            toast.error(response.data.message);
+            toast.error(response.data.message, {
+                position: 'top-center',
+                autoClose: 2500,
+            });
         }
     };
 
@@ -115,7 +124,10 @@ const editTransactionOperation = transaction => async (dispatch, getState) => {
             return;
         }
         dispatch(editTransactionError(response.data.message));
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -133,7 +145,10 @@ const getTransactionsDayOperation = date => async (dispatch, getState) => {
             return;
         }
         dispatch(getTransactionsError(response.data.message));
-        toast.info(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -152,7 +167,10 @@ const getTransactionsMonthYear =
                 return;
             }
             dispatch(getTransactionsMonthYearError(response.data.message));
-            toast.info(response.data.message);
+            toast.error(response.data.message, {
+                position: 'top-center',
+                autoClose: 2500,
+            });
         }
     };
 
@@ -170,7 +188,10 @@ const getMonthlyBalancesYear = year => async (dispatch, getState) => {
             return;
         }
         dispatch(getMonthlyBalanceError(response.data.message));
-        toast.info(response.data.message);
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 

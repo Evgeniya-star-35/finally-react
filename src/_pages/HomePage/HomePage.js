@@ -12,7 +12,9 @@ const HomePage = () => {
             <CategoriesCosts />
             <CategoriesIncomes />
 
+
             <GoToReports />
+
 
             <TransactionForm />
         </>
