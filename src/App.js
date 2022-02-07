@@ -75,7 +75,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="/balance"
+                            path="/reports"
                             element={
                                 <PrivateRoute
                                     isAuth={isAuth}

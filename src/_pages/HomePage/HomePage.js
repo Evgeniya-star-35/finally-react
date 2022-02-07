@@ -8,11 +8,11 @@ const HomePage = () => {
     return (
         <>
             <RegisterForm />
-            {/* <Summary />
-            <CategoriesCosts />
-            <CategoriesIncomes />
+            {/* <Summary /> */}
+            {/* <CategoriesCosts />
+            <CategoriesIncomes /> */}
 
-            <GoToReports /> */}
+            <GoToReports />
 
             <TransactionForm />
         </>
