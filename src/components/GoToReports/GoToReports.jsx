@@ -10,7 +10,7 @@ export default function GoToReports() {
         <button type="button" className={s.button}>
             <Link
                 to={{
-                    pathname: '/balance',
+                    pathname: '/reports',
                     state: {
                         from: { location },
                     },
@@ -18,7 +18,7 @@ export default function GoToReports() {
                 className={s.link}
             >
                 <span className={s.text}>Перейти к отчетам</span>
-                <svg width="24" height="24" className={s.icon}>
+                <svg width="20" height="20" className={s.icon}>
                     <use href={`${sprite}#icon-bar_chart-24px`}></use>
                 </svg>
             </Link>
