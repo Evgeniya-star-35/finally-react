@@ -9,7 +9,7 @@ import AuthHeader from 'components/Header/AuthHeader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
-import PrivateRoute from './routes/privateRouter';
+// import PrivateRoute from './routes/privateRouter';
 import {
     getCurrentToken,
     getCurrentUser,
@@ -42,7 +42,7 @@ function App() {
         <>
             {/* <Header /> */}
             <AuthHeader />
-            {}
+
             <Container>
                 <ToastContainer />
                 <Suspense fallback={'...Loading'}>
