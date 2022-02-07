@@ -26,7 +26,7 @@ const MainPage = lazy(() =>
     import('./_pages/MainPage' /*webpackChunkName: "main-page" */),
 );
 const ReportPage = lazy(() =>
-    import('./_pages/HomePage' /* webpackChunkName: "report-page" */),
+    import('./_pages/ReportPage' /* webpackChunkName: "report-page" */),
 );
 
 function App() {
