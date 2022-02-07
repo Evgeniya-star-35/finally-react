@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/auth-operations';
-
 import ModalLogout from 'components/Modal/Modal';
 import Button from '../../components/Buttons/Button';
 import Avatar from 'react-avatar';
 import Media from 'react-media';
-import logo from '../../images/logo.png';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 
 import s from './Header.module.css';
@@ -24,7 +22,9 @@ export default function AuthHeader() {
     };
     return (
         <header className={s.authHeader}>
-            <img src={logo} alt="logo" className={s.logo} />
+            <svg width="90" height="31" className={s.logo}>
+                <use href={`${sprite}#icon-logo`}></use>
+            </svg>
             <div className={s.authImg}>
                 <Avatar
                     name="User"
