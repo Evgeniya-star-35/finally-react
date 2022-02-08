@@ -9,6 +9,7 @@ import sprite from '../../images/globalIcons/symbol-defs.svg';
 
 import s from './Header.module.css';
 import st from '../Modal/Modal.module.css';
+import { toast } from 'react-toastify';
 
 export default function AuthHeader() {
     const [showModal, setShowModal] = useState(false);
@@ -19,6 +20,7 @@ export default function AuthHeader() {
     const handleLogout = () => {
         dispatch(logOut());
         toggleModal();
+        toast.success('Спасибо за визит!Ждём Вас снова!');
     };
     return (
         <header className={s.authHeader}>
