@@ -1,12 +1,13 @@
-.BottomImg {
-    position: relative;
-    /* width: 100%; */
+/* .BottomImg {
+    
     height: 800px;
-    background-image: url('../../images/bottomcab.svg');
+    background-image: url('../../images/partcab.svg'),url('../../images/bottomcab.svg'),url('../../images/rectangle.svg');
     background-repeat: no-repeat;
-    background-position: left 10% bottom;
-}
-.Topbox {
+    background-size:55px,89px,contain;
+    background-position: top 104px right,left 35px bottom,left 0 top 0;
+} */
+
+/* .Topbox {
     position: absolute;
     z-index: -1;
     width: 100%;
@@ -15,17 +16,17 @@
     height: 286px;
     border-radius: 0 0 0 45px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.TopImg {
+
+} */
+/* .TopImg {
     position: absolute;
     z-index: -1;
     height: 89px;
     width: 44px;
-    /* top: 104px;
-    left: 271px; */
     background-image: url('../../images/partcab.svg');
     background-position: right 10% top;
-}
+   
+} 
 @media screen and (min-width: 768px) {
     .BottomImg {
         height: 968px;
@@ -47,7 +48,7 @@
     .BottomImg {
         height: 744px;
     }
-}
+} */
 
 /* .Container {
     width: 100%;

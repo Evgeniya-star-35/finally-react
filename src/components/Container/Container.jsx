@@ -19,13 +19,13 @@ function Container({ children }) {
     return (
         <>
             {isAuth ? (
-                <Background>
+                <div className={s.BottomImg}>
                     <div className={s.Container}>{children}</div>
-                </Background>
+                </div>
             ) : (
-                <BackgroundHome>
+                <div className={s.BottomImg}>
                     <div className={s.Container}>{children}</div>
-                </BackgroundHome>
+                </div>
             )}
         </>
     );
