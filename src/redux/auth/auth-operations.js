@@ -30,6 +30,7 @@ const register = credentials => async dispatch => {
     try {
         const response = await fetchSignUp(credentials);
         dispatch(registerSuccess(response.data));
+        // console.log(response.data);
     } catch ({ response }) {
         dispatch(registerError(response.data.message));
         toast.error(response.data.message, {
