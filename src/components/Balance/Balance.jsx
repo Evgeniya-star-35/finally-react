@@ -25,7 +25,7 @@ const Balance = () => {
     return (
         <div className={s.InfoBalance}>
             <form className={s.Form}>
-                <label for="balance" className={s.Label}>
+                <label htmlFor="balance" className={s.Label}>
                     Баланс:
                 </label>
                 <div className={s.FormInfo}>
