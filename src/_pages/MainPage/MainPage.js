@@ -1,9 +1,13 @@
-// import Background from 'components/Background/Background';
+import AuthHeader from '../../components/Header/AuthHeader';
 import Balance from 'components/Balance/Balance';
+import Container from '../../components/Container';
 const MainPage = () => {
     return (
         <>
-            <Balance />
+            <AuthHeader />
+            <Container>
+                <Balance />
+            </Container>
         </>
     );
 };
