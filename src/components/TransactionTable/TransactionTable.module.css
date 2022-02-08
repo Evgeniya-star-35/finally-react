@@ -1,0 +1,83 @@
+.transactionTable {
+    margin-top: 500px; /*этот марджин для того, что бы таблица попала на белый фон*/
+    width: 605px;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    text-align: left;
+    background-color: #f5f6fb;
+    border-collapse: collapse;
+    border-radius: 20px 20px 0 0;
+}
+
+.thead {
+    height: 38px;
+}
+
+.name {
+    font-weight: 700;
+    align-items: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.date {
+    padding-left: 21px;
+    width: 120px;
+}
+
+.description {
+    width: 195px;
+}
+
+.category {
+    width: 150px;
+}
+
+.sum {
+    width: 90px;
+}
+
+tbody .sum {
+    font-weight: 700;
+    color: #e7192e;
+}
+
+.tbody {
+    background-color: #ffffff;
+    border-right: 2px solid #f4f6fb;
+    border-left: 2px solid #f4f6fb;
+}
+
+.tableRow {
+    height: 40px;
+    border-bottom: 2px solid #f4f6fb;
+}
+
+.tableRow td {
+    border: none;
+}
+
+.icon {
+    text-align: center;
+}
+
+.button {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+.button:hover,
+.button:focus {
+    cursor: pointer;
+}
+
+.basket {
+    fill: #52555f;
+}
+
+.button:hover .basket,
+.button:focus .basket {
+    fill: #e7192e;
+}

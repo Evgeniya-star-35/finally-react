@@ -23,39 +23,35 @@
     outline: none;
     margin: 0;
 }
-.Label {
+.title {
     position: relative;
-    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1.167;
     text-align: center;
     align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 6px;
-    padding-top: 30px;
-}
-.Balancebtn {
-    width: 125px;
-    height: 44px;
-    border: 2px solid #ffffff;
-    border-left: 1px;
-    background-color: transparent;
-    border-radius: 0 22px 22px 0;
-    color: rgba(82, 85, 95, 0.7);
-    font-size: 12px;
-    line-height: 1.17;
-    cursor: pointer;
+    margin: 0 auto 6px;
 }
 
 @media screen and (min-width: 768px) {
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row-reverse;
+        padding-top: 40px;
+    }
     .InfoBalance {
-        margin-bottom: 58px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .Form {
         display: flex;
         align-items: baseline;
     }
-    .Label {
-        margin: 0;
+    .title {
+        margin: 0 20px 0;
     }
     .Input {
         margin-right: 15px;
@@ -79,6 +75,9 @@
     }
 }
 @media screen and (min-width: 1280px) {
+    .wrapper {
+        justify-content: right;
+    }
     s.InfoBalance {
         margin-bottom: 9px;
     }

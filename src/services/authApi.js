@@ -14,7 +14,7 @@ const token = {
 };
 
 const fetchSignUp = credentials =>
-    axios.post('/api/users/registration', credentials);
+    axios.post('/users/registration', credentials);
 
 const fetchLogin = credentials => axios.post('/users/login', credentials);
 
