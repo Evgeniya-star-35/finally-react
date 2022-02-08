@@ -1,16 +1,19 @@
 import s from './BalanceModal.module.css';
 
 const BalanceModal = ({ onClick }) => {
-    const onModalClick = e => {
-        if (e.currentTarget === e.target) {
-            onClick();
-        }
-    };
-
+    setTimeout(function () {
+        onClick();
+    }, 3000);
+    // const closeModal = () =>{
+    //     const id = setTimeout(function(){
+    //         onClick();
+    //     }, 5000);
+    //     clearTimeout(id);
+    // }
+    // closeModal()
     return (
-        <div className={s.Modal} onClick={onModalClick}>
+        <div className={s.Modal}>
             <h4 className={s.Text}>
-                {' '}
                 Привет! Для начала работы внеси текущий баланс своего счета!
             </h4>
             <p className={s.AddText}>

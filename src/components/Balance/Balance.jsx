@@ -1,30 +1,44 @@
 import s from './Balance.module.css';
 import { getTotalBalance } from '../../redux/transactions/transactions-selectors';
-// витягнути з селектів редакс баланс.якщо баланс = 0,тоді модалка+кнопка,якщо ні то модалку не рендити,а тільки кнопку
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import ConfirmButton from 'components/Buttons/ConfirmButton';
 import BalanceModal from 'components/Modal/BalanceModal/BalanceModal';
-
+import transactionsOperations from 'redux/transactions/transactions-operations';
+import { toast } from 'react-toastify';
+// import useDebounce from '../../hooks/useDebounce';
 const Balance = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const balance = useSelector(getTotalBalance);
-
     const [sum, setSum] = useState('');
-
-    const onHandleChange = e => setSum(e.currentTarget.value);
+    const onHandleChange = e => {
+        if (typeof e.currentTarget.value !== Number) {
+            toast.success('Введите число!');
+            return;
+        }
+        setSum(e.currentTarget.value);
+    };
+    // const debouncedSearchSum = useDebounce(sum, 1000);
     useEffect(() => {
+        // if(debouncedSearchSum){
         setSum(balance);
-    }, [balance, setSum]);
+        console.log(balance);
+        console.log(setSum);
+        // }
+    }, [balance]);
+
+    const onFormSubmit = e => {
+        e.preventDefault();
+        dispatch(transactionsOperations.setBalanceOperation(sum));
+    };
     //Модалка
     const [modalClose, setModalClose] = useState(true);
     const toggleModal = () => {
         setModalClose(!modalClose);
     };
-
     return (
         <div className={s.InfoBalance}>
-            <form className={s.Form}>
+            <form onSubmit={onFormSubmit} className={s.Form}>
                 <label for="balance" className={s.Label}>
                     Баланс:
                 </label>
@@ -41,8 +55,7 @@ const Balance = () => {
                                 placeholder="00.00 UAH"
                                 autoComplete="off"
                             />
-                            <ConfirmButton text="Подтвердить" />
-                            {/* <button type="submit" className={s.Balancebtn} >Подтвердить</button> */}
+                            <ConfirmButton type="submit" text="Подтвердить" />
                         </>
                     ) : (
                         <>
