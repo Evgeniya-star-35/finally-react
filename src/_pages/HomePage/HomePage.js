@@ -5,8 +5,7 @@ import RegisterForm from 'components/RegisterForm';
 const HomePage = () => {
     return (
         <>
-            <div className=""></div>
-            <BackgroundHome>
+<BackgroundHome>
                 <Header />
                 <RegisterForm />
             </BackgroundHome>

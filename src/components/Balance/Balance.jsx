@@ -24,11 +24,10 @@ const Balance = () => {
     };
 
     return (
-        <>
+      <>
             <div className={s.wrapper}>
                 <GoToReports />
-                <div></div>
-                <div className={s.InfoBalance}>
+                  <div className={s.InfoBalance}>
                     <h2 className={s.title}>Баланс:</h2>
                     <form className={s.Form}>
                         <div className={s.FormInfo}>
@@ -59,6 +58,7 @@ const Balance = () => {
                         </div>
                     </form>
                     {modalClose && <BalanceModal onClick={toggleModal} />}
+
                 </div>
             </div>
         </>

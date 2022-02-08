@@ -4,7 +4,8 @@
     width: 252px;
     height: 44px;
     border: 2px solid #fff;
-    border-radius: 16px;
+    border-radius: 0 0 16px 0;
+    border-top: none;
     font-weight: 400;
     font-size: 12px;
     line-height: 1.167;
