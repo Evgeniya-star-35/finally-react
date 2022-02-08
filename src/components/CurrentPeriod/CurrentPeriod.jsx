@@ -1,10 +1,8 @@
 import React from 'react';
-import s from './CurrentPeriod.module.css';
-
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos';
-
 import month from '../../data/month.json';
+import s from './CurrentPeriod.module.css';
 
 const CurrentPeriod = ({
     currentMonth,

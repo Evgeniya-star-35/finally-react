@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import ConfirmButton from 'components/Buttons/ConfirmButton';
 import BalanceModal from 'components/Modal/BalanceModal/BalanceModal';
+import s from './Balance.module.css';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import { toast } from 'react-toastify';
 // import useDebounce from '../../hooks/useDebounce';
-
 import s from './Balance.module.css';
+
 const Balance = () => {
     const dispatch = useDispatch();
     const balance = useSelector(getTotalBalance);
@@ -38,37 +39,7 @@ const Balance = () => {
         setModalClose(!modalClose);
     };
     return (
-
-        <div className={s.InfoBalance}>
-            <form onSubmit={onFormSubmit} className={s.Form}>
-                <label for="balance" className={s.Label}>
-                    Баланс:
-                </label>
-                <div className={s.FormInfo}>
-                    {balance === 0 ? (
-                        <>
-                            <input
-                                id="balance"
-                                type="text"
-                                className={s.Input}
-                                name="name"
-                                maxLength="5"
-                                onChange={onHandleChange}
-                                placeholder="00.00 UAH"
-                                autoComplete="off"
-                            />
-                            <ConfirmButton type="submit" text="Подтвердить" />
-                        </>
-                    ) : (
-                        <>
-                            <p className={s.Numberbox}>
-                                {`${balance.toLocaleString('ru')}.00`} UAH
-                            </p>
-                            <button disabled>ПОДТВЕРДИТЬ</button>
-                        </>
-                    )}
-
-      <>
+       
             <div className={s.wrapper}>
                    <div className={s.InfoBalance}>
                     <h2 className={s.title}>Баланс:</h2>
@@ -92,7 +63,7 @@ const Balance = () => {
                             ) : (
                                 <>
                                     <p className={s.NumberBox}>
-                                        {`${balance.toLocaleString('ru')}.00`}{' '}
+                                        {`${balance.toLocaleString('ru')}.00`}
                                         UAH
                                     </p>
                                     <button disabled>ПОДТВЕРДИТЬ</button>
@@ -105,7 +76,7 @@ const Balance = () => {
 
                 </div>
             </div>
-        </>
+       
     );
 };
 export default Balance;
