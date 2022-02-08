@@ -1,13 +1,15 @@
 import Header from 'components/Header/Header';
 import BackgroundHome from '../../components/BackgroundHome';
-import RegisterForm from 'components/RegisterForm';
+// import RegisterForm from 'components/RegisterForm';
+import TransactionForm from 'components/TransactionForm';
 
 const HomePage = () => {
     return (
         <>
-<BackgroundHome>
+            <BackgroundHome>
                 <Header />
-                <RegisterForm />
+                {/* <RegisterForm /> */}
+                <TransactionForm />
             </BackgroundHome>
         </>
     );

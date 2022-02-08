@@ -138,7 +138,7 @@ const getTransactionsDayOperation = date => async (dispatch, getState) => {
 
         dispatch(getTransactionsSuccess(response.data.result));
     } catch ({ response }) {
-        if (response.data.message === 'Unvalid token') {
+        if (response.data.message === 'Invalid token') {
             const response = await getTransactionsByDate(date);
 
             dispatch(getTransactionsSuccess(response.data.result));

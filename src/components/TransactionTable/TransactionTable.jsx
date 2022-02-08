@@ -64,7 +64,6 @@ export default function TransactionTable() {
                                     </button>
                                 </td>
                             </tr>
-                            {/* ))} */}
                         </tbody>
                     </table>
                 )}

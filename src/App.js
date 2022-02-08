@@ -52,7 +52,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/balance"
+                        path="/transactions"
                         element={
                             // <PrivateRoute
                             <PublicRoute

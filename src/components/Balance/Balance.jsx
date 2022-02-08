@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import ConfirmButton from 'components/Buttons/ConfirmButton';
 import BalanceModal from 'components/Modal/BalanceModal/BalanceModal';
-import GoToReports from 'components/GoToReports';
 import s from './Balance.module.css';
 
 const Balance = () => {
@@ -24,10 +23,9 @@ const Balance = () => {
     };
 
     return (
-      <>
+        <>
             <div className={s.wrapper}>
-                <GoToReports />
-                  <div className={s.InfoBalance}>
+                <div className={s.InfoBalance}>
                     <h2 className={s.title}>Баланс:</h2>
                     <form className={s.Form}>
                         <div className={s.FormInfo}>
@@ -49,7 +47,7 @@ const Balance = () => {
                             ) : (
                                 <>
                                     <p className={s.NumberBox}>
-                                        {`${balance.toLocaleString('ru')}.00`}{' '}
+                                        {`${balance.toLocaleString('ru')}.00`}
                                         UAH
                                     </p>
                                     <button disabled>ПОДТВЕРДИТЬ</button>
@@ -58,7 +56,6 @@ const Balance = () => {
                         </div>
                     </form>
                     {modalClose && <BalanceModal onClick={toggleModal} />}
-
                 </div>
             </div>
         </>

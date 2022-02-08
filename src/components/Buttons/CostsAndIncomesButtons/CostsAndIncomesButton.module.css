@@ -1,0 +1,22 @@
+.btn {
+    width: 159px;
+    height: 53px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.167;
+
+    /* display: flex;
+    align-items: center; */
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border: 2px solid var(--accent-btn-txt);
+    outline: none;
+    color: var(--main-title-color);
+    background-color: var(--main-bg);
+}
+.btn:hover,
+.btn:focus {
+    color: var(--accent-btn-txt);
+    background-color: var(--accent-color);
+}
