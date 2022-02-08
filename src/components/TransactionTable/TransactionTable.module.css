@@ -1,5 +1,10 @@
+.tableWrapper {
+    /* display: flex; */
+}
 .transactionTable {
     margin-top: 48px;
+    margin-right: auto;
+    margin-left: auto;
     width: 605px;
     font-size: 12px;
     line-height: 1.17;
@@ -97,6 +102,8 @@ tbody .sum {
 @media screen and (min-width: 1280px) {
     .transactionTable {
         width: 760px;
+        margin-right: auto;
+        margin-left: 13.5px;
     }
 
     .thead {

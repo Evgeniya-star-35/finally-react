@@ -125,7 +125,7 @@
         border: 2px solid #c7ccdc;
         border-left: none;
         background-color: #fff;
-        z-index: -1;
+        /* z-index: -1; */
     }
     .sumInput::placeholder {
         color: #c7ccdc;

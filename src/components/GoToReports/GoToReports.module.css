@@ -11,6 +11,7 @@
     text-align: right;
     letter-spacing: 0.04em;
     cursor: pointer;
+    outline: none;
 }
 
 .link {
@@ -40,6 +41,7 @@
     .button {
         margin: 0 0 0 111px;
         padding: 0;
+        padding-top: 52px;
     }
 }
 @media screen and (min-width: 1280px) {
