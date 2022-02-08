@@ -19,7 +19,7 @@ export default function TransactionTable() {
                                     Категория
                                 </th>
                                 <th className={`${s.name} ${s.sum}`}>Сумма</th>
-                                <th className={s.name}></th>
+                                <th className={`${s.name} ${s.icon}`}></th>
                             </tr>
                         </thead>
 
@@ -47,9 +47,12 @@ export default function TransactionTable() {
 
                             <tr className={s.tableRow}>
                                 <td className={s.date}>05.09.2019</td>
-                                <td className={s.description}>Бананы</td>
+                                <td className={s.description}>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit.
+                                </td>
                                 <td className={s.category}>Продукты</td>
-                                <td className={s.sum}>- 50.00 грн.</td>
+                                <td className={s.sum}>- 1050.00 грн.</td>
                                 <td className={s.icon}>
                                     <button type="button" className={s.button}>
                                         <svg
