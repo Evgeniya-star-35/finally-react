@@ -88,12 +88,12 @@ const getCurrentUser = () => async (dispatch, getState) => {
         if (response.data.message === 'Unvalid token') {
             token.set(persistedRefreshToken);
 
-            dispatch(getCurrentUserSuccess(response.data.data.user));
-            dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
+            dispatch(getCurrentUserSuccess(response.data.user));
+            dispatch(setTotalBalanceSuccess(response.data.user.balance));
             dispatch(
                 loginSuccess({
                     token: response.data.data.token,
-                    refreshToken: response.data.data.refreshToken,
+                    refreshToken: response.data.refreshToken,
                 }),
             );
             return;

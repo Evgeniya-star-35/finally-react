@@ -3,7 +3,6 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://finally-node.herokuapp.com/api';
 
-//--------------------------------auth-operations-------------------------------
 const token = {
     set(token) {
         axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -26,7 +25,7 @@ const fetchBalance = balance => axios.patch('/users/balance', balance);
 
 const googleAuth = () => axios.get('./users/google');
 
-const googleRedirect = () => AspectRatioSharp.get('/users/google-redirect');
+const googleRedirect = () => axios.get('/users/google-redirect');
 
 export {
     token,
