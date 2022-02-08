@@ -3,6 +3,7 @@ import Button from '../Buttons/Button';
 import styles from './RegisterForm.module.css';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
+// import { useDispatch } from 'react-redux';
 
 const BasicFormSchema = Yup.object().shape({
     email: Yup.string()
