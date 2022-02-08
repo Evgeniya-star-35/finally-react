@@ -14,7 +14,7 @@ const token = {
 };
 
 const fetchSignUp = credentials =>
-    axios.post('/api/users/registration', credentials);
+    axios.post('/users/registration', credentials);
 
 const fetchLogin = credentials => axios.post('/users/login', credentials);
 
@@ -22,7 +22,7 @@ const fetchLogout = () => axios.post('/users/logout');
 
 const fetchCurrent = () => axios.get('/users/current');
 
-const fetchBalance = () => axios.patch('/users/balance');
+const fetchBalance = balance => axios.patch('/users/balance', balance);
 
 const googleAuth = () => axios.get('./users/google');
 

@@ -3,6 +3,7 @@ import BackgroundHome from '../../components/BackgroundHome';
 // import RegisterForm from 'components/RegisterForm';
 import TransactionForm from 'components/TransactionForm';
 
+
 const HomePage = () => {
     return (
         <>
@@ -11,6 +12,7 @@ const HomePage = () => {
                 {/* <RegisterForm /> */}
                 <TransactionForm />
             </BackgroundHome>
+
         </>
     );
 };

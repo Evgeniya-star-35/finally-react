@@ -84,3 +84,13 @@ button {
     margin: 0;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.BottomImg {
+    /* position: relative; */
+    /* max-width: 768px; */
+    height: 800px;
+    background-image: url('../src/images/partcab.svg'),
+        url('../src/images/bottomcab.svg'), url('../src/images/rectangle.svg');
+    background-repeat: no-repeat;
+    background-size: 55px, 89px, contain;
+    background-position: top 104px right, left 35px bottom, left 0 top 0;
+}
