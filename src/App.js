@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
 import PrivateRoute from './routes/privateRouter';
 
-
 import {
     getCurrentToken,
     getCurrentUser,
@@ -34,22 +33,23 @@ function App() {
     const dispatch = useDispatch();
     const isFetchCurrentUser = useSelector(getFetchingCurrentUser);
     // console.log(isFetchCurrentUser);//false
-    const isAuth = useSelector(getCurrentToken);
+    const { isAuth } = useSelector(state => state.auth);
     console.log(isAuth);
     useEffect(() => {
         dispatch(getCurrentUser());
     }, [dispatch]);
     return (
-        // !isFetchCurrentUser && (
         <>
-
-          <ToastContainer />
+            <ToastContainer />
             <Suspense fallback={<LoaderTriangle />}>
                 <Routes>
                     <Route
                         path="/"
                         element={
-                            <PublicRoute isAuth={isAuth} component={HomePage} />
+                            <PublicRoute
+                                isAuth={isAuth}
+                                component={<HomePage />}
+                            />
                         }
                     />
                     <Route
@@ -58,7 +58,7 @@ function App() {
                             <PrivateRoute
                                 // <PublicRoute
                                 isAuth={isAuth}
-                                component={TransactionPage}
+                                component={<TransactionPage />}
                             />
                         }
                     />
@@ -67,7 +67,7 @@ function App() {
                         element={
                             <PrivateRoute
                                 isAuth={isAuth}
-                                component={MainPage}
+                                component={<MainPage />}
                             />
                         }
                     />
@@ -76,17 +76,13 @@ function App() {
                         element={
                             <PrivateRoute
                                 isAuth={isAuth}
-                                component={ReportPage}
+                                component={<ReportPage />}
                             />
                         }
                     />
                 </Routes>
             </Suspense>
-
-
-
         </>
-        // )
     );
 }
 

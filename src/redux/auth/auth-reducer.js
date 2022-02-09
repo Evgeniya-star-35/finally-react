@@ -40,8 +40,8 @@ const authSlice = createSlice({
             state.isLoading = true;
         },
         [login.fulfilled](state, { payload }) {
-            state.user = payload.user;
-            state.token = payload.token;
+            state.user = payload.data.user;
+            state.token = payload.data.token;
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
