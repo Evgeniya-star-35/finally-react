@@ -11,7 +11,7 @@ import {
     getCurrentUser,
     // getFetchingCurrentUser
 } from './redux/auth';
-import LoaderTriangle from './components/Loader';
+import Loader from './components/Loader';
 
 const HomePage = lazy(() =>
     import('./_pages/HomePage' /* webpackChunkName: "home-page" */),
@@ -44,7 +44,7 @@ function App() {
 
             {/* <Container> */}
             <ToastContainer />
-            <Suspense fallback={<LoaderTriangle />}>
+            <Suspense fallback={<Loader />}>
                 <Routes>
                     <Route
                         path="/"
