@@ -127,7 +127,7 @@ export default function TransactionForm({ date, type }) {
                     </div>
                 </div>
                 <div className={s.wrapBtns}>
-                    <Button text="ввод" type="submit" onClick={handleSubmit} />
+                    <Button text="ввод" onClick={handleSubmit} />
                     <Button text="очистить" type="button" onClick={reset} />
                 </div>
             </form>

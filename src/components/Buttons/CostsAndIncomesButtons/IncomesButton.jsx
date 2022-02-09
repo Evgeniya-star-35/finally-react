@@ -14,7 +14,9 @@ export default function IncomesButton() {
                     },
                 }}
             >
-                <button className={s.btn}>доход</button>
+                <button className={s.btn} type="button">
+                    доход
+                </button>
             </Link>
         </>
     );
