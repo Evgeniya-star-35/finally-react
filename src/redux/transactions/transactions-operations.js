@@ -131,7 +131,7 @@ const editTransactionOperation = transaction => async (dispatch, getState) => {
     }
 };
 
-const getTransactionsDayOperation = date => async (dispatch, getState) => {
+const getTransactionsDayOperation = date => async dispatch => {
     dispatch(getTransactionsRequest());
     try {
         const response = await getTransactionsByDate(date);
@@ -152,27 +152,24 @@ const getTransactionsDayOperation = date => async (dispatch, getState) => {
     }
 };
 
-const getTransactionsMonthYear =
-    (month, year) => async (dispatch, getState) => {
-        dispatch(getTransactionsMonthYearRequest());
-        try {
+const getTransactionsMonthYear = (month, year) => async dispatch => {
+    dispatch(getTransactionsMonthYearRequest());
+    try {
+        const response = await getTransactionsByPeriod(`${month}-${year}`);
+        dispatch(getTransactionsMonthYearSuccess(response.data.result));
+    } catch ({ response }) {
+        if (response.data.message === 'Unvalid token') {
             const response = await getTransactionsByPeriod(`${month}-${year}`);
             dispatch(getTransactionsMonthYearSuccess(response.data.result));
-        } catch ({ response }) {
-            if (response.data.message === 'Unvalid token') {
-                const response = await getTransactionsByPeriod(
-                    `${month}-${year}`,
-                );
-                dispatch(getTransactionsMonthYearSuccess(response.data.result));
-                return;
-            }
-            dispatch(getTransactionsMonthYearError(response.data.message));
-            toast.error(response.data.message, {
-                position: 'top-center',
-                autoClose: 2500,
-            });
+            return;
         }
-    };
+        dispatch(getTransactionsMonthYearError(response.data.message));
+        toast.error(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
+    }
+};
 
 const getMonthlyBalancesYear = year => async (dispatch, getState) => {
     dispatch(getMonthlyBalanceRequest());

@@ -12,20 +12,15 @@ const Balance = () => {
     const dispatch = useDispatch();
     const balance = useSelector(getTotalBalance);
     const [sum, setSum] = useState('');
+
     const onHandleChange = e => {
-        if (typeof e.currentTarget.value !== Number) {
-            toast.info('Введите число!');
-            return;
-        }
         setSum(e.currentTarget.value);
     };
-    // const debouncedSearchSum = useDebounce(sum, 1000);
+
     useEffect(() => {
-        // if(debouncedSearchSum){
         setSum(balance);
         console.log(balance);
         console.log(setSum);
-        // }
     }, [balance]);
 
     const onFormSubmit = e => {
@@ -48,6 +43,7 @@ const Balance = () => {
                                 <input
                                     id="balance"
                                     type="text"
+                                    pattern="^[0-9]+$"
                                     className={s.Input}
                                     name="name"
                                     maxLength="5"

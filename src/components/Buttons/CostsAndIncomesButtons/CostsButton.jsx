@@ -14,7 +14,9 @@ export default function CostsButton() {
                     },
                 }}
             >
-                <button className={s.btn}>расход</button>
+                <button className={s.btn} type="button">
+                    расход
+                </button>
             </Link>
         </>
     );

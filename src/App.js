@@ -12,6 +12,7 @@ import {
     getCurrentUser,
     // getFetchingCurrentUser
 } from './redux/auth';
+import LoaderTriangle from './components/Loader';
 
 const HomePage = lazy(() =>
     import('./_pages/HomePage' /* webpackChunkName: "home-page" */),
@@ -42,52 +43,45 @@ function App() {
             {/* <Header /> */}
             {/* <AuthHeader /> */}
 
-            <Container>
-                <ToastContainer />
-                <Suspense fallback={'...Loading'}>
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={
-                                <PublicRoute
-                                    isAuth={isAuth}
-                                    element={HomePage}
-                                />
-                            }
-                        />
-                        <Route
-                            path="/transactions"
-                            element={
-                                // <PrivateRoute
-                                <PublicRoute
-                                    isAuth={isAuth}
-                                    element={TransactionPage}
-                                />
-                            }
-                        />
-                        <Route
-                            path="/mainPage"
-                            element={
-                                // <PrivateRoute
-                                <PublicRoute
-                                    isAuth={isAuth}
-                                    element={MainPage}
-                                />
-                            }
-                        />
-                        <Route
-                            path="/reports"
-                            element={
-                                // <PrivateRoute
-                                <PublicRoute
-                                    isAuth={isAuth}
-                                    element={ReportPage}
-                                />
-                            }
-                        />
-                    </Routes>
-                </Suspense>
-            </Container>
+
+            {/* <Container> */}
+            <ToastContainer />
+            <Suspense fallback={'Loading'}>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <PublicRoute isAuth={isAuth} element={HomePage} />
+                        }
+                    />
+                    <Route
+                        path="/transactions"
+                        element={
+                            // <PrivateRoute
+                            <PublicRoute
+                                isAuth={isAuth}
+                                element={TransactionPage}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/mainPage"
+                        element={
+                            // <PrivateRoute
+                            <PublicRoute isAuth={isAuth} element={MainPage} />
+                        }
+                    />
+                    <Route
+                        path="/reports"
+                        element={
+                            // <PrivateRoute
+                            <PublicRoute isAuth={isAuth} element={ReportPage} />
+                        }
+                    />
+                </Routes>
+            </Suspense>
+            {/* </Container> */}
+
         </>
         // )
     );
