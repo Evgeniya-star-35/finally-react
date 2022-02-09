@@ -6,6 +6,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
 import PrivateRoute from './routes/privateRouter';
+
+
 import {
     getCurrentToken,
     getCurrentUser,
@@ -40,7 +42,8 @@ function App() {
     return (
         // !isFetchCurrentUser && (
         <>
-            <ToastContainer />
+
+          <ToastContainer />
             <Suspense fallback={<LoaderTriangle />}>
                 <Routes>
                     <Route
@@ -79,6 +82,9 @@ function App() {
                     />
                 </Routes>
             </Suspense>
+
+
+
         </>
         // )
     );

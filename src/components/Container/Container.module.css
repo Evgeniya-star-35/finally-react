@@ -11,7 +11,7 @@
     background-image: url('../../images/partcab.svg'),
         url('../../images/bottomcab.svg'), url('../../images/rectangle.svg');
     background-repeat: no-repeat;
-    background-size: 55px, 89px, contain;
+    background-size: 55px, 89px, 100%;
     background-position: top 104px right, left 35px bottom, top;
 }
 

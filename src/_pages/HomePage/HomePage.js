@@ -5,6 +5,7 @@ import RegisterForm from 'components/RegisterForm';
 const HomePage = () => {
     return (
         <>
+            
             <BackgroundHome>
                 <Header />
                 <RegisterForm />
