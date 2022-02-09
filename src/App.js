@@ -44,7 +44,7 @@ function App() {
 
             {/* <Container> */}
             <ToastContainer />
-            <Suspense fallback={<LoaderTriangle />}>
+            <Suspense fallback={'Loading'}>
                 <Routes>
                     <Route
                         path="/"
