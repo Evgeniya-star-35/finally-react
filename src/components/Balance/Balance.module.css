@@ -74,6 +74,9 @@
         width: 292px;
         height: 263px;
     }
+    .HideBtn {
+        display: none;
+    }
 }
 @media screen and (min-width: 1280px) {
     .wrapper {

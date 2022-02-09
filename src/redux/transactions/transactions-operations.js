@@ -179,6 +179,7 @@ const getMonthlyBalancesYear = year => async (dispatch, getState) => {
         dispatch(getMonthlyBalanceSuccess(balances));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
+            // await refresh(dispatch, getState);
             const response = await getTransactionsByPeriod(year);
             const balances = calculateBalancesPerMonth(response.data.result);
             dispatch(getMonthlyBalanceSuccess(balances));
