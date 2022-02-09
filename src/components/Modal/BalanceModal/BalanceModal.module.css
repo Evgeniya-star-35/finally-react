@@ -5,7 +5,9 @@
     background-size: contain;
     top: 54px;
     left: 19px;
-    background-image: url('../../../images/Union.svg');
+    background-image: url('../../../images/modalSvg.svg');
+    background-repeat: no-repeat;
+    /* background-image: url('../../../images/Union.svg'); */
     color: #ffffff;
     padding: 41px 20px;
 }

@@ -7,15 +7,22 @@ import transactionsOperations from 'redux/transactions/transactions-operations';
 import { toast } from 'react-toastify';
 // import useDebounce from '../../hooks/useDebounce';
 import s from './Balance.module.css';
+import { useFormik } from 'formik';
 
 const Balance = () => {
     const dispatch = useDispatch();
     const balance = useSelector(getTotalBalance);
     const [sum, setSum] = useState('');
 
-    const onHandleChange = e => {
-        setSum(e.currentTarget.value);
-    };
+    // без formik
+    // const onHandleChange = e => {
+    //     console.log(e.currentTarget.value);
+    //     setSum(e.currentTarget.value);
+    // };
+    // const onFormSubmit = e => {
+    //     e.preventDefault();
+    //     dispatch(transactionsOperations.setBalanceOperation(sum));
+    // };
 
     useEffect(() => {
         setSum(balance);
@@ -23,10 +30,25 @@ const Balance = () => {
         console.log(setSum);
     }, [balance]);
 
-    const onFormSubmit = e => {
-        e.preventDefault();
-        dispatch(transactionsOperations.setBalanceOperation(sum));
-    };
+    //formik
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+        },
+        onSubmit: values => {
+            dispatch(transactionsOperations.setBalanceOperation(sum));
+            console.log(values);
+        },
+        // validate: values => {
+        //     let errors={}
+        //     if (!/^[0-9]+$/i.test(values.name)){
+        //     errors.name = 'Не правильный формат, введите число!'}
+        //      return errors
+        // }
+    });
+    console.log(formik.errors);
+    console.log(formik.values);
+
     //Модалка
     const [modalClose, setModalClose] = useState(true);
     const toggleModal = () => {
@@ -36,7 +58,8 @@ const Balance = () => {
         <div className={s.wrapper}>
             <div className={s.InfoBalance}>
                 <h2 className={s.title}>Баланс:</h2>
-                <form onSubmit={onFormSubmit} className={s.Form}>
+                <form onSubmit={formik.handleSubmit} className={s.Form}>
+                    {/* <form onSubmit={onFormSubmit} className={s.Form}> */}
                     <div className={s.FormInfo}>
                         {balance === 0 ? (
                             <>
@@ -47,11 +70,16 @@ const Balance = () => {
                                     className={s.Input}
                                     name="name"
                                     maxLength="5"
-                                    onChange={onHandleChange}
+                                    // onChange={onHandleChange}
+                                    onChange={formik.handleChange}
+                                    value={formik.values.name}
                                     placeholder="00.00 UAH"
                                     autoComplete="off"
                                 />
-                                <ConfirmButton text="Подтвердить" />
+                                <ConfirmButton
+                                    type="submit"
+                                    text="Подтвердить"
+                                />
                             </>
                         ) : (
                             <>
