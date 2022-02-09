@@ -95,7 +95,7 @@ const RegisterForm = () => {
                                         handleRegister(validateForm, values)
                                     }
                                 />
-                                <Button text={'регистрация'} type="submit" />
+                                <Button text={'регистрация'} />
                             </div>
                         </Form>
                     )}
