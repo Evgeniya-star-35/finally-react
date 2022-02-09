@@ -1,4 +1,3 @@
-import { AspectRatioSharp } from '@material-ui/icons';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://finally-node.herokuapp.com/api';

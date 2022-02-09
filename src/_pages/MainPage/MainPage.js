@@ -24,6 +24,9 @@ const MainPage = () => {
         setYear(startDate.split('.')[2]);
         /* eslint-disable-next-line */
     }, []);
+    // const handleReadTransactionType = (e) => {
+    //     e.currentTarget.text
+    // }
     const setNewDate = date => {
         setDate(date);
         setYear(date.split('.')[2]);
@@ -43,6 +46,7 @@ const MainPage = () => {
 
     const typeToggle = e => {
         setType(`${e.target.title}`);
+        console.log(e.target.title);
     };
 
     const onArrow = e => {
@@ -92,7 +96,7 @@ const MainPage = () => {
                             </div>
                             <div className={s.transactionTabletDesktopWrapper}>
                                 <TransactionForm
-                                    type={type}
+                                    transactionType={type}
                                     date={date}
                                     currentDate={setNewDate}
                                 />

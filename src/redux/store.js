@@ -10,7 +10,8 @@ import {
     REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { authReducer } from './auth/auth-reducer';
+import authReducer from './auth/auth-reducer';
+
 import { transactions } from 'redux/transactions';
 const authPersistConfig = {
     key: 'auth',
