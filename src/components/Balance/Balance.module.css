@@ -40,6 +40,7 @@
         justify-content: center;
         flex-direction: row-reverse;
         padding-top: 40px;
+        margin-bottom: 58px;
     }
     .InfoBalance {
         display: flex;

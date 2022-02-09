@@ -63,7 +63,7 @@ const MainPage = () => {
         <>
             <AuthHeader />
             <Container>
-                <div>
+                <div className={s.balanceTabletWrapper}>
                     <GoToReports />
                     <Balance />
                 </div>
@@ -75,10 +75,10 @@ const MainPage = () => {
                                 <CostsButton onClick={onArrow} />
                                 <IncomesButton onClick={onArrow} />
                             </div>
-                            <TransactionList
+                            {/* <TransactionList
                                 transactionType={type}
                                 date={date}
-                            />
+                            /> */}
                         </>
                     )}
                 />
@@ -90,13 +90,18 @@ const MainPage = () => {
                                 <CostsButton onClick={onArrow} />
                                 <IncomesButton onClick={onArrow} />
                             </div>
-                            <TransactionForm
-                                type={type}
-                                date={date}
-                                currentDate={setNewDate}
-                            />
-                            <TransactionTable />
-                            <Summary year={year} />
+                            <div className={s.transactionTabletDesktopWrapper}>
+                                <TransactionForm
+                                    type={type}
+                                    date={date}
+                                    currentDate={setNewDate}
+                                />
+                                <div className={s.transactionSummaryWrapper}>
+                                    <TransactionTable />
+
+                                    <Summary year={year} />
+                                </div>
+                            </div>
                         </>
                     )}
                 />
