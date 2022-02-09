@@ -4,8 +4,7 @@ import styles from './RegisterForm.module.css';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { logIn, register } from '../../redux/auth';
-import { useState } from 'react';
+import { register } from '../../redux/auth';
 
 const BasicFormSchema = Yup.object().shape({
     email: Yup.string()
@@ -18,11 +17,6 @@ const BasicFormSchema = Yup.object().shape({
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
-    const [email, setEmail] = useState('');
-    const [password, usePassword] = useState('');
-    const onSubmitRegistration = async (email, password) => {
-        await dispatch(register({ email, password }));
-    };
 
     return (
         <>
@@ -50,8 +44,8 @@ const RegisterForm = () => {
                         password: '',
                     }}
                     validationSchema={BasicFormSchema}
-                    onSubmit={async (email, password) => {
-                        dispatch(register({ email, password }));
+                    onSubmit={async value => {
+                        dispatch(register(value));
                     }}
                     render={({ errors, touched }) => (
                         <Form className="form-container">
@@ -87,11 +81,7 @@ const RegisterForm = () => {
 
                             <div className={styles.button__container}>
                                 <Button text={'войти'} type="submit" />
-                                <Button
-                                    onCLick={onSubmitRegistration}
-                                    text={'регистрация'}
-                                    type="button"
-                                />
+                                <Button text={'регистрация'} type="button" />
                             </div>
                         </Form>
                     )}
