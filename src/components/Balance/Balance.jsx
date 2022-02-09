@@ -41,7 +41,7 @@ const Balance = () => {
         <div className={s.wrapper}>
             <div className={s.InfoBalance}>
                 <h2 className={s.title}>Баланс:</h2>
-                <form className={s.Form}>
+                <form onSubmit={onFormSubmit} className={s.Form}>
                     <div className={s.FormInfo}>
                         {balance === 0 ? (
                             <>
@@ -56,15 +56,18 @@ const Balance = () => {
                                     autoComplete="off"
                                 />
                                 <ConfirmButton text="Подтвердить" />
-                                {/* <button type="submit" className={s.Balancebtn} >Подтвердить</button> */}
                             </>
                         ) : (
                             <>
                                 <p className={s.NumberBox}>
-                                    {`${balance.toLocaleString('ru')}.00`}
+                                    {`${balance.toLocaleString('ru')}.00 UAH`}
                                     UAH
                                 </p>
-                                <button disabled>ПОДТВЕРДИТЬ</button>
+                                <ConfirmButton
+                                    className={s.HideBtn}
+                                    text="Подтвердить"
+                                    disabled
+                                />
                             </>
                         )}
                     </div>

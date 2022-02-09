@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
 // import PrivateRoute from './routes/privateRouter';
+import Container from 'components/Container';
 import {
     getCurrentToken,
     getCurrentUser,
@@ -41,43 +42,52 @@ function App() {
             {/* <Header /> */}
             {/* <AuthHeader /> */}
 
-            {/* <Container> */}
-            <ToastContainer />
-            <Suspense fallback={'...Loading'}>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <PublicRoute isAuth={isAuth} element={HomePage} />
-                        }
-                    />
-                    <Route
-                        path="/transactions"
-                        element={
-                            // <PrivateRoute
-                            <PublicRoute
-                                isAuth={isAuth}
-                                element={TransactionPage}
-                            />
-                        }
-                    />
-                    <Route
-                        path="/mainPage"
-                        element={
-                            // <PrivateRoute
-                            <PublicRoute isAuth={isAuth} element={MainPage} />
-                        }
-                    />
-                    <Route
-                        path="/reports"
-                        element={
-                            // <PrivateRoute
-                            <PublicRoute isAuth={isAuth} element={ReportPage} />
-                        }
-                    />
-                </Routes>
-            </Suspense>
-            {/* </Container> */}
+            <Container>
+                <ToastContainer />
+                <Suspense fallback={'...Loading'}>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <PublicRoute
+                                    isAuth={isAuth}
+                                    element={HomePage}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/transactions"
+                            element={
+                                // <PrivateRoute
+                                <PublicRoute
+                                    isAuth={isAuth}
+                                    element={TransactionPage}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/mainPage"
+                            element={
+                                // <PrivateRoute
+                                <PublicRoute
+                                    isAuth={isAuth}
+                                    element={MainPage}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/reports"
+                            element={
+                                // <PrivateRoute
+                                <PublicRoute
+                                    isAuth={isAuth}
+                                    element={ReportPage}
+                                />
+                            }
+                        />
+                    </Routes>
+                </Suspense>
+            </Container>
         </>
         // )
     );
