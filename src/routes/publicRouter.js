@@ -1,10 +1,10 @@
 import { Navigate } from 'react-router-dom';
 
-export default function PublicRoute({ isAuth, element: Component }) {
+export default function PublicRoute({ isAuth, component: Component }) {
     return (
         <>
-            {isAuth ? (
-                <Navigate to="/balance" /> && <Component />
+            {!isAuth ? (
+                <Navigate to="/mainPage" /> && <Component />
             ) : (
                 <Component />
             )}
