@@ -32,10 +32,13 @@ import {
 import { fetchBalance } from 'services/authApi';
 
 const setBalanceOperation = balance => async (dispatch, getState) => {
+    console.log(balance);
     dispatch(setTotalBalanceRequest());
 
     try {
         const response = await fetchBalance(balance);
+        console.log(response);
+        // dispatch(setTotalBalanceSuccess(response.data.config.data));
         dispatch(setTotalBalanceSuccess(response.data.data.balance));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
