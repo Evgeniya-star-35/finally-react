@@ -11,6 +11,7 @@ import Summary from 'components/Summary';
 import s from './MainPage.module.css';
 import TransactionForm from 'components/TransactionForm';
 import TransactionList from 'components/TransactionListMobile/TransactionList';
+import Background from 'components/Background/Background';
 
 const MainPage = () => {
     const [type, setType] = useState('incomes');
@@ -66,6 +67,7 @@ const MainPage = () => {
     return (
         <>
             <AuthHeader />
+            <Background />
             <Container>
                 <div className={s.balanceTabletWrapper}>
                     <GoToReports />

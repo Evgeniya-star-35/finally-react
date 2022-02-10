@@ -1,145 +1,42 @@
-/* .BottomImg {
-    
-    height: 800px;
-    background-image: url('../../images/partcab.svg'),url('../../images/bottomcab.svg'),url('../../images/rectangle.svg');
-    background-repeat: no-repeat;
-    background-size:55px,89px,contain;
-    background-position: top 104px right,left 35px bottom,left 0 top 0;
-} */
-
-/* .Topbox {
+.Bg {
     position: absolute;
     z-index: -1;
-    width: 100%;
-    background-color: #f5f6fb;
+    width: 100vw;
+}
+.Top {
+    /* background-color: #f5f6fb; */
+    background: #f2f5fc;
     overflow: hidden;
     height: 286px;
     border-radius: 0 0 0 45px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-} */
-/* .TopImg {
-    position: absolute;
-    z-index: -1;
-    height: 89px;
-    width: 44px;
     background-image: url('../../images/partcab.svg');
-    background-position: right 10% top;
-   
-} 
-@media screen and (min-width: 768px) {
-    .BottomImg {
-        height: 968px;
-        background-image: url('../../images/vectors2.svg');
-        background-position: left 10% bottom;
-    }
-    .Topbox {
-        height: 526px;
-    }
-    .TopImg {
-        background-image: url('../../images/groupcab.svg');
-        height: 232px;
-        width: 100%;
-        top: 28px;
-        left: 10px;
-    }
-}
-@media screen and (min-width: 1280px) {
-    .BottomImg {
-        height: 744px;
-    }
-} */
-
-/* .Container {
-    width: 100%;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-}
-.Topbox {
-    position: relative;
-    background-color: #f5f6fb;
-    overflow: hidden;
-    height: 286px;
-    border-radius: 0 0 0 45px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.TopImg {
-    position: absolute;
-    background-image: url('../../images/vector.svg');
-    width: 83px;
-    height: 89px;
-    top: 104px;
-    left: 271px;
-    transform: rotateX(-180deg);
-}
-.BottomImg {
-    position: absolute;
-    width: 83px;
-    height: 89px;
-    top: 711px;
-    left: 35px;
-    background-image: url('../../images/vectors2.svg');
-}
-.Title{
-    z-index: 2;
-    width: 183px;
-    height: 63px;
-    margin-top: 86px;
-    margin-left: 49px;
-    background-image: url('../../images/title.png');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-position: right top 104px;
 }
-@media screen and (min-width: 320px) {
-    .Container {
-        width: 320px;
-    }
+.Bottom {
+    height: 514px;
+    background-image: url('../../images/bottomcab.svg');
+    background-repeat: no-repeat;
+    background-position: left 35px bottom;
 }
 @media screen and (min-width: 768px) {
-    .Container {
-        width: 768px;
-    }
-    .Topbox {
+    .Top {
         height: 526px;
-    }
-    .TopImg {
-        z-index: 2;
-        width: 100%;
-        height: 232px;
-        top: 28px;
-        left: 10px;
         background-image: url('../../images/groupcab.svg');
+        background-size: 100vw 232px;
+        background-position: left 10px top 28px;
     }
-    .BottomImg {
-        width: 183px;
-        height: 142px;
-        top: 770px;
-        left: 103px;
-    }
-    .Title{
-        width: 306px;
-        height: 101px;
-        margin-top: 90px;
-        margin-left: 171px;
-       
+    .Bottom {
+        height: 514px;
+        background-image: url('../../images/vectors2.svg');
+        background-position: left 103px bottom 56px;
+        background-repeat: no-repeat;
     }
 }
 @media screen and (min-width: 1280px) {
-    .Container {
-        width: 1280px;
+    .Bottom {
+        height: 268px;
+        background-position: left 230px bottom 50px;
+        background-repeat: no-repeat;
     }
-    .BottomImg {
-        width: 183px;
-        height: 142px;
-        top: 602px;
-        left: 230px;
-    }
-    .Title{
-        width: 377px;
-        height: 139px;
-        margin-top: 308px;
-        margin-left: 230px;
-       
-    }
-} */
+}
