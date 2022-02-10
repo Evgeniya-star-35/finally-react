@@ -5,12 +5,15 @@ import arrowSprite from '../../images/globalIcons/symbol-defs.svg';
 
 import s from './Dropdown.module.css';
 
-export default function Dropdown({ category, setCategory, type }) {
+export default function Dropdown({
+    category,
+    setCategory,
+    type,
+    changeSelect,
+}) {
     const [isActive, setIsActive] = useState(false);
 
     const options = type === 'cost' ? optionsCosts : optionsIncomes;
-    console.log(options);
-
     return (
         <div className={s.dropdown}>
             <div
@@ -20,7 +23,7 @@ export default function Dropdown({ category, setCategory, type }) {
             >
                 {!category && type === 'cost'
                     ? 'Категория товара'
-                    : !category && type === 'income'
+                    : !category && type === 'incomes'
                     ? 'Категория дохода'
                     : category}
                 {!isActive ? (
@@ -33,12 +36,12 @@ export default function Dropdown({ category, setCategory, type }) {
                     </svg>
                 )}
             </div>
-            {isActive && (
+            {!isActive && (
                 <div>
-                    {options.map((option, idx) => (
+                    {options.map((option, index) => (
                         <div
-                            key={idx}
-                            onClick={e => {
+                            key={index}
+                            onClick={() => {
                                 setCategory(option);
                                 setIsActive(false);
                             }}

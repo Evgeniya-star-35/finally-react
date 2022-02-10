@@ -9,6 +9,7 @@ import CalendarForm from 'components/CalendarForm/CalendarForm';
 
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
+import TransactionTable from 'components/TransactionTable/TransactionTable';
 
 export default function TransactionForm({
     date,
@@ -22,7 +23,6 @@ export default function TransactionForm({
     const [category, setCategory] = useState('');
     const [sum, setSum] = useState('');
     const dispatch = useDispatch();
-    console.log(type, date);
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -48,7 +48,7 @@ export default function TransactionForm({
             type,
             date,
             category,
-            product,
+            subCategory: product,
             sum,
         };
         dispatch(transactionsOperations.addTransactionOperation(transaction));
@@ -91,8 +91,6 @@ export default function TransactionForm({
                     </label>
                     <div>
                         <Dropdown
-                            value={product}
-                            // onChange={setTypePlaceholder}
                             type={type}
                             category={category}
                             setCategory={setCategory}
@@ -147,6 +145,12 @@ export default function TransactionForm({
                     <Button text="очистить" type="button" onClick={reset} />
                 </div>
             </form>
+            <TransactionTable
+                date={date}
+                subCategory={product}
+                sum={sum}
+                category={category}
+            />
         </>
     );
 }

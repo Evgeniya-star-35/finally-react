@@ -6,7 +6,6 @@ import Container from '../../components/Container';
 import CostsButton from 'components/Buttons/CostsAndIncomesButtons/CostsButton';
 import IncomesButton from 'components/Buttons/CostsAndIncomesButtons/IncomesButton';
 import GoToReports from 'components/GoToReports';
-import TransactionTable from 'components/TransactionTable/TransactionTable';
 import Summary from 'components/Summary';
 import s from './MainPage.module.css';
 import TransactionForm from 'components/TransactionForm';
@@ -16,7 +15,7 @@ import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
 
 const MainPage = () => {
-    const [type, setType] = useState('income');
+    const [type, setType] = useState('incomes');
     const [date, setDate] = useState('');
     const [year, setYear] = useState('');
     const [picker, setPicker] = useState(false);
@@ -54,7 +53,7 @@ const MainPage = () => {
         if (type === 'cost') {
             setType('Описание товара');
         }
-        if (type === 'income') {
+        if (type === 'incomes') {
             setType('Описание дохода');
         }
     };
@@ -121,8 +120,6 @@ const MainPage = () => {
                                     handleCalendarClick={handleCalendarClick}
                                 />
                                 <div className={s.transactionSummaryWrapper}>
-                                    <TransactionTable />
-
                                     <Summary year={year} />
                                 </div>
                             </div>

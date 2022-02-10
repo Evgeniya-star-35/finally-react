@@ -31,13 +31,12 @@ import {
 } from 'services/transactionApi';
 import { fetchBalance } from 'services/authApi';
 
-const setBalanceOperation = balance => async (dispatch, getState) => {
+const setBalanceOperation = balance => async dispatch => {
     console.log(balance);
     dispatch(setTotalBalanceRequest());
 
     try {
         const response = await fetchBalance(balance);
-        console.log(response);
         // dispatch(setTotalBalanceSuccess(response.data.config.data));
         dispatch(setTotalBalanceSuccess(response.data.data.balance));
     } catch ({ response }) {
@@ -54,24 +53,15 @@ const setBalanceOperation = balance => async (dispatch, getState) => {
     }
 };
 
-const addTransactionOperation = transaction => async (dispatch, getState) => {
+const addTransactionOperation = transaction => async dispatch => {
     dispatch(addTransactionRequest());
-    const balance = calculateBalance(transaction, 'add');
-    const splitedDate = dateSplitter(transaction.date);
-    try {
-        const response = await addTransaction(
-            Object.assign(transaction, splitedDate),
-            balance,
-        );
 
+    try {
+        const response = await addTransaction(transaction);
         dispatch(addTransactionSuccess(response.data.resultTransaction));
         dispatch(setTotalBalanceSuccess(response.data.balance));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
-            const response = await addTransaction(
-                Object.assign(transaction, splitedDate),
-                balance,
-            );
             dispatch(addTransactionSuccess(response.data.resultTransaction));
             dispatch(setTotalBalanceSuccess(response.data.balance));
             return;
@@ -138,15 +128,16 @@ const getTransactionsDayOperation = date => async dispatch => {
     dispatch(getTransactionsRequest());
     try {
         const response = await getTransactionsByDate(date);
+        console.log(response.data);
 
         dispatch(getTransactionsSuccess(response.data.result));
     } catch ({ response }) {
-        if (response.data.message === 'Invalid token') {
-            const response = await getTransactionsByDate(date);
+        // if (response.data.message === 'Invalid token') {
+        //     const response = await getTransactionsByDate(date);
 
-            dispatch(getTransactionsSuccess(response.data.result));
-            return;
-        }
+        //     dispatch(getTransactionsSuccess(response.data.result));
+        //     return;
+        // }
         dispatch(getTransactionsError(response.data.message));
         toast.error(response.data.message, {
             position: 'top-center',
