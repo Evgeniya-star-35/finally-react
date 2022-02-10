@@ -3,7 +3,7 @@ import Balance from 'components/Balance';
 import CurrentPeriod from '../../components/CurrentPeriod';
 import GoToMainButton from 'components/Buttons/GoToMainButton';
 import CategoriesCosts from 'components/CategoriesCosts';
-import CategoriesIncomes from 'components/CategoriesIncomes';
+// import CategoriesIncomes from 'components/CategoriesIncomes';
 import GoBackArrow from 'components/GoBack/GoBack';
 import Background from 'components/Background/Background';
 import TransactionsRatio from 'components/TransactionsRatio';
@@ -50,6 +50,18 @@ const ReportPage = () => {
     };
     // ======Petro, Vlad===========
 
+    //tanya_m
+    const [transactionsType, setTransactionsType] = useState('costs');
+    const onHandleChangeTransactionsType = () => {
+        if (transactionsType === 'costs') {
+            setTransactionsType('incomes');
+        }
+        if (transactionsType === 'incomes') {
+            setTransactionsType('costs');
+        }
+    };
+    //tanya_m
+
     return (
         <>
             <Background />
@@ -67,8 +79,10 @@ const ReportPage = () => {
                 <Balance />
             </div>
             <TransactionsRatio />
-            <CategoriesCosts />
-            <CategoriesIncomes />
+            <CategoriesCosts
+                transactionsType={transactionsType}
+                onClick={onHandleChangeTransactionsType}
+            />
         </>
     );
 };
