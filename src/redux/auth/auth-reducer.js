@@ -67,7 +67,6 @@ const authSlice = createSlice({
         },
         [getCurrentUser.fulfilled](state, { payload }) {
             state.user = payload;
-            state.token = payload.token;
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
