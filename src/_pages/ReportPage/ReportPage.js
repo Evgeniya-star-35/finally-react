@@ -12,16 +12,14 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 
-
 const ReportPage = () => {
- 
-   const dispatch = useDispatch();
+    const dispatch = useDispatch();
     let date = new Date();
     let selectedMonth = date.getMonth() + 1;
     let selectedYear = date.getFullYear();
     const [month, setMonth] = useState(selectedMonth);
     const [year, setYear] = useState(selectedYear);
-    
+
     useEffect(() => {
         if ((month, year)) {
             dispatch(
@@ -46,9 +44,7 @@ const ReportPage = () => {
             setMonth(prev => (prev -= 1));
         }
     };
-    
 
-    
     const [transactionsType, setTransactionsType] = useState('cost');
     const onHandleChangeTransactionsType = () => {
         if (transactionsType === 'cost') {
@@ -58,7 +54,6 @@ const ReportPage = () => {
             setTransactionsType('cost');
         }
     };
-    
 
     return (
         <>
@@ -66,26 +61,25 @@ const ReportPage = () => {
             <GoBackArrow />
             <div className={s.balanceWrap}>
                 <GoToMainButton />
-                              <CurrentPeriod
+                <CurrentPeriod
                     currentMonth={month}
                     currentYear={year}
                     onHandleClickRight={onHandleClickRight}
                     onHandleClickLeft={onHandleClickLeft}
                 />
-               
+
                 <Balance />
             </div>
 
-            <TransactionsRatio />
+            {/* <TransactionsRatio /> */}
+            <TransactionsRatio perMonth={month} perYear={year} />
             <CategoriesCosts
                 transactionsType={transactionsType}
                 onClick={onHandleChangeTransactionsType}
             />
 
-//             <TransactionsRatio perMonth={month} perYear={year} />
-//             <CategoriesCosts />
-//             <CategoriesIncomes />
-
+            {/* <CategoriesCosts />
+            <CategoriesIncomes /> */}
         </>
     );
 };
