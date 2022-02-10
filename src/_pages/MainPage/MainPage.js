@@ -69,7 +69,7 @@ const MainPage = () => {
             <AuthHeader />
             <Background />
             <Container>
-                <div className={s.balanceTabletWrapper}>
+                <div className={s.balanceWrapper}>
                     <GoToReports />
                     <Balance />
                 </div>

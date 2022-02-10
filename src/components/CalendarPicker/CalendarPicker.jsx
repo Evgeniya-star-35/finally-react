@@ -49,7 +49,7 @@ export default function CalendarPicker({ startDate, closeHandler, align }) {
     };
 
     return (
-        <div className={`${s.pickerWrapper} ${align}`} ref={ref}>
+        <div className={s.pickerWrapper} ref={ref}>
             <DayPicker
                 selectedDays={[selectedDay, modifiers.today]}
                 onDayClick={handleDayClick}
