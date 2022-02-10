@@ -13,6 +13,7 @@ import TransactionForm from 'components/TransactionForm';
 import TransactionList from 'components/TransactionListMobile/TransactionList';
 
 import Background from 'components/Background/Background';
+import CalendarForm from 'components/CalendarForm/CalendarForm';
 
 const MainPage = () => {
     const [type, setType] = useState('incomes');
@@ -76,6 +77,13 @@ const MainPage = () => {
                     query="(max-width: 767.98px)"
                     render={() => (
                         <>
+                            <CalendarForm
+                                date={date}
+                                currentDate={setNewDate}
+                                picker={picker}
+                                closePicker={closePicker}
+                                handleCalendarClick={handleCalendarClick}
+                            />
                             <div className={s.btnMobileWrapper}>
                                 <CostsButton onClick={typeToggle} />
                                 <IncomesButton onClick={typeToggle} />

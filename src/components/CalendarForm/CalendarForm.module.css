@@ -2,7 +2,6 @@
     .calendarWrapper {
         width: 280px;
         height: 40px;
-        border: 1px solid #f5f6fb;
         display: flex;
         justify-content: center;
         align-items: center;
