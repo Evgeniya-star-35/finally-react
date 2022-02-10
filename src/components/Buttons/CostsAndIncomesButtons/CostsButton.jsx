@@ -21,7 +21,7 @@ export default function CostsButton({ getType }) {
                         <button
                             className={s.btn}
                             type="button"
-                            title="costs"
+                            title="cost"
                             onClick={getType}
                         >
                             расход
@@ -35,7 +35,7 @@ export default function CostsButton({ getType }) {
                     <button
                         className={s.btn}
                         type="button"
-                        title="costs"
+                        title="cost"
                         onClick={getType}
                     >
                         расход

@@ -13,7 +13,6 @@ import s from './TransactionForm.module.css';
 export default function TransactionForm({
     date,
     type,
-    setType,
     handleCalendarClick,
     closePicker,
     picker,
@@ -21,18 +20,9 @@ export default function TransactionForm({
 }) {
     const [product, setProduct] = useState('');
     const [category, setCategory] = useState('');
-
     const [sum, setSum] = useState('');
     const dispatch = useDispatch();
-
-    const setTypePlaceholder = () => {
-        if (type === 'costs') {
-            setType('Описание товара');
-        }
-        if (type === 'incomes') {
-            setType('Описание дохода');
-        }
-    };
+    console.log(type, date);
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -55,7 +45,7 @@ export default function TransactionForm({
     const handleSubmit = e => {
         e.preventDefault();
         const transaction = {
-            type: type,
+            type,
             date,
             category,
             product,
@@ -65,7 +55,7 @@ export default function TransactionForm({
         reset();
     };
 
-    const reset = e => {
+    const reset = () => {
         setProduct('');
         setSum('');
         setCategory('');
@@ -84,13 +74,13 @@ export default function TransactionForm({
                         picker={picker}
                         setNewDate={setNewDate}
                     />
-                    <label>
+                    <label htmlFor="product">
                         <input
                             name="product"
                             value={product}
                             type="text"
                             placeholder={
-                                type === 'costs'
+                                type === 'cost'
                                     ? 'Описание товара'
                                     : 'Описание дохода'
                             }
@@ -99,12 +89,15 @@ export default function TransactionForm({
                             onChange={handleChange}
                         />
                     </label>
-                    <Dropdown
-                        type={type}
-                        category={category}
-                        setCategory={setCategory}
-                    />
-
+                    <div>
+                        <Dropdown
+                            value={product}
+                            // onChange={setTypePlaceholder}
+                            type={type}
+                            category={category}
+                            setCategory={setCategory}
+                        />
+                    </div>
                     <div className={s.sumWrapper}>
                         <label>
                             <input

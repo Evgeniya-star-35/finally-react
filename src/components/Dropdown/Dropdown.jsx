@@ -8,18 +8,19 @@ import s from './Dropdown.module.css';
 export default function Dropdown({ category, setCategory, type }) {
     const [isActive, setIsActive] = useState(false);
 
-    const options = type === 'costs' ? optionsCosts : optionsIncomes; //TODO
+    const options = type === 'cost' ? optionsCosts : optionsIncomes;
     console.log(options);
+
     return (
         <div className={s.dropdown}>
             <div
                 tabIndex="0"
                 className={s.mainOption}
-                onClick={e => setIsActive(!isActive)}
+                onClick={() => setIsActive(!isActive)}
             >
-                {!category && type === 'costs'
+                {!category && type === 'cost'
                     ? 'Категория товара'
-                    : !category && type === 'incomes'
+                    : !category && type === 'income'
                     ? 'Категория дохода'
                     : category}
                 {!isActive ? (

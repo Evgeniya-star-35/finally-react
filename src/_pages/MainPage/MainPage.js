@@ -16,11 +16,11 @@ import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
 
 const MainPage = () => {
-    const [type, setType] = useState('incomes');
+    const [type, setType] = useState('income');
     const [date, setDate] = useState('');
     const [year, setYear] = useState('');
     const [picker, setPicker] = useState(false);
-    // const [listRender, setListRender] = useState(true);
+    const [listRender, setListRender] = useState(true);
 
     const day = new Date();
 
@@ -50,13 +50,20 @@ const MainPage = () => {
         setYear(newDate.split('.')[2]);
         setPicker(false);
     };
-
+    const setTypePlaceholder = () => {
+        if (type === 'cost') {
+            setType('Описание товара');
+        }
+        if (type === 'income') {
+            setType('Описание дохода');
+        }
+    };
     const typeToggle = e => {
         setType(`${e.currentTarget.title}`);
-        console.log(e.currentTarget.title);
     };
 
     // const onArrow = e => {
+    //     console.log(first);
     //     typeToggle(e);
     //     return listRender ? setListRender(false) : setListRender(true);
     // };
@@ -85,8 +92,8 @@ const MainPage = () => {
                                 handleCalendarClick={handleCalendarClick}
                             />
                             <div className={s.btnMobileWrapper}>
-                                <CostsButton onClick={typeToggle} />
-                                <IncomesButton onClick={typeToggle} />
+                                <CostsButton getType={typeToggle} />
+                                <IncomesButton getType={typeToggle} />
                             </div>
                             {/* <TransactionList
                                 transactionType={type}
@@ -105,8 +112,8 @@ const MainPage = () => {
                             </div>
                             <div className={s.transactionTabletDesktopWrapper}>
                                 <TransactionForm
-                                    transactionType={type}
-                                    // setType={setType}
+                                    type={type}
+                                    setTypePlaceholder={setTypePlaceholder}
                                     date={date}
                                     currentDate={setNewDate}
                                     picker={picker}
