@@ -8,7 +8,9 @@ export default function CalendarPicker({ startDate, closeHandler, align }) {
     const ref = useRef();
     const [selectedDay, setSelectedDay] = useState();
     const [close, setClose] = useState(false);
+
     useOnClickCalendar(ref, () => closeHandler(selectedDay));
+
     useEffect(() => {
         setSelectedDay(formatDate(startDate));
         if (close) {

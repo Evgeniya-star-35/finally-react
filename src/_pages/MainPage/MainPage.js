@@ -11,6 +11,7 @@ import Summary from 'components/Summary';
 import s from './MainPage.module.css';
 import TransactionForm from 'components/TransactionForm';
 import TransactionList from 'components/TransactionListMobile/TransactionList';
+
 import Background from 'components/Background/Background';
 
 const MainPage = () => {
@@ -20,49 +21,47 @@ const MainPage = () => {
     const [picker, setPicker] = useState(false);
     const [listRender, setListRender] = useState(true);
 
+    const day = new Date();
+
+    const startDate = `${day.getDate()}.${
+        day.getMonth() + 1
+    }.${day.getFullYear()}`;
+
     useEffect(() => {
         setDate(startDate);
         setYear(startDate.split('.')[2]);
         /* eslint-disable-next-line */
     }, []);
 
-    // const getTransactionType = e => {
-    //     console.log(e.currentTarget.title);
-    // };
-    const typeToggle = e => {
-        setType(`${e.currentTarget.title}`);
-        console.log(e.currentTarget.title);
-    };
     const setNewDate = date => {
         setDate(date);
         setYear(date.split('.')[2]);
     };
-    // const handleCalendarClick = () => {
-    //     setPicker(true);
-    // };
-    // const closePicker = dateNew => {
-    //     const newDate = `${dateNew.getUTCDate()}.${
-    //         dateNew.getUTCMonth() + 1
-    //     }.${dateNew.getUTCFullYear()}`;
+    const handleCalendarClick = () => {
+        setPicker(true);
+    };
+    const closePicker = dateNew => {
+        const newDate = `${dateNew.getUTCDate()}.${
+            dateNew.getUTCMonth() + 1
+        }.${dateNew.getUTCFullYear()}`;
 
-    //     setDate(newDate);
-    //     setYear(newDate.split('.')[2]);
-    //     setPicker(false);
-    // };
+        setDate(newDate);
+        setYear(newDate.split('.')[2]);
+        setPicker(false);
+    };
 
-    // const onArrow = e => {
-    //     typeToggle(e);
-    //     return listRender ? setListRender(false) : setListRender(true);
-    // };
-    // const onBack = () => {
-    //     setListRender(true);
-    // };
+    const typeToggle = e => {
+        setType(`${e.currentTarget.title}`);
+        console.log(e.currentTarget.title);
+    };
 
-    const day = new Date();
-
-    const startDate = `${day.getDate()}.${
-        day.getMonth() + 1
-    }.${day.getFullYear()}`;
+    const onArrow = e => {
+        typeToggle(e);
+        return listRender ? setListRender(false) : setListRender(true);
+    };
+    const onBack = () => {
+        setListRender(true);
+    };
 
     return (
         <>
@@ -102,6 +101,7 @@ const MainPage = () => {
                                     setType={setType}
                                     date={date}
                                     currentDate={setNewDate}
+                                    handleCalendarClick={handleCalendarClick}
                                 />
                                 <div className={s.transactionSummaryWrapper}>
                                     <TransactionTable />
