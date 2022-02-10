@@ -19,7 +19,7 @@ const MainPage = () => {
     const [date, setDate] = useState('');
     const [year, setYear] = useState('');
     const [picker, setPicker] = useState(false);
-    const [listRender, setListRender] = useState(true);
+    // const [listRender, setListRender] = useState(true);
 
     const day = new Date();
 
@@ -55,13 +55,13 @@ const MainPage = () => {
         console.log(e.currentTarget.title);
     };
 
-    const onArrow = e => {
-        typeToggle(e);
-        return listRender ? setListRender(false) : setListRender(true);
-    };
-    const onBack = () => {
-        setListRender(true);
-    };
+    // const onArrow = e => {
+    //     typeToggle(e);
+    //     return listRender ? setListRender(false) : setListRender(true);
+    // };
+    // const onBack = () => {
+    //     setListRender(true);
+    // };
 
     return (
         <>
@@ -98,9 +98,11 @@ const MainPage = () => {
                             <div className={s.transactionTabletDesktopWrapper}>
                                 <TransactionForm
                                     transactionType={type}
-                                    setType={setType}
+                                    // setType={setType}
                                     date={date}
                                     currentDate={setNewDate}
+                                    picker={picker}
+                                    closePicker={closePicker}
                                     handleCalendarClick={handleCalendarClick}
                                 />
                                 <div className={s.transactionSummaryWrapper}>

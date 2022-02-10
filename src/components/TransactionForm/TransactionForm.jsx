@@ -17,6 +17,7 @@ export default function TransactionForm({
     handleCalendarClick,
     closePicker,
     picker,
+    setNewDate,
 }) {
     const [product, setProduct] = useState('');
     const [category, setCategory] = useState('');
@@ -81,6 +82,7 @@ export default function TransactionForm({
                         handleCalendarClick={handleCalendarClick}
                         closePicker={closePicker}
                         picker={picker}
+                        setNewDate={setNewDate}
                     />
                     <label>
                         <input
