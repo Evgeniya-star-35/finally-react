@@ -5,11 +5,20 @@ import transactionsOperations from '../../redux/transactions/transactions-operat
 import Button from 'components/Buttons/Button';
 import GoBackArrow from '../GoBack';
 import Dropdown from '../Dropdown';
+import CalendarForm from 'components/CalendarForm/CalendarForm';
 
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
 
-export default function TransactionForm({ date, type, setType }) {
+export default function TransactionForm({
+    date,
+    type,
+    setType,
+    handleCalendarClick,
+    closePicker,
+    picker,
+    setNewDate,
+}) {
     const [product, setProduct] = useState('');
     const [category, setCategory] = useState('');
 
@@ -68,6 +77,13 @@ export default function TransactionForm({ date, type, setType }) {
 
             <form className={s.transactionForm} onSubmit={handleSubmit}>
                 <div className={s.inputsWrapper}>
+                    <CalendarForm
+                        date={date}
+                        handleCalendarClick={handleCalendarClick}
+                        closePicker={closePicker}
+                        picker={picker}
+                        setNewDate={setNewDate}
+                    />
                     <label>
                         <input
                             name="product"
