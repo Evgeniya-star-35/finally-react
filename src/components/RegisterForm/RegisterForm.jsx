@@ -19,7 +19,6 @@ const RegisterForm = () => {
     const dispatch = useDispatch();
 
     const handleRegister = async (validateForm, values) => {
-        console.log(values);
         const error = await validateForm();
         if (Object.keys(error).length === 0) {
             dispatch(login(values));
