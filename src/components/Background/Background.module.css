@@ -1,55 +1,34 @@
-.Topbox {
+.Bg {
     position: absolute;
     z-index: -1;
-    width: 100%;
-    background-color: #f2f5fc;
+    width: 100vw;
+}
+.Top {
+    /* background-color: #f5f6fb; */
+    background: #f2f5fc;
     overflow: hidden;
     height: 286px;
     border-radius: 0 0 0 45px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-repeat: no-repeat;
+    background-position: right top 104px;
 }
-/* @media screen and (min-width: 320px) {
-    .Container {
-        width: 320px;
-    }
-} */
 @media screen and (min-width: 768px) {
-    /* .Container {
-        width: 768px;
-    } */
-    .Topbox {
+    .Top {
         height: 526px;
     }
-    .BottomImg {
-        position: relative;
-
-        /* z-index: -2; */
-        /* width: 183px;
-        height: 142px;*/
-        /* margin-top: 451px;  */
-        /* margin-left: 497px;  */
-        height: 1119px;
-
-        /* background-position: center; */
+    .Bottom {
+        height: 657px;
         background-image: url('../../images/vectors2.svg');
         background-repeat: no-repeat;
-        background-position: right 10% bottom;
+        background-position: right 88px bottom 64px;
     }
 }
 @media screen and (min-width: 1280px) {
-    /* .Container {
-        width: 1280px;
-    } */
-    .BottomImg {
-        /* width: 100%;
-        z-index: -1;
-        height: 142px; */
-        /* margin-top: 74px;
-        margin-left: 10px; */
-        height: 832px;
+    .Bottom {
+        height: 268px;
         background-image: url('../../images/groupcab.svg');
+        background-size: auto 232px;
         background-repeat: no-repeat;
-        background-size: contain;
-        background-position: right 10% bottom;
+        background-position: left 10px bottom;
     }
 }

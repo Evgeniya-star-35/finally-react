@@ -1,9 +1,9 @@
 .Title {
-    /* position: absolute; */
     width: 183px;
     height: 63px;
-    margin-top: 86px;
+    margin: 86px 0 50px 49px;
     margin-left: 49px;
+    margin-bottom: 50px;
     background-image: url('../../images/title.png');
     background-repeat: no-repeat;
     background-size: contain;

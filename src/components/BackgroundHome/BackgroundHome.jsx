@@ -1,14 +1,10 @@
 import s from './BackgroundHome.module.css';
-const BackgroundHome = ({ children }) => {
+const BackgroundHome = () => {
     return (
-        <>
-            <div className={s.BottomImg}>
-                {/* <div className={s.Topbox}></div>
-                <div className={s.TopImg}></div> */}
-
-                {children}
-            </div>
-        </>
+        <div className={s.Bg}>
+            <div className={s.Top}></div>
+            <div className={s.Bottom}></div>
+        </div>
     );
 };
 

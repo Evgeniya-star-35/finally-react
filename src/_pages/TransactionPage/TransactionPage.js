@@ -8,7 +8,7 @@ import TransactionForm from 'components/TransactionForm';
 const TransactionPage = () => {
     return (
         <>
-            {/* <Background /> */}
+            <Background />
             <AuthHeader />
             <Container>
                 {/* <CalendarPicker /> */}
