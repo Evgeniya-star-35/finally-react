@@ -10,7 +10,6 @@ export default function CalendarForm({
     align,
     setNewDate,
 }) {
-    console.log(date);
     return (
         <div onClick={handleCalendarClick} className={s.calendarWrapper}>
             <div className={s.calendarOverlay}>

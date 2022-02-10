@@ -1,8 +1,16 @@
 import Media from 'react-media';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
+import transactionsOperations from 'redux/transactions/transactions-operations';
 import s from './TransactionTable.module.css';
 
-export default function TransactionTable() {
+export default function TransactionTable({ date, sum, category, subCategory }) {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(transactionsOperations.getTransactionsDayOperation());
+    }, [dispatch]);
+
     return (
         <>
             <Media
@@ -33,10 +41,12 @@ export default function TransactionTable() {
                             <tbody className={s.tbody}>
                                 {/* {items.map(({ id, date, description, category, sum }) => ( */}
                                 <tr className={s.tableRow}>
-                                    <td className={s.date}>05.09.2019</td>
-                                    <td className={s.description}>Бананы</td>
-                                    <td className={s.category}>Продукты</td>
-                                    <td className={s.sum}>- 50.00 грн.</td>
+                                    <td className={s.date}>{date}</td>
+                                    <td className={s.description}>
+                                        {subCategory}
+                                    </td>
+                                    <td className={s.category}>{category}</td>
+                                    <td className={s.sum}>{sum}</td>
                                     <td className={s.icon}>
                                         <button
                                             type="button"
@@ -56,7 +66,7 @@ export default function TransactionTable() {
                                 </tr>
 
                                 <tr className={s.tableRow}>
-                                    <td className={s.date}>05.09.2019</td>
+                                    <td className={s.date}>{date}</td>
                                     <td className={s.description}>
                                         Lorem ipsum dolor sit amet consectetur
                                         adipisicing elit.
