@@ -1,70 +1,155 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](https://cdn-icons.flaticon.com/png/128/3639/premium/3639404.png?token=exp=1644439860~hmac=45753d5359f7cd193c60cf83487874df) ![](https://raw.githubusercontent.com/Evgeniya-star-35/finally-react/main/src/images/title.png)
 
-## Available Scripts
+:cake: :fork_and_knife: :pizza: :hamburger: :cocktail: :book: :palm_tree: :gift: :pill::books: :bicyclist: :car: :art: :necktie: :train: :airplane: :house: :hotel: :scissors: :soccer: :credit_card: :dollar: :euro: :wrench: :computer: :cake: :pizza: :hamburger: :palm_tree::scissors: :car: :bicyclist:
 
-In the project directory, you can run:
+<h2 align="center"><a  href="https://finally-react-project.netlify.app/">Application page </a></h2>
+<h2 align="center"><a  href="https://finally-node.herokuapp.com/api-docs/#/">API server</a></h2>
 
-### `npm start`
+<img src="https://img.shields.io/badge/React-%5E17.0.2-%2333E0FF"/><img src="https://img.shields.io/badge/Redux-%5E4.1.0-%236944E7"/><img src="https://img.shields.io/badge/Css-Modules-%23EC83D4"/><img src="https://img.shields.io/badge/JavaScript-ES8-aqua"/><img src="https://img.shields.io/badge/-Nodejs-brightgreen"/><img src="https://img.shields.io/badge/-nodemailer-%2344ACE7"/><img src="https://img.shields.io/badge/-swagger--ui--express-%2338FF50"/><img src="https://img.shields.io/badge/-Cloudinary-%234B64F2"/><img src="https://img.shields.io/badge/-MongoDB-green"/><img src="https://img.shields.io/badge/-GitHub-black"/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Description
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Graduation team project of students the FullStack developer course
+[<img src="https://img.shields.io/badge/Go-IT-orange" />](https://goit.ua/).
 
-### `npm test`
+<b>Frontend</b> is written on
+[<img src="https://img.shields.io/badge/-React-%2333E0FF"/>](https://reactjs.org/)
+with using
+[<img src="https://img.shields.io/badge/-Redux-%236944E7"/>](https://redux.js.org/).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<b>Backend</b> is written on
+[<img src="https://img.shields.io/badge/-Nodejs-brightgreen"/>](https://nodejs.org/uk/)
+with using
+[<img src="https://img.shields.io/badge/-nodemailer-%2344ACE7"/>](https://nodemailer.com/about/),
+[<img src="https://img.shields.io/badge/-swagger--ui--express-%2338FF50"/>](https://swagger.io/),
+[<img src="https://img.shields.io/badge/-Cloudinary-%234B64F2"/>](https://cloudinary.com/)
+and
+[<img src="https://img.shields.io/badge/-MongoDB-green"/>](https://www.mongodb.com/)
 
-### `npm run build`
+________
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features of Kapu$ta app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ [<img src="https://img.shields.io/badge/-Kapysta-green"/>](https://finally-react-project.netlify.app/) is the Web app for calculating your finances.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The Web App provides the following functions:
 
-### `npm run eject`
+:hourglass: Keep track of your expenses and income.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+:email: User authorization via Gmail.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+:date: Create statistics of expenses and incomes for the selected period.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+:white_check_mark: Responsive design for use on phone :iphone:, tablet and desktop :computer:.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+_______________
 
-## Learn More
+### Team lead - [<img src="https://img.shields.io/badge/-Evgeniya Bayda-orange "/>](https://github.com/Evgeniya-star-35/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Error correction, conflict resolution when merging branches into a master, technical and moral support of project team members 24/7.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Deployed server (error detection, CORS, module connection structure.
 
-### Code Splitting
+* The layout and styles of the "Current Period" component, when you click on the arrows, the moon changes in both directions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Implemented by pressing the "Enter" data from the inputs are written to the table and sent back, and the inputs are cleared.
 
-### Analyzing the Bundle Size
+* Implemented a pop-up list of product categories.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Simulator simulator when you press Exit.
 
-### Making a Progressive Web App
+* Implemented a pop-up list of product categories.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Scrum master - [<img src="https://img.shields.io/badge/-Petro Davydov-black "/>](https://github.com/petroDavydov/)
 
-### Advanced Configuration
+* Assistance to team members, support for Trello, organization of daily meetings.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* Implemented deletion of endpoint transactions.
 
-### Deployment
+* Deployed server (error detection, CORS, module connection structure.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* The layout and styles of the "Current Period" component, when you click on the arrows, the moon should change in both directions.
 
-### `npm run build` fails to minify
+### Backend - [<img src="https://img.shields.io/badge/-Nikolai Grebenyuk-blue "/>](https://github.com/Nikolayhous/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Implemented deletion of endpoint transactions.
+
+* Created swagger-ui endpoint documentation.
+
+* Implemented an endpoint of detailed information on costs and revenues for a specific month and year.
+
+* Implemented adding the value of the endpoint, the level of authorization.
+
+* addCard + 1. User model.
+
+* End-user balance and end-user balance updates have been introduced.
+
+### Backend - [<img src="https://img.shields.io/badge/-Kovalenko Anna-red"/>](https://github.com/Kovganna/)
+
+* Implemented an endpoint.
+
+* Implemented an endpoint of detailed information on costs and revenues for a specific month and year.
+
+* Implemented endpoint authentication.
+
+### Backend - [<img src="https://img.shields.io/badge/-Vlad Gonchar-violet"/>](https://github.com/EclipsoZhuk/)
+
+* The layout and styles of the Current Period component, when you click on the arrows, the moon changes in both directions.
+
+* Implemented an endpoint.
+
+* Enter detailed endpoint information on costs and revenues for a specific month and year.
+
+* Implemented endpoint authentication.
+
+### Frontend - [<img src="https://img.shields.io/badge/-Jane Babina-yellow "/>](https://github.com/Kelenella/)
+
+* Implemented button "Enter" input data is written to the table and sent back, and inputs are cleared.
+
+* Added a pop-up window for product categories.
+
+* Login and exit markup and heading styles (phone, tablet, and computer).
+
+* Clicking the "Clear" button clears the entered data.
+
+* A universal modal output window has been created.
+
+* Implemented the logic of exiting the profile by clicking "Exit".
+
+* Added a popup window for product categories.
+
+* Layout and styles of back button components.
+
+### Frontend - [<img src="https://img.shields.io/badge/-Tatiana Blizniukova-green "/>](https://github.com/Tatiana37/)
+
+* Summary Layout and Styles
+
+### Frontend - [<img src="https://img.shields.io/badge/-Tanya Melnyk-blue"/>](https://github.com/tanyamelnyk19/)
+
+* Cost and Revenue Page Layouts and Styles (Phone, Tablet, Computer)
+
+* Cost and Revenue Layouts and Styles (Phone, Tablet, Computer).
+
+* Implemented "Go to Reports" button, you will go to the page "Cost Reports".
+
+### Frontend - [<img src="https://img.shields.io/badge/-Mariia Melychyn-pink "/>](https://github.com/MariiaMelychyn/)
+
+* Login and registration window layout and styles (phone, tablet and desktop).
+
+* Google login / signup feature.
+
+* Functionality of sending a request for user login / registration.
+
+### Frontend - [<img src="https://img.shields.io/badge/-Marta Pryiom-brown "/>](https://github.com/marta-pryiom/)
+
+* Symbols and background for all pages when the user logs in and out of the program (phone, tablet and computer).
+
+* Component markup and styles "Balance" (phone, tablet and desktop)
+
+* Implemented a modal window on zero balance
+
+### Frontend - [<img src="https://img.shields.io/badge/-Oksana Petryshyn-gray "/>](https://github.com/Oksana07/)
+
+* Summary Layout and Styles.
+* Writing documentation readme on markdown.
