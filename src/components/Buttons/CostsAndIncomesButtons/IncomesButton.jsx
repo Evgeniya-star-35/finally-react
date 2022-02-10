@@ -21,7 +21,7 @@ export default function IncomesButton({ getType }) {
                         <button
                             className={s.btn}
                             type="button"
-                            title="incomes"
+                            title="income"
                             onClick={getType}
                         >
                             доход
@@ -35,7 +35,7 @@ export default function IncomesButton({ getType }) {
                     <button
                         className={s.btn}
                         type="button"
-                        title="incomes"
+                        title="income"
                         onClick={getType}
                     >
                         доход
