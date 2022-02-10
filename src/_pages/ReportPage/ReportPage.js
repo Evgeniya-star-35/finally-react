@@ -66,7 +66,7 @@ const ReportPage = () => {
                 {/* // ======Petro, Vlad=========== */}
                 <Balance />
             </div>
-            <TransactionsRatio />
+            <TransactionsRatio perMonth={month} perYear={year} />
             <CategoriesCosts />
             <CategoriesIncomes />
         </>
