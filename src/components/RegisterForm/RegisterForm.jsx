@@ -4,7 +4,7 @@ import styles from './RegisterForm.module.css';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { register, logIn } from '../../redux/auth';
+import { register, login } from '../../redux/auth';
 
 const BasicFormSchema = Yup.object().shape({
     email: Yup.string()
@@ -19,10 +19,9 @@ const RegisterForm = () => {
     const dispatch = useDispatch();
 
     const handleRegister = async (validateForm, values) => {
-        console.log(values);
         const error = await validateForm();
         if (Object.keys(error).length === 0) {
-            dispatch(logIn(values));
+            dispatch(login(values));
         }
     };
 

@@ -1,19 +1,15 @@
-// import s from './Loader.module.css';
-// import Loader from 'react-loader-spinner';
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import React from 'react';
+import s from './Loader.module.css';
 
-// const LoaderTriangle = () => {
-//     return (
-//         <div className={s.containerTriangle}>
-//             <Loader
-//                 type="BallTriangle"
-//                 color="#00BFFF"
-//                 height="100"
-//                 width="100"
-//                 timeout={3000}
-//             />
-//         </div>
-//     );
-// };
+import { Levels } from 'react-activity';
+import 'react-activity/dist/library.css';
 
-// export default LoaderTriangle;
+const Loader = () => {
+    return (
+        <div className={s.containerLoader}>
+            <Levels size="35" color="blue" speed={0.65} />
+        </div>
+    );
+};
+
+export default Loader;

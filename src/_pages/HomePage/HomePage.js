@@ -6,9 +6,11 @@ import Container from 'components/Container';
 // import Balance from 'components/Balance';
 // import TransactionForm from 'components/TransactionForm';
 
+
 const HomePage = () => {
     return (
         <>
+
             <Header />
             <BackgroundHome />
             <Title />

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logOut } from '../../redux/auth/auth-operations';
+import { logout } from '../../redux/auth/auth-operations';
 import ModalLogout from 'components/Modal/Modal';
 import Button from '../../components/Buttons/Button';
 import Avatar from 'react-avatar';
@@ -18,7 +18,7 @@ export default function AuthHeader() {
         setShowModal(!showModal);
     };
     const handleLogout = () => {
-        dispatch(logOut());
+        dispatch(logout());
         toggleModal();
         toast.success('Спасибо за визит!Ждём Вас снова!');
     };

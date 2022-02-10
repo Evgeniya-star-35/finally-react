@@ -1,91 +1,86 @@
-import { combineReducers } from 'redux';
-import { createReducer } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import {
-    registerSuccess,
-    registerError,
-    logoutSuccess,
-    logoutError,
-    loginSuccess,
-    loginError,
-    getCurrentUserRequest,
-    getCurrentUserSuccess,
-    getCurrentUserError,
-    loginGoogleSuccess,
-    refreshLoginGoogleSuccess,
-    registerRequest,
-    logoutRequest,
-    loginRequest,
-    loginGoogleRequest,
-    loginGoogleError,
-    refreshLoginGoogleRequest,
-    refreshLoginGoogleError,
-} from './auth-actions';
+    register,
+    login,
+    getCurrentUser,
+    logout,
+    getBalance,
+} from './auth-operations';
+const initialState = {
+    user: { email: '' },
+    token: '',
+    isLoading: false,
+    isAuth: false,
+    error: null,
+    isGetCurrentUser: false,
+    balance: 0,
+};
 
-const initialUserState = { name: null, email: null, balance: 0 };
-
-const user = createReducer(initialUserState, {
-    [registerSuccess]: (_, { payload }) => payload.user,
-    [loginSuccess]: (_, { payload }) => payload.user,
-    [logoutSuccess]: () => initialUserState,
-    [getCurrentUserSuccess]: (_, { payload }) => payload,
+const authSlice = createSlice({
+    name: 'auth',
+    initialState,
+    extraReducers: {
+        [register.pending](state, _) {
+            state.isLoading = true;
+        },
+        [register.fulfilled](state, { payload }) {
+            state.user = payload.user;
+            state.token = payload.token;
+            state.isAuth = true;
+            state.error = null;
+            state.isLoading = false;
+            state.balance = payload.balance;
+        },
+        [register.rejected](state, { payload }) {
+            state.error = payload;
+            state.isLoading = false;
+        },
+        [login.pending](state, _) {
+            state.isLoading = true;
+        },
+        [login.fulfilled](state, { payload }) {
+            state.user = payload.data.user;
+            state.token = payload.data.token;
+            state.isAuth = true;
+            state.error = null;
+            state.isLoading = false;
+            state.isGetCurrentUser = true;
+            state.balance = payload.balance;
+        },
+        [login.rejected](state, { payload }) {
+            state.error = payload;
+            state.isLoading = false;
+        },
+        [logout.fulfilled](state, _) {
+            state.user = { email: '' };
+            state.token = '';
+            state.error = null;
+            state.isAuth = false;
+        },
+        [logout.rejected](state, { payload }) {
+            state.error = payload;
+            state.isLoading = false;
+        },
+        [getCurrentUser.pending](state) {
+            state.isLoading = true;
+        },
+        [getCurrentUser.fulfilled](state, { payload }) {
+            state.user = payload;
+            state.isAuth = true;
+            state.error = null;
+            state.isLoading = false;
+            state.balance = payload.balance;
+            state.isGetCurrentUser = true;
+        },
+        [getCurrentUser.rejected](state) {
+            state.isGetCurrentUser = false;
+            state.isLoading = false;
+        },
+        [getBalance.fulfilled](state, { payload }) {
+            state.balance = payload.balance;
+        },
+    },
 });
 
-const refreshToken = createReducer(null, {
-    [loginSuccess]: (_, { payload }) => payload.refreshToken,
-    [refreshLoginGoogleSuccess]: (_, { payload }) => payload,
-    [logoutSuccess]: () => null,
-});
-
-const token = createReducer(null, {
-    [loginSuccess]: (_, { payload }) => payload.token,
-    [loginGoogleSuccess]: (_, { payload }) => payload,
-    [logoutSuccess]: () => null,
-});
-const setError = (_, { payload }) => payload;
-
-const error = createReducer(null, {
-    [registerError]: setError,
-    [registerSuccess]: () => null,
-    [registerRequest]: () => null,
-    [loginError]: setError,
-    [loginSuccess]: () => null,
-    [loginRequest]: () => null,
-    [logoutError]: setError,
-    [logoutError]: () => null,
-    [logoutRequest]: () => null,
-    [getCurrentUserError]: setError,
-    [getCurrentUserRequest]: () => null,
-    [getCurrentUserSuccess]: () => null,
-    [loginGoogleError]: setError,
-    [loginGoogleSuccess]: () => null,
-    [loginGoogleRequest]: () => null,
-    [refreshLoginGoogleError]: setError,
-    [refreshLoginGoogleSuccess]: () => null,
-    [refreshLoginGoogleRequest]: () => null,
-});
-
-const isLogin = createReducer(false, {
-    [loginSuccess]: () => true,
-    [getCurrentUserSuccess]: () => true,
-    [registerError]: () => false,
-    [loginError]: () => false,
-    [getCurrentUserError]: () => false,
-    [logoutSuccess]: () => false,
-});
-
-const isFetchingCurrentUser = createReducer(false, {
-    [getCurrentUserRequest]: () => true,
-    [getCurrentUserSuccess]: () => false,
-    [getCurrentUserError]: () => false,
-});
-
-const authReducer = combineReducers({
-    user,
-    isLogin,
-    token,
-    refreshToken,
-    error,
-    isFetchingCurrentUser,
-});
-export { authReducer };
+export default authSlice.reducer;

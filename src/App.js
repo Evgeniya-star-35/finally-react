@@ -5,14 +5,14 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
-// import PrivateRoute from './routes/privateRouter';
-import Container from 'components/Container';
+import PrivateRoute from './routes/privateRouter';
+
 import {
     getCurrentToken,
     getCurrentUser,
-    // getFetchingCurrentUser
+    getFetchingCurrentUser,
 } from './redux/auth';
-import LoaderTriangle from './components/Loader';
+import Loader from './components/Loader';
 
 const HomePage = lazy(() =>
     import('./_pages/HomePage' /* webpackChunkName: "home-page" */),
@@ -31,59 +31,58 @@ const ReportPage = lazy(() =>
 
 function App() {
     const dispatch = useDispatch();
-    // const isFetchCurrentUser = useSelector(getFetchingCurrentUser);
-    const isAuth = useSelector(getCurrentToken);
+    const isFetchCurrentUser = useSelector(getFetchingCurrentUser);
+    // console.log(isFetchCurrentUser);//false
+    const { isAuth } = useSelector(state => state.auth);
+    // console.log(isAuth);
     useEffect(() => {
         dispatch(getCurrentUser());
     }, [dispatch]);
-
     return (
-        // !isFetchCurrentUser && (
         <>
-            {/* <Header /> */}
-            {/* <AuthHeader /> */}
-
-
-            {/* <Container> */}
             <ToastContainer />
-            <Suspense fallback={'Loading'}>
+            <Suspense fallback={<Loader />}>
                 <Routes>
                     <Route
                         path="/"
                         element={
-                            <PublicRoute isAuth={isAuth} element={HomePage} />
+                            <PublicRoute
+                                isAuth={isAuth}
+                                component={<HomePage />}
+                            />
                         }
                     />
                     <Route
                         path="/transactions"
                         element={
-                            // <PrivateRoute
-                            <PublicRoute
+                            <PrivateRoute
+                                // <PublicRoute
                                 isAuth={isAuth}
-                                element={TransactionPage}
+                                component={<TransactionPage />}
                             />
                         }
                     />
                     <Route
                         path="/mainPage"
                         element={
-                            // <PrivateRoute
-                            <PublicRoute isAuth={isAuth} element={MainPage} />
+                            <PrivateRoute
+                                isAuth={isAuth}
+                                component={<MainPage />}
+                            />
                         }
                     />
                     <Route
                         path="/reports"
                         element={
-                            // <PrivateRoute
-                            <PublicRoute isAuth={isAuth} element={ReportPage} />
+                            <PrivateRoute
+                                isAuth={isAuth}
+                                component={<ReportPage />}
+                            />
                         }
                     />
                 </Routes>
             </Suspense>
-            {/* </Container> */}
-
         </>
-        // )
     );
 }
 

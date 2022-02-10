@@ -27,7 +27,7 @@ const Balance = () => {
     useEffect(() => {
         setSum(balance);
         console.log(balance);
-        console.log(setSum);
+        // console.log(setSum);
     }, [balance]);
 
     //formik

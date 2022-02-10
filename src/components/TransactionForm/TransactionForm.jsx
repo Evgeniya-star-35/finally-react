@@ -4,26 +4,39 @@ import Media from 'react-media';
 import transactionsOperations from '../../redux/transactions/transactions-operations';
 import Button from 'components/Buttons/Button';
 import GoBackArrow from '../GoBack';
-import Dropdown from 'components/Dropdown';
+import Dropdown from '../Dropdown';
 
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
 
-export default function TransactionForm({ date, type }) {
+export default function TransactionForm({ date, type, setType }) {
     const [product, setProduct] = useState('');
     const [category, setCategory] = useState('');
+
     const [sum, setSum] = useState('');
     const dispatch = useDispatch();
+
+    const setTypePlaceholder = () => {
+        if (type === 'costs') {
+            setType('Описание товара');
+        }
+        if (type === 'incomes') {
+            setType('Описание дохода');
+        }
+    };
 
     const handleChange = e => {
         const { name, value } = e.target;
         switch (name) {
             case 'product':
-                return setProduct(value);
+                setProduct(value);
+                break;
             case 'category':
-                return setCategory(value);
+                setCategory(value);
+                break;
             case 'sum':
-                return setSum(value);
+                setSum(value);
+                break;
 
             default:
                 return;
@@ -33,7 +46,7 @@ export default function TransactionForm({ date, type }) {
     const handleSubmit = e => {
         e.preventDefault();
         const transaction = {
-            type,
+            type: type,
             date,
             category,
             product,
@@ -42,6 +55,7 @@ export default function TransactionForm({ date, type }) {
         dispatch(transactionsOperations.addTransactionOperation(transaction));
         reset();
     };
+
     const reset = e => {
         setProduct('');
         setSum('');
@@ -52,36 +66,29 @@ export default function TransactionForm({ date, type }) {
         <>
             <GoBackArrow />
 
-            <form className={s.transactionForm}>
+            <form className={s.transactionForm} onSubmit={handleSubmit}>
                 <div className={s.inputsWrapper}>
                     <label>
                         <input
                             name="product"
                             value={product}
                             type="text"
-                            placeholder="Описание товара"
+                            placeholder={
+                                type === 'costs'
+                                    ? 'Описание товара'
+                                    : 'Описание дохода'
+                            }
                             required
                             className={s.productInput}
                             onChange={handleChange}
                         />
                     </label>
-                    <Dropdown />
-                    {/* <select className={s.selectCategory} name="category">
-                        <option value="Категория товара">
-                            Категория товара
-                        </option>
-                        <option>Транспорт</option>
-                        <option>Продукты</option>
-                        <option>Здоровье</option>
-                        <option>Алкоголь</option>
-                        <option>Развлечения</option>
-                        <option>Всё для дома</option>
-                        <option>Техника</option>
-                        <option>Коммуналка, связь</option>
-                        <option>Образование</option>
-                        <option>Спорт, хобби</option>
-                        <option>Прочее</option>
-                    </select> */}
+                    <Dropdown
+                        type={type}
+                        category={category}
+                        setCategory={setCategory}
+                    />
+
                     <div className={s.sumWrapper}>
                         <label>
                             <input
@@ -127,7 +134,7 @@ export default function TransactionForm({ date, type }) {
                     </div>
                 </div>
                 <div className={s.wrapBtns}>
-                    <Button text="ввод" onClick={handleSubmit} />
+                    <Button text="ввод" />
                     <Button text="очистить" type="button" onClick={reset} />
                 </div>
             </form>
