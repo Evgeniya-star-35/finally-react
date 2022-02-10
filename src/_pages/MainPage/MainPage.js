@@ -24,38 +24,38 @@ const MainPage = () => {
         setYear(startDate.split('.')[2]);
         /* eslint-disable-next-line */
     }, []);
-    // const handleReadTransactionType = (e) => {
-    //     e.currentTarget.text
-    // }
+
+    // const getTransactionType = e => {
+    //     console.log(e.currentTarget.title);
+    // };
+    const typeToggle = e => {
+        setType(`${e.currentTarget.title}`);
+        console.log(e.currentTarget.title);
+    };
     const setNewDate = date => {
         setDate(date);
         setYear(date.split('.')[2]);
     };
-    const handleCalendarClick = () => {
-        setPicker(true);
-    };
-    const closePicker = dateNew => {
-        const newDate = `${dateNew.getUTCDate()}.${
-            dateNew.getUTCMonth() + 1
-        }.${dateNew.getUTCFullYear()}`;
+    // const handleCalendarClick = () => {
+    //     setPicker(true);
+    // };
+    // const closePicker = dateNew => {
+    //     const newDate = `${dateNew.getUTCDate()}.${
+    //         dateNew.getUTCMonth() + 1
+    //     }.${dateNew.getUTCFullYear()}`;
 
-        setDate(newDate);
-        setYear(newDate.split('.')[2]);
-        setPicker(false);
-    };
+    //     setDate(newDate);
+    //     setYear(newDate.split('.')[2]);
+    //     setPicker(false);
+    // };
 
-    const typeToggle = e => {
-        setType(`${e.target.title}`);
-        console.log(e.target.title);
-    };
-
-    const onArrow = e => {
-        typeToggle(e);
-        return listRender ? setListRender(false) : setListRender(true);
-    };
-    const onBack = () => {
-        setListRender(true);
-    };
+    // const onArrow = e => {
+    //     typeToggle(e);
+    //     return listRender ? setListRender(false) : setListRender(true);
+    // };
+    // const onBack = () => {
+    //     setListRender(true);
+    // };
 
     const day = new Date();
 
@@ -76,8 +76,8 @@ const MainPage = () => {
                     render={() => (
                         <>
                             <div className={s.btnMobileWrapper}>
-                                <CostsButton onClick={onArrow} />
-                                <IncomesButton onClick={onArrow} />
+                                <CostsButton onClick={typeToggle} />
+                                <IncomesButton onClick={typeToggle} />
                             </div>
                             {/* <TransactionList
                                 transactionType={type}
@@ -91,12 +91,13 @@ const MainPage = () => {
                     render={() => (
                         <>
                             <div className={s.btnTabletWrapper}>
-                                <CostsButton onClick={onArrow} />
-                                <IncomesButton onClick={onArrow} />
+                                <CostsButton getType={typeToggle} />
+                                <IncomesButton getType={typeToggle} />
                             </div>
                             <div className={s.transactionTabletDesktopWrapper}>
                                 <TransactionForm
                                     transactionType={type}
+                                    setType={setType}
                                     date={date}
                                     currentDate={setNewDate}
                                 />

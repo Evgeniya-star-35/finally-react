@@ -8,7 +8,8 @@ import s from './Dropdown.module.css';
 export default function Dropdown({ category, setCategory, type }) {
     const [isActive, setIsActive] = useState(false);
 
-    const options = type === 'cost' ? optionsCosts : optionsIncomes; //TODO
+    const options = type === 'costs' ? optionsCosts : optionsIncomes; //TODO
+    console.log(options);
     return (
         <div className={s.dropdown}>
             <div
@@ -16,23 +17,23 @@ export default function Dropdown({ category, setCategory, type }) {
                 className={s.mainOption}
                 onClick={e => setIsActive(!isActive)}
             >
-                {!category && type === 'cost'
+                {!category && type === 'costs'
                     ? 'Категория товара'
-                    : !category && type === 'income'
+                    : !category && type === 'incomes'
                     ? 'Категория дохода'
                     : category}
                 {!isActive ? (
-                    <svg width="4" height="10">
+                    <svg width="15" height="5" className={s.dropdownIcon}>
                         <use href={`${arrowSprite}#icon-arrow-up`}></use>
                     </svg>
                 ) : (
-                    <svg width="4" height="10">
+                    <svg width="15" height="5">
                         <use href={`${arrowSprite}#icon-arrow-down`}></use>
                     </svg>
                 )}
             </div>
             {isActive && (
-                <div className={s.choosenOption}>
+                <div>
                     {options.map((option, idx) => (
                         <div
                             key={idx}
@@ -40,7 +41,7 @@ export default function Dropdown({ category, setCategory, type }) {
                                 setCategory(option);
                                 setIsActive(false);
                             }}
-                            className={s.dropdownItem}
+                            className={s.choosenOption}
                         >
                             {option}
                         </div>

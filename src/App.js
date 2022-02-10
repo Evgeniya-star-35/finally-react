@@ -34,7 +34,7 @@ function App() {
     const isFetchCurrentUser = useSelector(getFetchingCurrentUser);
     // console.log(isFetchCurrentUser);//false
     const { isAuth } = useSelector(state => state.auth);
-    console.log(isAuth);
+    // console.log(isAuth);
     useEffect(() => {
         dispatch(getCurrentUser());
     }, [dispatch]);
