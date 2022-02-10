@@ -6,6 +6,7 @@ import CategoriesCosts from 'components/CategoriesCosts';
 import CategoriesIncomes from 'components/CategoriesIncomes';
 import GoBackArrow from 'components/GoBack/GoBack';
 import Background from 'components/Background/Background';
+import TransactionsRatio from 'components/TransactionsRatio';
 import s from './ReportPage.module.css';
 // ======Petro, Vlad===========
 import { useDispatch } from 'react-redux';
@@ -65,6 +66,7 @@ const ReportPage = () => {
                 {/* // ======Petro, Vlad=========== */}
                 <Balance />
             </div>
+            <TransactionsRatio />
             <CategoriesCosts />
             <CategoriesIncomes />
         </>
