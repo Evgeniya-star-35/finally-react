@@ -3,27 +3,25 @@ import Balance from 'components/Balance';
 import CurrentPeriod from '../../components/CurrentPeriod';
 import GoToMainButton from 'components/Buttons/GoToMainButton';
 import CategoriesCosts from 'components/CategoriesCosts';
-import CategoriesIncomes from 'components/CategoriesIncomes';
+// import CategoriesIncomes from 'components/CategoriesIncomes';
 import GoBackArrow from 'components/GoBack/GoBack';
 import Background from 'components/Background/Background';
 import TransactionsRatio from 'components/TransactionsRatio';
 import s from './ReportPage.module.css';
-// ======Petro, Vlad===========
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import transactionsOperations from 'redux/transactions/transactions-operations';
-// ======Petro, Vlad===========
+
 
 const ReportPage = () => {
-    // ======Petro, Vlad===========
-
-    const dispatch = useDispatch();
+ 
+   const dispatch = useDispatch();
     let date = new Date();
     let selectedMonth = date.getMonth() + 1;
     let selectedYear = date.getFullYear();
     const [month, setMonth] = useState(selectedMonth);
     const [year, setYear] = useState(selectedYear);
-    console.log(month, year);
+    
     useEffect(() => {
         if ((month, year)) {
             dispatch(
@@ -48,7 +46,19 @@ const ReportPage = () => {
             setMonth(prev => (prev -= 1));
         }
     };
-    // ======Petro, Vlad===========
+    
+
+    
+    const [transactionsType, setTransactionsType] = useState('cost');
+    const onHandleChangeTransactionsType = () => {
+        if (transactionsType === 'cost') {
+            setTransactionsType('incomes');
+        }
+        if (transactionsType === 'incomes') {
+            setTransactionsType('cost');
+        }
+    };
+    
 
     return (
         <>
@@ -56,19 +66,26 @@ const ReportPage = () => {
             <GoBackArrow />
             <div className={s.balanceWrap}>
                 <GoToMainButton />
-                {/* // ======Petro, Vlad=========== */}
-                <CurrentPeriod
+                              <CurrentPeriod
                     currentMonth={month}
                     currentYear={year}
                     onHandleClickRight={onHandleClickRight}
                     onHandleClickLeft={onHandleClickLeft}
                 />
-                {/* // ======Petro, Vlad=========== */}
+               
                 <Balance />
             </div>
-            <TransactionsRatio perMonth={month} perYear={year} />
-            <CategoriesCosts />
-            <CategoriesIncomes />
+
+            <TransactionsRatio />
+            <CategoriesCosts
+                transactionsType={transactionsType}
+                onClick={onHandleChangeTransactionsType}
+            />
+
+//             <TransactionsRatio perMonth={month} perYear={year} />
+//             <CategoriesCosts />
+//             <CategoriesIncomes />
+
         </>
     );
 };
