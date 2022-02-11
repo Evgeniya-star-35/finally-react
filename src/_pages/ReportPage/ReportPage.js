@@ -2,8 +2,7 @@
 import Balance from 'components/Balance';
 import CurrentPeriod from '../../components/CurrentPeriod';
 import GoToMainButton from 'components/Buttons/GoToMainButton';
-import CategoriesCosts from 'components/CategoriesCosts';
-// import CategoriesIncomes from 'components/CategoriesIncomes';
+import CategoriesReport from 'components/CategoriesReport';
 import GoBackArrow from 'components/GoBack/GoBack';
 import Background from 'components/Background/Background';
 import TransactionsRatio from 'components/TransactionsRatio';
@@ -68,15 +67,11 @@ const ReportPage = () => {
                 <Balance />
             </div>
 
-            {/* <TransactionsRatio /> */}
             <TransactionsRatio perMonth={month} perYear={year} />
-            <CategoriesCosts
+            <CategoriesReport
                 transactionsType={transactionsType}
                 onClick={onHandleChangeTransactionsType}
             />
-
-            {/* <CategoriesCosts />
-            <CategoriesIncomes /> */}
         </>
     );
 };
