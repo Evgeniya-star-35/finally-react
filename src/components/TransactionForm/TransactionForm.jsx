@@ -6,10 +6,12 @@ import Button from 'components/Buttons/Button';
 import GoBackArrow from '../GoBack';
 import Dropdown from '../Dropdown';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
+import Summary from 'components/Summary';
 
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
 import TransactionTable from 'components/TransactionTable/TransactionTable';
+import TransactionList from 'components/TransactionListMobile/TransactionList';
 
 export default function TransactionForm({
     date,
@@ -18,6 +20,7 @@ export default function TransactionForm({
     closePicker,
     picker,
     setNewDate,
+    year,
 }) {
     const [product, setProduct] = useState('');
     const [category, setCategory] = useState('');
@@ -68,13 +71,19 @@ export default function TransactionForm({
 
             <form className={s.transactionForm} onSubmit={handleSubmit}>
                 <div className={s.inputsWrapper}>
-                    <CalendarForm
-                        date={date}
-                        handleCalendarClick={handleCalendarClick}
-                        closePicker={closePicker}
-                        picker={picker}
-                        setNewDate={setNewDate}
+                    <Media
+                        query="(min-width: 768px)"
+                        render={() => (
+                            <CalendarForm
+                                date={date}
+                                handleCalendarClick={handleCalendarClick}
+                                closePicker={closePicker}
+                                picker={picker}
+                                setNewDate={setNewDate}
+                            />
+                        )}
                     />
+
                     <label htmlFor="product">
                         <input
                             name="product"
@@ -109,6 +118,7 @@ export default function TransactionForm({
                                 onChange={handleChange}
                             />
                         </label>
+
                         <Media
                             query="(max-width: 767.98px)"
                             render={() => (
@@ -125,6 +135,7 @@ export default function TransactionForm({
                                 </button>
                             )}
                         />
+
                         <Media
                             query="(min-width: 768px)"
                             render={() => (
@@ -146,11 +157,26 @@ export default function TransactionForm({
                     <Button text="очистить" type="button" onClick={reset} />
                 </div>
             </form>
-            <TransactionTable
-                date={date}
-                subCategory={product}
-                sum={sum}
-                category={category}
+            {/* <Media
+                query="(min-width: 768px)"
+                render={() => <TransactionList />}
+            /> */}
+            <Media
+                query="(min-width: 768px)"
+                render={() => (
+                    <>
+                        <div className={s.transactionSummaryWrapper}>
+                            <TransactionTable
+                                date={date}
+                                subCategory={product}
+                                sum={sum}
+                                category={category}
+                            />
+
+                            <Summary year={year} />
+                        </div>
+                    </>
+                )}
             />
         </>
     );

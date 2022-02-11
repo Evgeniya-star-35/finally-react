@@ -186,9 +186,13 @@
         width: 1060px;
         display: flex;
         flex-direction: row;
+        justify-content: space-evenly;
     }
     .wrapBtns {
         display: inline;
         margin-right: 27px;
+    }
+    .transactionSummaryWrapper {
+        display: flex;
     }
 }

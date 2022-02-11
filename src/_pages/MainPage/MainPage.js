@@ -119,9 +119,9 @@ const MainPage = () => {
                                     closePicker={closePicker}
                                     handleCalendarClick={handleCalendarClick}
                                 />
-                                <div className={s.transactionSummaryWrapper}>
+                                {/* <div className={s.transactionSummaryWrapper}>
                                     <Summary year={year} />
-                                </div>
+                                </div> */}
                             </div>
                         </>
                     )}
