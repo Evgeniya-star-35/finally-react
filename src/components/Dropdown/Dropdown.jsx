@@ -31,13 +31,13 @@ export default function Dropdown({
                         <use href={`${arrowSprite}#icon-arrow-up`}></use>
                     </svg>
                 ) : (
-                    <svg width="15" height="5">
+                    <svg width="15" height="5" className={s.dropdownIcon}>
                         <use href={`${arrowSprite}#icon-arrow-down`}></use>
                     </svg>
                 )}
             </div>
             {!isActive && (
-                <div>
+                <div className={s.optionsList}>
                     {options.map((option, index) => (
                         <div
                             key={index}
