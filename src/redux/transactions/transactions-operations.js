@@ -128,7 +128,7 @@ const getTransactionsDayOperation = date => async dispatch => {
     dispatch(getTransactionsRequest());
     try {
         const response = await getTransactionsByDate(date);
-        console.log(response.data);
+        console.log(response);
 
         dispatch(getTransactionsSuccess(response.data.result));
     } catch ({ response }) {

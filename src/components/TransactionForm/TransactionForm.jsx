@@ -52,6 +52,7 @@ export default function TransactionForm({
             sum,
         };
         dispatch(transactionsOperations.addTransactionOperation(transaction));
+        dispatch(transactionsOperations.getTransactionsDayOperation(date));
         reset();
     };
 
