@@ -47,12 +47,9 @@ const ReportPage = () => {
 
     const [transactionsType, setTransactionsType] = useState('cost');
     const onHandleChangeTransactionsType = () => {
-        if (transactionsType === 'cost') {
-            setTransactionsType('incomes');
-        }
-        if (transactionsType === 'incomes') {
-            setTransactionsType('cost');
-        }
+        transactionsType === 'cost'
+            ? setTransactionsType('incomes')
+            : setTransactionsType('cost');
     };
 
     return (
