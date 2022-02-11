@@ -176,6 +176,7 @@ export default function TransactionForm({
                                 subCategory={product}
                                 sum={sum}
                                 category={category}
+                                setNewDate={setNewDate}
                             />
 
                             <Summary year={year} />
