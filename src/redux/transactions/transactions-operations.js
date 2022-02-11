@@ -59,7 +59,7 @@ const addTransactionOperation = transaction => async dispatch => {
 
     try {
         const response = await addTransaction(transaction, balance);
-
+        console.log(response.data.newTransaction);
         dispatch(addTransactionSuccess(response.data.newTransaction));
         dispatch(setTotalBalanceSuccess(response.data.balance));
     } catch ({ response }) {
@@ -127,9 +127,9 @@ const getTransactionsDayOperation = date => async dispatch => {
     dispatch(getTransactionsRequest());
     try {
         const response = await getTransactionsByDate(date);
-        console.log(response);
+        // console.log(response.data.result);
 
-        dispatch(getTransactionsSuccess(response.data.newTransaction));
+        dispatch(getTransactionsSuccess(response.data.result));
     } catch ({ response }) {
         // if (response.data.message === 'Invalid token') {
         //     const response = await getTransactionsByDate(date);
@@ -201,7 +201,9 @@ export default transactionsOperations;
 //-------------helpers--------------------
 const calculateBalance = (transaction, actionType) => {
     const initialBalance = store.getState().transactions.totalBalance;
-    const transactionsList = store.getState().transactions.getTransactionsDay;
+    console.log(initialBalance);
+    const transactionsList = store.getState().transactions.transactionsDay;
+    console.log(transactionsList);
     switch (actionType) {
         case 'add':
             return transaction.type === 'incomes'
