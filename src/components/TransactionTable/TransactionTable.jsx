@@ -8,7 +8,9 @@ import s from './TransactionTable.module.css';
 export default function TransactionTable({ date, sum, category, subCategory }) {
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(transactionsOperations.setBalanceOperation());
         dispatch(transactionsOperations.getTransactionsDayOperation(date));
+        console.log(date);
     }, []);
     return (
         <>

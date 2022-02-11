@@ -35,7 +35,7 @@ import {
 } from 'redux/auth';
 
 const transactionsDay = createReducer([], {
-    [getTransactionsSuccess]: (state, { payload }) => [...state, payload],
+    [getTransactionsSuccess]: (state, { payload }) => payload,
     [addTransactionSuccess]: (state, { payload }) => [...state, payload],
     [deleteTransactionSuccess]: (state, { payload }) =>
         state.filter(item => item._id !== payload),

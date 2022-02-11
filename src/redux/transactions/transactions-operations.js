@@ -32,7 +32,6 @@ import {
 import { fetchBalance } from 'services/authApi';
 
 const setBalanceOperation = balance => async dispatch => {
-    console.log(balance);
     dispatch(setTotalBalanceRequest());
 
     try {
@@ -100,7 +99,7 @@ const deleteTransactionOperation = transaction => async dispatch => {
     }
 };
 
-const editTransactionOperation = transaction => async (dispatch, getState) => {
+const editTransactionOperation = transaction => async dispatch => {
     dispatch(editTransactionRequest());
     const balance = calculateBalance(transaction, 'edit');
 
@@ -203,7 +202,7 @@ const calculateBalance = (transaction, actionType) => {
     const initialBalance = store.getState().transactions.totalBalance;
     console.log(initialBalance);
     const transactionsList = store.getState().transactions.transactionsDay;
-    console.log(transactionsList);
+    console.log(transaction);
     switch (actionType) {
         case 'add':
             return transaction.type === 'incomes'
