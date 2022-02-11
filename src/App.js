@@ -32,6 +32,11 @@ const ReportPage = lazy(() =>
 
 const GooglePage = lazy(() => import('./_pages/GooglePage'));
 
+const DevelopersView = lazy(() =>
+    import(
+        './_pages/DevelopersView/DevelopersView' /*webpackChunkName: "developers-view" */
+    ),
+);
 function App() {
     const dispatch = useDispatch();
     const isFetchCurrentUser = useSelector(getFetchingCurrentUser);
@@ -52,6 +57,15 @@ function App() {
                             <PublicRoute
                                 isAuth={isAuth}
                                 component={<HomePage />}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/developers"
+                        element={
+                            <PublicRoute
+                                isAuth={isAuth}
+                                component={<DevelopersView />}
                             />
                         }
                     />

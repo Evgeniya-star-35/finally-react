@@ -7,7 +7,7 @@ export default function OurTeam() {
         <div className={s.content}>
             <Link to="/" alt="homepage" className={s.close} />
 
-            {hardcore.map((teammate, idx) => (
+            {hardcore.map((hardcore, idx) => (
                 <figure key={idx} className={s.snip1344}>
                     <img src={hardcore.photo} alt="" className={s.background} />
                     <img
