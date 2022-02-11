@@ -6,11 +6,11 @@ import transactionsOperations from 'redux/transactions/transactions-operations';
 import s from './TransactionTable.module.css';
 
 export default function TransactionTable({ date, sum, category, subCategory }) {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(transactionsOperations.getTransactionsDayOperation(date));
-    }, [dispatch, date]);
-    console.log(date);
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     dispatch(transactionsOperations.getTransactionsDayOperation(date));
+    // }, [dispatch, date]);
+    // console.log(date);
     return (
         <>
             <Media

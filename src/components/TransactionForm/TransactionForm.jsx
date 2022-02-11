@@ -18,6 +18,9 @@ export default function TransactionForm({
     closePicker,
     picker,
     setNewDate,
+    day,
+    month,
+    year,
 }) {
     const [product, setProduct] = useState('');
     const [category, setCategory] = useState('');
@@ -50,6 +53,9 @@ export default function TransactionForm({
             category,
             subCategory: product,
             sum,
+            day,
+            month,
+            year,
         };
         dispatch(transactionsOperations.addTransactionOperation(transaction));
         dispatch(transactionsOperations.getTransactionsDayOperation(date));
