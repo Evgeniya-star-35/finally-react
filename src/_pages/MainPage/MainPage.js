@@ -6,10 +6,10 @@ import Container from '../../components/Container';
 import CostsButton from 'components/Buttons/CostsAndIncomesButtons/CostsButton';
 import IncomesButton from 'components/Buttons/CostsAndIncomesButtons/IncomesButton';
 import GoToReports from 'components/GoToReports';
-import Summary from 'components/Summary';
+// import Summary from 'components/Summary';
 import s from './MainPage.module.css';
 import TransactionForm from 'components/TransactionForm';
-import TransactionList from 'components/TransactionListMobile/TransactionList';
+// import TransactionList from 'components/TransactionListMobile/TransactionList';
 
 import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
@@ -19,7 +19,7 @@ const MainPage = () => {
     const [date, setDate] = useState('');
     const [year, setYear] = useState('');
     const [picker, setPicker] = useState(false);
-    const [listRender, setListRender] = useState(true);
+    // const [listRender, setListRender] = useState(true);
 
     const day = new Date();
 

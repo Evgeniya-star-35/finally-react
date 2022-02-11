@@ -23,6 +23,11 @@ const TransactionPage = lazy(() =>
         './_pages/TransactionPage' /*webpackChunkName: "transaction-page" */
     ),
 );
+const CostsTransactionPage = lazy(() =>
+    import(
+        './_pages/CostsTransactionPage' /*webpackChunkName: "coststransaction-page" */
+    ),
+);
 const MainPage = lazy(() =>
     import('./_pages/MainPage' /*webpackChunkName: "main-page" */),
 );
@@ -62,6 +67,16 @@ function App() {
                                 // <PublicRoute
                                 isAuth={isAuth}
                                 component={<TransactionPage />}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/coststransactions"
+                        element={
+                            <PrivateRoute
+                                // <PublicRoute
+                                isAuth={isAuth}
+                                component={<CostsTransactionPage />}
                             />
                         }
                     />

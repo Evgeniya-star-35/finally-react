@@ -36,7 +36,7 @@ export default function Dropdown({
                     </svg>
                 )}
             </div>
-            {!isActive && (
+            {isActive && (
                 <div className={s.optionsList}>
                     {options.map((option, index) => (
                         <div
