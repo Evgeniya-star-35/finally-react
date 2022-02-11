@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
 import PrivateRoute from './routes/privateRouter';
+import transactionsOperations from 'redux/transactions/transactions-operations';
 
 import {
     getCurrentToken,
@@ -28,6 +29,8 @@ const MainPage = lazy(() =>
 const ReportPage = lazy(() =>
     import('./_pages/ReportPage' /* webpackChunkName: "report-page" */),
 );
+
+const GooglePage = lazy(() => import('./_pages/GooglePage'));
 
 function App() {
     const dispatch = useDispatch();
@@ -80,6 +83,7 @@ function App() {
                             />
                         }
                     />
+                    <Route path="/googleAuth" element={GooglePage} />
                 </Routes>
             </Suspense>
         </>

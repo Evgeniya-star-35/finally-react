@@ -126,7 +126,7 @@ const getTransactionsDayOperation = date => async dispatch => {
     dispatch(getTransactionsRequest());
     try {
         const response = await getTransactionsByDate(date);
-        // console.log(response.data.result);
+        console.log(response.data.result);
 
         dispatch(getTransactionsSuccess(response.data.result));
     } catch ({ response }) {
@@ -202,7 +202,7 @@ const calculateBalance = (transaction, actionType) => {
     const initialBalance = store.getState().transactions.totalBalance;
     console.log(initialBalance);
     const transactionsList = store.getState().transactions.transactionsDay;
-    console.log(transaction);
+    console.log(transactionsList);
     switch (actionType) {
         case 'add':
             return transaction.type === 'incomes'

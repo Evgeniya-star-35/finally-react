@@ -10,6 +10,8 @@ const getCurrentToken = state => state.auth.token;
 
 const getAuthError = state => state.auth.error;
 
+const getIsAuth = state => state.auth.isAuth;
+
 export {
     getIsAuthenticated,
     getUserName,
@@ -17,4 +19,5 @@ export {
     getCurrentToken,
     getUserAvatar,
     getAuthError,
+    getIsAuth,
 };
