@@ -1,17 +1,43 @@
 import Media from 'react-media';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import transactionsOperations from 'redux/transactions/transactions-operations';
+import { getTransactionsDay } from '../../redux/transactions/transactions-selectors';
 import s from './TransactionTable.module.css';
 
-export default function TransactionTable({ date, sum, category, subCategory }) {
+export default function TransactionTable({
+    type,
+    date,
+    setNewDate,
+    sum,
+    category,
+    subCategory,
+}) {
+    const [transaction, setTransaction] = useState('');
+    const [modalDelete, setModalDelete] = useState(false);
+    const [modalEdit, setModalEdit] = useState(false);
+
     const dispatch = useDispatch();
+
+    const transactions = useSelector(getTransactionsDay);
+    // console.log(transactions);
+    const filteredTransactions = transactions.filter(
+        item => item.type === type,
+    );
+    console.log(filteredTransactions);
+
+    // useEffect(() => {
+    //     dispatch(transactionsOperations.setBalanceOperation());
+    //     dispatch(transactionsOperations.getTransactionsDayOperation(date));
+    // }, []);
+
     useEffect(() => {
-        dispatch(transactionsOperations.setBalanceOperation());
-        dispatch(transactionsOperations.getTransactionsDayOperation(date));
-        console.log(date);
-    }, []);
+        if (date) {
+            dispatch(transactionsOperations.getTransactionsDayOperation(date));
+        }
+    }, [date, dispatch]);
+
     return (
         <>
             <Media
