@@ -147,11 +147,11 @@ const getTransactionsDayOperation = date => async dispatch => {
 const getTransactionsMonthYear = (month, year) => async dispatch => {
     dispatch(getTransactionsMonthYearRequest());
     try {
-        const response = await getTransactionsByPeriod(`${month}-${year}`);
+        const response = await getTransactionsByPeriod(`${month}.${year}`);
         dispatch(getTransactionsMonthYearSuccess(response.data.result));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
-            const response = await getTransactionsByPeriod(`${month}-${year}`);
+            const response = await getTransactionsByPeriod(`${month}.${year}`);
             dispatch(getTransactionsMonthYearSuccess(response.data.result));
             return;
         }
