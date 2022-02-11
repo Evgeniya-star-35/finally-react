@@ -16,6 +16,10 @@ const loginGoogleRequest = createAction('auth/loginGoogleRequest');
 const loginGoogleSuccess = createAction('auth/loginGoogleSuccess');
 const loginGoogleError = createAction('auth/loginGoogleError');
 
+const authGoogleRequest = createAction('auth/googleRequest');
+const authGoogleSuccess = createAction('auth/googleSuccess');
+const authGoogleError = createAction('auth/googleError');
+
 const refreshLoginGoogleRequest = createAction(
     'auth/refreshLoginGoogleRequest',
 );
@@ -45,6 +49,9 @@ export {
     loginGoogleRequest,
     loginGoogleSuccess,
     loginGoogleError,
+    authGoogleRequest,
+    authGoogleSuccess,
+    authGoogleError,
     getCurrentUserRequest,
     getCurrentUserSuccess,
     getCurrentUserError,

@@ -6,6 +6,7 @@ import {
     getCurrentUser,
     logout,
     getBalance,
+    googleAuth,
 } from './auth-operations';
 const initialState = {
     user: { email: '' },
@@ -79,6 +80,9 @@ const authSlice = createSlice({
         },
         [getBalance.fulfilled](state, { payload }) {
             state.balance = payload.balance;
+        },
+        [googleAuth.fulfilled](state, _) {
+            state.isAuth = true;
         },
     },
 });

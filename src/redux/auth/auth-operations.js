@@ -82,3 +82,9 @@ export const getBalance = createAsyncThunk(
         }
     },
 );
+
+export const googleAuth = createAsyncThunk('auth/google', async userToken => {
+    token.set(userToken);
+    const { data } = await axios.get('/users/current');
+    return data.user;
+});
