@@ -7,7 +7,7 @@ import 'react-activity/dist/library.css';
 const Loader = () => {
     return (
         <div className={s.containerLoader}>
-            <Levels size="35" color="#ff751d" speed={0.65} />
+            <Levels size="35" color="var(--accent-color)" speed={0.65} />
         </div>
     );
 };
