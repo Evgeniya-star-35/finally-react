@@ -33,14 +33,11 @@ export default function TransactionTable({
     // }, []);
 
     useEffect(() => {
-
+        dispatch(transactionsOperations.setBalanceOperation());
         if (date) {
             dispatch(transactionsOperations.getTransactionsDayOperation(date));
         }
     }, [date, dispatch]);
-
-
-       
 
     return (
         <>
