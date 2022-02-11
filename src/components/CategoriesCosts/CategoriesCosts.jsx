@@ -13,7 +13,7 @@ export default function CategoriesCosts({ transactionsType, onClick }) {
                     </svg>
                 </button>
 
-                {transactionsType === 'costs' ? (
+                {transactionsType === 'cost' ? (
                     <h2 className={s.title}>Расходы</h2>
                 ) : (
                     <h2 className={s.title}>Доходы</h2>
@@ -26,7 +26,7 @@ export default function CategoriesCosts({ transactionsType, onClick }) {
                 </button>
             </div>
 
-            {transactionsType === 'costs' ? (
+            {transactionsType === 'cost' ? (
                 <ul className={s.list}>
                     <li className={s.item}>
                         <p className={s.cost}>00.00</p>
