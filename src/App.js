@@ -78,17 +78,15 @@ function App() {
                         path="/transactions"
                         element={
                             <PrivateRoute
-                                // <PublicRoute
                                 isAuth={isAuth}
                                 component={<TransactionPage />}
                             />
                         }
                     />
                     <Route
-                        path="/coststransactions"
+                        path="/costsTransactions"
                         element={
                             <PrivateRoute
-                                // <PublicRoute
                                 isAuth={isAuth}
                                 component={<CostsTransactionPage />}
                             />
