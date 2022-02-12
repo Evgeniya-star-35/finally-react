@@ -6,13 +6,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
 import PrivateRoute from './routes/privateRouter';
-import transactionsOperations from 'redux/transactions/transactions-operations';
 
-import {
-    getCurrentToken,
-    getCurrentUser,
-    getFetchingCurrentUser,
-} from './redux/auth';
+import { getCurrentUser } from './redux/auth';
 import Loader from './components/Loader';
 
 const HomePage = lazy(() =>
@@ -35,8 +30,6 @@ const ReportPage = lazy(() =>
     import('./_pages/ReportPage' /* webpackChunkName: "report-page" */),
 );
 
-const GooglePage = lazy(() => import('./_pages/GooglePage'));
-
 const DevelopersView = lazy(() =>
     import(
         './_pages/DevelopersView/DevelopersView' /*webpackChunkName: "developers-view" */
@@ -44,8 +37,7 @@ const DevelopersView = lazy(() =>
 );
 function App() {
     const dispatch = useDispatch();
-    const isFetchCurrentUser = useSelector(getFetchingCurrentUser);
-    const { isAuth } = useSelector(state => state.auth);
+const { isAuth } = useSelector(state => state.auth);
     useEffect(() => {
         if (isAuth) {
             dispatch(getCurrentUser());
@@ -55,6 +47,8 @@ function App() {
     useEffect(() => {
         dispatch(getCurrentUser());
     }, [dispatch]);
+
+   
     return (
         <>
             <ToastContainer />
