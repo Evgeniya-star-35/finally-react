@@ -67,7 +67,10 @@ export default function CategoriesReport({ transactionsType, onClick }) {
 
             <ul className={s.list}>
                 {categories.map(category => {
-                    let sum = transactionTotalSum(transactionsType, category);
+                    let sum = transactionTotalSum(
+                        transactionsType,
+                        category.category,
+                    );
                     if (sum === 0) {
                         return null;
                     }
