@@ -90,11 +90,10 @@ const deleteTransactionOperation = transaction => async dispatch => {
         // dispatch(deleteTransactionSuccess(transaction.id));
         // dispatch(setTotalBalanceSuccess(setBalanceData.data.data.balance));
     } catch (error) {
-        console.log(error);
-        // toast.error(response.data.message, {
-        //     position: 'top-center',
-        //     autoClose: 2500,
-        // });
+        toast.error('Транзакция не найдена', {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     }
 };
 
@@ -123,20 +122,13 @@ const editTransactionOperation = transaction => async dispatch => {
 
 const getTransactionsDayOperation = date => async dispatch => {
     dispatch(getTransactionsRequest());
+
     try {
         const response = await getTransactionsByDate(date);
-        console.log(response.data.result);
-
         dispatch(getTransactionsSuccess(response.data.result));
-    } catch ({ response }) {
-        // if (response.data.message === 'Invalid token') {
-        //     const response = await getTransactionsByDate(date);
-
-        //     dispatch(getTransactionsSuccess(response.data.result));
-        //     return;
-        // }
-        dispatch(getTransactionsError(response.data.message));
-        toast.error(response.data.message, {
+    } catch (error) {
+        dispatch(getTransactionsError(error.message));
+        toast.error(error.message, {
             position: 'top-center',
             autoClose: 2500,
         });
@@ -148,14 +140,14 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
     try {
         const response = await getTransactionsByPeriod(`${month}.${year}`);
         dispatch(getTransactionsMonthYearSuccess(response.data.result));
-    } catch ({ response }) {
-        if (response.data.message === 'Unvalid token') {
-            const response = await getTransactionsByPeriod(`${month}.${year}`);
-            dispatch(getTransactionsMonthYearSuccess(response.data.result));
-            return;
-        }
-        dispatch(getTransactionsMonthYearError(response.data.message));
-        toast.error(response.data.message, {
+    } catch (error) {
+        // if (response.data.message === 'Unvalid token') {
+        //     const response = await getTransactionsByPeriod(`${month}.${year}`);
+        //     dispatch(getTransactionsMonthYearSuccess(response.data.result));
+        //     return;
+        // }
+        dispatch(getTransactionsMonthYearError(error.message));
+        toast.error(error.message, {
             position: 'top-center',
             autoClose: 2500,
         });
@@ -164,8 +156,10 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
 
 const getMonthlyBalancesYear = year => async dispatch => {
     dispatch(getMonthlyBalanceRequest());
+    console.log(year);
     try {
         const response = await getTransactionsByPeriod(year);
+        console.log(response);
         const balances = calculateBalancesPerMonth(response.data.result);
         dispatch(getMonthlyBalanceSuccess(balances));
     } catch ({ response }) {

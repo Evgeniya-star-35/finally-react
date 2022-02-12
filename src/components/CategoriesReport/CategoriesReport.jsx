@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import sprite from '../../images/reportIcons/symbol-defs.svg';
-import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
+import { getTransactionsDay } from '../../redux/transactions/transactions-selectors';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import s from './CategoriesReport.module.css';
 
@@ -23,7 +23,7 @@ const costsCategories = [
 ];
 
 export default function CategoriesReport({ transactionsType, onClick }) {
-    const transactions = useSelector(getTransactionsMonth);
+    const transactions = useSelector(getTransactionsDay);
 
     const transactionsByType = transactionsType => {
         const filterByType = transactions.filter(
