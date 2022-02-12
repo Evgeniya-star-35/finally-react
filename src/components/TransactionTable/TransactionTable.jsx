@@ -38,12 +38,7 @@ export default function TransactionTable({
     const [modalDelete, setModalDelete] = useState(false);
 
     const transactionsList = useSelector(getTransactionsDay);
-    // const transactionsListBAck = getTransactionsByDate(data).then(res =>
-    //     console.log(res),
-    // );
-    // console.log(transactionsListBAck);
 
-    // transactionsList.map(el => console.log(el.id, el.id === transactionId));
     const filteredTransactions = transactionsList
         .filter(item => item.date === date)
         .reverse();

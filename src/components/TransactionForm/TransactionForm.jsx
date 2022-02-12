@@ -180,7 +180,7 @@ export default function TransactionForm({
                                 setNewDate={setNewDate}
                             />
 
-                            <Summary year={year} />
+                            <Summary year={year} month={month} />
                         </div>
                     </>
                 )}

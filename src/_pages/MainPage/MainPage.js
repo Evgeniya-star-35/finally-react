@@ -20,26 +20,26 @@ const MainPage = () => {
     const [type, setType] = useState('incomes');
     const [date, setDate] = useState('');
     const [year, setYear] = useState('');
+    const [month, setMonth] = useState('');
     const [picker, setPicker] = useState(false);
     // const [listRender, setListRender] = useState(true);
     const dispatch = useDispatch();
 
     const day = new Date();
-
     const startDate = `${day.getDate()}.${
         day.getMonth() + 1
     }.${day.getFullYear()}`;
 
     useEffect(() => {
         setDate(startDate);
+        setMonth(startDate.split('.')[1]);
         setYear(startDate.split('.')[2]);
         /* eslint-disable-next-line */
     }, []);
-    useEffect(() => {
-        dispatch(transactionsOperations.getTransactionsDayOperation(date));
-    }, [date, dispatch]);
+
     const setNewDate = date => {
         setDate(date);
+        setMonth(startDate.split('.')[1]);
         setYear(date.split('.')[2]);
     };
     const handleCalendarClick = () => {
@@ -49,11 +49,19 @@ const MainPage = () => {
         const newDate = `${dateNew.getUTCDate()}.${
             dateNew.getUTCMonth() + 1
         }.${dateNew.getUTCFullYear()}`;
-
         setDate(newDate);
+        setMonth(newDate.split('.')[1]);
         setYear(newDate.split('.')[2]);
         setPicker(false);
     };
+    console.log(month, year);
+
+    useEffect(() => {
+        dispatch(transactionsOperations.getTransactionsDayOperation(date));
+        dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
+    }, [date, year, month, dispatch]);
+    console.log(month, year);
+
     const setTypePlaceholder = () => {
         if (type === 'cost') {
             setType('Описание товара');
@@ -123,6 +131,8 @@ const MainPage = () => {
                                     picker={picker}
                                     closePicker={closePicker}
                                     handleCalendarClick={handleCalendarClick}
+                                    month={month}
+                                    year={year}
                                 />
                                 {/* <div className={s.transactionSummaryWrapper}>
                                     <Summary year={year} />

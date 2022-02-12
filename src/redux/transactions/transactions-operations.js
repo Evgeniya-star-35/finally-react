@@ -122,11 +122,9 @@ const editTransactionOperation = transaction => async dispatch => {
 
 const getTransactionsDayOperation = date => async dispatch => {
     dispatch(getTransactionsRequest());
-    console.log(date);
 
     try {
         const response = await getTransactionsByDate(date);
-        console.log(response);
         dispatch(getTransactionsSuccess(response.data.result));
     } catch (error) {
         dispatch(getTransactionsError(error.message));
@@ -158,8 +156,10 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
 
 const getMonthlyBalancesYear = year => async dispatch => {
     dispatch(getMonthlyBalanceRequest());
+    console.log(year);
     try {
         const response = await getTransactionsByPeriod(year);
+        console.log(response);
         const balances = calculateBalancesPerMonth(response.data.result);
         dispatch(getMonthlyBalanceSuccess(balances));
     } catch ({ response }) {
