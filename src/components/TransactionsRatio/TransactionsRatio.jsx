@@ -27,7 +27,7 @@ const TransactionsRatio = ({ currentMonth, currentYear }) => {
             transaction => transaction.type === type,
         );
         filterByType.map(elem => (total += elem.sum));
-        return total;
+        return total.toFixed(2);
     };
 
     return (
@@ -37,7 +37,7 @@ const TransactionsRatio = ({ currentMonth, currentYear }) => {
                     <div className={s.ratio_cost}>
                         <p className={s.ratio_title}>Расходы:</p>
                         <span className={s.ratio_costs_sum}>
-                            {`- ${totalSum('cost').toLocaleString('ru')}`}.00
+                            {`- ${totalSum('cost').toLocaleString('ru')}`}
                             грн.
                         </span>
                     </div>
@@ -45,7 +45,7 @@ const TransactionsRatio = ({ currentMonth, currentYear }) => {
                     <div className={s.ratio_incomes}>
                         <p className={s.ratio_title}>Доходы:</p>
                         <span className={s.ratio_incomes_sum}>
-                            {`+ ${totalSum('incomes').toLocaleString('ru')}`}.00
+                            {`+ ${totalSum('incomes').toLocaleString('ru')}`}
                             грн.
                         </span>
                     </div>
