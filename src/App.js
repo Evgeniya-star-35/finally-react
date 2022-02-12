@@ -45,12 +45,12 @@ const DevelopersView = lazy(() =>
 function App() {
     const dispatch = useDispatch();
     const isFetchCurrentUser = useSelector(getFetchingCurrentUser);
-    // console.log(isFetchCurrentUser);//false
     const { isAuth } = useSelector(state => state.auth);
-    // console.log(isAuth);
     useEffect(() => {
-        dispatch(getCurrentUser());
-    }, [dispatch]);
+        if (isAuth) {
+            dispatch(getCurrentUser());
+        }
+    }, [dispatch, isAuth]);
     return (
         <>
             <ToastContainer />
@@ -110,7 +110,16 @@ function App() {
                             />
                         }
                     />
-                    <Route path="/" element={GooglePage} />
+                    <Route
+                        path="/qwe"
+                        element={
+                            <PublicRoute
+                                isAuth={isAuth}
+                                component={<GooglePage />}
+                            />
+                        }
+                    />
+                    {/* <Route path="/qwe" element={<GooglePage />} /> */}
                 </Routes>
             </Suspense>
         </>
