@@ -21,10 +21,18 @@ export default function OurTeam() {
                             <span>{hardcore.position}</span>
                         </h3>
                         <div className={s.icons}>
-                            <a href={hardcore.linkedIn}>
+                            <a
+                                href={hardcore.linkedIn}
+                                target="blank"
+                                rel="noreferrer noopener"
+                            >
                                 <i className="ion-social-linkedin-outline"></i>
                             </a>
-                            <a href={hardcore.gitHub}>
+                            <a
+                                href={hardcore.gitHub}
+                                target="blank"
+                                rel="noreferrer noopener"
+                            >
                                 <i className="ion-social-github-outline"></i>
                             </a>
                         </div>

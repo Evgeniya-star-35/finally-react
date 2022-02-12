@@ -62,10 +62,11 @@ export const getCurrentUser = createAsyncThunk(
         if (!persistToken) {
             return rejectWithValue();
         }
+
         token.set(persistToken);
         try {
             const { data } = await axios.get('/users/current');
-            return data;
+            return data.data;
         } catch (error) {
             rejectWithValue(error.message);
         }
@@ -83,8 +84,14 @@ export const getBalance = createAsyncThunk(
     },
 );
 
-export const googleAuth = createAsyncThunk('auth/google', async userToken => {
-    token.set(userToken);
-    const { data } = await axios.get('/users/current');
-    return data.user;
-});
+export const googleAuth = createAsyncThunk(
+    'auth/google',
+    async (userToken, { rejectWithValue }) => {
+        try {
+            token.set(userToken);
+            return userToken;
+        } catch (error) {
+            rejectWithValue(error.message);
+        }
+    },
+);

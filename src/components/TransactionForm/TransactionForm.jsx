@@ -46,19 +46,19 @@ export default function TransactionForm({
                 return;
         }
     };
-
+    const transaction = {
+        type,
+        date,
+        category,
+        subCategory: product,
+        sum,
+        day,
+        month,
+        year,
+    };
     const handleSubmit = e => {
         e.preventDefault();
-        const transaction = {
-            type,
-            date,
-            category,
-            subCategory: product,
-            sum,
-            day,
-            month,
-            year,
-        };
+
         dispatch(transactionsOperations.addTransactionOperation(transaction));
         dispatch(transactionsOperations.getTransactionsDayOperation(date));
         reset();
@@ -172,6 +172,7 @@ export default function TransactionForm({
                     <>
                         <div className={s.transactionSummaryWrapper}>
                             <TransactionTable
+                                transaction={transaction}
                                 date={date}
                                 subCategory={product}
                                 sum={sum}

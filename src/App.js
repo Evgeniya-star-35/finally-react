@@ -37,12 +37,18 @@ const DevelopersView = lazy(() =>
 );
 function App() {
     const dispatch = useDispatch();
-
-    const { isAuth } = useSelector(state => state.auth);
+const { isAuth } = useSelector(state => state.auth);
+    useEffect(() => {
+        if (isAuth) {
+            dispatch(getCurrentUser());
+        }
+    }, [dispatch, isAuth]);
 
     useEffect(() => {
         dispatch(getCurrentUser());
     }, [dispatch]);
+
+   
     return (
         <>
             <ToastContainer />
@@ -52,7 +58,7 @@ function App() {
                         path="/"
                         element={
                             <PublicRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<HomePage />}
                             />
                         }
@@ -61,7 +67,7 @@ function App() {
                         path="/developers"
                         element={
                             <PublicRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<DevelopersView />}
                             />
                         }
@@ -70,18 +76,16 @@ function App() {
                         path="/transactions"
                         element={
                             <PrivateRoute
-                                // <PublicRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<TransactionPage />}
                             />
                         }
                     />
                     <Route
-                        path="/coststransactions"
+                        path="/costsTransactions"
                         element={
                             <PrivateRoute
-                                // <PublicRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<CostsTransactionPage />}
                             />
                         }
@@ -90,7 +94,7 @@ function App() {
                         path="/mainPage"
                         element={
                             <PrivateRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<MainPage />}
                             />
                         }
@@ -99,7 +103,7 @@ function App() {
                         path="/reports"
                         element={
                             <PrivateRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<ReportPage />}
                             />
                         }
