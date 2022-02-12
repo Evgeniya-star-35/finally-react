@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import transactionsOperations from 'redux/transactions/transactions-operations';
-import { getTransactionsDay } from '../../redux/transactions/transactions-selectors';
+import {
+    getTransactionsDay,
+    getTotalBalance,
+} from '../../redux/transactions/transactions-selectors';
 import Modal from '../Modal/Modal';
 import Button from '../Buttons/Button';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
@@ -25,12 +28,15 @@ export default function TransactionTable({
     const [showModal, setShowModal] = useState(true);
     const dispatch = useDispatch();
 
+    // const balance = useSelector(getTotalBalance)
     useEffect(() => {
         dispatch(transactionsOperations.setBalanceOperation());
         if (date) {
-            dispatch(transactionsOperations.getTransactionsDayOperation(date));
+            // dispatch(transactionsOperations.getTransactionsDayOperation(date));
         }
     }, [date, dispatch]);
+    const transactions = useSelector(getTransactionsDay);
+    console.log(transactions);
     const transactionsList = store.getState().transactions.transactionsDay;
     const filteredTransactions = transactionsList.filter(
         item => item.type === type,
