@@ -43,13 +43,45 @@
 }
 
 .close {
-    position: absolute;
     top: 20px;
     left: 328px;
+    border-radius: 50px;
+    position: absolute;
+    top: 1.5rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
     border: none;
     background-color: transparent;
+    font-size: 1.5rem;
+    transition: 0.25s linear;
     cursor: pointer;
-    border-radius: 50px;
+}
+.close::before,
+.close::after {
+    position: absolute;
+    content: '';
+    width: 1.25rem;
+    height: 0.125rem;
+    background-color: white;
+}
+.close:before {
+    transform: rotate(-45deg);
+}
+.close:after {
+    transform: rotate(45deg);
+}
+
+.close:hover {
+    transform: rotate(360deg);
+}
+
+.close:before,
+.close:after {
+    background-color: rgb(255, 110, 13);
 }
 
 /* .close:hover {
