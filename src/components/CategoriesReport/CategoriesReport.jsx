@@ -22,7 +22,7 @@ const costsCategories = [
     { id: '13', category: 'Прочее', icon: 'ufo' },
 ];
 
-export default function CategoriesCosts({ transactionsType, onClick }) {
+export default function CategoriesReport({ transactionsType, onClick }) {
     const transactions = useSelector(getTransactionsMonth);
 
     const transactionsByType = transactionsType => {
