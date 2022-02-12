@@ -62,6 +62,7 @@ export const getCurrentUser = createAsyncThunk(
         if (!persistToken) {
             return rejectWithValue();
         }
+
         token.set(persistToken);
         try {
             const { data } = await axios.get('/users/current');

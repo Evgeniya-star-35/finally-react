@@ -51,6 +51,10 @@ function App() {
             dispatch(getCurrentUser());
         }
     }, [dispatch, isAuth]);
+
+    useEffect(() => {
+        dispatch(getCurrentUser());
+    }, [dispatch]);
     return (
         <>
             <ToastContainer />
