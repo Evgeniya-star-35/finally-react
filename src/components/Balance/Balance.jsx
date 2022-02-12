@@ -75,6 +75,9 @@ const Balance = () => {
                                     type="submit"
                                     text="Подтвердить"
                                 />
+                                {modalClose && (
+                                    <BalanceModal onClick={toggleModal} />
+                                )}
                             </>
                         ) : (
                             <>
@@ -91,7 +94,6 @@ const Balance = () => {
                         )}
                     </div>
                 </form>
-                {modalClose && <BalanceModal onClick={toggleModal} />}
             </div>
         </div>
     );
