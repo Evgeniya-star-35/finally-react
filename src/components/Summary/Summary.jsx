@@ -1,34 +1,32 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getMonthlyBalances } from '../../redux/transactions/transactions-selectors';
+import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import arrOfMonths from '../../data/month.json';
 import s from './Summary.module.css';
 
-export default function Summary({ year }) {
+export default function Summary({ year, month }) {
     const dispatch = useDispatch();
     // const balance = useSelector(getTotalBalance);
-    const monthsBalance = useSelector(getMonthlyBalances);
-    const sortBalance = [...monthsBalance].sort((a, b) => b.month - a.month);
+    // const sortBalance = [...monthsBalance].sort((a, b) => b.month - a.month);
+    // console.log(sortBalance);
     useEffect(() => {
-        if (year > 0) {
-            dispatch(transactionsOperations.getMonthlyBalancesYear(year));
-        }
-    }, [dispatch, year]);
+        // if (year > 0) {
+        dispatch(transactionsOperations.getMonthlyBalancesYear(year));
+        // }
+    }, [dispatch, month, year]);
+    const monthsBalance = useSelector(getTransactionsMonth);
+
+    console.log(monthsBalance);
     return (
         <>
             <div className={s.summaryWrap}>
                 <h3 className={s.title}>Сводка</h3>
                 <ul className={s.list}>
-                    {sortBalance.map(({ month, sum }, id) => (
+                    {monthsBalance.map(({ month, value }, id) => (
                         <li key={id} className={s.item}>
-                            <p className={s.month}>
-                                {arrOfMonths.find(el => el.id === month).name}
-                            </p>
-                            <p className={s.sum}>
-                                {sum}
-                                {/* {month.amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ')}{' '} */}
-                            </p>
+                            <p className={s.month}>{month}</p>
+                            <p className={s.sum}>{value}</p>
                         </li>
                     ))}
                 </ul>

@@ -7,9 +7,9 @@ const addTransaction = (transaction, balance) =>
 const deleteTransaction = id => axios.delete(`/transaction/${id}`);
 const editTransaction = (transaction, balance) =>
     axios.put(`/transaction/${transaction.id}`, { transaction, balance });
-const getTransactionsByDate = date => axios.get(`/transaction/:${date}`);
+const getTransactionsByDate = date => axios.get(`/transaction/${date}`);
 const getTransactionsByPeriod = period =>
-    axios.get(`/transaction/period/:${period}`);
+    axios.get(`/transaction/period/${period}`);
 
 export {
     addTransaction,

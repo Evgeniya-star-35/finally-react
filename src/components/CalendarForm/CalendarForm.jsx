@@ -8,7 +8,6 @@ export default function CalendarForm({
     closePicker,
     picker,
     align,
-    setNewDate,
 }) {
     return (
         <div onClick={handleCalendarClick} className={s.calendarWrapper}>

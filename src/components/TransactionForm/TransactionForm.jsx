@@ -60,7 +60,7 @@ export default function TransactionForm({
         e.preventDefault();
 
         dispatch(transactionsOperations.addTransactionOperation(transaction));
-        dispatch(transactionsOperations.getTransactionsDayOperation(date));
+        // dispatch(transactionsOperations.getTransactionsDayOperation(date));
         reset();
     };
 
@@ -180,7 +180,7 @@ export default function TransactionForm({
                                 setNewDate={setNewDate}
                             />
 
-                            <Summary year={year} />
+                            <Summary year={year} month={month} />
                         </div>
                     </>
                 )}
