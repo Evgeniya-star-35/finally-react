@@ -163,7 +163,7 @@ export default function TransactionForm({
                 </div>
             </form>
             {/* <Media
-                query="(min-width: 768px)"
+                query="(max-width: 767.98px)"
                 render={() => <TransactionList />}
             /> */}
             <Media

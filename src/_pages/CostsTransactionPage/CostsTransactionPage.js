@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-import Background from 'components/Background/Background';
+import Background from '../../components/Background/Background';
 import AuthHeader from '../../components/Header/AuthHeader';
-// import TransactionTable from 'components/TransactionTable';
-import Container from 'components/Container/Container';
+import Container from '../../components/Container/Container';
+import TransactionForm from '../../components/TransactionForm';
 
-import TransactionForm from 'components/TransactionForm';
-
-const TransactionPage = (category, setCategory) => {
-    const [type, setType] = useState('incomes');
+const CostsTransactionPage = (category, setCategory) => {
+    const [type, setType] = useState('cost');
     const [date, setDate] = useState('');
     const [year, setYear] = useState('');
     const day = new Date();
@@ -41,4 +39,4 @@ const TransactionPage = (category, setCategory) => {
         </>
     );
 };
-export default TransactionPage;
+export default CostsTransactionPage;
