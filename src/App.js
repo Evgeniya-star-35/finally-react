@@ -60,7 +60,7 @@ function App() {
                         path="/"
                         element={
                             <PublicRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<HomePage />}
                             />
                         }
@@ -69,7 +69,7 @@ function App() {
                         path="/developers"
                         element={
                             <PublicRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<DevelopersView />}
                             />
                         }
@@ -78,7 +78,7 @@ function App() {
                         path="/transactions"
                         element={
                             <PrivateRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<TransactionPage />}
                             />
                         }
@@ -87,7 +87,7 @@ function App() {
                         path="/costsTransactions"
                         element={
                             <PrivateRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<CostsTransactionPage />}
                             />
                         }
@@ -96,7 +96,7 @@ function App() {
                         path="/mainPage"
                         element={
                             <PrivateRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<MainPage />}
                             />
                         }
@@ -105,12 +105,12 @@ function App() {
                         path="/reports"
                         element={
                             <PrivateRoute
-                                isAuth={isAuth}
+                                // isAuth={isAuth}
                                 component={<ReportPage />}
                             />
                         }
                     />
-                    <Route
+                    {/* <Route
                         path="/qwe"
                         element={
                             <PublicRoute
@@ -118,7 +118,7 @@ function App() {
                                 component={<GooglePage />}
                             />
                         }
-                    />
+                    /> */}
                     {/* <Route path="/qwe" element={<GooglePage />} /> */}
                 </Routes>
             </Suspense>

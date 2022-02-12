@@ -6,8 +6,17 @@ import Container from 'components/Container';
 // import Balance from 'components/Balance';
 // import TransactionForm from 'components/TransactionForm';
 import Footer from 'components/Footer/Footer';
+import { useDispatch } from 'react-redux';
+import { googleAuth } from 'redux/auth';
 
 const HomePage = () => {
+    const dispatch = useDispatch();
+
+    const token = new URLSearchParams(document.location.search).get('token');
+    if (token) {
+        dispatch(googleAuth(token));
+    }
+
     return (
         <>
             <Header />
