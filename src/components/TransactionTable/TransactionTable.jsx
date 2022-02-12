@@ -21,8 +21,9 @@ export default function TransactionTable({
     sum,
     category,
     subCategory,
+    // transaction,
 }) {
-    const [transaction, setTransaction] = useState('');
+    const [transactionId, setTransactionId] = useState('');
     const [modalDelete, setModalDelete] = useState(false);
     const [modalEdit, setModalEdit] = useState(false);
     const [showModal, setShowModal] = useState(true);
@@ -35,33 +36,36 @@ export default function TransactionTable({
             // dispatch(transactionsOperations.getTransactionsDayOperation(date));
         }
     }, [date, dispatch]);
-    const transactions = useSelector(getTransactionsDay);
-    console.log(transactions);
-    const transactionsList = store.getState().transactions.transactionsDay;
-    const filteredTransactions = transactionsList.filter(
-        item => item.type === type,
-    );
+
+    const transactionsList = useSelector(getTransactionsDay);
+    transactionsList.map(el => console.log(el.id, el.id === transactionId));
+    const filteredTransactions = transactionsList
+        .filter(item => item.date === date)
+        .reverse();
 
     const toggleModal = () => {
         setModalDelete(!modalDelete);
     };
 
-    const handleDeleteClick = transaction => {
+    const handleDeleteClick = id => {
+        setTransactionId(id);
         toggleModal();
-        setTransaction(transaction.id);
     };
     const onDeleteCancel = () => {
-        setTransaction('');
+        setTransactionId('');
         setModalDelete(false);
     };
-
-    const onDeleteOk = () => {
+    const onDeleteOk = id => {
         setModalDelete(false);
-        const transactionToDelete = transactionsList.find(
-            item => item._id === transaction,
+        const transactionToDelete = filteredTransactions.find(
+            item => item.id === id,
         );
-        dispatch(transactionsOperations.deleteTransaction(transactionToDelete));
-        setTransaction('');
+        dispatch(
+            transactionsOperations.deleteTransactionOperation(
+                transactionToDelete,
+            ),
+        );
+        setTransactionId('');
     };
 
     return (
@@ -81,7 +85,7 @@ export default function TransactionTable({
                     <div className={st.modalBtns}>
                         <Button
                             type="button"
-                            onClick={handleDeleteClick}
+                            onClick={onDeleteOk(transactionId)}
                             text={'да'}
                         />
                         <Button
@@ -119,7 +123,7 @@ export default function TransactionTable({
                             </thead>
 
                             <tbody className={s.tbody}>
-                                {transactionsList.map(
+                                {filteredTransactions.map(
                                     ({
                                         date,
                                         subCategory,
@@ -140,7 +144,9 @@ export default function TransactionTable({
                                                 <button
                                                     type="button"
                                                     className={s.button}
-                                                    onClick={handleDeleteClick}
+                                                    onClick={() =>
+                                                        handleDeleteClick(id)
+                                                    }
                                                 >
                                                     <svg
                                                         width="18"

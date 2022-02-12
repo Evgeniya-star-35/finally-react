@@ -38,7 +38,7 @@ const transactionsDay = createReducer([], {
     [getTransactionsSuccess]: (state, { payload }) => [...state, ...payload],
     [addTransactionSuccess]: (state, { payload }) => [...state, payload],
     [deleteTransactionSuccess]: (state, { payload }) =>
-        state.filter(item => item._id !== payload),
+        state.filter(item => item.id !== payload),
     [editTransactionSuccess]: (state, { payload }) =>
         state.map(item => (item._id === payload._id ? payload : item)),
 });

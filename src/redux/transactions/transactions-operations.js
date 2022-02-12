@@ -9,6 +9,7 @@ import {
     addTransactionError,
     deleteTransactionRequest,
     deleteTransactionSuccess,
+    deleteTransactionError,
     editTransactionRequest,
     editTransactionSuccess,
     editTransactionError,
@@ -77,25 +78,23 @@ const addTransactionOperation = transaction => async dispatch => {
 
 const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
-    const balance = calculateBalance(transaction, 'delete');
     try {
-        await deleteTransaction(transaction._id);
-        const setBalanceData = await fetchBalance(balance);
-        dispatch(deleteTransactionSuccess(transaction._id));
-        dispatch(setTotalBalanceSuccess(setBalanceData.data.data.balance));
-    } catch ({ response }) {
-        if (response.data.message === 'Unvalid token') {
-            await deleteTransaction(transaction._id);
-            const setBalanceData = await fetchBalance(balance);
-            dispatch(deleteTransactionSuccess(transaction._id));
-            dispatch(setTotalBalanceSuccess(setBalanceData.data.data.balance));
-            return;
-        }
-        dispatch(addTransactionError(response.data.message));
-        toast.error(response.data.message, {
-            position: 'top-center',
-            autoClose: 2500,
-        });
+        console.log(transaction.id);
+        const res = await deleteTransaction(transaction.id);
+        console.log(res);
+        const balance = calculateBalance(transaction, 'delete');
+        console.log(balance);
+
+        dispatch(setTotalBalanceSuccess(balance));
+
+        // dispatch(deleteTransactionSuccess(transaction.id));
+        // dispatch(setTotalBalanceSuccess(setBalanceData.data.data.balance));
+    } catch (error) {
+        console.log(error);
+        // toast.error(response.data.message, {
+        //     position: 'top-center',
+        //     autoClose: 2500,
+        // });
     }
 };
 
@@ -210,8 +209,8 @@ const calculateBalance = (transaction, actionType) => {
                 : Number(initialBalance) - Number(transaction.sum);
         case 'delete':
             return transaction.type === 'incomes'
-                ? Number(initialBalance) - Number(transaction.sum)
-                : Number(initialBalance) + Number(transaction.sum);
+                ? Number(initialBalance) + Number(transaction.sum)
+                : Number(initialBalance) - Number(transaction.sum);
         case 'edit':
             const initialTransaction = transactionsList.find(
                 item => item._id === transaction._id,
