@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logout } from '../../redux/auth/auth-operations';
 import ModalLogout from 'components/Modal/Modal';
 import Button from '../../components/Buttons/Button';
@@ -24,9 +25,11 @@ export default function AuthHeader() {
     };
     return (
         <header className={s.authHeader}>
-            <svg width="90" height="31" className={s.logo}>
-                <use href={`${sprite}#icon-logo`}></use>
-            </svg>
+            <Link to="/">
+                <svg width="90" height="31" className={s.logo}>
+                    <use href={`${sprite}#icon-logo`}></use>
+                </svg>
+            </Link>
             <div className={s.authImg}>
                 <Avatar
                     name="User"

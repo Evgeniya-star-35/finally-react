@@ -13,7 +13,7 @@ const GooglePage = () => {
     dispatch(googleAuth(token));
     console.log('isAuth:', isAuth);
 
-    return isAuth ? <Navigate to="/" /> : <Navigate to="/login" />;
+    return isAuth ? <Navigate to="/developers" /> : <Navigate to="/" />;
 };
 
 export default GooglePage;
