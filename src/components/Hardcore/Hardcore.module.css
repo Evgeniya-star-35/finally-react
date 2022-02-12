@@ -26,7 +26,7 @@ figure:focus {
     color: #ffffff;
     text-align: center;
     line-height: 1.4em;
-    background-color: #141414;
+    background-color: #f76308;
 }
 .snip1344 * {
     -webkit-box-sizing: border-box;
@@ -67,18 +67,19 @@ figure:focus {
 .snip1344 h3 {
     margin: 0 0 5px;
     font-weight: 400;
+    color: #000000;
 }
 .snip1344 h3 span {
     display: block;
     font-size: 0.6em;
-    color: #f39c12;
+    color: #000000;
     opacity: 0.75;
 }
 .snip1344 i {
     padding: 10px 5px;
     display: inline-block;
     font-size: 32px;
-    color: #ffffff;
+    color: #000000;
     text-align: center;
     opacity: 0.65;
 }
@@ -127,7 +128,7 @@ figure:focus {
 }
 
 .content {
-    background-color: #212121;
+    background-color: #f5f6fb;
     display: flex;
     border: transparent;
     border-radius: 20px;
@@ -156,7 +157,7 @@ figure:focus {
 
 .close {
     position: absolute;
-    top: 4.5rem;
+    top: 1.5rem;
     right: 0.5rem;
     display: flex;
     align-items: center;

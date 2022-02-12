@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import s from './Footer.module.css';
 import copyright from '../../images/copyright.svg';
-import heart from '../../images/favorite-heart-button.svg';
-import separator from '../../images/separator.svg';
+import heart from '../../images/heart.png';
 
 function Footer() {
     return (
@@ -16,24 +15,8 @@ function Footer() {
                     height="18"
                     className={s.copyRight}
                 />
-                <span>2022</span>
-                <span className={s.separator}>
-                    <img
-                        src={separator}
-                        alt="separator"
-                        height="14px"
-                        width="0"
-                    ></img>
-                </span>
-                <span>All Rights Reserved</span>
-                <span className={s.separator}>
-                    <img
-                        src={separator}
-                        alt="separator"
-                        height="14px"
-                        width="0"
-                    ></img>
-                </span>
+                <span className={s.gap}>2022 |</span>
+                <span className={s.gap}>All Rights Reserved |</span>
                 Developed with
                 <img
                     src={heart}
