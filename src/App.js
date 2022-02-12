@@ -110,16 +110,6 @@ function App() {
                             />
                         }
                     />
-                    {/* <Route
-                        path="/qwe"
-                        element={
-                            <PublicRoute
-                                isAuth={isAuth}
-                                component={<GooglePage />}
-                            />
-                        }
-                    /> */}
-                    {/* <Route path="/qwe" element={<GooglePage />} /> */}
                 </Routes>
             </Suspense>
         </>
