@@ -110,7 +110,7 @@ function App() {
                             />
                         }
                     />
-                    <Route path="/googleAuth" element={GooglePage} />
+                    <Route path="/" element={GooglePage} />
                 </Routes>
             </Suspense>
         </>
