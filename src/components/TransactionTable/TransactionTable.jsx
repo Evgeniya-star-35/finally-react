@@ -8,6 +8,10 @@ import {
     getTransactionsDay,
     getTotalBalance,
 } from '../../redux/transactions/transactions-selectors';
+import {
+    getTransactionsByDate,
+    getTransactionsByPeriod,
+} from '../../services/transactionApi';
 import Modal from '../Modal/Modal';
 import Button from '../Buttons/Button';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
@@ -23,22 +27,23 @@ export default function TransactionTable({
     subCategory,
     // transaction,
 }) {
+    // const dispatch = useDispatch();
+    const balance = useSelector(getTotalBalance);
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(transactionsOperations.setBalanceOperation(balance));
+    }, [date, dispatch, balance]);
     const [transactionId, setTransactionId] = useState('');
     const [modalDelete, setModalDelete] = useState(false);
-    const [modalEdit, setModalEdit] = useState(false);
-    const [showModal, setShowModal] = useState(true);
-    const dispatch = useDispatch();
-
-    // const balance = useSelector(getTotalBalance)
-    useEffect(() => {
-        dispatch(transactionsOperations.setBalanceOperation());
-        if (date) {
-            // dispatch(transactionsOperations.getTransactionsDayOperation(date));
-        }
-    }, [date, dispatch]);
 
     const transactionsList = useSelector(getTransactionsDay);
-    transactionsList.map(el => console.log(el.id, el.id === transactionId));
+    // const transactionsListBAck = getTransactionsByDate(data).then(res =>
+    //     console.log(res),
+    // );
+    // console.log(transactionsListBAck);
+
+    // transactionsList.map(el => console.log(el.id, el.id === transactionId));
     const filteredTransactions = transactionsList
         .filter(item => item.date === date)
         .reverse();
@@ -56,7 +61,6 @@ export default function TransactionTable({
         setModalDelete(false);
     };
     const onDeleteOk = id => {
-        setModalDelete(false);
         const transactionToDelete = filteredTransactions.find(
             item => item.id === id,
         );
@@ -66,14 +70,16 @@ export default function TransactionTable({
             ),
         );
         setTransactionId('');
+        toggleModal();
     };
+    console.log(modalDelete);
 
     return (
         <>
             {modalDelete && (
                 <Modal
-                    handleClickRight={onDeleteCancel}
-                    handleClickLeft={onDeleteOk}
+                    // handleClickRight={onDeleteCancel}
+                    // handleClickLeft={onDeleteOk(transactionI)}
                     onClose={onDeleteCancel}
                 >
                     <button className={st.close} onClick={toggleModal}>

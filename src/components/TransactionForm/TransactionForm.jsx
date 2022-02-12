@@ -60,7 +60,7 @@ export default function TransactionForm({
         e.preventDefault();
 
         dispatch(transactionsOperations.addTransactionOperation(transaction));
-        dispatch(transactionsOperations.getTransactionsDayOperation(date));
+        // dispatch(transactionsOperations.getTransactionsDayOperation(date));
         reset();
     };
 

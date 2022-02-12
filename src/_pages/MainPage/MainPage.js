@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Media from 'react-media';
 import AuthHeader from '../../components/Header/AuthHeader';
 import Balance from 'components/Balance/Balance';
 import Container from '../../components/Container';
+import transactionsOperations from 'redux/transactions/transactions-operations';
 import CostsButton from 'components/Buttons/CostsAndIncomesButtons/CostsButton';
 import IncomesButton from 'components/Buttons/CostsAndIncomesButtons/IncomesButton';
 import GoToReports from 'components/GoToReports';
@@ -20,6 +22,7 @@ const MainPage = () => {
     const [year, setYear] = useState('');
     const [picker, setPicker] = useState(false);
     // const [listRender, setListRender] = useState(true);
+    const dispatch = useDispatch();
 
     const day = new Date();
 
@@ -32,7 +35,9 @@ const MainPage = () => {
         setYear(startDate.split('.')[2]);
         /* eslint-disable-next-line */
     }, []);
-
+    useEffect(() => {
+        dispatch(transactionsOperations.getTransactionsDayOperation(date));
+    }, [date, dispatch]);
     const setNewDate = date => {
         setDate(date);
         setYear(date.split('.')[2]);

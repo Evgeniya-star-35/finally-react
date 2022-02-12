@@ -35,8 +35,6 @@ const ReportPage = lazy(() =>
     import('./_pages/ReportPage' /* webpackChunkName: "report-page" */),
 );
 
-const GooglePage = lazy(() => import('./_pages/GooglePage'));
-
 const DevelopersView = lazy(() =>
     import(
         './_pages/DevelopersView/DevelopersView' /*webpackChunkName: "developers-view" */
