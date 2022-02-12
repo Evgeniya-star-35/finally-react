@@ -18,20 +18,20 @@ const authPersistConfig = {
     storage,
     whitelist: ['token'],
 };
-const transactionsPersistConfig = {
-    key: 'transaction',
-    storage,
-    whitelist: ['transactionsDay'],
-};
+// const transactionsPersistConfig = {
+//     key: 'transaction',
+//     storage,
+//     whitelist: ['transactionsDay'],
+// };
 const authPersistReducer = persistReducer(authPersistConfig, authReducer);
-const transactionsPersistReducer = persistReducer(
-    transactionsPersistConfig,
-    transactions,
-);
+// const transactionsPersistReducer = persistReducer(
+//     transactionsPersistConfig,
+//     transactions,
+// );
 export const store = configureStore({
     reducer: {
         auth: authPersistReducer,
-        transactions: transactionsPersistReducer,
+        transactions,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
