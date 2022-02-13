@@ -16,6 +16,7 @@ import TransactionForm from 'components/TransactionForm';
 
 import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
+import AvatarModal from '../../components/AvatarLoad';
 
 const MainPage = () => {
     const [type, setType] = useState('incomes');
@@ -146,6 +147,7 @@ const MainPage = () => {
                         </>
                     )}
                 />
+                {/* <AvatarModal /> */}
             </Container>
         </>
     );
