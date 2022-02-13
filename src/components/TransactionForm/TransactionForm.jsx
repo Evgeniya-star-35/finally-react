@@ -11,7 +11,6 @@ import Summary from 'components/Summary';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
 import TransactionTable from 'components/TransactionTable/TransactionTable';
-// import TransactionList from 'components/TransactionListMobile/TransactionList';
 
 export default function TransactionForm({
     date,
@@ -160,10 +159,7 @@ export default function TransactionForm({
                     <Button text="очистить" type="button" onClick={reset} />
                 </div>
             </form>
-            {/* <Media
-                query="(max-width: 767.98px)"
-                render={() => <TransactionList />}
-            /> */}
+
             <Media
                 query="(min-width: 768px)"
                 render={() => (
