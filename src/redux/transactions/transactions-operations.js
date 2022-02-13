@@ -57,7 +57,7 @@ const addTransactionOperation = transaction => async dispatch => {
         if (newBalance < 0) return;
         dispatch(setBalanceOperation(newBalance));
         const response = await addTransaction(transaction);
-        console.log(response);
+        console.log(response.data);
         dispatch(addTransactionSuccess(response.data.newTransaction));
         dispatch(setTotalBalanceSuccess(newBalance));
         dispatch(getCurrentUser());
@@ -77,13 +77,19 @@ const addTransactionOperation = transaction => async dispatch => {
 
 const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
+    console.log(transaction.id);
+
     try {
         const response = await deleteTransaction(transaction.id);
-        console.log(response.data.message);
+
         const newBalance = calculateBalance(transaction, 'delete');
-        console.log(newBalance);
+
         dispatch(setBalanceOperation(newBalance));
         dispatch(deleteTransactionSuccess(response.data.message));
+        toast.success(response.data.message, {
+            position: 'top-center',
+            autoClose: 2500,
+        });
         dispatch(setTotalBalanceSuccess(newBalance));
         dispatch(getCurrentUser());
     } catch (error) {
@@ -95,30 +101,11 @@ const deleteTransactionOperation = transaction => async dispatch => {
     }
 };
 
-const editTransactionOperation = transaction => async dispatch => {
-    dispatch(editTransactionRequest());
-    const balance = calculateBalance(transaction, 'edit');
-
-    try {
-        const response = await fetch.editTransaction(transaction, balance);
-        dispatch(editTransactionSuccess(response.data.result));
-        dispatch(setTotalBalanceSuccess(response.data.balance));
-    } catch ({ response }) {
-        if (response.data.message === 'Unvalid token') {
-            const response = await editTransaction(transaction, balance);
-            dispatch(editTransactionSuccess(response.data.result));
-            dispatch(setTotalBalanceSuccess(response.data.balance));
-            return;
-        }
-        dispatch(editTransactionError(response.data.message));
-        toast.error(response.data.message, {
-            position: 'top-center',
-            autoClose: 2500,
-        });
-    }
-};
-
 const getTransactionsDayOperation = date => async dispatch => {
+    if (!date) {
+        return;
+    }
+    console.log(date);
     dispatch(getTransactionsRequest());
 
     try {
@@ -138,6 +125,10 @@ const getTransactionsDayOperation = date => async dispatch => {
 };
 
 const getTransactionsMonthYear = (month, year) => async dispatch => {
+    console.log(month, year);
+    if (!month && !year) {
+        return;
+    }
     dispatch(getTransactionsMonthYearRequest());
     try {
         const response = await getTransactionsByPeriod(`${month}.${year}`);
@@ -153,11 +144,15 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
 };
 
 const getMonthlyBalancesYear = year => async dispatch => {
+    if (!year) {
+        return;
+    }
     dispatch(getMonthlyBalanceRequest());
-    console.log(year);
+
     try {
         const response = await getTransactionsByPeriod(year);
-        console.log(response);
+
+        console.log(response.data.result.length);
         const balances = calculateBalancesPerMonth(response.data.result);
         dispatch(getMonthlyBalanceSuccess(balances));
     } catch (error) {
@@ -180,7 +175,6 @@ const transactionsOperations = {
     setBalanceOperation,
     addTransactionOperation,
     deleteTransactionOperation,
-    editTransactionOperation,
     getTransactionsMonthYear,
     getMonthlyBalancesYear,
     getTransactionsDayOperation,
@@ -194,7 +188,7 @@ const calculateBalance = (transaction, actionType) => {
     console.log(initialBalance);
     const transactionsList = store.getState().transactions.transactionsDay;
     console.log(transactionsList);
-    if (transactionsList.length === 0) return;
+    // if (transactionsList.length === 0) return;
     switch (actionType) {
         case 'add':
             return transaction.type === 'incomes'

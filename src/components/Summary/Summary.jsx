@@ -12,10 +12,11 @@ export default function Summary({ year, month }) {
     // console.log(sortBalance);
     useEffect(() => {
         dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
-    }, [dispatch, month, year]);
+    }, []);
     const monthsBalance = useSelector(getTransactionsMonth);
 
-    // console.log(monthsBalance);
+    console.log(monthsBalance);
+    console.log(arrOfMonths);
     return (
         <>
             <div className={s.summaryWrap}>
@@ -32,28 +33,3 @@ export default function Summary({ year, month }) {
         </>
     );
 }
-
-//   <li className={s.item}>
-//                         <p className={s.month}>март</p>
-//                         <p className={s.sum}>20000</p>
-//                     </li>
-//                     <li className={s.item}>
-//                         <p className={s.month}>апрель</p>
-//                         <p className={s.sum}>20000</p>
-//                     </li>
-//                     <li className={s.item}>
-//                         <p className={s.month}>май</p>
-//                         <p className={s.sum}>2000</p>
-//                     </li>
-//                     <li className={s.item}>
-//                         <p className={s.month}>июнь</p>
-//                         <p className={s.sum}>2000</p>
-//                     </li>
-//                     <li className={s.item}>
-//                         <p className={s.month}>июль</p>
-//                         <p className={s.sum}>2000</p>
-//                     </li>
-//                     <li className={s.item}>
-//                         <p className={s.month}>август</p>
-//                         <p className={s.sum}>2000</p>
-//                     </li>

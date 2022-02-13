@@ -1,4 +1,4 @@
-const getTotalBalance = state => state.transactions.totalBalance;
+const getTotalBalance = state => state.auth.user.user.balance;
 const getMonthlyBalances = state => state.transactions.monthlyBalancesYear;
 const getTransactionsDay = state => state.transactions.transactionsDay;
 const getTransactionsMonth = state => state.transactions.transactionsMonthYear;

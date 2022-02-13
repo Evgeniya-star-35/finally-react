@@ -40,12 +40,11 @@ export default function TransactionTable({
     };
 
     const handleDeleteClick = id => {
-        console.log(id);
         toggleModal();
         setTransactionId(id);
     };
     const onDeleteCancel = () => {
-        setTransactionId('');
+        // setTransactionId('');
         setModalDelete(false);
     };
     const onDeleteOk = id => {
@@ -67,7 +66,7 @@ export default function TransactionTable({
             {modalDelete && (
                 <Modal
                     // handleClickRight={onDeleteCancel}
-                    // handleClickLeft={onDeleteOk(transactionI)}
+                    // handleClickLeft={onDeleteOk(transactionId)}
                     onClose={onDeleteCancel}
                 >
                     <button className={st.close} onClick={toggleModal}>
