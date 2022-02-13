@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Background from 'components/Background/Background';
 import AuthHeader from '../../components/Header/AuthHeader';
 // import TransactionTable from 'components/TransactionTable';
 import Container from 'components/Container/Container';
 import TransactionForm from 'components/TransactionForm';
 
-const TransactionPage = (category, setCategory) => {
-    const [type, setType] = useState('incomes');
+const TransactionPage = () => {
+    const [type, setType] = useState(null);
     const [date, setDate] = useState('');
     const [year, setYear] = useState('');
+    const { transactionsType } = useParams();
+
+    useEffect(() => {
+        setType(transactionsType);
+    }, [transactionsType]);
+
     const day = new Date();
 
     const startDate = `${day.getDate()}.${
@@ -30,12 +37,7 @@ const TransactionPage = (category, setCategory) => {
             <Background />
             <AuthHeader />
             <Container>
-                <TransactionForm
-                    date={date}
-                    type={type}
-                    category={category}
-                    setCategory={setCategory}
-                />
+                <TransactionForm date={date} type={type} />
             </Container>
         </>
     );
