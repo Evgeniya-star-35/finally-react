@@ -12,7 +12,7 @@ export default function IncomesButton({ getType }) {
                 render={() => (
                     <Link
                         to={{
-                            pathname: '/transactions',
+                            pathname: '/transactions/incomes',
                             state: {
                                 from: { location },
                             },

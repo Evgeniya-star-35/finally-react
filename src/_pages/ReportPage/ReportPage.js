@@ -10,6 +10,7 @@ import GoBackArrow from 'components/GoBack/GoBack';
 import Background from 'components/Background/Background';
 import TransactionsRatio from 'components/TransactionsRatio';
 import transactionsOperations from 'redux/transactions/transactions-operations';
+import AuthHeader from 'components/Header/AuthHeader';
 
 const ReportPage = () => {
     const dispatch = useDispatch();
@@ -53,7 +54,9 @@ const ReportPage = () => {
 
     return (
         <>
+            <AuthHeader />
             <Background />
+
             <GoBackArrow />
             <div className={s.balanceWrap}>
                 <GoToMainButton />

@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { store } from 'redux/store';
+import { getCurrentUser } from '../auth/auth-operations';
 import {
     getTransactionsRequest,
     getTransactionsSuccess,
@@ -39,11 +40,6 @@ const setBalanceOperation = balance => async dispatch => {
         const response = await fetchBalance(balance);
         dispatch(setTotalBalanceSuccess(response.data.data.balance));
     } catch (error) {
-        // if (response.data.message === 'Unvalid token') {
-        //     const response = await fetchBalance(balance);
-        //     dispatch(setTotalBalanceSuccess(response.data.data.balance));
-        //     return;
-        // }
         dispatch(setTotalBalanceError(error.message));
         toast.error(error.message, {
             position: 'top-center',
@@ -54,20 +50,25 @@ const setBalanceOperation = balance => async dispatch => {
 
 const addTransactionOperation = transaction => async dispatch => {
     dispatch(addTransactionRequest());
-    const balance = calculateBalance(transaction, 'add');
 
     try {
-        const response = await addTransaction(transaction, balance);
+        const newBalance = calculateBalance(transaction, 'add');
+        console.log(newBalance);
+        if (newBalance < 0) return;
+        dispatch(setBalanceOperation(newBalance));
+        const response = await addTransaction(transaction);
+        console.log(response);
         dispatch(addTransactionSuccess(response.data.newTransaction));
-        // dispatch(setTotalBalanceSuccess(response.data.balance));
-    } catch ({ response }) {
-        if (response.data.message === 'Unvalid token') {
-            dispatch(addTransactionSuccess(response.data.resultTransaction));
-            dispatch(setTotalBalanceSuccess(response.data.balance));
+        dispatch(setTotalBalanceSuccess(newBalance));
+        dispatch(getCurrentUser());
+    } catch (error) {
+        if (error.message === 'Unvalid token') {
+            dispatch(addTransactionSuccess(error.resultTransaction));
+            dispatch(setTotalBalanceSuccess(error.balance));
             return;
         }
-        dispatch(addTransactionError(response.data.message));
-        toast.error(response.data.message, {
+        dispatch(addTransactionError(error.message));
+        toast.error(error.message, {
             position: 'top-center',
             autoClose: 2500,
         });
@@ -77,14 +78,16 @@ const addTransactionOperation = transaction => async dispatch => {
 const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
     try {
-        console.log(transaction.id);
         const response = await deleteTransaction(transaction.id);
-        console.log(response);
-        const balance = calculateBalance(transaction, 'delete');
-        console.log(balance);
-
-        dispatch(setTotalBalanceSuccess(balance));
+        console.log(response.data.message);
+        const newBalance = calculateBalance(transaction, 'delete');
+        console.log(newBalance);
+        dispatch(setBalanceOperation(newBalance));
+        dispatch(deleteTransactionSuccess(response.data.message));
+        dispatch(setTotalBalanceSuccess(newBalance));
+        dispatch(getCurrentUser());
     } catch (error) {
+        dispatch(deleteTransactionError(error.message));
         toast.error('Транзакция не найдена', {
             position: 'top-center',
             autoClose: 2500,
@@ -120,6 +123,10 @@ const getTransactionsDayOperation = date => async dispatch => {
 
     try {
         const response = await getTransactionsByDate(date);
+        console.log(response.data.result.length);
+        if (response.data.result.length === 0) {
+            return;
+        }
         dispatch(getTransactionsSuccess(response.data.result));
     } catch (error) {
         dispatch(getTransactionsError(error.message));
@@ -135,6 +142,7 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
     try {
         const response = await getTransactionsByPeriod(`${month}.${year}`);
         dispatch(getTransactionsMonthYearSuccess(response.data.result));
+        // dispatch(getCurrentUser());
     } catch (error) {
         dispatch(getTransactionsMonthYearError(error.message));
         toast.error(error.message, {
@@ -182,10 +190,11 @@ export default transactionsOperations;
 
 //-------------helpers--------------------
 const calculateBalance = (transaction, actionType) => {
-    const initialBalance = store.getState().transactions.totalBalance;
+    const initialBalance = store.getState().auth.user.user.balance;
     console.log(initialBalance);
     const transactionsList = store.getState().transactions.transactionsDay;
     console.log(transactionsList);
+    if (transactionsList.length === 0) return;
     switch (actionType) {
         case 'add':
             return transaction.type === 'incomes'
@@ -195,15 +204,7 @@ const calculateBalance = (transaction, actionType) => {
             return transaction.type === 'incomes'
                 ? Number(initialBalance) - Number(transaction.sum)
                 : Number(initialBalance) + Number(transaction.sum);
-        case 'edit':
-            const initialTransaction = transactionsList.find(
-                item => item.id === transaction.id,
-            );
-            const priorBalance =
-                Number(initialBalance) - Number(initialTransaction.sum);
-            return transaction.type === 'incomes'
-                ? Number(priorBalance) + Number(transaction.sum)
-                : Number(priorBalance) - Number(transaction.sum);
+
         default:
             return;
     }
@@ -231,12 +232,4 @@ const calculateBalancesPerMonth = transactions => {
     });
 
     return result;
-};
-
-const dateSplitter = date => {
-    const splittedDate = {
-        month: String(date.split('.')[1]),
-        year: String(date.split('.')[2]),
-    };
-    return splittedDate;
 };

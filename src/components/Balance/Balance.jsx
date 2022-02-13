@@ -21,12 +21,12 @@ const Balance = () => {
     const onFormSubmit = e => {
         e.preventDefault();
         console.log('сума', sum);
-        dispatch(transactionsOperations.setBalanceOperation(sum));
     };
 
     useEffect(() => {
         setSum(balance);
-    }, [balance]);
+        dispatch(transactionsOperations.setBalanceOperation(balance));
+    }, [balance, dispatch]);
 
     //formik
     // const formik = useFormik({
@@ -84,7 +84,9 @@ const Balance = () => {
                         ) : (
                             <>
                                 <p className={s.Input}>
-                                    {`${balance.toLocaleString('ru')}.00 `}
+                                    {`${balance
+                                        .toFixed(2)
+                                        .toLocaleString('ru')}`}{' '}
                                     UAH
                                 </p>
                                 <ConfirmButton
