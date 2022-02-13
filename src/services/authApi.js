@@ -20,7 +20,7 @@ const fetchLogout = () => axios.post('/users/logout');
 
 const fetchCurrent = () => axios.get('/users/current');
 
-const fetchBalance = balance => axios.patch('/users/balance', balance);
+const fetchBalance = balance => axios.patch('/users/balance', { balance });
 
 const googleAuth = () => axios.get('./users/google');
 

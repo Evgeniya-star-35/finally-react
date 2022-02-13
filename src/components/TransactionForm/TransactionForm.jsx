@@ -58,7 +58,6 @@ export default function TransactionForm({
     };
     const handleSubmit = e => {
         e.preventDefault();
-
         dispatch(transactionsOperations.addTransactionOperation(transaction));
         // dispatch(transactionsOperations.getTransactionsDayOperation(date));
         reset();
@@ -73,7 +72,6 @@ export default function TransactionForm({
     return (
         <>
             <GoBackArrow />
-
             <form className={s.transactionForm} onSubmit={handleSubmit}>
                 <div className={s.inputsWrapper}>
                     <Media

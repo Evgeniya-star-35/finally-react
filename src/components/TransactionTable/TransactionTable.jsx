@@ -67,7 +67,6 @@ export default function TransactionTable({
         setTransactionId('');
         toggleModal();
     };
-    console.log(modalDelete);
 
     return (
         <>
