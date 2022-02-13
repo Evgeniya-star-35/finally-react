@@ -85,7 +85,7 @@ const deleteTransactionOperation = transaction => async dispatch => {
         const newBalance = calculateBalance(transaction, 'delete');
 
         dispatch(setBalanceOperation(newBalance));
-        dispatch(deleteTransactionSuccess(response.data.message));
+        dispatch(deleteTransactionSuccess(transaction.id));
         toast.success(response.data.message, {
             position: 'top-center',
             autoClose: 2500,
@@ -105,12 +105,10 @@ const getTransactionsDayOperation = date => async dispatch => {
     if (!date) {
         return;
     }
-    console.log(date);
     dispatch(getTransactionsRequest());
 
     try {
         const response = await getTransactionsByDate(date);
-        console.log(response.data.result.length);
         if (response.data.result.length === 0) {
             return;
         }
@@ -125,7 +123,7 @@ const getTransactionsDayOperation = date => async dispatch => {
 };
 
 const getTransactionsMonthYear = (month, year) => async dispatch => {
-    console.log(month, year);
+    // console.log(month, year);
     if (!month && !year) {
         return;
     }

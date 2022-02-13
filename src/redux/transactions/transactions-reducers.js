@@ -39,20 +39,20 @@ const transactionsDay = createReducer([], {
     [addTransactionSuccess]: (state, { payload }) => [...state, payload],
     [deleteTransactionSuccess]: (state, { payload }) =>
         state.filter(item => item.id !== payload),
-    [editTransactionSuccess]: (state, { payload }) =>
-        state.map(item => (item._id === payload._id ? payload : item)),
 });
 
 const transactionsMonthYear = createReducer([], {
     [getTransactionsMonthYearSuccess]: (_, { payload }) => payload,
+    [deleteTransactionSuccess]: (state, { payload }) =>
+        state.filter(item => item.id !== payload),
+    [addTransactionSuccess]: (state, { payload }) => [...state, payload],
 });
 
 const monthlyBalancesYear = createReducer([], {
     [getMonthlyBalanceSuccess]: (_, { payload }) => payload,
-});
-
-const totalBalance = createReducer(0, {
-    [setTotalBalanceSuccess]: (_, { payload }) => payload,
+    [deleteTransactionSuccess]: (state, { payload }) =>
+        state.filter(item => item.id !== payload),
+    [addTransactionSuccess]: (state, { payload }) => [...state, payload],
 });
 
 const loader = createReducer(false, {
@@ -65,9 +65,6 @@ const loader = createReducer(false, {
     [deleteTransactionRequest]: () => true,
     [deleteTransactionSuccess]: () => false,
     [deleteTransactionError]: () => false,
-    [editTransactionRequest]: () => true,
-    [editTransactionSuccess]: () => false,
-    [editTransactionError]: () => false,
     [getMonthlyBalanceRequest]: () => true,
     [getMonthlyBalanceSuccess]: () => false,
     [getMonthlyBalanceError]: () => false,
@@ -98,9 +95,6 @@ const error = createReducer(null, {
     [deleteTransactionRequest]: () => null,
     [deleteTransactionSuccess]: () => null,
     [deleteTransactionError]: (_, { payload }) => payload,
-    [editTransactionRequest]: () => null,
-    [editTransactionSuccess]: () => null,
-    [editTransactionError]: (_, { payload }) => payload,
     [getMonthlyBalanceRequest]: () => null,
     [getMonthlyBalanceSuccess]: () => null,
     [getMonthlyBalanceError]: (_, { payload }) => payload,
@@ -116,7 +110,6 @@ const transactions = combineReducers({
     transactionsDay,
     transactionsMonthYear,
     monthlyBalancesYear,
-    totalBalance,
     loader,
     error,
 });
