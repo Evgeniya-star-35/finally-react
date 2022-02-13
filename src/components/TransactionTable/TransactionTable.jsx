@@ -133,7 +133,7 @@ export default function TransactionTable({
                                             <td className={s.category}>
                                                 {category}
                                             </td>
-                                            <td>
+                                            <td className={s.sum}>
                                                 {type === 'cost' ? (
                                                     <span className={s.cost}>
                                                         - {sum.toFixed(2)} UAH
