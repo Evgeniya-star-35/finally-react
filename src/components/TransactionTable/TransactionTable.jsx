@@ -123,6 +123,7 @@ export default function TransactionTable({
                                         category,
                                         sum,
                                         id,
+                                        type,
                                     }) => (
                                         <tr key={id} className={s.tableRow}>
                                             <td className={s.date}>{date}</td>
@@ -132,8 +133,16 @@ export default function TransactionTable({
                                             <td className={s.category}>
                                                 {category}
                                             </td>
-                                            <td className={s.sum}>
-                                                {sum.toFixed(2)}
+                                            <td>
+                                                {type === 'cost' ? (
+                                                    <span className={s.cost}>
+                                                        - {sum.toFixed(2)} UAH
+                                                    </span>
+                                                ) : (
+                                                    <span className={s.incomes}>
+                                                        {sum.toFixed(2)} UAH
+                                                    </span>
+                                                )}
                                             </td>
                                             <td className={s.icon}>
                                                 <button

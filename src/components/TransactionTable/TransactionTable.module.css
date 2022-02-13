@@ -50,9 +50,20 @@
     text-align: right;
 }
 
-tbody .sum {
+.cost {
     font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
     color: var(--negative-num);
+}
+
+.incomes {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: var(--income-num);
 }
 
 .tbody {
