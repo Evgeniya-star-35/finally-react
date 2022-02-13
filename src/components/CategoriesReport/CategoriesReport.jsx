@@ -76,7 +76,7 @@ export default function CategoriesReport({ transactionsType, onClick }) {
                     }
                     return (
                         <li key={category.id} className={s.item}>
-                            <p className={s.cost}>{sum}</p>
+                            <p className={s.cost}>{sum.toFixed(2)}</p>
                             <svg width="56" height="56" className={s.icon}>
                                 <use
                                     href={`${sprite}#icon-${category.icon}`}
