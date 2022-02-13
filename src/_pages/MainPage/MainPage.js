@@ -26,12 +26,7 @@ const MainPage = () => {
     const [picker, setPicker] = useState(false);
     // const [listRender, setListRender] = useState(true);
     const dispatch = useDispatch();
-    const balance = useSelector(getTotalBalance);
 
-    console.log(balance);
-    // useEffect(() => {
-    //     dispatch(transactionsOperations.setBalanceOperation(balance));
-    // }, [date, dispatch, balance]);
     const day = new Date();
     const startDate = `${day.getDate()}.${
         day.getMonth() + 1
@@ -65,8 +60,7 @@ const MainPage = () => {
     useEffect(() => {
         dispatch(transactionsOperations.getTransactionsDayOperation(date));
         dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
-        dispatch(transactionsOperations.setBalanceOperation(balance));
-    }, [date, year, balance, month, dispatch]);
+    }, [date, year, month, dispatch]);
 
     const setTypePlaceholder = () => {
         if (type === 'cost') {
