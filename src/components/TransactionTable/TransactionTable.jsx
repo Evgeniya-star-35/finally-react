@@ -19,7 +19,6 @@ import s from './TransactionTable.module.css';
 import st from '../Modal/Modal.module.css';
 
 export default function TransactionTable({
-    type,
     date,
     setNewDate,
     sum,
@@ -27,13 +26,7 @@ export default function TransactionTable({
     subCategory,
     // transaction,
 }) {
-    // const dispatch = useDispatch();
-    const balance = useSelector(getTotalBalance);
-
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(transactionsOperations.setBalanceOperation(balance));
-    }, [date, dispatch, balance]);
     const [transactionId, setTransactionId] = useState('');
     const [modalDelete, setModalDelete] = useState(false);
 

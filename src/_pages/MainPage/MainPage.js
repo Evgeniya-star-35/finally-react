@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Media from 'react-media';
+import { getTotalBalance } from '../../redux/transactions/transactions-selectors';
 import AuthHeader from '../../components/Header/AuthHeader';
 import Balance from 'components/Balance/Balance';
 import Container from '../../components/Container';
@@ -24,7 +25,11 @@ const MainPage = () => {
     const [picker, setPicker] = useState(false);
     // const [listRender, setListRender] = useState(true);
     const dispatch = useDispatch();
-
+    const balance = useSelector(getTotalBalance);
+    console.log(balance);
+    useEffect(() => {
+        dispatch(transactionsOperations.setBalanceOperation(balance));
+    }, [date, dispatch, balance]);
     const day = new Date();
     const startDate = `${day.getDate()}.${
         day.getMonth() + 1

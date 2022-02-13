@@ -37,7 +37,7 @@ const DevelopersView = lazy(() =>
 );
 function App() {
     const dispatch = useDispatch();
-const { isAuth } = useSelector(state => state.auth);
+    const { isAuth } = useSelector(state => state.auth);
     useEffect(() => {
         if (isAuth) {
             dispatch(getCurrentUser());
@@ -48,7 +48,6 @@ const { isAuth } = useSelector(state => state.auth);
         dispatch(getCurrentUser());
     }, [dispatch]);
 
-   
     return (
         <>
             <ToastContainer />

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
+import { getMonthlyBalances } from '../../redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import arrOfMonths from '../../data/month.json';
 import s from './Summary.module.css';
@@ -11,11 +11,9 @@ export default function Summary({ year, month }) {
     // const sortBalance = [...monthsBalance].sort((a, b) => b.month - a.month);
     // console.log(sortBalance);
     useEffect(() => {
-        // if (year > 0) {
         dispatch(transactionsOperations.getMonthlyBalancesYear(year));
-        // }
-    }, [dispatch, month, year]);
-    const monthsBalance = useSelector(getTransactionsMonth);
+    }, [dispatch, year]);
+    const monthsBalance = useSelector(getMonthlyBalances);
 
     console.log(monthsBalance);
     return (

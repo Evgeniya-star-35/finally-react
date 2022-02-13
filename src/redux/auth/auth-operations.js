@@ -1,9 +1,3 @@
-// import {
-//     setTotalBalanceSuccess,
-//     setTotalBalanceError,
-// } from 'redux/transactions';
-
-/////////////////////////////
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 

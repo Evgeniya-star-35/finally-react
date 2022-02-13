@@ -37,16 +37,15 @@ const setBalanceOperation = balance => async dispatch => {
 
     try {
         const response = await fetchBalance(balance);
-        // dispatch(setTotalBalanceSuccess(response.data.config.data));
         dispatch(setTotalBalanceSuccess(response.data.data.balance));
-    } catch ({ response }) {
-        if (response.data.message === 'Unvalid token') {
-            const response = await fetchBalance(balance);
-            dispatch(setTotalBalanceSuccess(response.data.data.balance));
-            return;
-        }
-        dispatch(setTotalBalanceError(response.data.message));
-        toast.error(response.data.message, {
+    } catch (error) {
+        // if (response.data.message === 'Unvalid token') {
+        //     const response = await fetchBalance(balance);
+        //     dispatch(setTotalBalanceSuccess(response.data.data.balance));
+        //     return;
+        // }
+        dispatch(setTotalBalanceError(error.message));
+        toast.error(error.message, {
             position: 'top-center',
             autoClose: 2500,
         });
@@ -59,9 +58,8 @@ const addTransactionOperation = transaction => async dispatch => {
 
     try {
         const response = await addTransaction(transaction, balance);
-        console.log(response.data.newTransaction);
         dispatch(addTransactionSuccess(response.data.newTransaction));
-        dispatch(setTotalBalanceSuccess(response.data.balance));
+        // dispatch(setTotalBalanceSuccess(response.data.balance));
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
             dispatch(addTransactionSuccess(response.data.resultTransaction));
@@ -80,15 +78,12 @@ const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
     try {
         console.log(transaction.id);
-        const res = await deleteTransaction(transaction.id);
-        console.log(res);
+        const response = await deleteTransaction(transaction.id);
+        console.log(response);
         const balance = calculateBalance(transaction, 'delete');
         console.log(balance);
 
         dispatch(setTotalBalanceSuccess(balance));
-
-        // dispatch(deleteTransactionSuccess(transaction.id));
-        // dispatch(setTotalBalanceSuccess(setBalanceData.data.data.balance));
     } catch (error) {
         toast.error('Транзакция не найдена', {
             position: 'top-center',
@@ -141,11 +136,6 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
         const response = await getTransactionsByPeriod(`${month}.${year}`);
         dispatch(getTransactionsMonthYearSuccess(response.data.result));
     } catch (error) {
-        // if (response.data.message === 'Unvalid token') {
-        //     const response = await getTransactionsByPeriod(`${month}.${year}`);
-        //     dispatch(getTransactionsMonthYearSuccess(response.data.result));
-        //     return;
-        // }
         dispatch(getTransactionsMonthYearError(error.message));
         toast.error(error.message, {
             position: 'top-center',
@@ -162,16 +152,16 @@ const getMonthlyBalancesYear = year => async dispatch => {
         console.log(response);
         const balances = calculateBalancesPerMonth(response.data.result);
         dispatch(getMonthlyBalanceSuccess(balances));
-    } catch ({ response }) {
-        if (response.data.message === 'Unvalid token') {
+    } catch (error) {
+        if (error.message === 'Unvalid token') {
             // await refresh(dispatch, getState);
             const response = await getTransactionsByPeriod(year);
-            const balances = calculateBalancesPerMonth(response.data.result);
+            const balances = calculateBalancesPerMonth(error.result);
             dispatch(getMonthlyBalanceSuccess(balances));
             return;
         }
-        dispatch(getMonthlyBalanceError(response.data.message));
-        toast.error(response.data.message, {
+        dispatch(getMonthlyBalanceError(error.message.message));
+        toast.error(error.message.message, {
             position: 'top-center',
             autoClose: 2500,
         });
@@ -203,11 +193,11 @@ const calculateBalance = (transaction, actionType) => {
                 : Number(initialBalance) - Number(transaction.sum);
         case 'delete':
             return transaction.type === 'incomes'
-                ? Number(initialBalance) + Number(transaction.sum)
-                : Number(initialBalance) - Number(transaction.sum);
+                ? Number(initialBalance) - Number(transaction.sum)
+                : Number(initialBalance) + Number(transaction.sum);
         case 'edit':
             const initialTransaction = transactionsList.find(
-                item => item._id === transaction._id,
+                item => item.id === transaction.id,
             );
             const priorBalance =
                 Number(initialBalance) - Number(initialTransaction.sum);
