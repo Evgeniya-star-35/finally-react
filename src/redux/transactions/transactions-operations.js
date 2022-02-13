@@ -140,6 +140,7 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
     try {
         const response = await getTransactionsByPeriod(`${month}.${year}`);
         dispatch(getTransactionsMonthYearSuccess(response.data.result));
+        dispatch(getCurrentUser());
     } catch (error) {
         dispatch(getTransactionsMonthYearError(error.message));
         toast.error(error.message, {

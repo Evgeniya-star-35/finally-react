@@ -84,7 +84,9 @@ const Balance = () => {
                         ) : (
                             <>
                                 <p className={s.Input}>
-                                    {`${balance.toLocaleString('ru')}.00 `}
+                                    {`${balance
+                                        .toFixed(2)
+                                        .toLocaleString('ru')}`}{' '}
                                     UAH
                                 </p>
                                 <ConfirmButton
