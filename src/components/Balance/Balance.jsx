@@ -21,12 +21,12 @@ const Balance = () => {
     const onFormSubmit = e => {
         e.preventDefault();
         console.log('сума', sum);
-        dispatch(transactionsOperations.setBalanceOperation(balance));
     };
 
     useEffect(() => {
         setSum(balance);
-    }, [balance]);
+        dispatch(transactionsOperations.setBalanceOperation(balance));
+    }, [balance, dispatch]);
 
     //formik
     // const formik = useFormik({
