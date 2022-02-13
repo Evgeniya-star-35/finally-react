@@ -5,6 +5,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
+  
 }
 
 .titleReviewMonth {
@@ -34,4 +35,17 @@
     display: flex;
     align-items: center;
     font-weight: 700;
+}
+
+
+@media screen and (min-width: 320px) {
+    .reviewMonth {
+        margin-top: 49px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .reviewMonth {
+        margin-top: 0;
+    }
 }
