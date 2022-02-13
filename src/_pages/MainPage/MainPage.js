@@ -12,7 +12,7 @@ import GoToReports from 'components/GoToReports';
 // import Summary from 'components/Summary';
 import s from './MainPage.module.css';
 import TransactionForm from 'components/TransactionForm';
-// import TransactionList from 'components/TransactionListMobile/TransactionList';
+import TransactionList from 'components/TransactionListMobile/TransactionList';
 
 import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
@@ -107,10 +107,11 @@ const MainPage = () => {
                                 <CostsButton getType={typeToggle} />
                                 <IncomesButton getType={typeToggle} />
                             </div>
-                            {/* <TransactionList
+                            {/* <TransactionList /> */}
+                            <TransactionList
                                 transactionType={type}
                                 date={date}
-                            /> */}
+                            />
                         </>
                     )}
                 />

@@ -133,7 +133,9 @@ export default function TransactionTable({
                                             <td className={s.category}>
                                                 {category}
                                             </td>
-                                            <td className={s.sum}>{sum}</td>
+                                            <td className={s.sum}>
+                                                {sum.toFixed(2)}
+                                            </td>
                                             <td className={s.icon}>
                                                 <button
                                                     type="button"
