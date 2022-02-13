@@ -1,13 +1,13 @@
-import img1 from './images/Evgenia.jpg';
-import img2 from './images/Petro.jpg';
-import img3 from './images/Nikolay.jpg';
-import img4 from './images/Vlad.jpeg';
-import img5 from './images/Mariia.jpg';
-import img6 from './images/Marta.jpg';
-import img7 from './images/Ganna.jpg';
-import img8 from './images/Jane.jpg';
-import img9 from './images/Oksana.jpg';
-import img10 from './images/Tanya.jpg';
+import img1 from '../../images/hardcore/Evgenia.jpg';
+import img2 from '../../images/hardcore/Petro.jpg';
+import img3 from '../../images/hardcore/Nikolay.jpg';
+import img4 from '../../images/hardcore/Vlad.jpeg';
+import img5 from '../../images/hardcore/Mariia.jpg';
+import img6 from '../../images/hardcore/Marta.jpg';
+import img7 from '../../images/hardcore/Ganna.jpg';
+import img8 from '../../images/hardcore/Jane.jpg';
+import img9 from '../../images/hardcore/Oksana.jpg';
+import img10 from '../../images/hardcore/Tanya.jpg';
 
 const hardcore = [
     {

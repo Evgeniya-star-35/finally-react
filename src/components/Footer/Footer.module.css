@@ -76,3 +76,51 @@
 .gap {
     margin-right: 5px;
 }
+
+@media (min-width: 320px) {
+    p a svg {
+        width: 100px;
+        height: 40px;
+        position: absolute;
+        left: 51%;
+        bottom: -231px;
+        transform: translate(-50%, 7px) translateZ(0);
+        fill: none;
+        stroke: black;
+        stroke-linecap: round;
+        stroke-width: 1px;
+        stroke-dasharray: var(--offset, 69px) 278px;
+        stroke-dashoffset: 361px;
+        transition: stroke 0.25s ease (black, 0s), stroke-dasharray 0.35s;
+    }
+    p a:link:hover {
+        --spacing: 4px;
+        --stroke: black;
+        --stroke-delay: 0.1s;
+        --offset: 180px;
+    }
+}
+@media (min-width: 768px) {
+    p a svg {
+        left: 69%;
+        bottom: -430px;
+    }
+    p a:link:hover {
+        --spacing: 4px;
+        --stroke: black;
+        --stroke-delay: 0.1s;
+        --offset: 180px;
+    }
+}
+@media (min-width: 1280px) {
+    p a svg {
+        left: 60%;
+        bottom: -152px;
+    }
+    p a:link:hover {
+        --spacing: 4px;
+        --stroke: black;
+        --stroke-delay: 0.1s;
+        --offset: 180px;
+    }
+}
