@@ -9,6 +9,7 @@
     text-transform: uppercase;
     border: 2px solid var(--accent-btn-txt);
     outline: none;
+    cursor: pointer;
     color: var(--main-title-color);
     background-color: var(--main-bg);
 }
