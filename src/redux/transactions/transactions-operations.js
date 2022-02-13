@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { store } from 'redux/store';
+import { getCurrentUser } from '../auth/auth-operations';
 import {
     getTransactionsRequest,
     getTransactionsSuccess,
@@ -58,9 +59,12 @@ const addTransactionOperation = transaction => async dispatch => {
     try {
         const newBalance = calculateBalance(transaction, 'add');
         console.log(newBalance);
-        const response = await addTransaction(transaction, newBalance);
+        dispatch(setBalanceOperation(newBalance));
+        const response = await addTransaction(transaction);
+        console.log(response);
         dispatch(addTransactionSuccess(response.data.newTransaction));
-        // dispatch(setTotalBalanceSuccess(response.data.balance));
+        dispatch(setTotalBalanceSuccess(newBalance));
+        dispatch(getCurrentUser());
     } catch ({ response }) {
         if (response.data.message === 'Unvalid token') {
             dispatch(addTransactionSuccess(response.data.resultTransaction));

@@ -2,8 +2,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://finally-node.herokuapp.com/api';
 
-const addTransaction = (transaction, balance) =>
-    axios.post('/transaction', transaction, balance);
+const addTransaction = transaction => axios.post('/transaction', transaction);
 const deleteTransaction = id => axios.delete(`/transaction/${id}`);
 const editTransaction = (transaction, balance) =>
     axios.put(`/transaction/${transaction.id}`, { transaction, balance });
