@@ -30,7 +30,6 @@ function Footer() {
                         <a
                             href="/developers"
                             className={s.link}
-                            rel="noopener noreferrer nofollow"
                             target="_blank"
                         >
                             <svg viewBox="0 0 70 36">
