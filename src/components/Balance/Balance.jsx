@@ -21,7 +21,7 @@ const Balance = () => {
     const onFormSubmit = e => {
         e.preventDefault();
         console.log('сума', sum);
-        dispatch(transactionsOperations.setBalanceOperation(sum));
+        dispatch(transactionsOperations.setBalanceOperation(balance));
     };
 
     useEffect(() => {
