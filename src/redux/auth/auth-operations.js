@@ -36,6 +36,7 @@ export const login = createAsyncThunk(
         try {
             const { data } = await axios.post('/users/login', userData);
             token.set(data.data.token);
+            console.log(login);
             return data;
         } catch (error) {
             rejectWithValue(error);
@@ -66,6 +67,7 @@ export const getCurrentUser = createAsyncThunk(
         token.set(persistToken);
         try {
             const { data } = await axios.get('/users/current');
+            console.log(data);
             return data.data;
         } catch (error) {
             rejectWithValue(error.message);

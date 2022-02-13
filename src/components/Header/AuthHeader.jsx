@@ -1,20 +1,27 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../../redux/auth/auth-operations';
-import ModalLogout from 'components/Modal/Modal';
-import Button from '../../components/Buttons/Button';
-import Avatar from 'react-avatar';
-import Media from 'react-media';
-import sprite from '../../images/globalIcons/symbol-defs.svg';
 
 import s from './Header.module.css';
 import st from '../Modal/Modal.module.css';
+import Media from 'react-media';
 import { toast } from 'react-toastify';
+import { logout } from '../../redux/auth/auth-operations';
+import { getUserAvatar, getUserEmail } from 'redux/auth';
+import ModalLogout from 'components/Modal/Modal';
+import Button from '../../components/Buttons/Button';
+import sprite from '../../images/globalIcons/symbol-defs.svg';
+import defaultImg from '../../images/avatar.jpg';
 
 export default function AuthHeader() {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
+
+    const avatarUrl = useSelector(getUserAvatar);
+    const userEmail = useSelector(getUserEmail);
+
+    const nameUser = userEmail.split('@')[0];
+
     const toggleModal = () => {
         setShowModal(!showModal);
     };
@@ -31,14 +38,10 @@ export default function AuthHeader() {
                 </svg>
             </Link>
             <div className={s.authImg}>
-                <Avatar
-                    name="User"
-                    googleId=""
-                    size="32"
-                    round={true}
+                <img
+                    src={avatarUrl ? avatarUrl : defaultImg}
+                    alt="user avatar"
                     className={s.avatar}
-                    color={'var(--select-accent-bg)'}
-                    fgColor={'var(--main-txt-color)'}
                 />
                 <Media
                     query="(max-width: 767.98px)"
@@ -58,7 +61,7 @@ export default function AuthHeader() {
                     query="(min-width: 768px)"
                     render={() => (
                         <>
-                            <span className={s.userName}>User Name</span>
+                            <span className={s.userName}>{nameUser}</span>
                             <button
                                 className={s.logoutBtn}
                                 onClick={toggleModal}

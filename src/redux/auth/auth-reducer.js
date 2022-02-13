@@ -16,6 +16,8 @@ const initialState = {
     error: null,
     isGetCurrentUser: false,
     balance: 0,
+    avatar: '',
+    email: '',
 };
 
 const authSlice = createSlice({
@@ -28,6 +30,8 @@ const authSlice = createSlice({
         [register.fulfilled](state, { payload }) {
             state.user = payload.user;
             state.token = payload.token;
+            state.avatar = payload.data.avatar;
+            state.email = payload.data.email;
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
@@ -43,6 +47,8 @@ const authSlice = createSlice({
         [login.fulfilled](state, { payload }) {
             state.user = payload.data.user;
             state.token = payload.data.token;
+            state.avatar = payload.data.user.avatar;
+            state.email = payload.data.user.email;
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
@@ -73,6 +79,8 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.balance = payload.balance;
             state.isGetCurrentUser = true;
+            state.avatar = payload.user.avatar;
+            state.email = payload.user.email;
         },
         [getCurrentUser.rejected](state) {
             state.isGetCurrentUser = false;
