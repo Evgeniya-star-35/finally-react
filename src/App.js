@@ -1,5 +1,6 @@
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { authPersistConfig } from './redux/store';
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -38,11 +39,12 @@ const DevelopersView = lazy(() =>
 function App() {
     const dispatch = useDispatch();
     const { isAuth } = useSelector(state => state.auth);
-    useEffect(() => {
-        if (isAuth) {
-            dispatch(getCurrentUser());
-        }
-    }, [dispatch, isAuth]);
+
+    // useEffect(() => {
+    //     if (isAuth) {
+    //         dispatch(getCurrentUser());
+    //     }
+    // }, [isAuth, dispatch]);
 
     useEffect(() => {
         dispatch(getCurrentUser());

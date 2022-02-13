@@ -59,6 +59,7 @@ const addTransactionOperation = transaction => async dispatch => {
     try {
         const newBalance = calculateBalance(transaction, 'add');
         console.log(newBalance);
+        if (newBalance < 0) return;
         dispatch(setBalanceOperation(newBalance));
         const response = await addTransaction(transaction);
         console.log(response);
@@ -83,14 +84,15 @@ const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
     try {
         const response = await deleteTransaction(transaction.id);
-        console.log(response);
+        console.log(response.data.message);
         const newBalance = calculateBalance(transaction, 'delete');
         console.log(newBalance);
         dispatch(setBalanceOperation(newBalance));
-
+        dispatch(deleteTransactionSuccess(response.data.message));
         dispatch(setTotalBalanceSuccess(newBalance));
         dispatch(getCurrentUser());
     } catch (error) {
+        dispatch(deleteTransactionError(error.message));
         toast.error('Транзакция не найдена', {
             position: 'top-center',
             autoClose: 2500,
@@ -126,6 +128,10 @@ const getTransactionsDayOperation = date => async dispatch => {
 
     try {
         const response = await getTransactionsByDate(date);
+        console.log(response.data.result.length);
+        if (response.data.result.length === 0) {
+            return;
+        }
         dispatch(getTransactionsSuccess(response.data.result));
     } catch (error) {
         dispatch(getTransactionsError(error.message));
@@ -193,6 +199,7 @@ const calculateBalance = (transaction, actionType) => {
     console.log(initialBalance);
     const transactionsList = store.getState().transactions.transactionsDay;
     console.log(transactionsList);
+    if (transactionsList.length === 0) return;
     switch (actionType) {
         case 'add':
             return transaction.type === 'incomes'
@@ -202,15 +209,7 @@ const calculateBalance = (transaction, actionType) => {
             return transaction.type === 'incomes'
                 ? Number(initialBalance) - Number(transaction.sum)
                 : Number(initialBalance) + Number(transaction.sum);
-        case 'edit':
-            const initialTransaction = transactionsList.find(
-                item => item.id === transaction.id,
-            );
-            const priorBalance =
-                Number(initialBalance) - Number(initialTransaction.sum);
-            return transaction.type === 'incomes'
-                ? Number(priorBalance) + Number(transaction.sum)
-                : Number(priorBalance) - Number(transaction.sum);
+
         default:
             return;
     }
@@ -238,12 +237,4 @@ const calculateBalancesPerMonth = transactions => {
     });
 
     return result;
-};
-
-const dateSplitter = date => {
-    const splittedDate = {
-        month: String(date.split('.')[1]),
-        year: String(date.split('.')[2]),
-    };
-    return splittedDate;
 };
