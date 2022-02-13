@@ -9,7 +9,9 @@ import s from './Balance.module.css';
 
 const Balance = () => {
     const dispatch = useDispatch();
-    const balance = useSelector(getTotalBalance);
+    // const balance = useSelector(getTotalBalance);
+    const balance = useSelector(state => state.auth.user.user.balance);
+    console.log(balance);
     const [sum, setSum] = useState('');
 
     // без formik
