@@ -59,7 +59,7 @@ export default function TransactionForm({
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(transactionsOperations.addTransactionOperation(transaction));
-        // dispatch(transactionsOperations.getTransactionsDayOperation(date));
+
         reset();
     };
 

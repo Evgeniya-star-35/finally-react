@@ -40,11 +40,6 @@ const setBalanceOperation = balance => async dispatch => {
         const response = await fetchBalance(balance);
         dispatch(setTotalBalanceSuccess(response.data.data.balance));
     } catch (error) {
-        // if (response.data.message === 'Unvalid token') {
-        //     const response = await fetchBalance(balance);
-        //     dispatch(setTotalBalanceSuccess(response.data.data.balance));
-        //     return;
-        // }
         dispatch(setTotalBalanceError(error.message));
         toast.error(error.message, {
             position: 'top-center',
