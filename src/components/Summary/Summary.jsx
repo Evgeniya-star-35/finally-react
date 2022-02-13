@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getMonthlyBalances } from '../../redux/transactions/transactions-selectors';
+import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import arrOfMonths from '../../data/month.json';
 import s from './Summary.module.css';
@@ -11,9 +11,9 @@ export default function Summary({ year, month }) {
     // const sortBalance = [...monthsBalance].sort((a, b) => b.month - a.month);
     // console.log(sortBalance);
     useEffect(() => {
-        dispatch(transactionsOperations.getMonthlyBalancesYear(year));
-    }, [dispatch, year]);
-    const monthsBalance = useSelector(getMonthlyBalances);
+        dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
+    }, [dispatch, month, year]);
+    const monthsBalance = useSelector(getTransactionsMonth);
 
     console.log(monthsBalance);
     return (
@@ -21,10 +21,10 @@ export default function Summary({ year, month }) {
             <div className={s.summaryWrap}>
                 <h3 className={s.title}>Сводка</h3>
                 <ul className={s.list}>
-                    {monthsBalance.map(({ month, value }, id) => (
+                    {monthsBalance.map(({ month, sum }, id) => (
                         <li key={id} className={s.item}>
                             <p className={s.month}>{month}</p>
-                            <p className={s.sum}>{value}</p>
+                            <p className={s.sum}>{sum}</p>
                         </li>
                     ))}
                 </ul>
