@@ -72,7 +72,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/transactions"
+                        path="/transactions/:transactionsType"
                         element={
                             <PrivateRoute
                                 // isAuth={isAuth}

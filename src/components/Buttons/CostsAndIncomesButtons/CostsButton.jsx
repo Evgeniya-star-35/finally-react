@@ -12,7 +12,7 @@ export default function CostsButton({ getType }) {
                 render={() => (
                     <Link
                         to={{
-                            pathname: '/transactions',
+                            pathname: '/transactions/cost',
                             state: {
                                 from: { location },
                             },
