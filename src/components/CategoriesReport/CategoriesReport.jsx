@@ -3,6 +3,7 @@ import sprite from '../../images/reportIcons/symbol-defs.svg';
 import { getTransactionsDay } from '../../redux/transactions/transactions-selectors';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import s from './CategoriesReport.module.css';
+import CostDiagram from '../CostsDiagram';
 
 const incomesCategories = [
     { id: '1', category: 'Заработная плата', icon: 'salary' },
@@ -44,49 +45,63 @@ export default function CategoriesReport({ transactionsType, onClick }) {
         transactionsType === 'cost' ? costsCategories : incomesCategories;
 
     return (
-        <div className={s.categoriesCosts}>
-            <div className={s.titleBox}>
-                <button type="button" className={s.button} onClick={onClick}>
-                    <svg width="10" height="10">
-                        <use href={`${spriteGlobal}#icon-back`}></use>
-                    </svg>
-                </button>
+        <>
+            <div className={s.categoriesCosts}>
+                <div className={s.titleBox}>
+                    <button
+                        type="button"
+                        className={s.button}
+                        onClick={onClick}
+                    >
+                        <svg width="10" height="10">
+                            <use href={`${spriteGlobal}#icon-back`}></use>
+                        </svg>
+                    </button>
 
-                {transactionsType === 'cost' ? (
-                    <h2 className={s.title}>Расходы</h2>
-                ) : (
-                    <h2 className={s.title}>Доходы</h2>
-                )}
+                    {transactionsType === 'cost' ? (
+                        <h2 className={s.title}>Расходы</h2>
+                    ) : (
+                        <h2 className={s.title}>Доходы</h2>
+                    )}
 
-                <button type="button" className={s.button} onClick={onClick}>
-                    <svg width="10" height="10">
-                        <use href={`${spriteGlobal}#icon-forward`}></use>
-                    </svg>
-                </button>
+                    <button
+                        type="button"
+                        className={s.button}
+                        onClick={onClick}
+                    >
+                        <svg width="10" height="10">
+                            <use href={`${spriteGlobal}#icon-forward`}></use>
+                        </svg>
+                    </button>
+                </div>
+
+                <ul className={s.list}>
+                    {categories.map(category => {
+                        let sum = transactionTotalSum(
+                            transactionsType,
+                            category.category,
+                        );
+                        if (sum === 0) {
+                            return null;
+                        }
+                        return (
+                            <li key={category.id} className={s.item}>
+                                <p className={s.cost}>{sum.toFixed(2)}</p>
+                                <svg width="56" height="56" className={s.icon}>
+                                    <use
+                                        href={`${sprite}#icon-${category.icon}`}
+                                    ></use>
+                                </svg>
+                                <p className={s.costName}>
+                                    {category.category}
+                                </p>
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
 
-            <ul className={s.list}>
-                {categories.map(category => {
-                    let sum = transactionTotalSum(
-                        transactionsType,
-                        category.category,
-                    );
-                    if (sum === 0) {
-                        return null;
-                    }
-                    return (
-                        <li key={category.id} className={s.item}>
-                            <p className={s.cost}>{sum.toFixed(2)}</p>
-                            <svg width="56" height="56" className={s.icon}>
-                                <use
-                                    href={`${sprite}#icon-${category.icon}`}
-                                ></use>
-                            </svg>
-                            <p className={s.costName}>{category.category}</p>
-                        </li>
-                    );
-                })}
-            </ul>
-        </div>
+            <CostDiagram />
+        </>
     );
 }

@@ -1,4 +1,7 @@
 // import Background from 'components/Background/Background';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import s from './ReportPage.module.css';
 import Balance from 'components/Balance';
 import CurrentPeriod from '../../components/CurrentPeriod';
 import GoToMainButton from 'components/Buttons/GoToMainButton';
@@ -6,9 +9,6 @@ import CategoriesReport from 'components/CategoriesReport';
 import GoBackArrow from 'components/GoBack/GoBack';
 import Background from 'components/Background/Background';
 import TransactionsRatio from 'components/TransactionsRatio';
-import s from './ReportPage.module.css';
-import { useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 
 const ReportPage = () => {
