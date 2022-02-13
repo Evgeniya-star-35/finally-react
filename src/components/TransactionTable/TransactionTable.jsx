@@ -29,7 +29,6 @@ export default function TransactionTable({
     const dispatch = useDispatch();
     const [transactionId, setTransactionId] = useState('');
     const [modalDelete, setModalDelete] = useState(false);
-
     const transactionsList = useSelector(getTransactionsDay);
 
     const filteredTransactions = transactionsList
@@ -41,17 +40,19 @@ export default function TransactionTable({
     };
 
     const handleDeleteClick = id => {
-        setTransactionId(id);
+        console.log(id);
         toggleModal();
+        setTransactionId(id);
     };
     const onDeleteCancel = () => {
         setTransactionId('');
         setModalDelete(false);
     };
     const onDeleteOk = id => {
-        const transactionToDelete = filteredTransactions.find(
-            item => item.id === id,
-        );
+        const transactionToDelete = filteredTransactions.find(item => {
+            console.log(item.id === id);
+            return item.id === id;
+        });
         dispatch(
             transactionsOperations.deleteTransactionOperation(
                 transactionToDelete,

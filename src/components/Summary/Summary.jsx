@@ -15,7 +15,7 @@ export default function Summary({ year, month }) {
     }, [dispatch, month, year]);
     const monthsBalance = useSelector(getTransactionsMonth);
 
-    console.log(monthsBalance);
+    // console.log(monthsBalance);
     return (
         <>
             <div className={s.summaryWrap}>

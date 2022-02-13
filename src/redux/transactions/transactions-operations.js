@@ -65,14 +65,14 @@ const addTransactionOperation = transaction => async dispatch => {
         dispatch(addTransactionSuccess(response.data.newTransaction));
         dispatch(setTotalBalanceSuccess(newBalance));
         dispatch(getCurrentUser());
-    } catch ({ response }) {
-        if (response.data.message === 'Unvalid token') {
-            dispatch(addTransactionSuccess(response.data.resultTransaction));
-            dispatch(setTotalBalanceSuccess(response.data.balance));
+    } catch (error) {
+        if (error.message === 'Unvalid token') {
+            dispatch(addTransactionSuccess(error.resultTransaction));
+            dispatch(setTotalBalanceSuccess(error.balance));
             return;
         }
-        dispatch(addTransactionError(response.data.message));
-        toast.error(response.data.message, {
+        dispatch(addTransactionError(error.message));
+        toast.error(error.message, {
             position: 'top-center',
             autoClose: 2500,
         });
@@ -82,13 +82,14 @@ const addTransactionOperation = transaction => async dispatch => {
 const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
     try {
-        console.log(transaction.id);
         const response = await deleteTransaction(transaction.id);
         console.log(response);
-        const balance = calculateBalance(transaction, 'delete');
-        console.log(balance);
+        const newBalance = calculateBalance(transaction, 'delete');
+        console.log(newBalance);
+        dispatch(setBalanceOperation(newBalance));
 
-        dispatch(setTotalBalanceSuccess(balance));
+        dispatch(setTotalBalanceSuccess(newBalance));
+        dispatch(getCurrentUser());
     } catch (error) {
         toast.error('Транзакция не найдена', {
             position: 'top-center',
