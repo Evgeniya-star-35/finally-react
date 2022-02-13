@@ -54,10 +54,11 @@ const setBalanceOperation = balance => async dispatch => {
 
 const addTransactionOperation = transaction => async dispatch => {
     dispatch(addTransactionRequest());
-    const balance = calculateBalance(transaction, 'add');
 
     try {
-        const response = await addTransaction(transaction, balance);
+        const newBalance = calculateBalance(transaction, 'add');
+        console.log(newBalance);
+        const response = await addTransaction(transaction, newBalance);
         dispatch(addTransactionSuccess(response.data.newTransaction));
         // dispatch(setTotalBalanceSuccess(response.data.balance));
     } catch ({ response }) {
@@ -182,7 +183,7 @@ export default transactionsOperations;
 
 //-------------helpers--------------------
 const calculateBalance = (transaction, actionType) => {
-    const initialBalance = store.getState().transactions.totalBalance;
+    const initialBalance = store.getState().auth.user.user.balance;
     console.log(initialBalance);
     const transactionsList = store.getState().transactions.transactionsDay;
     console.log(transactionsList);
