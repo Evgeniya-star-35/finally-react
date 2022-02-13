@@ -10,6 +10,7 @@ import s from './ReportPage.module.css';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import transactionsOperations from 'redux/transactions/transactions-operations';
+import AuthHeader from 'components/Header/AuthHeader';
 
 const ReportPage = () => {
     const dispatch = useDispatch();
@@ -53,7 +54,9 @@ const ReportPage = () => {
 
     return (
         <>
+            <AuthHeader />
             <Background />
+
             <GoBackArrow />
             <div className={s.balanceWrap}>
                 <GoToMainButton />

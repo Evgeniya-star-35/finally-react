@@ -11,7 +11,7 @@ import Summary from 'components/Summary';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
 import TransactionTable from 'components/TransactionTable/TransactionTable';
-import TransactionList from 'components/TransactionListMobile/TransactionList';
+// import TransactionList from 'components/TransactionListMobile/TransactionList';
 
 export default function TransactionForm({
     date,
