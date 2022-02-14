@@ -30,10 +30,13 @@ import {
 import { fetchBalance } from 'services/authApi';
 
 const setBalanceOperation = balance => async dispatch => {
+    console.log(balance);
     dispatch(setTotalBalanceRequest());
 
     try {
         const response = await fetchBalance(balance);
+        console.log(response);
+        console.log(response.data.data.balance);
         dispatch(setTotalBalanceSuccess(response.data.data.balance));
     } catch (error) {
         dispatch(setTotalBalanceError(error.message));
@@ -126,6 +129,10 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
     dispatch(getTransactionsMonthYearRequest());
     try {
         const response = await getTransactionsByPeriod(`${month}.${year}`);
+        console.log(response);
+        // const balances = calculateBalancesPerMonth(response.data.result);
+        // console.log(balances);
+        //   dispatch(getTransactionsMonthYearSuccess(balances));
         dispatch(getTransactionsMonthYearSuccess(response.data.result));
         // dispatch(getCurrentUser());
     } catch (error) {
@@ -136,19 +143,22 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
         });
     }
 };
-
-const getMonthlyBalancesYear = year => async dispatch => {
+const getMonthlyBalancesForSummary = year => async dispatch => {
+    // const getMonthlyBalancesYear = year => async dispatch => {
     if (!year) {
         return;
     }
-    dispatch(getMonthlyBalanceRequest());
-
+    dispatch(getTransactionsMonthYearRequest());
+    // dispatch(getMonthlyBalanceRequest());
     try {
-        const response = await getTransactionsByPeriod(year);
-
+        const response = await getTransactionsByPeriod(`${year}`);
+        console.log(response);
         console.log(response.data.result.length);
         const balances = calculateBalancesPerMonth(response.data.result);
-        dispatch(getMonthlyBalanceSuccess(balances));
+        console.log(balances);
+        // dispatch(getMonthlyBalanceSuccess(balances));
+        dispatch(getTransactionsMonthYearSuccess(balances));
+        // dispatch(getTransactionsMonthYearSuccess(response.data.result));
     } catch (error) {
         if (error.message === 'Unvalid token') {
             // await refresh(dispatch, getState);
@@ -170,7 +180,8 @@ const transactionsOperations = {
     addTransactionOperation,
     deleteTransactionOperation,
     getTransactionsMonthYear,
-    getMonthlyBalancesYear,
+    // getMonthlyBalancesYear,
+    getMonthlyBalancesForSummary,
     getTransactionsDayOperation,
 };
 
@@ -201,9 +212,11 @@ const calculateBalance = (transaction, actionType) => {
 const calculateBalancesPerMonth = transactions => {
     const result = [];
     transactions.map(transaction => {
+        console.log(transaction);
         const balanceByMonth = result.find(
             item => item.month === transaction.month,
         );
+        console.log(balanceByMonth);
         if (!balanceByMonth) {
             return result.push({
                 month: transaction.month,
@@ -218,6 +231,6 @@ const calculateBalancesPerMonth = transactions => {
                 : (balanceByMonth.value -= transaction.sum);
         }
     });
-
+    console.log(result);
     return result;
 };

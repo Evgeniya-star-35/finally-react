@@ -10,18 +10,19 @@ const Balance = () => {
     const dispatch = useDispatch();
     // const balance = useSelector(getTotalBalance);
     const balance = useSelector(state => state.auth.user.balance);
+    console.log(balance);
     useEffect(() => {
         setSum(balance);
-        dispatch(transactionsOperations.setBalanceOperation(balance));
-    }, [balance, dispatch]);
-    const [sum, setSum] = useState('');
-
+        // dispatch(transactionsOperations.setBalanceOperation(balance));
+    }, [balance]);
+    const [sum, setSum] = useState(0);
     const onHandleChange = e => {
         setSum(e.currentTarget.value);
+        // console.log(sum);
     };
     const onFormSubmit = e => {
         e.preventDefault();
-        // console.log('сума', sum);
+        console.log('сума', sum);
         dispatch(transactionsOperations.setBalanceOperation(sum));
     };
 

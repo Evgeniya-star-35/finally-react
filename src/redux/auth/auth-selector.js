@@ -1,3 +1,4 @@
+const getTotalBalance = state => state.auth.user.user.balance;
 const getIsAuthenticated = state => state.auth.isLogin;
 
 const getUserName = state => state.auth.user.name;
@@ -15,6 +16,7 @@ const getIsAuth = state => state.auth.isAuth;
 const getUserEmail = state => state.auth.user.email;
 
 export {
+    getTotalBalance,
     getIsAuthenticated,
     getUserName,
     getFetchingCurrentUser,
