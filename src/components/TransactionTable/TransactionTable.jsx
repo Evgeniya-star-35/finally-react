@@ -169,7 +169,7 @@ export default function TransactionTable({
                                                             handleDeleteClick(
                                                                 id,
                                                             )
-
+                                                        }
                                                     >
                                                         <svg
                                                             width="18"
