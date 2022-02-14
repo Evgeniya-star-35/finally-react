@@ -143,7 +143,7 @@ export default function TransactionTable({
                                                 <td className={s.category}>
                                                     {category}
                                                 </td>
-                                                <td>
+                                                <td className={s.sum}>
                                                     {type === 'cost' ? (
                                                         <span
                                                             className={s.cost}
@@ -169,7 +169,7 @@ export default function TransactionTable({
                                                             handleDeleteClick(
                                                                 id,
                                                             )
-                                                        }
+
                                                     >
                                                         <svg
                                                             width="18"
