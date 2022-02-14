@@ -1,7 +1,12 @@
 .diagram {
+    height: 422px;
     margin-top: 30px;
     padding: 20px 20px 30px 30px;
     background-color: var(--select-bg);
     box-shadow: 0px 10px 60px rgb(170 178 197 / 20%);
     border-radius: 30px;
+}
+
+.chart {
+    width: 1060px;
 }
