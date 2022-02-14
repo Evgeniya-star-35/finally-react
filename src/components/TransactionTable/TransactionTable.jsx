@@ -148,7 +148,13 @@ export default function TransactionTable({
                                                         <span
                                                             className={s.cost}
                                                         >
-                                                            - {sum.toFixed(2)}{' '}
+                                                            -{' '}
+                                                            {sum
+                                                                .toFixed(2)
+                                                                .replace(
+                                                                    /(\d)(?=(\d\d\d)+([^\d]|$))/g,
+                                                                    '$1 ',
+                                                                )}{' '}
                                                             UAH
                                                         </span>
                                                     ) : (
@@ -157,7 +163,13 @@ export default function TransactionTable({
                                                                 s.incomes
                                                             }
                                                         >
-                                                            {sum.toFixed(2)} UAH
+                                                            {sum
+                                                                .toFixed(2)
+                                                                .replace(
+                                                                    /(\d)(?=(\d\d\d)+([^\d]|$))/g,
+                                                                    '$1 ',
+                                                                )}{' '}
+                                                            UAH
                                                         </span>
                                                     )}
                                                 </td>
