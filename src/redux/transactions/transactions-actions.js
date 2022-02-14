@@ -12,10 +12,6 @@ const deleteTransactionRequest = createAction('deleteTransactionRequest');
 const deleteTransactionSuccess = createAction('deleteTransactionSuccess');
 const deleteTransactionError = createAction('deleteTransactionError');
 
-const editTransactionRequest = createAction('editTransactionRequest');
-const editTransactionSuccess = createAction('editTransactionSuccess');
-const editTransactionError = createAction('editTransactionError');
-
 const getTransactionsMonthYearRequest = createAction(
     'getTransactionsMonthYearRequest',
 );
@@ -44,9 +40,6 @@ export {
     deleteTransactionRequest,
     deleteTransactionSuccess,
     deleteTransactionError,
-    editTransactionRequest,
-    editTransactionSuccess,
-    editTransactionError,
     getMonthlyBalanceRequest,
     getMonthlyBalanceSuccess,
     getMonthlyBalanceError,

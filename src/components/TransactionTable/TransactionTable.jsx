@@ -30,10 +30,13 @@ export default function TransactionTable({
     const [transactionId, setTransactionId] = useState('');
     const [modalDelete, setModalDelete] = useState(false);
     const transactionsList = useSelector(getTransactionsDay);
-
-    const filteredTransactions = transactionsList
-        .filter(item => item.date === date)
-        .reverse();
+    const [filteredTransactions, setFilteredTransactions] = useState([]);
+    useEffect(() => {
+        const data = transactionsList
+            .filter(item => item.date === date)
+            .reverse();
+        setFilteredTransactions(data);
+    }, [transactionsList, date]);
 
     const toggleModal = () => {
         setModalDelete(!modalDelete);
@@ -52,13 +55,17 @@ export default function TransactionTable({
             console.log(item.id === id);
             return item.id === id;
         });
-        dispatch(
-            transactionsOperations.deleteTransactionOperation(
-                transactionToDelete,
-            ),
-        );
-        setTransactionId('');
-        toggleModal();
+        if (transactionToDelete) {
+            dispatch(
+                transactionsOperations.deleteTransactionOperation(
+                    transactionToDelete,
+                ),
+            );
+            setTransactionId('');
+            toggleModal();
+        } else {
+            alert(`Problem on delete onDeleteOk`);
+        }
     };
 
     return (
@@ -78,7 +85,7 @@ export default function TransactionTable({
                     <div className={st.modalBtns}>
                         <Button
                             type="button"
-                            onClick={onDeleteOk(transactionId)}
+                            onClick={() => onDeleteOk(transactionId)}
                             text={'да'}
                         />
                         <Button
@@ -116,56 +123,68 @@ export default function TransactionTable({
                             </thead>
 
                             <tbody className={s.tbody}>
-                                {filteredTransactions.map(
-                                    ({
-                                        date,
-                                        subCategory,
-                                        category,
-                                        sum,
-                                        id,
-                                        type,
-                                    }) => (
-                                        <tr key={id} className={s.tableRow}>
-                                            <td className={s.date}>{date}</td>
-                                            <td className={s.description}>
-                                                {subCategory}
-                                            </td>
-                                            <td className={s.category}>
-                                                {category}
-                                            </td>
-                                            <td className={s.sum}>
-                                                {type === 'cost' ? (
-                                                    <span className={s.cost}>
-                                                        - {sum.toFixed(2)} UAH
-                                                    </span>
-                                                ) : (
-                                                    <span className={s.incomes}>
-                                                        {sum.toFixed(2)} UAH
-                                                    </span>
-                                                )}
-                                            </td>
-                                            <td className={s.icon}>
-                                                <button
-                                                    type="button"
-                                                    className={s.button}
-                                                    onClick={() =>
-                                                        handleDeleteClick(id)
-                                                    }
-                                                >
-                                                    <svg
-                                                        width="18"
-                                                        height="18"
-                                                        className={s.basket}
+                                {filteredTransactions?.length > 0 &&
+                                    filteredTransactions.map(
+                                        ({
+                                            date,
+                                            subCategory,
+                                            category,
+                                            sum,
+                                            id,
+                                            type,
+                                        }) => (
+                                            <tr key={id} className={s.tableRow}>
+                                                <td className={s.date}>
+                                                    {date}
+                                                </td>
+                                                <td className={s.description}>
+                                                    {subCategory}
+                                                </td>
+                                                <td className={s.category}>
+                                                    {category}
+                                                </td>
+                                                <td className={s.sum}>
+                                                    {type === 'cost' ? (
+                                                        <span
+                                                            className={s.cost}
+                                                        >
+                                                            - {sum.toFixed(2)}{' '}
+                                                            UAH
+                                                        </span>
+                                                    ) : (
+                                                        <span
+                                                            className={
+                                                                s.incomes
+                                                            }
+                                                        >
+                                                            {sum.toFixed(2)} UAH
+                                                        </span>
+                                                    )}
+                                                </td>
+                                                <td className={s.icon}>
+                                                    <button
+                                                        type="button"
+                                                        className={s.button}
+                                                        onClick={() =>
+                                                            handleDeleteClick(
+                                                                id,
+                                                            )
+
                                                     >
-                                                        <use
-                                                            href={`${spriteGlobal}#icon-delete`}
-                                                        ></use>
-                                                    </svg>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    ),
-                                )}
+                                                        <svg
+                                                            width="18"
+                                                            height="18"
+                                                            className={s.basket}
+                                                        >
+                                                            <use
+                                                                href={`${spriteGlobal}#icon-delete`}
+                                                            ></use>
+                                                        </svg>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        ),
+                                    )}
                             </tbody>
                         </table>
                     </div>

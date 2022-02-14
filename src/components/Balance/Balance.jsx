@@ -10,7 +10,7 @@ const Balance = () => {
     const dispatch = useDispatch();
     const balance = useSelector(getTotalBalance);
     // const balance = useSelector(state => state.auth.user.user.balance);
-    console.log(balance);
+    // console.log(balance);
     const [sum, setSum] = useState('');
 
     const onHandleChange = e => {
