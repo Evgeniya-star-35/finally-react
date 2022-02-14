@@ -20,9 +20,6 @@ export default function AuthHeader() {
     const avatarUrl = useSelector(getUserAvatar);
     const userEmail = useSelector(getUserEmail);
 
-    console.log(avatarUrl);
-    console.log(userEmail);
-
     const nameUser = userEmail.split('@')[0];
 
     const toggleModal = () => {
