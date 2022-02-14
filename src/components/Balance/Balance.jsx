@@ -8,9 +8,13 @@ import s from './Balance.module.css';
 
 const Balance = () => {
     const dispatch = useDispatch();
-    const balance = useSelector(getTotalBalance);
-    // const balance = useSelector(state => state.auth.user.user.balance);
-    // console.log(balance);
+    // const balance = useSelector(getTotalBalance);
+    const balance = useSelector(state => state.auth.user.user.balance);
+    console.log(balance);
+    useEffect(() => {
+        setSum(balance);
+        dispatch(transactionsOperations.setBalanceOperation(balance));
+    }, [balance, dispatch]);
     const [sum, setSum] = useState('');
 
     const onHandleChange = e => {
@@ -18,13 +22,9 @@ const Balance = () => {
     };
     const onFormSubmit = e => {
         e.preventDefault();
-        console.log('сума', sum);
+        // console.log('сума', sum);
+        dispatch(transactionsOperations.setBalanceOperation(sum));
     };
-
-    useEffect(() => {
-        setSum(balance);
-        dispatch(transactionsOperations.setBalanceOperation(balance));
-    }, [balance, dispatch]);
 
     const [modalClose, setModalClose] = useState(true);
     const toggleModal = () => {
@@ -36,7 +36,9 @@ const Balance = () => {
                 <h2 className={s.title}>Баланс:</h2>
                 <form onSubmit={onFormSubmit} className={s.Form}>
                     <div className={s.FormInfo}>
-                        {balance === 0 ? (
+                        {balance === null ||
+                        balance === 0 ||
+                        balance === undefined ? (
                             <>
                                 <input
                                     id="balance"

@@ -28,7 +28,10 @@ export default function AuthHeader() {
     const handleLogout = () => {
         dispatch(logout());
         toggleModal();
-        toast.success('Спасибо за визит!Ждём Вас снова!');
+        toast.success('Спасибо за визит!Ждём Вас снова!', {
+            position: 'top-center',
+            autoClose: 2500,
+        });
     };
     return (
         <header className={s.authHeader}>
