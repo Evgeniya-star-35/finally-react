@@ -48,11 +48,16 @@ const CostDiagram = transactionsType => {
     return (
         <Container>
             <div className={s.diagram}>
-                <VictoryChart theme={VictoryTheme.material} domainPadding={35}>
+                <VictoryChart
+                    className={s.chart}
+                    theme={VictoryTheme.material}
+                    domainPadding={25}
+                    domain={{ y: [0, 1] }}
+                    animate={{ duration: 1000 }}
+                >
                     <VictoryAxis
                         style={{
                             tickLabels: { fontSize: 7, padding: 5 },
-                            // ticks: { size: false },
                         }}
                         tickValues={[1, 2, 3, 4, 5, 6, 7]}
                         tickFormat={[
@@ -65,13 +70,14 @@ const CostDiagram = transactionsType => {
                     />
                     <VictoryAxis
                         dependentAxis
-                        tickFormat={x => `${x / 1}`}
+                        tickFormat={x => `${x / 1}грн.`}
                         style={{
                             tickLabels: { fontSize: 7, padding: 5 },
                         }}
                     />
                     <VictoryStack>
                         <VictoryBar
+                            labels={d => d.x.toFixed(0)}
                             cornerRadius={{
                                 topLeft: 7,
                                 topRight: 7,

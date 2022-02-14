@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../Buttons/Button';
 import styles from './RegisterForm.module.css';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { register, login } from '../../redux/auth';
+import st from '../Modal/Modal.module.css';
+import ModalLogout from 'components/Modal/Modal';
 
 const BasicFormSchema = Yup.object().shape({
     email: Yup.string()
@@ -16,7 +18,13 @@ const BasicFormSchema = Yup.object().shape({
 });
 
 const RegisterForm = () => {
+    const [showModal, setShowModal] = useState(false);
+
     const dispatch = useDispatch();
+
+    const toggleModal = () => {
+        setShowModal(!showModal);
+    };
 
     const handleRegister = async (validateForm, values) => {
         const error = await validateForm();
@@ -53,6 +61,7 @@ const RegisterForm = () => {
                     validationSchema={BasicFormSchema}
                     onSubmit={async value => {
                         dispatch(register(value));
+                        toggleModal();
                     }}
                     render={({ errors, touched, validateForm, values }) => (
                         <Form className="form-container">
@@ -100,6 +109,17 @@ const RegisterForm = () => {
                     )}
                 />
             </div>
+            {showModal && (
+                <ModalLogout onClose={toggleModal}>
+                    <button className={styles.closeBtn} onClick={toggleModal}>
+                        Ок
+                    </button>
+                    <p className={st.modalTxt}>
+                        Для подверждения регистрации перейдите на свою почту и
+                        пройдите авторизацию.
+                    </p>
+                </ModalLogout>
+            )}
         </>
     );
 };

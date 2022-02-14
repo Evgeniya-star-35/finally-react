@@ -317,3 +317,7 @@
     line-height: 0.83;
     color: #eb5757;
 }
+
+.closeBtn {
+    display: block;
+}

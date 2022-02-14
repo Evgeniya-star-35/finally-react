@@ -9,7 +9,7 @@ import {
     googleAuth,
 } from './auth-operations';
 const initialState = {
-    user: { email: '' },
+    user: { email: '', avatar: '', balance: 0 },
     token: '',
     isLoading: false,
     isAuth: false,
@@ -29,10 +29,8 @@ const authSlice = createSlice({
         },
         [register.fulfilled](state, { payload }) {
             state.user = payload.user;
-            state.token = payload.token;
             state.avatar = payload.data.avatar;
             state.email = payload.data.email;
-            state.isAuth = true;
             state.error = null;
             state.isLoading = false;
             state.balance = payload.balance;
