@@ -2,7 +2,7 @@ const getIsAuthenticated = state => state.auth.isLogin;
 
 const getUserName = state => state.auth.user.name;
 
-const getUserAvatar = state => state.auth.avatar;
+const getUserAvatar = state => state.auth.user.avatar;
 
 const getFetchingCurrentUser = state => state.auth.isGetCurrentUser;
 
@@ -12,7 +12,7 @@ const getAuthError = state => state.auth.error;
 
 const getIsAuth = state => state.auth.isAuth;
 
-const getUserEmail = state => state.auth.email;
+const getUserEmail = state => state.auth.user.email;
 
 export {
     getIsAuthenticated,

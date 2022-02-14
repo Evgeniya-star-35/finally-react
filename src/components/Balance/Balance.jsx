@@ -9,8 +9,7 @@ import s from './Balance.module.css';
 const Balance = () => {
     const dispatch = useDispatch();
     // const balance = useSelector(getTotalBalance);
-    const balance = useSelector(state => state.auth.user.user.balance);
-    console.log(balance);
+    const balance = useSelector(state => state.auth.user.balance);
     useEffect(() => {
         setSum(balance);
         dispatch(transactionsOperations.setBalanceOperation(balance));

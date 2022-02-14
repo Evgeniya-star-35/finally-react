@@ -17,8 +17,11 @@ export default function AuthHeader() {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
 
-    const avatarUrl = useSelector(getUserAvatar);
-    const userEmail = useSelector(getUserEmail);
+    const avatarUrl = useSelector(state => state.auth.user.avatar);
+    const userEmail = useSelector(state => state.auth.user.email);
+
+    console.log(avatarUrl);
+    console.log(userEmail);
 
     const nameUser = userEmail.split('@')[0];
 

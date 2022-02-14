@@ -48,7 +48,7 @@ function App() {
 
     useEffect(() => {
         dispatch(getCurrentUser());
-    }, [dispatch]);
+    }, [dispatch, isAuth]);
 
     return (
         <>
