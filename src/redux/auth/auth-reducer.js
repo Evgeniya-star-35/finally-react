@@ -44,9 +44,9 @@ const authSlice = createSlice({
         [login.fulfilled](state, { payload }) {
             state.user = payload.data.user;
             state.token = payload.data.token;
-            // state.user.avatar = payload.data.user.avatar;
-            // state.user.email = payload.data.user.email;
-            // state.user.balance = payload.data.user.balance;
+            state.user.avatar = payload.data.user.avatar;
+            state.user.email = payload.data.user.email;
+            state.user.balance = payload.data.user.balance;
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
@@ -74,10 +74,10 @@ const authSlice = createSlice({
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
-            // state.user.balance = payload.user.balance;
+            state.user.balance = payload.user.balance;
             state.isGetCurrentUser = true;
-            // state.user.avatar = payload.user.avatar;
-            // state.user.email = payload.user.email;
+            state.user.avatar = payload.user.avatar;
+            state.user.email = payload.user.email;
         },
         [getCurrentUser.rejected](state) {
             state.isGetCurrentUser = false;
