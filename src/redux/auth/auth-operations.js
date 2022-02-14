@@ -55,7 +55,7 @@ export const getCurrentUser = createAsyncThunk(
         const state = getState();
         const persistToken = state.auth.token;
         if (!persistToken) {
-            return;
+            return rejectWithValue();
         }
 
         token.set(persistToken);
