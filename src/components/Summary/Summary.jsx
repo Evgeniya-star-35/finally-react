@@ -22,7 +22,6 @@ export default function Summary({ year, month }) {
                 <ul className={s.list}>
                     {monthsBalance?.length > 0 &&
                         monthsBalance.map(({ month, sum }, id) => {
-                            console.log(monthsBalance);
                             return (
                                 <li key={id} className={s.item}>
                                     <p className={s.month}>{month}</p>

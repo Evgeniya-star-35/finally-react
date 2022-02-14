@@ -11,9 +11,6 @@ import {
     deleteTransactionRequest,
     deleteTransactionSuccess,
     deleteTransactionError,
-    editTransactionRequest,
-    editTransactionSuccess,
-    editTransactionError,
     getMonthlyBalanceRequest,
     getMonthlyBalanceSuccess,
     getMonthlyBalanceError,
@@ -27,7 +24,6 @@ import {
 import {
     addTransaction,
     deleteTransaction,
-    editTransaction,
     getTransactionsByDate,
     getTransactionsByPeriod,
 } from 'services/transactionApi';
