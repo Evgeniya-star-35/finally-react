@@ -29,6 +29,7 @@ const authSlice = createSlice({
         },
         [register.fulfilled](state, { payload }) {
             state.user = payload.user;
+            // state.token = payload.token;
             state.avatar = payload.data.avatar;
             state.email = payload.data.email;
             state.error = null;
