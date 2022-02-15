@@ -40,7 +40,7 @@ const DevelopersView = lazy(() =>
 function App() {
     const dispatch = useDispatch();
     const { isAuth } = useSelector(state => state.auth.isAuth);
-    const isFetchUser = useSelector(getFetchingCurrentUser);
+    // const isFetchUser = useSelector(getFetchingCurrentUser);
     const token = useSelector(getCurrentToken);
     // useEffect(() => {
     //     if (isAuth) {
@@ -49,75 +49,74 @@ function App() {
     // }, [isAuth, dispatch]);
 
     useEffect(() => {
-        console.log(`Mount App`);
         dispatch(getCurrentUser());
-    }, [dispatch]);
+    }, [dispatch, isAuth]);
 
     return (
         <>
-            {token && (
-                <>
-                    <ToastContainer />
-                    <Suspense fallback={<Loader />}>
-                        <Routes>
-                            <Route
-                                path="/"
-                                element={
-                                    <PublicRoute
-                                        // isAuth={isAuth}
-                                        component={<HomePage />}
-                                    />
-                                }
-                            />
-                            <Route
-                                path="/developers"
-                                element={
-                                    <PublicRoute
-                                        // isAuth={isAuth}
-                                        component={<DevelopersView />}
-                                    />
-                                }
-                            />
-                            <Route
-                                path="/transactions/:transactionsType"
-                                element={
-                                    <PrivateRoute
-                                        // isAuth={isAuth}
-                                        component={<TransactionPage />}
-                                    />
-                                }
-                            />
-                            <Route
-                                path="/costsTransactions"
-                                element={
-                                    <PrivateRoute
-                                        // isAuth={isAuth}
-                                        component={<CostsTransactionPage />}
-                                    />
-                                }
-                            />
-                            <Route
-                                path="/mainPage"
-                                element={
-                                    <PrivateRoute
-                                        // isAuth={isAuth}
-                                        component={<MainPage />}
-                                    />
-                                }
-                            />
-                            <Route
-                                path="/reports"
-                                element={
-                                    <PrivateRoute
-                                        // isAuth={isAuth}
-                                        component={<ReportPage />}
-                                    />
-                                }
-                            />
-                        </Routes>
-                    </Suspense>
-                </>
-            )}
+            {/* {token && ( */}
+            <>
+                <ToastContainer />
+                <Suspense fallback={<Loader />}>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <PublicRoute
+                                    // isAuth={isAuth}
+                                    component={<HomePage />}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/developers"
+                            element={
+                                <PublicRoute
+                                    // isAuth={isAuth}
+                                    component={<DevelopersView />}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/transactions/:transactionsType"
+                            element={
+                                <PrivateRoute
+                                    // isAuth={isAuth}
+                                    component={<TransactionPage />}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/costsTransactions"
+                            element={
+                                <PrivateRoute
+                                    // isAuth={isAuth}
+                                    component={<CostsTransactionPage />}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/mainPage"
+                            element={
+                                <PrivateRoute
+                                    // isAuth={isAuth}
+                                    component={<MainPage />}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/reports"
+                            element={
+                                <PrivateRoute
+                                    // isAuth={isAuth}
+                                    component={<ReportPage />}
+                                />
+                            }
+                        />
+                    </Routes>
+                </Suspense>
+            </>
+            {/* )} */}
         </>
     );
 }

@@ -10,11 +10,7 @@ const getCurrentToken = state => state.auth.token;
 
 const getAuthError = state => state.auth.error;
 
-const getIsAuth = state => {
-    console.log(state.auth.isAuth);
-    return state.auth.isAuth;
-};
-
+const getIsAuth = state => state.auth.isAuth;
 const getUserEmail = state => state.auth.user.email;
 
 const getCurrentBalanceSelector = state => {

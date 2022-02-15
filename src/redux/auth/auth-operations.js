@@ -52,7 +52,6 @@ export const logout = createAsyncThunk(
 export const getCurrentUser = createAsyncThunk(
     'auth/current',
     async (_, { rejectWithValue, getState }) => {
-        console.log('getCurrentUser');
         try {
             const state = getState();
             const persistToken = state.auth.token;
@@ -65,7 +64,7 @@ export const getCurrentUser = createAsyncThunk(
         }
     },
 );
-export const getBalance = createAsyncThunk(
+export const setBalance = createAsyncThunk(
     'auth/balance',
     async (body, thunkAPI) => {
         try {
@@ -84,6 +83,7 @@ export const getCurrentBalance = createAsyncThunk(
             console.log(data);
             return data;
         } catch (error) {
+            console.log(error);
             thunkAPI.rejectWithValue(error);
         }
     },

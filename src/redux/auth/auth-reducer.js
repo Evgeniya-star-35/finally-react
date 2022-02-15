@@ -5,7 +5,7 @@ import {
     login,
     getCurrentUser,
     logout,
-    getBalance,
+    setBalance,
     googleAuth,
 } from './auth-operations';
 const initialState = {
@@ -62,16 +62,14 @@ const authSlice = createSlice({
             state.isAuth = false;
         },
         [logout.rejected](state, { payload }) {
-            console.log('logout error', payload);
             state.error = payload;
             state.isLoading = false;
         },
         [getCurrentUser.pending](state) {
             state.isLoading = true;
-            state.isGetCurrentUser = true;
+            // state.isGetCurrentUser = false;
         },
         [getCurrentUser.fulfilled](state, { payload }) {
-            console.log(payload);
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
@@ -84,10 +82,11 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.isGetCurrentUser = false;
         },
-        [getBalance.fulfilled](state, { payload }) {
+        [setBalance.fulfilled](state, { payload }) {
             state.user.balance = payload;
         },
         [getCurrentBalance.fulfilled](state, { payload }) {
+            console.log(payload);
             state.user.balance = payload.user.balance;
         },
         [googleAuth.fulfilled](state, { payload }) {
