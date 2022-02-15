@@ -79,7 +79,7 @@ export const getCurrentBalance = createAsyncThunk(
     'auth/current',
     async (_, thunkAPI) => {
         try {
-            const { data } = await axios.get('./user/currentBalance');
+            const { data } = await axios.get('./users/currentBalance');
             console.log(data);
             return data;
         } catch (error) {

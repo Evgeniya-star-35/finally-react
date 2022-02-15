@@ -15,6 +15,7 @@ const Balance = () => {
     const dispatch = useDispatch();
     const balance = useSelector(getCurrentBalanceSelector);
     const transactions = useSelector(getTransactionsMonth);
+    console.log(transactions);
     console.log(balance);
     useEffect(() => {
         dispatch(getCurrentBalance());

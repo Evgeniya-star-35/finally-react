@@ -86,7 +86,6 @@ const authSlice = createSlice({
             state.user.balance = payload;
         },
         [getCurrentBalance.fulfilled](state, { payload }) {
-            console.log(payload);
             state.user.balance = payload.user.balance;
         },
         [googleAuth.fulfilled](state, { payload }) {
