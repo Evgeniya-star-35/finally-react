@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
-    getCurrentBalance,
+    // getCurrentBalance,
     login,
     getCurrentUser,
     logout,
@@ -85,9 +85,9 @@ const authSlice = createSlice({
         [setBalance.fulfilled](state, { payload }) {
             state.user.balance = payload;
         },
-        [getCurrentBalance.fulfilled](state, { payload }) {
-            state.user.balance = payload;
-        },
+        // [getCurrentBalance.fulfilled](state, { payload }) {
+        //     state.user.balance = payload;
+        // },
         [googleAuth.fulfilled](state, { payload }) {
             state.token = payload;
             state.isAuth = true;

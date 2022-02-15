@@ -6,7 +6,7 @@ import ConfirmButton from 'components/Buttons/ConfirmButton';
 import BalanceModal from 'components/Modal/BalanceModal/BalanceModal';
 import {
     setBalance,
-    getCurrentBalance,
+    // getCurrentBalance,
 } from '../../redux/auth/auth-operations';
 // import transactionsOperations from 'redux/transactions/transactions-operations';
 import s from './Balance.module.css';
@@ -17,7 +17,7 @@ const Balance = () => {
     // const transactions = useSelector(getTransactionsMonth);
     // console.log(transactions);
     console.log(balance);
-    dispatch(getCurrentBalance());
+    // dispatch(getCurrentBalance());
     console.log(balance);
     // useEffect(() => {
     //     dispatch(getCurrentBalance());

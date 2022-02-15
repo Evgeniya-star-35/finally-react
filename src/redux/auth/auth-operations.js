@@ -60,7 +60,7 @@ export const getCurrentUser = createAsyncThunk(
             }
             const { data } = await axios.get('/users/current');
             console.log(data.data);
-            return data.data;
+            return data.data.user;
         } catch (error) {
             rejectWithValue(error.message);
         }
@@ -77,19 +77,7 @@ export const setBalance = createAsyncThunk(
         }
     },
 );
-export const getCurrentBalance = createAsyncThunk(
-    'auth/current',
-    async (_, thunkAPI) => {
-        try {
-            const { data } = await axios.get('./users/currentBalance');
-            console.log(data);
-            return data;
-        } catch (error) {
-            console.log(error);
-            thunkAPI.rejectWithValue(error);
-        }
-    },
-);
+
 export const googleAuth = createAsyncThunk(
     'auth/google',
     async (userToken, { rejectWithValue }) => {
