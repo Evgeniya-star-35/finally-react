@@ -14,7 +14,7 @@ const getIsAuth = state => state.auth.isAuth;
 const getUserEmail = state => state.auth.user.email;
 
 const getCurrentBalanceSelector = state => {
-    return state?.auth?.user?.balance;
+    return state.auth.user.balance;
 };
 export {
     // getTotalBalance,

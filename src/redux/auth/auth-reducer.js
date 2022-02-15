@@ -67,7 +67,7 @@ const authSlice = createSlice({
         },
         [getCurrentUser.pending](state) {
             state.isLoading = true;
-            // state.isGetCurrentUser = false;
+            state.isGetCurrentUser = false;
         },
         [getCurrentUser.fulfilled](state, { payload }) {
             state.isAuth = true;
@@ -86,7 +86,7 @@ const authSlice = createSlice({
             state.user.balance = payload;
         },
         [getCurrentBalance.fulfilled](state, { payload }) {
-            state.user.balance = payload.user.balance;
+            state.user.balance = payload;
         },
         [googleAuth.fulfilled](state, { payload }) {
             state.token = payload;
