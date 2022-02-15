@@ -16,9 +16,9 @@ const Balance = () => {
     const balance = useSelector(state => state.auth.user.balance);
     // const transactions = useSelector(getTransactionsMonth);
     // console.log(transactions);
-    console.log(balance);
+    // console.log(balance);
     // dispatch(getCurrentBalance());
-    console.log(balance);
+    // console.log(balance);
     // useEffect(() => {
     //     dispatch(getCurrentBalance());
     // }, [dispatch, balance]);
@@ -29,7 +29,7 @@ const Balance = () => {
     const onFormSubmit = e => {
         e.preventDefault();
         const data = { balance: Number(sum) };
-        console.log(data);
+        // console.log(data);
         dispatch(setBalance(data));
     };
 
