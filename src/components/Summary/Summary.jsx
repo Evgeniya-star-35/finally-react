@@ -3,24 +3,18 @@ import { useEffect } from 'react';
 import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import arrOfMonths from '../../data/month.json';
-import { getTotalBalance } from '../../redux/auth/auth-selector';
 import s from './Summary.module.css';
 
 export default function Summary({ year, month }) {
-    // console.log(year, month);
     const dispatch = useDispatch();
-    const totalBalance = useSelector(getTotalBalance);
-    // console.log(totalBalance);
+    const totalBalance = 0;
 
     useEffect(() => {
         dispatch(transactionsOperations.getMonthlyBalancesForSummary(year)); //забрала у пропсів month
-        // dispatch(transactionsOperations.getMonthlyBalancesYear(year))
     }, [totalBalance]);
 
     const monthsBalance = useSelector(getTransactionsMonth);
 
-    // console.log(monthsBalance);
-    // console.log(arrOfMonths);
     return (
         <>
             <div className={s.summaryWrap}>

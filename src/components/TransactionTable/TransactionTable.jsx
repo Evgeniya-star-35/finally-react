@@ -4,10 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import transactionsOperations from 'redux/transactions/transactions-operations';
-import {
-    getTransactionsDay,
-    getTotalBalance,
-} from '../../redux/transactions/transactions-selectors';
+import { getTransactionsDay } from '../../redux/transactions/transactions-selectors';
 import {
     getTransactionsByDate,
     getTransactionsByPeriod,

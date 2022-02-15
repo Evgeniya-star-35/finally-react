@@ -1,29 +1,36 @@
-import { getTotalBalance } from '../../redux/transactions/transactions-selectors';
+import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
+import { getCurrentBalanceSelector } from '../../redux/auth/auth-selector';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import ConfirmButton from 'components/Buttons/ConfirmButton';
 import BalanceModal from 'components/Modal/BalanceModal/BalanceModal';
-import transactionsOperations from 'redux/transactions/transactions-operations';
+import {
+    setBalance,
+    // getCurrentBalance,
+} from '../../redux/auth/auth-operations';
+// import transactionsOperations from 'redux/transactions/transactions-operations';
 import s from './Balance.module.css';
 
 const Balance = () => {
     const dispatch = useDispatch();
-    // const balance = useSelector(getTotalBalance);
     const balance = useSelector(state => state.auth.user.balance);
+    // const transactions = useSelector(getTransactionsMonth);
+    // console.log(transactions);
     console.log(balance);
-    useEffect(() => {
-        setSum(balance);
-        // dispatch(transactionsOperations.setBalanceOperation(balance));
-    }, [balance]);
+    // dispatch(getCurrentBalance());
+    console.log(balance);
+    // useEffect(() => {
+    //     dispatch(getCurrentBalance());
+    // }, [dispatch, balance]);
     const [sum, setSum] = useState(0);
     const onHandleChange = e => {
         setSum(e.currentTarget.value);
-        // console.log(sum);
     };
     const onFormSubmit = e => {
         e.preventDefault();
-        console.log('сума', sum);
-        dispatch(transactionsOperations.setBalanceOperation(sum));
+        const data = { balance: Number(sum) };
+        console.log(data);
+        dispatch(setBalance(data));
     };
 
     const [modalClose, setModalClose] = useState(true);
@@ -36,9 +43,7 @@ const Balance = () => {
                 <h2 className={s.title}>Баланс:</h2>
                 <form onSubmit={onFormSubmit} className={s.Form}>
                     <div className={s.FormInfo}>
-                        {balance === null ||
-                        balance === 0 ||
-                        balance === undefined ? (
+                        {!balance ? (
                             <>
                                 <input
                                     id="balance"
