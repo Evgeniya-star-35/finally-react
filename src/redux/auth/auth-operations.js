@@ -30,7 +30,6 @@ export const login = createAsyncThunk(
         try {
             const { data } = await axios.post('/users/login', userData);
             token.set(data.data.token);
-            console.log(login);
             return data;
         } catch (error) {
             rejectWithValue(error);
@@ -43,6 +42,7 @@ export const logout = createAsyncThunk(
         try {
             await axios.post('/users/logout');
             token.unset();
+            return;
         } catch (error) {
             rejectWithValue(error);
         }
@@ -52,14 +52,12 @@ export const logout = createAsyncThunk(
 export const getCurrentUser = createAsyncThunk(
     'auth/current',
     async (_, { rejectWithValue, getState }) => {
-        const state = getState();
-        const persistToken = state.auth.token;
-        if (!persistToken) {
-            return rejectWithValue();
-        }
-
-        token.set(persistToken);
+        console.log('getCurrentUser');
         try {
+            const state = getState();
+            const persistToken = state.auth.token;
+            if (!persistToken) return;
+            token.set(persistToken);
             const { data } = await axios.get('/users/current');
             return data.data;
         } catch (error) {
@@ -69,16 +67,27 @@ export const getCurrentUser = createAsyncThunk(
 );
 export const getBalance = createAsyncThunk(
     'auth/balance',
+    async (body, thunkAPI) => {
+        try {
+            const { data } = await axios.patch('/users/balance', body);
+            return data.data.balance;
+        } catch (error) {
+            thunkAPI.rejectWithValue(error);
+        }
+    },
+);
+export const getCurrentBalance = createAsyncThunk(
+    'auth/current',
     async (_, thunkAPI) => {
         try {
-            const { data } = await axios.patch('/users/balance');
+            const { data } = await axios.get('./user/currentBalance');
+            console.log(data);
             return data;
         } catch (error) {
             thunkAPI.rejectWithValue(error);
         }
     },
 );
-
 export const googleAuth = createAsyncThunk(
     'auth/google',
     async (userToken, { rejectWithValue }) => {

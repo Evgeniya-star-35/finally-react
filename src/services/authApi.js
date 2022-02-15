@@ -2,27 +2,29 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://finally-node.herokuapp.com/api';
 
-const fetchSignUp = credentials =>
-    axios.post('/users/registration', credentials);
+const signUp = credentials => axios.post('/users/registration', credentials);
 
-const fetchLogin = credentials => axios.post('/users/login', credentials);
+const login = credentials => axios.post('/users/login', credentials);
 
-const fetchLogout = () => axios.post('/users/logout');
+const logout = () => axios.post('/users/logout');
 
-const fetchCurrent = () => axios.get('/users/current');
+const getCurrent = () => axios.get('/users/current');
 
-const fetchBalance = balance => axios.patch('/users/balance', { balance });
+const updateBalance = balance => axios.patch('/users/balance', { balance });
+
+const currentBalance = balance => axios.get('/users/currentBalance', balance);
 
 const googleAuth = () => axios.get('./users/google');
 
 const googleRedirect = () => axios.get('/users/google-redirect');
 
 export {
-    fetchSignUp,
-    fetchLogin,
-    fetchLogout,
-    fetchCurrent,
-    fetchBalance,
+    signUp,
+    login,
+    logout,
+    getCurrent,
+    updateBalance,
     googleAuth,
     googleRedirect,
+    currentBalance,
 };

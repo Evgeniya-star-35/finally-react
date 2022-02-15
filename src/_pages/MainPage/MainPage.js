@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Media from 'react-media';
-import { getTotalBalance } from '../../redux/transactions/transactions-selectors';
+// import { getTotalBalance } from '../../redux/transactions/transactions-selectors';
 import AuthHeader from '../../components/Header/AuthHeader';
 import Balance from 'components/Balance/Balance';
 import Container from '../../components/Container';

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
-    register,
+    getCurrentBalance,
     login,
     getCurrentUser,
     logout,
@@ -42,7 +42,6 @@ const authSlice = createSlice({
             state.isLoading = true;
         },
         [login.fulfilled](state, { payload }) {
-            state.user = payload.data.user;
             state.token = payload.data.token;
             state.user.avatar = payload.data.user.avatar;
             state.user.email = payload.data.user.email;
@@ -50,11 +49,11 @@ const authSlice = createSlice({
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
-            state.isGetCurrentUser = true;
         },
         [login.rejected](state, { payload }) {
             state.error = payload;
             state.isLoading = false;
+            state.isAuth = false;
         },
         [logout.fulfilled](state, _) {
             state.user = { email: '', avatar: '', balance: 0 };
@@ -63,28 +62,33 @@ const authSlice = createSlice({
             state.isAuth = false;
         },
         [logout.rejected](state, { payload }) {
+            console.log('logout error', payload);
             state.error = payload;
             state.isLoading = false;
         },
         [getCurrentUser.pending](state) {
             state.isLoading = true;
+            state.isGetCurrentUser = true;
         },
         [getCurrentUser.fulfilled](state, { payload }) {
-            state.user = payload;
+            console.log(payload);
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
             state.user.balance = payload.user.balance;
-            state.isGetCurrentUser = true;
             state.user.avatar = payload.user.avatar;
             state.user.email = payload.user.email;
+            state.isGetCurrentUser = false;
         },
         [getCurrentUser.rejected](state) {
-            state.isGetCurrentUser = false;
             state.isLoading = false;
+            state.isGetCurrentUser = false;
         },
         [getBalance.fulfilled](state, { payload }) {
-            state.user.balance = payload.balance;
+            state.user.balance = payload;
+        },
+        [getCurrentBalance.fulfilled](state, { payload }) {
+            state.user.balance = payload.user.balance;
         },
         [googleAuth.fulfilled](state, { payload }) {
             state.token = payload;

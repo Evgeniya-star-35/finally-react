@@ -27,14 +27,14 @@ import {
     getTransactionsByDate,
     getTransactionsByPeriod,
 } from 'services/transactionApi';
-import { fetchBalance } from 'services/authApi';
+import { updateBalance } from 'services/authApi';
 
 const setBalanceOperation = balance => async dispatch => {
     console.log(balance);
     dispatch(setTotalBalanceRequest());
 
     try {
-        const response = await fetchBalance(balance);
+        const response = await updateBalance(balance);
         console.log(response);
         console.log(response.data.data.balance);
         dispatch(setTotalBalanceSuccess(response.data.data.balance));
@@ -51,19 +51,13 @@ const addTransactionOperation = transaction => async dispatch => {
     dispatch(addTransactionRequest());
 
     try {
-        const newBalance = calculateBalance(transaction, 'add');
-        console.log(newBalance);
-        if (newBalance < 0) return;
-        dispatch(setBalanceOperation(newBalance));
         const response = await addTransaction(transaction);
         console.log(response.data);
         dispatch(addTransactionSuccess(response.data.newTransaction));
-        dispatch(setTotalBalanceSuccess(newBalance));
         dispatch(getCurrentUser());
     } catch (error) {
         if (error.message === 'Unvalid token') {
             dispatch(addTransactionSuccess(error.resultTransaction));
-            dispatch(setTotalBalanceSuccess(error.balance));
             return;
         }
         dispatch(addTransactionError(error.message));
@@ -122,7 +116,6 @@ const getTransactionsDayOperation = date => async dispatch => {
 };
 
 const getTransactionsMonthYear = (month, year) => async dispatch => {
-    // console.log(month, year);
     if (!month && !year) {
         return;
     }
@@ -144,26 +137,23 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
     }
 };
 const getMonthlyBalancesForSummary = year => async dispatch => {
-    // const getMonthlyBalancesYear = year => async dispatch => {
     if (!year) {
         return;
     }
     dispatch(getTransactionsMonthYearRequest());
-    // dispatch(getMonthlyBalanceRequest());
+
     try {
         const response = await getTransactionsByPeriod(`${year}`);
         console.log(response);
         console.log(response.data.result.length);
         const balances = calculateBalancesPerMonth(response.data.result);
         console.log(balances);
-        // dispatch(getMonthlyBalanceSuccess(balances));
+
         dispatch(getTransactionsMonthYearSuccess(balances));
-        // dispatch(getTransactionsMonthYearSuccess(response.data.result));
     } catch (error) {
         if (error.message === 'Unvalid token') {
-            // await refresh(dispatch, getState);
             const response = await getTransactionsByPeriod(year);
-            const balances = calculateBalancesPerMonth(error.result);
+            const balances = calculateBalancesPerMonth(response);
             dispatch(getMonthlyBalanceSuccess(balances));
             return;
         }
@@ -212,7 +202,6 @@ const calculateBalance = (transaction, actionType) => {
 const calculateBalancesPerMonth = transactions => {
     const result = [];
     transactions.map(transaction => {
-        console.log(transaction);
         const balanceByMonth = result.find(
             item => item.month === transaction.month,
         );
