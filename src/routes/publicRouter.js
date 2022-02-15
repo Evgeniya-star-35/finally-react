@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { getIsAuth } from 'redux/auth';
 
-export default function PublicRoute({ component }) {
-    const isAuth = useSelector(getIsAuth);
-    return isAuth ? <Navigate to="/mainPage" /> : component;
+export default function PublicRoute({ component: Component }) {
+    const token = useSelector(state => state.auth.token);
+    return token ? <Navigate to="/mainPage" /> : Component;
 }

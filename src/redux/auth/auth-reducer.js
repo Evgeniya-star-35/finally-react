@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
-    // getCurrentBalance,
     login,
     getCurrentUser,
     logout,
@@ -21,23 +20,6 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     extraReducers: {
-        // [register.pending](state, _) {
-        //     state.isLoading = true;
-        // },
-        // [register.fulfilled](state, { payload }) {
-        //     state.user = payload.user;
-        //     // state.token = payload.token;
-        //     state.avatar = payload.data.avatar;
-        //     state.email = payload.data.email;
-
-        //     state.error = null;
-        //     state.isLoading = false;
-        //     state.balance = payload.balance;
-        // },
-        // [register.rejected](state, { payload }) {
-        //     state.error = payload;
-        //     state.isLoading = false;
-        // },
         [login.pending](state, _) {
             state.isLoading = true;
         },
@@ -73,9 +55,9 @@ const authSlice = createSlice({
             state.isAuth = true;
             state.error = null;
             state.isLoading = false;
-            state.user.balance = payload.user.balance;
-            state.user.avatar = payload.user.avatar;
-            state.user.email = payload.user.email;
+            state.user.balance = payload.balance;
+            state.user.avatar = payload.avatar;
+            state.user.email = payload.email;
             state.isGetCurrentUser = false;
         },
         [getCurrentUser.rejected](state) {
@@ -85,9 +67,6 @@ const authSlice = createSlice({
         [setBalance.fulfilled](state, { payload }) {
             state.user.balance = payload;
         },
-        // [getCurrentBalance.fulfilled](state, { payload }) {
-        //     state.user.balance = payload;
-        // },
         [googleAuth.fulfilled](state, { payload }) {
             state.token = payload;
             state.isAuth = true;

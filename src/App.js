@@ -39,17 +39,12 @@ const DevelopersView = lazy(() =>
 );
 function App() {
     const dispatch = useDispatch();
-    const { isAuth } = useSelector(state => state.auth.isAuth);
-    // const isFetchUser = useSelector(getFetchingCurrentUser);
-    // useEffect(() => {
-    //     if (isAuth) {
-    //         dispatch(getCurrentUser());
-    //     }
-    // }, [isAuth, dispatch]);
-
+    const token = useSelector(state => state.auth.token);
     useEffect(() => {
-        dispatch(getCurrentUser());
-    }, [dispatch, isAuth]);
+        if (token) {
+            dispatch(getCurrentUser());
+        }
+    }, [dispatch]);
 
     return (
         <>
@@ -58,57 +53,33 @@ function App() {
                 <Routes>
                     <Route
                         path="/"
-                        element={
-                            <PublicRoute
-                                // isAuth={isAuth}
-                                component={<HomePage />}
-                            />
-                        }
+                        element={<PublicRoute component={<HomePage />} />}
                     />
                     <Route
                         path="/developers"
-                        element={
-                            <PublicRoute
-                                // isAuth={isAuth}
-                                component={<DevelopersView />}
-                            />
-                        }
+                        element={<PublicRoute component={<DevelopersView />} />}
                     />
                     <Route
                         path="/transactions/:transactionsType"
                         element={
-                            <PrivateRoute
-                                // isAuth={isAuth}
-                                component={<TransactionPage />}
-                            />
+                            <PrivateRoute component={<TransactionPage />} />
                         }
                     />
                     <Route
                         path="/costsTransactions"
                         element={
                             <PrivateRoute
-                                // isAuth={isAuth}
                                 component={<CostsTransactionPage />}
                             />
                         }
                     />
                     <Route
                         path="/mainPage"
-                        element={
-                            <PrivateRoute
-                                // isAuth={isAuth}
-                                component={<MainPage />}
-                            />
-                        }
+                        element={<PrivateRoute component={<MainPage />} />}
                     />
                     <Route
                         path="/reports"
-                        element={
-                            <PrivateRoute
-                                // isAuth={isAuth}
-                                component={<ReportPage />}
-                            />
-                        }
+                        element={<PrivateRoute component={<ReportPage />} />}
                     />
                 </Routes>
             </Suspense>
