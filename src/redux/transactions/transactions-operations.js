@@ -1,5 +1,4 @@
 import { toast } from 'react-toastify';
-import { getCurrentUser } from '../auth/auth-operations';
 import {
     getTransactionsRequest,
     getTransactionsSuccess,
@@ -48,7 +47,6 @@ const addTransactionOperation = transaction => async dispatch => {
     try {
         const response = await addTransaction(transaction);
         dispatch(addTransactionSuccess(response.data.newTransaction));
-        dispatch(getCurrentUser());
     } catch (error) {
         dispatch(addTransactionError(error.message));
         toast.error(error.message, {
