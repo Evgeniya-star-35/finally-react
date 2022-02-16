@@ -1,31 +1,16 @@
 import Media from 'react-media';
-import { store } from '../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import transactionsOperations from 'redux/transactions/transactions-operations';
-import {
-    getTransactionsDay,
-    getTotalBalance,
-} from '../../redux/transactions/transactions-selectors';
-import {
-    getTransactionsByDate,
-    getTransactionsByPeriod,
-} from '../../services/transactionApi';
+import { getTransactionsDay } from '../../redux/transactions/transactions-selectors';
 import Modal from '../Modal/Modal';
 import Button from '../Buttons/Button';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionTable.module.css';
 import st from '../Modal/Modal.module.css';
 
-export default function TransactionTable({
-    date,
-    setNewDate,
-    sum,
-    category,
-    subCategory,
-    // transaction,
-}) {
+export default function TransactionTable({ date }) {
     const dispatch = useDispatch();
     const [transactionId, setTransactionId] = useState('');
     const [modalDelete, setModalDelete] = useState(false);
@@ -52,7 +37,6 @@ export default function TransactionTable({
     };
     const onDeleteOk = id => {
         const transactionToDelete = filteredTransactions.find(item => {
-            console.log(item.id === id);
             return item.id === id;
         });
         if (transactionToDelete) {
@@ -71,11 +55,7 @@ export default function TransactionTable({
     return (
         <>
             {modalDelete && (
-                <Modal
-                    // handleClickRight={onDeleteCancel}
-                    // handleClickLeft={onDeleteOk(transactionId)}
-                    onClose={onDeleteCancel}
-                >
+                <Modal onClose={onDeleteCancel}>
                     <button className={st.close} onClick={toggleModal}>
                         <svg width="12" height="12">
                             <use href={`${sprite}#icon-close`}></use>
@@ -148,7 +128,13 @@ export default function TransactionTable({
                                                         <span
                                                             className={s.cost}
                                                         >
-                                                            - {sum.toFixed(2)}{' '}
+                                                            -{' '}
+                                                            {sum
+                                                                .toFixed(2)
+                                                                .replace(
+                                                                    /(\d)(?=(\d\d\d)+([^\d]|$))/g,
+                                                                    '$1 ',
+                                                                )}{' '}
                                                             UAH
                                                         </span>
                                                     ) : (
@@ -157,7 +143,13 @@ export default function TransactionTable({
                                                                 s.incomes
                                                             }
                                                         >
-                                                            {sum.toFixed(2)} UAH
+                                                            {sum
+                                                                .toFixed(2)
+                                                                .replace(
+                                                                    /(\d)(?=(\d\d\d)+([^\d]|$))/g,
+                                                                    '$1 ',
+                                                                )}{' '}
+                                                            UAH
                                                         </span>
                                                     )}
                                                 </td>

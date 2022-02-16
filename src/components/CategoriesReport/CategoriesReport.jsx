@@ -85,37 +85,46 @@ export default function CategoriesReport() {
                         </svg>
                     </button>
                 </div>
+
                 {transactions.length === 0 && <ReportCostError />}
                 {transactions.length > 0 && (
                     <ul className={s.list}>
-                        {categories.map(category => {
-                            let sum = transactionTotalSum(
-                                transactionsType,
-                                category.category,
-                            );
-                            if (sum === 0) {
-                                return null;
-                            }
-                            return (
-                                <li key={category.id} className={s.item}>
-                                    <p className={s.cost}>{sum.toFixed(2)}</p>
-                                    <svg
-                                        width="56"
-                                        height="56"
-                                        className={s.icon}
-                                    >
-                                        <use
-                                            href={`${sprite}#icon-${category.icon}`}
-                                        ></use>
-                                    </svg>
-                                    <p className={s.costName}>
-                                        {category.category}
-                                    </p>
-                                </li>
-                            );
-                        })}
-                    </ul>
+                    {categories.map(category => {
+                        let sum = transactionTotalSum(
+                            transactionsType,
+                            category.category,
+                        );
+                        if (sum === 0) {
+                            return null;
+                        }
+                        return (
+                            <li key={category.id} className={s.item}>
+                                <p className={s.cost}>
+                                    {sum
+                                        .toFixed(2)
+                                        .replace(
+                                            /(\d)(?=(\d\d\d)+([^\d]|$))/g,
+                                            '$1 ',
+                                        )}{' '}
+                                    UAH
+                                </p>
+                                <svg width="56" height="56" className={s.icon}>
+                                    <use
+                                        href={`${sprite}#icon-${category.icon}`}
+                                    ></use>
+                                </svg>
+                                <p className={s.costName}>
+                                    {category.category}
+                                </p>
+                            </li>
+                        );
+                    })}
+                </ul>
                 )}
+
+
+                
+
             </div>
             <ChartCost
             // transactionsByType={transactionsByType}

@@ -6,21 +6,24 @@ const getUserAvatar = state => state.auth.user.avatar;
 
 const getFetchingCurrentUser = state => state.auth.isGetCurrentUser;
 
-const getCurrentToken = state => state.auth.token;
+const getToken = state => state.auth.token;
 
 const getAuthError = state => state.auth.error;
 
-const getIsAuth = state => state.auth.isAuth;
-
+const getIsAuth = state => state.auth.token;
 const getUserEmail = state => state.auth.user.email;
 
+const getCurrentBalanceSelector = state => {
+    return state.auth.user.balance;
+};
 export {
     getIsAuthenticated,
     getUserName,
     getFetchingCurrentUser,
-    getCurrentToken,
+    getToken,
     getUserAvatar,
     getAuthError,
     getIsAuth,
     getUserEmail,
+    getCurrentBalanceSelector,
 };

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Media from 'react-media';
-import { getTotalBalance } from '../../redux/transactions/transactions-selectors';
+import { getCurrentUser } from 'redux/auth/auth-operations';
 import AuthHeader from '../../components/Header/AuthHeader';
 import Balance from 'components/Balance/Balance';
 import Container from '../../components/Container';
@@ -9,14 +9,13 @@ import transactionsOperations from 'redux/transactions/transactions-operations';
 import CostsButton from 'components/Buttons/CostsAndIncomesButtons/CostsButton';
 import IncomesButton from 'components/Buttons/CostsAndIncomesButtons/IncomesButton';
 import GoToReports from 'components/GoToReports';
-// import Summary from 'components/Summary';
 import s from './MainPage.module.css';
 import TransactionForm from 'components/TransactionForm';
 import TransactionList from 'components/TransactionListMobile/TransactionList';
 
 import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
-import AvatarModal from '../../components/AvatarLoad';
+// import AvatarModal from '../../components/AvatarLoad';
 
 const MainPage = () => {
     const [type, setType] = useState('incomes');
@@ -24,9 +23,11 @@ const MainPage = () => {
     const [year, setYear] = useState('');
     const [month, setMonth] = useState('');
     const [picker, setPicker] = useState(false);
-    // const [listRender, setListRender] = useState(true);
     const dispatch = useDispatch();
-
+    useEffect(() => {
+        dispatch(transactionsOperations.getTransactionsDayOperation(date));
+        dispatch(getCurrentUser());
+    }, [date, dispatch]);
     const day = new Date();
     const startDate = `${day.getDate()}.${
         day.getMonth() + 1
@@ -57,11 +58,6 @@ const MainPage = () => {
         setPicker(false);
     };
 
-    useEffect(() => {
-        dispatch(transactionsOperations.getTransactionsDayOperation(date));
-        dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
-    }, [date, year, month, dispatch]);
-
     const setTypePlaceholder = () => {
         if (type === 'cost') {
             setType('Описание товара');
@@ -73,15 +69,6 @@ const MainPage = () => {
     const typeToggle = e => {
         setType(`${e.currentTarget.title}`);
     };
-
-    // const onArrow = e => {
-    //     console.log(first);
-    //     typeToggle(e);
-    //     return listRender ? setListRender(false) : setListRender(true);
-    // };
-    // const onBack = () => {
-    //     setListRender(true);
-    // };
 
     return (
         <>
@@ -107,7 +94,6 @@ const MainPage = () => {
                                 <CostsButton getType={typeToggle} />
                                 <IncomesButton getType={typeToggle} />
                             </div>
-                            {/* <TransactionList /> */}
                             <TransactionList
                                 transactionType={type}
                                 date={date}
@@ -135,9 +121,6 @@ const MainPage = () => {
                                     month={month}
                                     year={year}
                                 />
-                                {/* <div className={s.transactionSummaryWrapper}>
-                                    <Summary year={year} />
-                                </div> */}
                             </div>
                         </>
                     )}

@@ -7,28 +7,32 @@ import s from './Summary.module.css';
 
 export default function Summary({ year, month }) {
     const dispatch = useDispatch();
+    const totalBalance = 0;
 
     useEffect(() => {
-        dispatch(transactionsOperations.getTransactionsMonthYear(month, year));
-    }, []);
+        dispatch(transactionsOperations.getMonthlyBalancesForSummary(year)); //забрала у пропсів month
+    }, [totalBalance]);
+
     const monthsBalance = useSelector(getTransactionsMonth);
 
-    // console.log(monthsBalance);
-    // console.log(arrOfMonths);
     return (
         <>
             <div className={s.summaryWrap}>
                 <h3 className={s.title}>Сводка</h3>
                 <ul className={s.list}>
                     {monthsBalance?.length > 0 &&
-                        monthsBalance.map(({ month, sum }, id) => {
-                            return (
-                                <li key={id} className={s.item}>
-                                    <p className={s.month}>{month}</p>
-                                    <p className={s.sum}>{sum}</p>
-                                </li>
-                            );
-                        })}
+                        monthsBalance.map(({ month, value }, id) => (
+                            <li key={id} className={s.item}>
+                                <p className={s.month}>
+                                    {
+                                        arrOfMonths.find(
+                                            monthData => monthData.id === month,
+                                        ).name
+                                    }
+                                </p>
+                                <p className={s.sum}>{value}</p>
+                            </li>
+                        ))}
                 </ul>
             </div>
         </>
