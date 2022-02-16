@@ -172,25 +172,3 @@ const calculateBalancesPerMonth = transactions => {
     });
     return result;
 };
-// const getMonthlyBalancesForSummary = year => async dispatch => {
-//     if (!year) {
-//         return;
-//     }
-//     console.log(year);
-//     // dispatch(getTransactionsMonthYearRequest());
-//     dispatch(getMonthlyBalanceRequest())
-
-//     try {
-//         const response = await getTransactionsByPeriod(`${year}`);
-//         console.log(response);
-//         const balances = calculateBalancesPerMonth(response.data.result);
-//         // dispatch(getTransactionsMonthYearSuccess(balances));
-//         dispatch(getMonthlyBalanceSuccess(balances))
-//     } catch (error) {
-//         dispatch(getMonthlyBalanceError(error.message.message));
-//         toast.error(error.message.message, {
-//             position: 'top-center',
-//             autoClose: 2500,
-//         });
-//     }
-// };
