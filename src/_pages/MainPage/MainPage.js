@@ -11,7 +11,6 @@ import GoToReports from 'components/GoToReports';
 import s from './MainPage.module.css';
 import TransactionForm from 'components/TransactionForm';
 import TransactionList from 'components/TransactionListMobile/TransactionList';
-import { getCurrentUser } from 'redux/auth/auth-operations';
 
 import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
@@ -25,15 +24,10 @@ const MainPage = () => {
     const [picker, setPicker] = useState(false);
     const dispatch = useDispatch();
 
-    const checkLengthDate = date => {
-        const result = date.toString().length === 1 ? `0${date}` : date;
-        return result;
-    };
-
     const day = new Date();
-    const startDate = `${checkLengthDate(day.getDate())}.${checkLengthDate(
-        day.getMonth() + 1,
-    )}.${day.getFullYear()}`;
+    const startDate = `${day.getDate()}.${
+        day.getMonth() + 1
+    }.${day.getFullYear()}`;
 
     useEffect(() => {
         setDate(startDate);
@@ -51,11 +45,9 @@ const MainPage = () => {
         setPicker(true);
     };
     const closePicker = dateNew => {
-        const newDate = `${checkLengthDate(
-            dateNew.getUTCDate(),
-        )}.${checkLengthDate(
-            dateNew.getUTCMonth() + 1,
-        )}.${dateNew.getUTCFullYear()}`;
+        const newDate = `${dateNew.getUTCDate()}.${
+            dateNew.getUTCMonth() + 1
+        }.${dateNew.getUTCFullYear()}`;
         setDate(newDate);
         setMonth(newDate.split('.')[1]);
         setYear(newDate.split('.')[2]);
@@ -64,7 +56,6 @@ const MainPage = () => {
 
     useEffect(() => {
         dispatch(transactionsOperations.getTransactionsDayOperation(date));
-        dispatch(getCurrentUser());
     }, [date, dispatch]);
 
     const setTypePlaceholder = () => {

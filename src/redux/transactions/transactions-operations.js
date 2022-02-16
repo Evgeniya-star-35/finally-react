@@ -1,5 +1,4 @@
 import { toast } from 'react-toastify';
-import { setBalance } from '../auth/auth-operations';
 import {
     getTransactionsRequest,
     getTransactionsSuccess,
@@ -48,7 +47,6 @@ const addTransactionOperation = transaction => async dispatch => {
     try {
         const response = await addTransaction(transaction);
         dispatch(addTransactionSuccess(response.data.newTransaction));
-        dispatch(setBalance(response.data.balance));
     } catch (error) {
         dispatch(addTransactionError(error.message));
         toast.error(error.message, {
@@ -62,7 +60,6 @@ const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
     try {
         const response = await deleteTransaction(transaction.id);
-        console.log(transaction);
         dispatch(deleteTransactionSuccess(transaction.id));
         toast.success(response.data.message, {
             position: 'top-center',
@@ -105,6 +102,7 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
     dispatch(getTransactionsMonthYearRequest());
     try {
         const response = await getTransactionsByPeriod(`${month}.${year}`);
+        console.log(response);
 
         dispatch(getTransactionsMonthYearSuccess(response.data.result));
     } catch (error) {
@@ -123,6 +121,7 @@ const getMonthlyBalancesForSummary = year => async dispatch => {
 
     try {
         const response = await getTransactionsByPeriod(`${year}`);
+        console.log(response);
         dispatch(getTransactionsMonthYearSuccess(response));
     } catch (error) {
         dispatch(getMonthlyBalanceError(error.message.message));

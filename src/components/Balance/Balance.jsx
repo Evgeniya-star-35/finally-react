@@ -19,9 +19,9 @@ const Balance = () => {
     // console.log(balance);
     // dispatch(getCurrentBalance());
     // console.log(balance);
-    useEffect(() => {
-        dispatch(setBalance(balance));
-    }, [dispatch, balance]);
+    // useEffect(() => {
+    //     dispatch(getCurrentBalance());
+    // }, [dispatch, balance]);
     const [sum, setSum] = useState(0);
     const onHandleChange = e => {
         setSum(e.currentTarget.value);
