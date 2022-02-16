@@ -12,8 +12,6 @@ import {
 // import data from "../../data/catCosts.json";
 // import data1 from "../../data/expense.json";
 
-// console.log(data1);
-
 const MobileChart = () => {
     const renderBarLabel = ({ x, y, width, value }) => (
         <text

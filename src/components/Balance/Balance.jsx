@@ -9,10 +9,6 @@ import s from './Balance.module.css';
 const Balance = () => {
     const dispatch = useDispatch();
     const balance = useSelector(state => state.auth.user.balance);
-
-    useEffect(() => {
-        dispatch(setBalance(balance));
-    }, [dispatch, balance]);
     const [sum, setSum] = useState(0);
     const onHandleChange = e => {
         setSum(e.currentTarget.value);
@@ -62,11 +58,14 @@ const Balance = () => {
                                         .toLocaleString('ru')}`}{' '}
                                     UAH
                                 </p>
-                                <ConfirmButton
+                                {/* <ConfirmButton
                                     className={s.HideBtn}
                                     text="Подтвердить"
                                     disabled
-                                />
+                                /> */}
+                                <button className={s.confirmBtn} disabled>
+                                    Подтвердить
+                                </button>
                             </>
                         )}
                     </div>

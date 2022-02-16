@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://finally-node.herokuapp.com/api';
@@ -21,6 +22,10 @@ export const register = createAsyncThunk(
             return data;
         } catch (error) {
             rejectWithValue(error);
+            toast.error(error.message, {
+                position: 'top-center',
+                autoClose: 2500,
+            });
         }
     },
 );
@@ -33,6 +38,10 @@ export const login = createAsyncThunk(
             return data;
         } catch (error) {
             rejectWithValue(error);
+            toast.error(error.message, {
+                position: 'top-center',
+                autoClose: 2500,
+            });
         }
     },
 );
@@ -86,6 +95,10 @@ export const googleAuth = createAsyncThunk(
             return userToken;
         } catch (error) {
             rejectWithValue(error.message);
+            toast.error(error.message, {
+                position: 'top-center',
+                autoClose: 2500,
+            });
         }
     },
 );
