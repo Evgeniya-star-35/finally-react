@@ -35,7 +35,7 @@ export default function Summary({ year, month }) {
                                 </p>
                                 <p className={s.sum}>
                                     {value
-                                        .toFixed(2)
+                                        ?.toFixed(2)
                                         .replace(
                                             /(\d)(?=(\d\d\d)+([^\d]|$))/g,
                                             '$1 ',
