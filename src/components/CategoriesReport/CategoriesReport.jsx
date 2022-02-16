@@ -35,7 +35,6 @@ export default function CategoriesReport() {
     };
 
     const transactions = useSelector(getTransactionsMonth);
-    console.log(transactions);
 
     const transactionsByType = transactionsType => {
         const filterByType = transactions.filter(
