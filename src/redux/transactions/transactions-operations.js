@@ -59,9 +59,11 @@ const addTransactionOperation = transaction => async dispatch => {
 
 const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
+    console.log(transaction);
     try {
         const response = await deleteTransaction(transaction.id);
         dispatch(deleteTransactionSuccess(transaction.id));
+        dispatch(setBalance(response.data.balance));
         toast.success(response.data.message, {
             position: 'top-center',
             autoClose: 2500,
