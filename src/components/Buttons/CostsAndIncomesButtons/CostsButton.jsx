@@ -3,8 +3,9 @@ import { useLocation } from 'react-router';
 import Media from 'react-media';
 import s from './CostsAndIncomesButton.module.css';
 
-export default function CostsButton({ getType }) {
+export default function CostsButton({ getType, type }) {
     const location = useLocation();
+
     return (
         <>
             <Media
@@ -33,7 +34,7 @@ export default function CostsButton({ getType }) {
                 query="(min-width: 768px)"
                 render={() => (
                     <button
-                        className={s.btn}
+                        className={`${s.btn} ${type === 'cost' && s.btnActive}`}
                         type="button"
                         title="cost"
                         onClick={getType}

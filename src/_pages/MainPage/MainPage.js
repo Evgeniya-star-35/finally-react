@@ -106,8 +106,11 @@ const MainPage = () => {
                     render={() => (
                         <>
                             <div className={s.btnTabletWrapper}>
-                                <CostsButton getType={typeToggle} />
-                                <IncomesButton getType={typeToggle} />
+                                <CostsButton getType={typeToggle} type={type} />
+                                <IncomesButton
+                                    getType={typeToggle}
+                                    type={type}
+                                />
                             </div>
                             <div className={s.transactionTabletDesktopWrapper}>
                                 <TransactionForm

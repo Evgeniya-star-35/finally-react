@@ -31,4 +31,11 @@
         color: var(--accent-color);
         background-color: #fafbfd;
     }
+
+    .btnActive {
+        color: #ff751d;
+    }
+    .btnActive:active {
+        color: #ff751d;
+    }
 }
