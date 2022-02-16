@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { setBalance } from '../auth/auth-operations';
+import { setBalance, getCurrentUser } from '../auth/auth-operations';
 import {
     getTransactionsRequest,
     getTransactionsSuccess,
@@ -10,6 +10,8 @@ import {
     deleteTransactionRequest,
     deleteTransactionSuccess,
     deleteTransactionError,
+    getMonthlyBalanceRequest,
+    getMonthlyBalanceSuccess,
     getMonthlyBalanceError,
     setTotalBalanceRequest,
     setTotalBalanceSuccess,
@@ -120,12 +122,15 @@ const getMonthlyBalancesForSummary = year => async dispatch => {
     if (!year) {
         return;
     }
-    dispatch(getTransactionsMonthYearRequest());
+    dispatch(getMonthlyBalanceRequest());
 
     try {
         const response = await getTransactionsByPeriod(`${year}`);
         console.log(response);
-        dispatch(getTransactionsMonthYearSuccess(response));
+        dispatch(getCurrentUser());
+        const balances = calculateBalancesPerMonth(response.data.result);
+        console.log(balances);
+        dispatch(getMonthlyBalanceSuccess(balances));
     } catch (error) {
         dispatch(getMonthlyBalanceError(error.message.message));
         toast.error(error.message.message, {
@@ -145,3 +150,47 @@ const transactionsOperations = {
 };
 
 export default transactionsOperations;
+const calculateBalancesPerMonth = transactions => {
+    const result = [];
+    transactions.map(transaction => {
+        const balanceByMonth = result.find(
+            item => item.month === transaction.month,
+        );
+        if (!balanceByMonth) {
+            return result.push({
+                month: transaction.month,
+                value:
+                    transaction.type === 'incomes'
+                        ? +transaction.sum
+                        : -transaction.sum,
+            });
+        } else {
+            return transaction.type === 'incomes'
+                ? (balanceByMonth.value += transaction.sum)
+                : (balanceByMonth.value -= transaction.sum);
+        }
+    });
+    return result;
+};
+// const getMonthlyBalancesForSummary = year => async dispatch => {
+//     if (!year) {
+//         return;
+//     }
+//     console.log(year);
+//     // dispatch(getTransactionsMonthYearRequest());
+//     dispatch(getMonthlyBalanceRequest())
+
+//     try {
+//         const response = await getTransactionsByPeriod(`${year}`);
+//         console.log(response);
+//         const balances = calculateBalancesPerMonth(response.data.result);
+//         // dispatch(getTransactionsMonthYearSuccess(balances));
+//         dispatch(getMonthlyBalanceSuccess(balances))
+//     } catch (error) {
+//         dispatch(getMonthlyBalanceError(error.message.message));
+//         toast.error(error.message.message, {
+//             position: 'top-center',
+//             autoClose: 2500,
+//         });
+//     }
+// };
