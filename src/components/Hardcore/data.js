@@ -1,7 +1,7 @@
 import img1 from '../../images/hardcore/Evgenia.jpg';
 import img2 from '../../images/hardcore/Petro.jpg';
-import img3 from '../../images/hardcore/Nikolay.jpg';
-import img4 from '../../images/hardcore/Vlad.jpeg';
+import img3 from '../../images/hardcore/Nikolay.png';
+import img4 from '../../images/hardcore/Vlad.jpg';
 import img5 from '../../images/hardcore/Mariia.jpg';
 import img6 from '../../images/hardcore/Marta.jpg';
 import img7 from '../../images/hardcore/Ganna.jpg';
@@ -28,7 +28,7 @@ const hardcore = [
     },
     {
         id: 3,
-        fullName: 'Nikolai Grebenyuk',
+        fullName: 'Mukola Hrebenjuk',
         position: 'Developer',
         photo: `.${img3}`,
         linkedIn: 'https://www.linkedin.com/in/nikolay-grebenjuk-64b41b222',
