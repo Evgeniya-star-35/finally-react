@@ -1,7 +1,7 @@
 import React from 'react';
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos';
-import month from '../../data/month.json';
+import month from '../../data/currentMonth.json';
 import s from './CurrentPeriod.module.css';
 
 const CurrentPeriod = ({
@@ -12,6 +12,10 @@ const CurrentPeriod = ({
 }) => {
     const monthToString = String(currentMonth);
     const selectMonth = month.filter(el => el.id === monthToString);
+    // const checkLengthDate = date => {
+    //     const result = date.toString().length === 1 ? `0${date}` : date;
+    //     return result;
+    // };
     return (
         <div className={s.reviewMonth}>
             <h5 className={s.titleReviewMonth}>Текущий период:</h5>
