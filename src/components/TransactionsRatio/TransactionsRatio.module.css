@@ -40,6 +40,10 @@
 
       }
 
+      .ratio_title {
+            margin-bottom: 2px;
+      }
+
       .ratio_cost {
             margin: 0;
             margin-right: 15px;

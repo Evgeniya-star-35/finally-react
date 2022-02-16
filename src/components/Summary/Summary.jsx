@@ -33,7 +33,14 @@ export default function Summary({ year, month }) {
                                         ).name
                                     }
                                 </p>
-                                <p className={s.sum}>{value}</p>
+                                <p className={s.sum}>
+                                    {value
+                                        .toFixed(2)
+                                        .replace(
+                                            /(\d)(?=(\d\d\d)+([^\d]|$))/g,
+                                            '$1 ',
+                                        )}
+                                </p>
                             </li>
                         ))}
                 </ul>
