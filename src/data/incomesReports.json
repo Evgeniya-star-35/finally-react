@@ -1,0 +1,4 @@
+[
+    { "id": "1", "category": "Заработная плата", "icon": "salary" },
+    { "id": "2", "category": "Доп.доход", "icon": "extraIncome" }
+]

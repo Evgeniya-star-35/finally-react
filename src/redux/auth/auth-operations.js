@@ -17,7 +17,7 @@ export const register = createAsyncThunk(
     async (userData, { rejectWithValue }) => {
         try {
             const { data } = await axios.post('/users/registration', userData);
-            token.set(data.token);
+
             return data;
         } catch (error) {
             rejectWithValue(error);
@@ -30,7 +30,6 @@ export const login = createAsyncThunk(
         try {
             const { data } = await axios.post('/users/login', userData);
             token.set(data.data.token);
-            console.log(login);
             return data;
         } catch (error) {
             rejectWithValue(error);
@@ -43,6 +42,7 @@ export const logout = createAsyncThunk(
         try {
             await axios.post('/users/logout');
             token.unset();
+            return;
         } catch (error) {
             rejectWithValue(error);
         }
@@ -52,27 +52,26 @@ export const logout = createAsyncThunk(
 export const getCurrentUser = createAsyncThunk(
     'auth/current',
     async (_, { rejectWithValue, getState }) => {
-        const state = getState();
-        const persistToken = state.auth.token;
-        if (!persistToken) {
-            return rejectWithValue();
-        }
-
-        token.set(persistToken);
         try {
+            const state = getState();
+            const persistToken = state.auth.token;
+            if (!persistToken) {
+                return rejectWithValue();
+            }
+            token.set(persistToken);
             const { data } = await axios.get('/users/current');
-            return data.data;
+            return data.data.user;
         } catch (error) {
             rejectWithValue(error.message);
         }
     },
 );
-export const getBalance = createAsyncThunk(
+export const setBalance = createAsyncThunk(
     'auth/balance',
-    async (_, thunkAPI) => {
+    async (body, thunkAPI) => {
         try {
-            const { data } = await axios.patch('/users/balance');
-            return data;
+            const { data } = await axios.patch('/users/balance', body);
+            return data.data.balance;
         } catch (error) {
             thunkAPI.rejectWithValue(error);
         }
