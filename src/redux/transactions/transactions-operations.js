@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { setBalance } from '../auth/auth-operations';
 import {
     getTransactionsRequest,
     getTransactionsSuccess,
@@ -26,7 +27,6 @@ import {
 import { updateBalance } from 'services/authApi';
 
 const setBalanceOperation = balance => async dispatch => {
-    console.log(balance);
     dispatch(setTotalBalanceRequest());
 
     try {
@@ -47,6 +47,7 @@ const addTransactionOperation = transaction => async dispatch => {
     try {
         const response = await addTransaction(transaction);
         dispatch(addTransactionSuccess(response.data.newTransaction));
+        dispatch(setBalance(response.data.balance));
     } catch (error) {
         dispatch(addTransactionError(error.message));
         toast.error(error.message, {

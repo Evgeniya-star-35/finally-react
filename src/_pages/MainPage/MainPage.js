@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Media from 'react-media';
+import { getCurrentUser } from 'redux/auth/auth-operations';
 import AuthHeader from '../../components/Header/AuthHeader';
 import Balance from 'components/Balance/Balance';
 import Container from '../../components/Container';
@@ -14,7 +15,7 @@ import TransactionList from 'components/TransactionListMobile/TransactionList';
 
 import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
-import AvatarModal from '../../components/AvatarLoad';
+// import AvatarModal from '../../components/AvatarLoad';
 
 const MainPage = () => {
     const [type, setType] = useState('incomes');
@@ -23,7 +24,10 @@ const MainPage = () => {
     const [month, setMonth] = useState('');
     const [picker, setPicker] = useState(false);
     const dispatch = useDispatch();
-
+    useEffect(() => {
+        dispatch(transactionsOperations.getTransactionsDayOperation(date));
+        dispatch(getCurrentUser());
+    }, [date, dispatch]);
     const day = new Date();
     const startDate = `${day.getDate()}.${
         day.getMonth() + 1
@@ -53,10 +57,6 @@ const MainPage = () => {
         setYear(newDate.split('.')[2]);
         setPicker(false);
     };
-
-    useEffect(() => {
-        dispatch(transactionsOperations.getTransactionsDayOperation(date));
-    }, [date, dispatch]);
 
     const setTypePlaceholder = () => {
         if (type === 'cost') {

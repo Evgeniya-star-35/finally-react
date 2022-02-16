@@ -1,27 +1,18 @@
-import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
-import { getCurrentBalanceSelector } from '../../redux/auth/auth-selector';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import ConfirmButton from 'components/Buttons/ConfirmButton';
 import BalanceModal from 'components/Modal/BalanceModal/BalanceModal';
-import {
-    setBalance,
-    // getCurrentBalance,
-} from '../../redux/auth/auth-operations';
-// import transactionsOperations from 'redux/transactions/transactions-operations';
+import { setBalance } from '../../redux/auth/auth-operations';
+
 import s from './Balance.module.css';
 
 const Balance = () => {
     const dispatch = useDispatch();
     const balance = useSelector(state => state.auth.user.balance);
-    // const transactions = useSelector(getTransactionsMonth);
-    // console.log(transactions);
-    // console.log(balance);
-    // dispatch(getCurrentBalance());
-    // console.log(balance);
-    // useEffect(() => {
-    //     dispatch(getCurrentBalance());
-    // }, [dispatch, balance]);
+
+    useEffect(() => {
+        dispatch(setBalance(balance));
+    }, [dispatch, balance]);
     const [sum, setSum] = useState(0);
     const onHandleChange = e => {
         setSum(e.currentTarget.value);
@@ -29,7 +20,6 @@ const Balance = () => {
     const onFormSubmit = e => {
         e.preventDefault();
         const data = { balance: Number(sum) };
-        // console.log(data);
         dispatch(setBalance(data));
     };
 
