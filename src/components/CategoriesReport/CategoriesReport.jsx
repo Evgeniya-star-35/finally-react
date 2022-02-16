@@ -3,7 +3,9 @@ import sprite from '../../images/reportIcons/symbol-defs.svg';
 import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import s from './CategoriesReport.module.css';
-import CostDiagram from '../CostsDiagram';
+import ChartCost from '../Charts';
+import { useState } from 'react';
+import ReportCostError from './ReportError';
 
 const incomesCategories = [
     { id: '1', category: 'Заработная плата', icon: 'salary' },
@@ -23,8 +25,17 @@ const costsCategories = [
     { id: '13', category: 'Прочее', icon: 'ufo' },
 ];
 
-export default function CategoriesReport({ transactionsType, onClick }) {
+export default function CategoriesReport() {
+    const [transactionsType, setTransactionsType] = useState('cost');
+
+    const onHandleChangeTransactionsType = () => {
+        transactionsType === 'cost'
+            ? setTransactionsType('incomes')
+            : setTransactionsType('cost');
+    };
+
     const transactions = useSelector(getTransactionsMonth);
+    console.log(transactions);
 
     const transactionsByType = transactionsType => {
         const filterByType = transactions.filter(
@@ -51,7 +62,7 @@ export default function CategoriesReport({ transactionsType, onClick }) {
                     <button
                         type="button"
                         className={s.button}
-                        onClick={onClick}
+                        onClick={onHandleChangeTransactionsType}
                     >
                         <svg width="10" height="10">
                             <use href={`${spriteGlobal}#icon-back`}></use>
@@ -67,7 +78,7 @@ export default function CategoriesReport({ transactionsType, onClick }) {
                     <button
                         type="button"
                         className={s.button}
-                        onClick={onClick}
+                        onClick={onHandleChangeTransactionsType}
                     >
                         <svg width="10" height="10">
                             <use href={`${spriteGlobal}#icon-forward`}></use>
@@ -75,7 +86,9 @@ export default function CategoriesReport({ transactionsType, onClick }) {
                     </button>
                 </div>
 
-                <ul className={s.list}>
+                {transactions.length === 0 && <ReportCostError />}
+                {transactions.length > 0 && (
+                    <ul className={s.list}>
                     {categories.map(category => {
                         let sum = transactionTotalSum(
                             transactionsType,
@@ -107,8 +120,16 @@ export default function CategoriesReport({ transactionsType, onClick }) {
                         );
                     })}
                 </ul>
+                )}
+
+
+                
+
             </div>
-            <CostDiagram />
+            <ChartCost
+            // transactionsByType={transactionsByType}
+            // transactionTotalSum={transactionTotalSum}
+            />
         </>
     );
 }

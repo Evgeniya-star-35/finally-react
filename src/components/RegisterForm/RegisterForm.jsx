@@ -111,13 +111,17 @@ const RegisterForm = () => {
             </div>
             {showModal && (
                 <ModalLogout onClose={toggleModal}>
-                    <button className={styles.closeBtn} onClick={toggleModal}>
-                        Ок
-                    </button>
                     <p className={st.modalTxt}>
                         Для подверждения регистрации перейдите на свою почту и
                         пройдите авторизацию.
                     </p>
+                    <button
+                        type="button"
+                        className={styles.closeBtn}
+                        onClick={toggleModal}
+                    >
+                        Ок
+                    </button>
                 </ModalLogout>
             )}
         </>

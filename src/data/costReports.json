@@ -1,0 +1,13 @@
+[
+    { "id": "3", "category": "Продукты", "icon": "food" },
+    { "id": "4", "category": "Алкоголь", "icon": "group" },
+    { "id": "5", "category": "Развлечения", "icon": "kite" },
+    { "id": "6", "category": "Здоровье", "icon": "health" },
+    { "id": "7", "category": "Транспорт", "icon": "car" },
+    { "id": "8", "category": "Всё для дома", "icon": "couch" },
+    { "id": "9", "category": "Техника", "icon":"tools" },
+    { "id": "10", "category": "Коммуналка, связь", "icon": "group" },
+    { "id": "11", "category": "Спорт, хобби", "icon": "clay" },
+    { "id": "12", "category": "Образование", "icon": "book" },
+    { "id": "13", "category": "Прочее", "icon": "ufo" }
+]
