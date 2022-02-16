@@ -46,6 +46,13 @@ const ReportPage = () => {
         }
     };
 
+    const [transactionsType, setTransactionsType] = useState('cost');
+    const onHandleChangeTransactionsType = () => {
+        transactionsType === 'cost'
+            ? setTransactionsType('incomes')
+            : setTransactionsType('cost');
+    };
+
     return (
         <>
             <AuthHeader />
@@ -65,7 +72,10 @@ const ReportPage = () => {
             </div>
 
             <TransactionsRatio perMonth={month} perYear={year} />
-            <CategoriesReport />
+            <CategoriesReport
+                transactionsType={transactionsType}
+                onClick={onHandleChangeTransactionsType}
+            />
         </>
     );
 };
