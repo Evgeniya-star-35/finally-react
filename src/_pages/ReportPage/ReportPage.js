@@ -26,8 +26,7 @@ const ReportPage = () => {
                 transactionsOperations.getTransactionsMonthYear(month, year),
             );
         }
-        /* eslint-disable-next-line */
-    }, []);
+    }, [dispatch, month, year]);
 
     const onHandleClickRight = () => {
         if (month < 12) {
