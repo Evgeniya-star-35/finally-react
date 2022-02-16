@@ -55,7 +55,10 @@ const Balance = () => {
                                 <p className={s.Input}>
                                     {`${balance
                                         .toFixed(2)
-                                        .toLocaleString('ru')}`}{' '}
+                                        .replace(
+                                            /(\d)(?=(\d\d\d)+([^\d]|$))/g,
+                                            '$1 ',
+                                        )}`}{' '}
                                     UAH
                                 </p>
                                 {/* <ConfirmButton
