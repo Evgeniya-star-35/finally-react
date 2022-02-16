@@ -25,7 +25,6 @@ export default function TransactionList({ date }) {
     };
 
     const handleDeleteClick = id => {
-        console.log(id);
         toggleModal();
         setTransactionId(id);
     };
@@ -35,7 +34,6 @@ export default function TransactionList({ date }) {
     };
     const onDeleteOk = id => {
         const transactionToDelete = filteredTransactions.find(item => {
-            console.log(item.id === id);
             return item.id === id;
         });
         dispatch(
@@ -50,11 +48,7 @@ export default function TransactionList({ date }) {
     return (
         <>
             {modalDelete && (
-                <Modal
-                    // handleClickRight={onDeleteCancel}
-                    // handleClickLeft={onDeleteOk(transactionI)}
-                    onClose={onDeleteCancel}
-                >
+                <Modal onClose={onDeleteCancel}>
                     <button className={st.close} onClick={toggleModal}>
                         <svg width="12" height="12">
                             <use href={`${sprite}#icon-close`}></use>

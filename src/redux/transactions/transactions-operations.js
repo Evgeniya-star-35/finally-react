@@ -61,7 +61,6 @@ const addTransactionOperation = transaction => async dispatch => {
 
 const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
-    console.log(transaction);
     try {
         const response = await deleteTransaction(transaction.id);
         dispatch(deleteTransactionSuccess(transaction.id));
@@ -107,7 +106,6 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
     dispatch(getTransactionsMonthYearRequest());
     try {
         const response = await getTransactionsByPeriod(`${month}.${year}`);
-        console.log(response);
 
         dispatch(getTransactionsMonthYearSuccess(response.data.result));
     } catch (error) {
@@ -126,10 +124,8 @@ const getMonthlyBalancesForSummary = year => async dispatch => {
 
     try {
         const response = await getTransactionsByPeriod(`${year}`);
-        console.log(response);
         dispatch(getCurrentUser());
         const balances = calculateBalancesPerMonth(response.data.result);
-        console.log(balances);
         dispatch(getMonthlyBalanceSuccess(balances));
     } catch (error) {
         dispatch(getMonthlyBalanceError(error.message.message));

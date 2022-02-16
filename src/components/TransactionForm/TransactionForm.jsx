@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import Media from 'react-media';
 import transactionsOperations from '../../redux/transactions/transactions-operations';
 import Button from 'components/Buttons/Button';
@@ -11,6 +12,7 @@ import Summary from 'components/Summary';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
 import TransactionTable from 'components/TransactionTable/TransactionTable';
+import { useSelector } from 'react-redux';
 
 export default function TransactionForm({
     date,
@@ -27,6 +29,7 @@ export default function TransactionForm({
     const [category, setCategory] = useState('');
     const [sum, setSum] = useState('');
     const dispatch = useDispatch();
+    const balance = useSelector(state => state.auth.user.balance);
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -57,6 +60,16 @@ export default function TransactionForm({
     };
     const handleSubmit = e => {
         e.preventDefault();
+        if (balance < transaction.sum && transaction.type === 'cost') {
+            reset();
+            return toast.info(
+                'Недостаточно средств для осуществления данной транзакции',
+                {
+                    position: 'top-center',
+                    autoClose: 2500,
+                },
+            );
+        }
         dispatch(transactionsOperations.addTransactionOperation(transaction));
         reset();
     };

@@ -6,10 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PublicRoute from './routes/publicRouter';
 import PrivateRoute from './routes/privateRouter';
-import {
-    getFetchingCurrentUser,
-    getCurrentToken,
-} from './redux/auth/auth-selector';
+
 import { getCurrentUser } from './redux/auth/auth-operations';
 import Loader from './components/Loader';
 const HomePage = lazy(() =>

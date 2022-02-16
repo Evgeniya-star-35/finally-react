@@ -1,3 +1,24 @@
+.confirmBtn {
+    width: 125px;
+    height: 44px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.167;
+    align-items: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: rgba(82, 85, 95, 0.7);
+    background-color: var(--main-bg);
+    border: 2px solid #ffffff;
+    border-radius: 0px 22px 22px 0px;
+    cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+    .confirmBtn {
+        border-radius: 16px;
+    }
+}
+
 .InfoBalance {
     position: relative;
 }
