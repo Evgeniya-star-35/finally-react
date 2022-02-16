@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Media from 'react-media';
+import { getCurrentUser } from 'redux/auth/auth-operations';
 import AuthHeader from '../../components/Header/AuthHeader';
 import Balance from 'components/Balance/Balance';
 import Container from '../../components/Container';
@@ -11,11 +12,10 @@ import GoToReports from 'components/GoToReports';
 import s from './MainPage.module.css';
 import TransactionForm from 'components/TransactionForm';
 import TransactionList from 'components/TransactionListMobile/TransactionList';
-import { getCurrentUser } from 'redux/auth/auth-operations';
 
 import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
-import AvatarModal from '../../components/AvatarLoad';
+// import AvatarModal from '../../components/AvatarLoad';
 
 const MainPage = () => {
     const [type, setType] = useState('incomes');
@@ -24,16 +24,14 @@ const MainPage = () => {
     const [month, setMonth] = useState('');
     const [picker, setPicker] = useState(false);
     const dispatch = useDispatch();
-
-    const checkLengthDate = date => {
-        const result = date.toString().length === 1 ? `0${date}` : date;
-        return result;
-    };
-
+    useEffect(() => {
+        dispatch(transactionsOperations.getTransactionsDayOperation(date));
+        dispatch(getCurrentUser());
+    }, [date, dispatch]);
     const day = new Date();
-    const startDate = `${checkLengthDate(day.getDate())}.${checkLengthDate(
-        day.getMonth() + 1,
-    )}.${day.getFullYear()}`;
+    const startDate = `${day.getDate()}.${
+        day.getMonth() + 1
+    }.${day.getFullYear()}`;
 
     useEffect(() => {
         setDate(startDate);
@@ -51,21 +49,14 @@ const MainPage = () => {
         setPicker(true);
     };
     const closePicker = dateNew => {
-        const newDate = `${checkLengthDate(
-            dateNew.getUTCDate(),
-        )}.${checkLengthDate(
-            dateNew.getUTCMonth() + 1,
-        )}.${dateNew.getUTCFullYear()}`;
+        const newDate = `${dateNew.getUTCDate()}.${
+            dateNew.getUTCMonth() + 1
+        }.${dateNew.getUTCFullYear()}`;
         setDate(newDate);
         setMonth(newDate.split('.')[1]);
         setYear(newDate.split('.')[2]);
         setPicker(false);
     };
-
-    useEffect(() => {
-        dispatch(transactionsOperations.getTransactionsDayOperation(date));
-        dispatch(getCurrentUser());
-    }, [date, dispatch]);
 
     const setTypePlaceholder = () => {
         if (type === 'cost') {

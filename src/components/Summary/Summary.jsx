@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
 import transactionsOperations from 'redux/transactions/transactions-operations';
-import arrOfMonths from '../../data/currentMonth.json';
+import arrOfMonths from '../../data/month.json';
 import s from './Summary.module.css';
 
 export default function Summary({ year, month }) {

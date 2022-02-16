@@ -27,7 +27,6 @@ import {
 import { updateBalance } from 'services/authApi';
 
 const setBalanceOperation = balance => async dispatch => {
-    console.log(balance);
     dispatch(setTotalBalanceRequest());
 
     try {
@@ -62,7 +61,6 @@ const deleteTransactionOperation = transaction => async dispatch => {
     dispatch(deleteTransactionRequest());
     try {
         const response = await deleteTransaction(transaction.id);
-        console.log(transaction);
         dispatch(deleteTransactionSuccess(transaction.id));
         toast.success(response.data.message, {
             position: 'top-center',
@@ -105,6 +103,7 @@ const getTransactionsMonthYear = (month, year) => async dispatch => {
     dispatch(getTransactionsMonthYearRequest());
     try {
         const response = await getTransactionsByPeriod(`${month}.${year}`);
+        console.log(response);
 
         dispatch(getTransactionsMonthYearSuccess(response.data.result));
     } catch (error) {
@@ -123,6 +122,7 @@ const getMonthlyBalancesForSummary = year => async dispatch => {
 
     try {
         const response = await getTransactionsByPeriod(`${year}`);
+        console.log(response);
         dispatch(getTransactionsMonthYearSuccess(response));
     } catch (error) {
         dispatch(getMonthlyBalanceError(error.message.message));
