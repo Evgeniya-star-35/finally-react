@@ -1,5 +1,4 @@
 .footer {
-    font-family: var(--mainFont);
     font-style: normal;
     font-weight: normal;
     font-size: 10px;
@@ -8,9 +7,11 @@
     align-items: center;
     justify-content: center;
     letter-spacing: 0.03em;
-
     color: #000000;
     background-color: #ff751d;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
 }
 
 .footerBox {
@@ -28,11 +29,10 @@
 .separator {
     width: 0;
     margin: 0 7px;
-    border: 1px solid var(--footerTextColor);
 }
 
 .link {
-    color: var(--footerTextColor);
+    color: black;
     margin-left: 5px;
 }
 
@@ -51,21 +51,19 @@
     .footer {
         font-size: 12px;
         line-height: 1.25;
-        margin-top: 600px;
     }
 }
 @media (min-width: 768px) {
     .footer {
         font-size: 12px;
         line-height: 1.25;
-        margin-top: 774px;
+        display: flex;
     }
 }
 @media (min-width: 1280px) {
     .footer {
         font-size: 12px;
         line-height: 1.25;
-        margin-top: 309px;
     }
 
     .heart {
@@ -83,7 +81,7 @@
         height: 40px;
         position: absolute;
         left: 51%;
-        bottom: -231px;
+        bottom: 11px;
         transform: translate(-50%, 7px) translateZ(0);
         fill: none;
         stroke: black;
@@ -103,7 +101,7 @@
 @media (min-width: 768px) {
     p a svg {
         left: 69%;
-        bottom: -430px;
+        bottom: 12px;
     }
     p a:link:hover {
         --spacing: 4px;
@@ -115,7 +113,7 @@
 @media (min-width: 1280px) {
     p a svg {
         left: 60%;
-        bottom: -152px;
+        bottom: 11px;
     }
     p a:link:hover {
         --spacing: 4px;

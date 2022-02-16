@@ -125,6 +125,7 @@ const MainPage = () => {
                         </>
                     )}
                 />
+
                 {/* <AvatarModal /> */}
             </Container>
         </>
