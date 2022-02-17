@@ -10,7 +10,32 @@
 <h2 align="center"><a  href="https://finally-react-project.netlify.app/">Application page </a></h2>
 <h2 align="center"><a  href="https://finally-node.herokuapp.com/api-docs/#/">API server</a></h2>
 
-<img src="https://img.shields.io/badge/React-%5E17.0.2-%2333E0FF"/><img src="https://img.shields.io/badge/Redux-%5E4.1.0-%236944E7"/><img src="https://img.shields.io/badge/Css-Modules-%23EC83D4"/><img src="https://img.shields.io/badge/JavaScript-ES8-aqua"/><img src="https://img.shields.io/badge/-Nodejs-brightgreen"/><img src="https://img.shields.io/badge/-nodemailer-%2344ACE7"/><img src="https://img.shields.io/badge/-swagger--ui--express-%2338FF50"/><img src="https://img.shields.io/badge/-Cloudinary-%234B64F2"/><img src="https://img.shields.io/badge/-MongoDB-green"/><img src="https://img.shields.io/badge/-GitHub-black"/>
+## Technologies used
+
+[<img src="https://img.shields.io/badge/-React-%2333E0FF"/>](https://reactjs.org/)
+[<img src="https://img.shields.io/badge/ReduxToolkit-%236944E7"/>](https://redux-toolkit.js.org/)
+[<img src="https://img.shields.io/badge/-Axios-black"/>](https://www.npmjs.com/package/axios)
+<img src="https://img.shields.io/badge/css-Modules-%23EC83D4"/>
+[<img src="https://img.shields.io/badge/LightBox-%2338FF50"/>](https://lokeshdhakar.com/projects/lightbox2/)
+[<img src="https://img.shields.io/badge/-Animate.css-black"/>](https://animate.style/)
+[<img src="https://img.shields.io/badge/JavaScript-ES8-aqua"/>](https://habr.com/ru/post/332900/)
+[<img src="https://img.shields.io/badge/Chart.js-%2338FF50"/>](https://www.chartjs.org/docs/latest/)
+[<img src="https://img.shields.io/badge/-Formik-black"/>](https://formik.org/)
+[<img src="https://img.shields.io/badge/-Nodejs-brightgreen"/>](https://nodejs.org/uk/)
+[<img src="https://img.shields.io/badge/-Mongoose-%2344ACE7"/>](https://mongoosejs.com/)
+[<img src="https://img.shields.io/badge/-swagger--ui--express-%2338FF50"/>](https://swagger.io/)
+[<img src="https://img.shields.io/badge/-Cloudinary-%234B64F2"/>](https://cloudinary.com/)
+[<img src="https://img.shields.io/badge/-MongoDB-green"/>](https://www.mongodb.com/)
+[<img src="https://img.shields.io/badge/Jsonwebtoken-aqua"/>](https://www.npmjs.com/package/jsonwebtoken)
+
+---
+
+## Utilites
+
+<img src="https://img.shields.io/badge/-Figma-black"/>
+<img src="https://img.shields.io/badge/Git-GitHub-aqua"/>
+<img src="https://img.shields.io/badge/Postman-orange" />
+<img src="https://img.shields.io/badge/-VSCode-%236944E7"/>
 
 ## Description
 
@@ -20,16 +45,20 @@ Graduation team project of students the FullStack developer course
 <b>Frontend</b> is written on
 [<img src="https://img.shields.io/badge/-React-%2333E0FF"/>](https://reactjs.org/)
 with using
-[<img src="https://img.shields.io/badge/-Redux-%236944E7"/>](https://redux.js.org/).
+[<img src="https://img.shields.io/badge/-ReduxToolkit-%236944E7"/>](https://redux-toolkit.js.org/).
 
 <b>Backend</b> is written on
 [<img src="https://img.shields.io/badge/-Nodejs-brightgreen"/>](https://nodejs.org/uk/)
 with using
-[<img src="https://img.shields.io/badge/-nodemailer-%2344ACE7"/>](https://nodemailer.com/about/),
+[<img src="https://img.shields.io/badge/-Express-%2344ACE7"/>](https://expressjs.com/ru/),
 [<img src="https://img.shields.io/badge/-swagger--ui--express-%2338FF50"/>](https://swagger.io/),
 [<img src="https://img.shields.io/badge/-Cloudinary-%234B64F2"/>](https://cloudinary.com/)
+&
+[<img src="https://img.shields.io/badge/-Gravatar-%234B64F2"/>](https://uk.gravatar.com/)
 and
 [<img src="https://img.shields.io/badge/-MongoDB-green"/>](https://www.mongodb.com/)
+&
+[<img src="https://img.shields.io/badge/-Mongoose-green"/>](https://mongoosejs.com/)
 
 ---
 
@@ -58,111 +87,198 @@ desktop :computer:.
 
 -   Deployed server (error detection, CORS, module connection structure.
 
--   The layout and styles of the "Current Period" component, when you click on
-    the arrows, the moon changes in both directions.
+-   Implemented the logic of exiting the profile when pressing the "Exit"
+    button.
 
--   Implemented by pressing the "Enter" data from the inputs are written to the
-    table and sent back, and the inputs are cleared.
-
--   Implemented a pop-up list of product categories.
-
--   Simulator simulator when you press Exit.
+-   When you sign in to the app, today's date is displayed.
 
 -   Implemented a pop-up list of product categories.
+
+-   When you press the "Enter" button, the data from the inputs is written to
+    the table and sent to the background, and the inputs are cleared.
+-   In the "Expense" and "Income" sections in the table, when you click on the
+    basket, a request is sent to delete the record and removed from the state.
 
 ## Scrum master - Petro Davydov [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/petroDavydov/)
 
 -   Assistance to team members, support for Trello, organization of daily
     meetings.
 
--   Implemented deletion of endpoint transactions.
-
 -   Deployed server (error detection, CORS, module connection structure.
+-   Transaction deletion endpoint implemented.
 
 -   The layout and styles of the "Current Period" component, when you click on
     the arrows, the moon should change in both directions.
 
-## Backend - Nikolai Grebenyuk [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Nikolayhous/)
+## Developer - Nikolai Grebenyuk [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Nikolayhous/)
 
--   Implemented deletion of endpoint transactions.
+-   Login functionality/registration via the "Google" button.
 
--   Created swagger-ui endpoint documentation.
+-   Implemented a layer of authorization middlewares.
 
--   Implemented an endpoint of detailed information on costs and revenues for a
-    specific month and year.
+-   Implemented user balance update endpoint.
 
--   Implemented adding the value of the endpoint, the level of authorization.
+-   Implemented end point of adding expense.
 
--   addCard + 1. User model.
+-   Implemented income end point.
 
--   End-user balance and end-user balance updates have been introduced.
+-   Implemented transaction deletion endpoint.
+-   Implemented end-point for obtaining a summary of the months of the current
+    year by expenses.
 
-## Backend - Kovalenko Anna [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Kovganna/)
+-   Implemented end-point for obtaining a summary of the months of the current
+    year by income.
 
--   Implemented an endpoint.
+-   Implemented end-point for obtaining detailed information on expenses and
+    income for a specific month and year.
+-   Created endpoint documentation (swagger-ui).
+-   Implemented a graph that visually displays the expenses and incomes of the
+    selected category (phone, tablet, desktop).
 
--   Implemented an endpoint of detailed information on costs and revenues for a
-    specific month and year.
+-   Implemented Model of User.
 
--   Implemented endpoint authentication.
+## Developer - Kovalenko Anna [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Kovganna/)
 
-## Backend - Vlad Gonchar [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/EclipsoZhuk/)
+-   Implemented registration endpoint.
 
--   The layout and styles of the Current Period component, when you click on the
-    arrows, the moon changes in both directions.
+-   Implemented end-point authentication.
 
--   Implemented an endpoint.
+-   Implemented end-point logout.
 
--   Enter detailed endpoint information on costs and revenues for a specific
-    month and year.
+-   Implemented an end-point for obtaining a summary of the months of the
+    current year by expenses.
 
--   Implemented endpoint authentication.
+-   Implemented an end-point for obtaining a summary of the months of the
+    current year by income.
 
-## Frontend - Jane Babina [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Kelenella/)
+-   Implemented an end-point for obtaining detailed information on expenses and
+    income for a specific month and year.
 
--   Implemented button "Enter" input data is written to the table and sent back,
-    and inputs are cleared.
--   Added a pop-up window for product categories.
--   Login and exit markup and heading styles (phone, tablet, and computer).
--   Clicking the "Clear" button clears the entered data.
--   A universal modal output window has been created.
--   Implemented the logic of exiting the profile by clicking "Exit".
--   Added a popup window for product categories.
--   Layout and styles of back button components.
+-   Implemented if a positive amount was entered in the "Expense" section, then
+    a negative amount is shown in the table.
 
-## Frontend - Tatiana Blizniukova [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Tatiana37/)
+-   Implemented in the sections "Expense" and "Income" in the table when you
+    click on the basket, a request is sent to the back to delete the record and
+    is removed from the state.
 
--   Summary Layout and Styles
--   Resume data comes from Backend
--   If a positive amount is entered in the "Expenses" section, a negative amount
-    is displayed in the table
+-   Markup and styles of the "Expenses/Incomes" section, actual data is
+    displayed (phone, tablet, desktop).
 
-## Frontend - Tanya Melnyk [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/tanyamelnyk19/)
+-   In the "Expenses" section, show only those categories in which there were
+    expenses (phone, tablet, desktop).
 
--   Cost and Revenue Page Layouts and Styles (Phone, Tablet, Computer)
+-   Markup and styles of the "Income" section, show only those categories in
+    which there were incomes (phone, tablet, desktop).
 
--   Cost and Revenue Layouts and Styles (Phone, Tablet, Computer).
+-   Arrows in the "Expenses" and "Incomes" sections switch the user between
+    these pages.
 
--   Implemented "Go to Reports" button, you will go to the page "Cost Reports".
+## Developer - Vlad Gonchar [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/EclipsoZhuk/)
 
-## Frontend - Mariia Melychyn [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/MariiaMelychyn/)
+-   Implemented a registration endpoint.
 
--   Login and registration window layout and styles (phone, tablet and desktop).
+-   Implemented end-point authentication.
 
--   Google login / signup feature.
+-   Implemented end-point logout.
 
--   Functionality of sending a request for user login / registration.
+-   Implemented an end-point for obtaining a summary of the months of the
+    current year by expenses.
 
-## Frontend - Marta Pryiom [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/marta-pryiom/)
+-   Implemented an end-point for obtaining a summary of the months of the
+    current year by income.
 
--   Symbols and background for all pages when the user logs in and out of the
-    program (phone, tablet and computer).
+-   Implemented an end-point for obtaining detailed information on expenses and
+    income for a specific month and year.
 
--   Component markup and styles "Balance" (phone, tablet and desktop)
+-   Markup and styles of the "Current period" component, when you click on the
+    arrows, change the month in both directions.
 
--   Implemented a modal window on zero balance
+## Developer - Jane Babina [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Kelenella/)
 
-## Frontend - Oksana Petryshyn [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Oksana07/)
+-   Markup and styles of the header during login and its absence (phone, tablet
+    and desktop).
+-   Implemented the logic of exiting the profile when clicking the "Exit"
+    button.
+-   Created a universal modal when logging out.
+-   Displays today's date.
+-   Implemented a pop-up list of product categories.
+
+-   When you press the "Enter" button, the data from the inputs is written to
+    the table and sent to the back, and the inputs are cleared.
+-   When you click the "Clear" button, the inputs are cleared.
+-   Markup and styles of the "Back to home" component, when the user clicks, it
+    redirects to the main page.
+
+-   Implemented a chart that visually displays the expenses and incomes of the
+    selected category (phone, tablet, desktop).
+
+## Developer - Tatiana Blizniukova [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Tatiana37/)
+
+-   Implemented showing today's date.
+-   If a positive amount was entered in the "Expense" section, then the table
+    shows a negative.
+-   Markup and styles of the "Summary" component.
+
+-   Data in the summary is pulled from the back.
+
+-   Paver-point presentation.
+
+## Developer - Tanya Melnyk [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/tanyamelnyk19/)
+
+-   Implemented when clicking on the "Go to reports" button, it redirects to the
+    Expense Reports page.
+
+-   Markup and styles of the "Expense" and "Income" sections (phone, tablet,
+    desktop).
+
+-   Layout and styles of the page with "Reports" of expenses and incomes (phone,
+    tablet, desktop).
+
+-   Markup and styles of the "Expenses/Incomes" section, the actual data should
+    be displayed (phone, tablet, desktop).
+
+-   In the "Expenses" section, show only those categories in which there were
+    expenses (phone, tablet, desktop).
+
+-   Markup and styles of the "Income" section, show only those categories in
+    which there were incomes (phone, tablet, desktop).
+
+-   Arrows in the "Expenses" and "Incomes" sections switch the user between
+    these pages.
+
+## Developer - Mariia Melychyn [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/MariiaMelychyn/)
+
+-   Markup and styles of the login window/ registration (phone, tablet and
+    desktop).
+
+-   Implemented the functionality of sending a login request/user registration.
+
+-   Implemented login functionality/registration via the "Google" button.
+
+-   Footer and Modal.
+
+## Developer - Marta Pryiom [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/marta-pryiom/)
+
+-   Markup and background for all pages when the user is logged in and not
+    (phone, tablet and desktop).
+
+-   Markup and styles of the "Balance" component (phone, tablet and desktop).
+
+-   The "Balance" field displays your balance in the state.
+
+-   When you click on the "Confirm" button, the balance amount is sent to the
+    back and written to the side.
+
+-   Implemented a modal with a zero balance.
+
+-   Data in the summary is pulled from the back.
+
+## Developer - Oksana Petryshyn [<img src="https://img.shields.io/badge/-GitHub-black"/>](https://github.com/Oksana07/)
 
 -   Summary Layout and Styles.
+-   Footer and Modal.
 -   Writing documentation readme on markdown.
+
+-   Paver-point presentation.
+
+-   Node.js project flowchart made in dravio.png.
