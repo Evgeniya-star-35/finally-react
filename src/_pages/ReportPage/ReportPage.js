@@ -70,10 +70,7 @@ const ReportPage = () => {
             </div>
 
             <TransactionsRatio perMonth={month} perYear={year} />
-            <CategoriesReport
-                transactionsType={transactionsType}
-                onClick={onHandleChangeTransactionsType}
-            />
+            <CategoriesReport month={month} year={year} />
         </>
     );
 };

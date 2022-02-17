@@ -1,7 +1,21 @@
 // import s from './CostsDiagram.module.css';
 
-import { BarChart, Bar, XAxis, YAxis, Tooltip, LabelList } from 'recharts';
-import { BG, CartsBg } from './Charts.styled';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import {
+    ResponsiveContainer,
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    LabelList,
+    Cell,
+    Text,
+} from 'recharts';
+import { getTransactionsMonth } from 'redux/transactions';
+import { BG, CartsBg } from '../CategoriesReport/Charts.styled';
+import costReports from '../../data/costReports.json';
 
 const ChartCost = () => {
     const data = [
@@ -10,16 +24,18 @@ const ChartCost = () => {
         { pv: 5, name: 'Развлечения' },
         { pv: 6, name: 'Здоровье' },
         { pv: 7, name: 'Транспорт' },
-        // { pv: 8, name: 'Всё для дома' },
-        // { pv: 9, name: 'Техника' },
-        // { pv: 10, name: 'Коммуналка' },
+        { pv: 8, name: 'Всё для дома' },
+        { pv: 9, name: 'Техника' },
+        { pv: 10, name: 'Коммуналка' },
         { pv: 11, name: 'Спорт' },
-        // { pv: 12, name: 'Образование' },
-        // { pv: 13, name: 'Прочее' },
+        { pv: 12, name: 'Образование' },
+        { pv: 13, name: 'Прочее' },
     ];
 
-    const renderCustomizedLabel = ({ x, y, width, value = 10 }) => {
+    const renderCustomizedLabel = props => {
+        const { x, y, width, value } = props;
         const radius = 10;
+
         return (
             <text
                 x={x + width / 2}
@@ -27,11 +43,60 @@ const ChartCost = () => {
                 fill="#000"
                 textAnchor="middle"
                 dominantBaseline="middle"
+                fontSize={10}
             >
                 {`${value}грн.`}
             </text>
         );
     };
+
+    // class CustomizedAxisTick extends PureComponent {
+    //     render() {
+    //         const { x, y, payload } = this.props;
+    //         return (
+    //             <Text
+    //                 x={x}
+    //                 y={y}
+    //                 width={60}
+    //                 textAnchor="middle"
+    //                 verticalAnchor="start"
+    //             >
+    //                 {payload.value}
+    //             </Text>
+    //         );
+    //     }
+
+    // }
+    const [transactionsType, setTransactionsType] = useState('cost');
+
+    const onHandleChangeTransactionsType = () => {
+        transactionsType === 'cost'
+            ? setTransactionsType('incomes')
+            : setTransactionsType('cost');
+    };
+
+    const transactions = useSelector(getTransactionsMonth);
+
+    const transactionsByType = transactionsType => {
+        const filterByType = transactions.filter(
+            transaction => transaction.type === transactionsType,
+        );
+        return filterByType;
+    };
+
+    const transactionTotalSum = (transactionsType, category) => {
+        let total = 0;
+        transactionsByType(transactionsType)
+            .filter(transaction => transaction.category === category)
+            .map(elem => (total += elem.sum));
+        console.log(total);
+        return total;
+    };
+
+    console.log(transactionTotalSum('cost', 'Продукты'));
+
+    // const categories =
+    //     transactionsType === 'cost' ? costsCategories : incomesCategories;
 
     return (
         <BG>
