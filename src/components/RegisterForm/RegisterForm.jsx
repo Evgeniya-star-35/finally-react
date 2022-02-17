@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Button from '../Buttons/Button';
 import styles from './RegisterForm.module.css';
 import { Formik, Field, Form } from 'formik';
@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { register, login } from '../../redux/auth';
 import st from '../Modal/Modal.module.css';
 import ModalLogout from 'components/Modal/Modal';
+import { gsap } from 'gsap';
 
 const BasicFormSchema = Yup.object().shape({
     email: Yup.string()
@@ -33,6 +34,12 @@ const RegisterForm = () => {
         }
     };
 
+    const emailRef = useRef();
+
+    useEffect(() => {
+        gsap.to(emailRef.current, { rotation: '+=360' });
+    }, []);
+
     return (
         <>
             <div className={styles.form}>
@@ -43,6 +50,7 @@ const RegisterForm = () => {
                     <div>
                         <a
                             className={styles.FormContent_button}
+                            ref={emailRef}
                             href="https://finally-node.herokuapp.com/api/users/google"
                         >
                             Google
