@@ -3,14 +3,9 @@ import sprite from '../../images/reportIcons/symbol-defs.svg';
 import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import s from './CategoriesReport.module.css';
+import ChartCost from '../Charts';
 import { useState } from 'react';
 import ReportCostError from './ReportError';
-import { BarChart, Bar, XAxis } from 'recharts';
-
-// import { Bar } from 'react-chartjs-2';
-
-import { BG, CartsBg } from './Charts.styled';
-import useWindowDimensions from '../../hooks/useDemantions';
 
 const incomesCategories = [
     { id: '1', category: 'Заработная плата', icon: 'salary' },
@@ -30,19 +25,13 @@ const costsCategories = [
     { id: '13', category: 'Прочее', icon: 'ufo' },
 ];
 
-export default function CategoriesReport({ month, year }) {
+export default function CategoriesReport() {
     const [transactionsType, setTransactionsType] = useState('cost');
-    const [category, setCategory] = useState('');
 
     const onHandleChangeTransactionsType = () => {
-        if (transactionsType === 'cost') {
-            setTransactionsType('incomes');
-            setCategory('');
-        }
-        if (transactionsType === 'incomes') {
-            setTransactionsType('cost');
-            setCategory('');
-        }
+        transactionsType === 'cost'
+            ? setTransactionsType('incomes')
+            : setTransactionsType('cost');
     };
 
     const transactions = useSelector(getTransactionsMonth);
@@ -64,142 +53,6 @@ export default function CategoriesReport({ month, year }) {
 
     const categories =
         transactionsType === 'cost' ? costsCategories : incomesCategories;
-
-    //===============================================================================
-    const { width } = useWindowDimensions();
-
-    const filteredByType = transactions.filter(
-        transaction => transaction.type === transactionsType,
-    );
-
-    const filteredByDate = filteredByType.filter(
-        transaction =>
-            transaction.month === String(month) &&
-            transaction.year === String(year),
-    );
-
-    const findTotalSumForChart = data => {
-        if (!!category) {
-            return data
-                .filter(transaction => transaction.category === category)
-                .reduce((acc, elem) => {
-                    const subCategory = acc.find(
-                        item => item.subCategory === elem.subCategory,
-                    );
-                    if (!subCategory) {
-                        acc.push({
-                            subCategory: elem.subCategory,
-                            sum: elem.sum,
-                        });
-                    } else {
-                        subCategory.sum += elem.sum;
-                    }
-                    return acc;
-                }, []);
-        }
-
-        const result = [];
-        data.map(transaction => {
-            const category = result.find(
-                item => item.category === transaction.category,
-            );
-            if (!category) {
-                return result.push({
-                    category: transaction.category,
-                    sum: transaction.sum,
-                });
-            } else {
-                return (category.sum += transaction.sum);
-            }
-        });
-        return result;
-    };
-
-    const sortedSubCategoryTransactions = [
-        ...findTotalSumForChart(filteredByDate),
-    ].sort((a, b) => b.sum - a.sum);
-
-    const sortedLables = [...sortedSubCategoryTransactions].map(tr => {
-        return tr.subCategory ? tr.subCategory : tr.category;
-    });
-
-    const sortedSum = [...sortedSubCategoryTransactions].map(data => data.sum);
-
-    const labelName = transactionsType === 'cost' ? 'Расход' : 'Доход';
-
-    const getNextColor = color => {
-        const colors = ['#FF751D', '#FFDAC0', '#fcd7bd'];
-
-        if (!color) {
-            return colors[0];
-        }
-
-        const colorIdx = colors.findIndex(item => color === item);
-
-        return colors[colorIdx + 1] ? colors[colorIdx + 1] : colors[0];
-    };
-
-    const colorsArray = array => {
-        let prev = null;
-
-        return sortedSum.map(item => {
-            const currentColor = getNextColor(prev);
-
-            prev = currentColor;
-
-            return currentColor;
-        });
-    };
-
-    const barWidth = width < 425 ? 15 : 38;
-
-    const data = {
-        labels: sortedLables,
-        datasets: [
-            {
-                label: labelName,
-                data: sortedSum,
-                backgroundColor: colorsArray(sortedSum),
-                borderColor: colorsArray(sortedSum),
-                borderWidth: 1,
-                borderRadius: 10,
-                barThickness: barWidth,
-                barMargin: 20,
-            },
-        ],
-    };
-
-    const optionsVertical = {
-        responsive: true,
-        scales: {
-            yAxes: [
-                {
-                    ticks: {
-                        beginAtZero: true,
-                    },
-                },
-            ],
-        },
-    };
-
-    const optionsHorizontal = {
-        maintainAspectRatio: false,
-        indexAxis: 'y',
-        elements: {
-            bar: {
-                borderWidth: 1,
-            },
-        },
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-        },
-    };
-    const height = width < 425 ? 400 : 200;
-
-    const options = width < 425 ? optionsHorizontal : optionsVertical;
 
     return (
         <>
@@ -271,14 +124,6 @@ export default function CategoriesReport({ month, year }) {
                         })}
                     </ul>
                 )}
-            </div>
-            <div className={s.chartContainer}>
-                <Bar
-                    data={data}
-                    height={height}
-                    width={320}
-                    options={options}
-                />
             </div>
         </>
     );

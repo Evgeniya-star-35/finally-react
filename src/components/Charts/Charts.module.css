@@ -11,3 +11,8 @@
 .bar {
     width: 1060px;
 }
+.chartWrap {
+    max-width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+}

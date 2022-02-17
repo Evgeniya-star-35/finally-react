@@ -33,7 +33,7 @@ const ChartCost = () => {
     ];
 
     const renderCustomizedLabel = props => {
-        const { x, y, width, value } = props;
+        const { x, y, width, value = 10 } = props;
         const radius = 10;
 
         return (
@@ -50,23 +50,6 @@ const ChartCost = () => {
         );
     };
 
-    // class CustomizedAxisTick extends PureComponent {
-    //     render() {
-    //         const { x, y, payload } = this.props;
-    //         return (
-    //             <Text
-    //                 x={x}
-    //                 y={y}
-    //                 width={60}
-    //                 textAnchor="middle"
-    //                 verticalAnchor="start"
-    //             >
-    //                 {payload.value}
-    //             </Text>
-    //         );
-    //     }
-
-    // }
     const [transactionsType, setTransactionsType] = useState('cost');
 
     const onHandleChangeTransactionsType = () => {
@@ -93,8 +76,6 @@ const ChartCost = () => {
         return total;
     };
 
-    console.log(transactionTotalSum('cost', 'Продукты'));
-
     // const categories =
     //     transactionsType === 'cost' ? costsCategories : incomesCategories;
 
@@ -102,7 +83,7 @@ const ChartCost = () => {
         <BG>
             <CartsBg>
                 <BarChart
-                    width={615}
+                    width={320}
                     height={330}
                     data={data}
                     margin={{
