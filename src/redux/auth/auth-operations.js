@@ -38,7 +38,7 @@ export const login = createAsyncThunk(
             return data;
         } catch (error) {
             rejectWithValue(error);
-            toast.error(error.message, {
+            toast.error('Введены неверные данные!', {
                 position: 'top-center',
                 autoClose: 2500,
             });
