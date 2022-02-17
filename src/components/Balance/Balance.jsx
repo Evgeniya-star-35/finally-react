@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ConfirmButton from 'components/Buttons/ConfirmButton';
 import BalanceModal from 'components/Modal/BalanceModal/BalanceModal';
 import { setBalance } from '../../redux/auth/auth-operations';
@@ -61,11 +61,7 @@ const Balance = () => {
                                         )}`}{' '}
                                     UAH
                                 </p>
-                                {/* <ConfirmButton
-                                    className={s.HideBtn}
-                                    text="Подтвердить"
-                                    disabled
-                                /> */}
+
                                 <button className={s.confirmBtn} disabled>
                                     Подтвердить
                                 </button>

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import Media from 'react-media';
-import s from './GoBack.module.css';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
+import s from './GoBack.module.css';
 
 export default function GoBackArrow() {
     const location = useLocation();

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import s from './Footer.module.css';
 import copyright from '../../images/copyright.svg';
 import heart from '../../images/heart.png';

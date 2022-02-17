@@ -86,11 +86,24 @@ export default function TransactionList({ date }) {
                             <div className={s.sum_item}>
                                 {type === 'cost' ? (
                                     <span className={s.cost}>
-                                        - {sum.toFixed(2)} UAH
+                                        -{' '}
+                                        {sum
+                                            .toFixed(2)
+                                            .replace(
+                                                /(\d)(?=(\d\d\d)+([^\d]|$))/g,
+                                                '$1 ',
+                                            )}
+                                        UAH
                                     </span>
                                 ) : (
                                     <span className={s.incomes}>
-                                        {sum.toFixed(2)} UAH
+                                        {sum
+                                            .toFixed(2)
+                                            .replace(
+                                                /(\d)(?=(\d\d\d)+([^\d]|$))/g,
+                                                '$1 ',
+                                            )}
+                                        UAH
                                     </span>
                                 )}
 

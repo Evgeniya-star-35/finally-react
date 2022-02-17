@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import s from './Header.module.css';
-import st from '../Modal/Modal.module.css';
 import Media from 'react-media';
 import { toast } from 'react-toastify';
 import { logout } from '../../redux/auth/auth-operations';
@@ -12,6 +9,8 @@ import ModalLogout from 'components/Modal/Modal';
 import Button from '../../components/Buttons/Button';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import defaultImg from '../../images/avatar.jpg';
+import s from './Header.module.css';
+import st from '../Modal/Modal.module.css';
 
 export default function AuthHeader() {
     const [showModal, setShowModal] = useState(false);

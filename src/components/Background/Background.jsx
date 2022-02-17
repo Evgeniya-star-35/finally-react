@@ -5,11 +5,6 @@ const Background = ({ children }) => {
             <div className={s.Top}></div>
             <div className={s.Bottom}></div>
         </div>
-
-        // <div className={s.BottomImg}>
-        //     <div className={s.Topbox}></div>
-        //     {children}
-        // </div>
     );
 };
 

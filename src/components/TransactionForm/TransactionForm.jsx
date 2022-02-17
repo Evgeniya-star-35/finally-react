@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import Media from 'react-media';
 import transactionsOperations from '../../redux/transactions/transactions-operations';
 import Button from 'components/Buttons/Button';
@@ -8,11 +9,9 @@ import GoBackArrow from '../GoBack';
 import Dropdown from '../Dropdown';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
 import Summary from 'components/Summary';
-
+import TransactionTable from 'components/TransactionTable/TransactionTable';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import s from './TransactionForm.module.css';
-import TransactionTable from 'components/TransactionTable/TransactionTable';
-import { useSelector } from 'react-redux';
 
 export default function TransactionForm({
     date,
@@ -79,6 +78,7 @@ export default function TransactionForm({
         setSum('');
         setCategory('');
     };
+    const navigate = useNavigate();
 
     return (
         <>
@@ -166,12 +166,29 @@ export default function TransactionForm({
                         />
                     </div>
                 </div>
-                <div className={s.wrapBtns}>
-                    <Button text="ввод" />
-                    <Button text="очистить" type="button" onClick={reset} />
-                </div>
+                <Media
+                    query="(min-width: 768px)"
+                    render={() => (
+                        <div className={s.wrapBtns}>
+                            <Button text="ввод" />
+                            <Button
+                                text="очистить"
+                                type="button"
+                                onClick={reset}
+                            />
+                        </div>
+                    )}
+                />
             </form>
-
+            <Media
+                query="(max-width: 767.98px)"
+                render={() => (
+                    <div className={s.wrapBtns}>
+                        <Button text="ввод" onClick={() => navigate(-1)} />
+                        <Button text="очистить" type="button" onClick={reset} />
+                    </div>
+                )}
+            />
             <Media
                 query="(min-width: 768px)"
                 render={() => (

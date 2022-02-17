@@ -125,10 +125,7 @@ export default function CategoriesReport() {
                     </ul>
                 )}
             </div>
-            <ChartCost
-            // transactionsByType={transactionsByType}
-            // transactionTotalSum={transactionTotalSum}
-            />
+            <ChartCost />
         </>
     );
 }
