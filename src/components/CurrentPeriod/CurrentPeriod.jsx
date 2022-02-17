@@ -26,7 +26,6 @@ const CurrentPeriod = ({
                 />
 
                 <span className={s.reviewMonthTitle}>
-                    {/* ноябрь 2019 */}
                     {`${selectMonth[0].name} ${currentYear}`}
                 </span>
 

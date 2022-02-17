@@ -1,7 +1,5 @@
-// import Background from 'components/Background/Background';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import s from './ReportPage.module.css';
 import Balance from 'components/Balance';
 import CurrentPeriod from '../../components/CurrentPeriod';
 import GoToMainButton from 'components/Buttons/GoToMainButton';
@@ -11,6 +9,7 @@ import Background from 'components/Background/Background';
 import TransactionsRatio from 'components/TransactionsRatio';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import AuthHeader from 'components/Header/AuthHeader';
+import s from './ReportPage.module.css';
 
 const ReportPage = () => {
     const dispatch = useDispatch();

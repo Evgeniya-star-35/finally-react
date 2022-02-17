@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Background from 'components/Background/Background';
 import AuthHeader from '../../components/Header/AuthHeader';
-// import TransactionTable from 'components/TransactionTable';
 import Container from 'components/Container/Container';
 import TransactionForm from 'components/TransactionForm';
 

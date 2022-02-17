@@ -1,6 +1,6 @@
-import s from './ChooseDate.module.css';
 import sprite from '../../images/globalIcons/symbol-defs.svg';
 import CalendarPicker from 'components/CalendarPicker';
+import s from './ChooseDate.module.css';
 
 export default function ChooseDate({
     date,

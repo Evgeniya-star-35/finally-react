@@ -32,7 +32,6 @@ export default function TransactionTable({ date }) {
         setTransactionId(id);
     };
     const onDeleteCancel = () => {
-        // setTransactionId('');
         setModalDelete(false);
     };
     const onDeleteOk = id => {
@@ -80,7 +79,7 @@ export default function TransactionTable({ date }) {
             <Media
                 query="(min-width: 768px)"
                 render={() => (
-                    <div className={s.tableWrapper}>
+                    <div>
                         <table className={s.transactionTable}>
                             <thead className={s.thead}>
                                 <tr>

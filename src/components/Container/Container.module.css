@@ -1,12 +1,8 @@
 .Container {
     margin: 0 auto;
-    /* padding: 0 10px; */
     width: 100%;
 }
 .BottomImg {
-    /* position:fixed; */
-    /* z-index: -1; */
-    /* width: 100vw; */
     height: 800px;
     background-image: url('../../images/partcab.svg'),
         url('../../images/bottomcab.svg'), url('../../images/rectangle.svg');
@@ -18,7 +14,7 @@
 /* контейнер для mobile */
 @media screen and (min-width: 320px) {
     .Container {
-        width: 320px;
+        width: 100%;
         /* width: 282px; */
     }
 }
