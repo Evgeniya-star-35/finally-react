@@ -33,7 +33,6 @@ const MobileChart = () => {
 
     // const screenWidth = window.screen.width;
     // const screenHeight = window.screen.height;
-    // console.log(screenWidth, screenHeight);
     // const { icon } = useParams();
     // const categ = categs?.find(categ => categ.icon === icon);
     // categ?.chart?.sort(function (a, b) {
@@ -46,7 +45,6 @@ const MobileChart = () => {
 
     //     return 0;
     // });
-    // console.log(categ.chart);
     return (
         <ResponsiveContainer
             width="100%"

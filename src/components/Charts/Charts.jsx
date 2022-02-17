@@ -72,7 +72,6 @@ const ChartCost = () => {
         transactionsByType(transactionsType)
             .filter(transaction => transaction.category === category)
             .map(elem => (total += elem.sum));
-        console.log(total);
         return total;
     };
 
