@@ -1,0 +1,27 @@
+@media screen and (max-width: 767.99px) {
+    .chartContainer {
+        width: 100%;
+        padding-bottom: 50px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .chartContainer {
+        width: 666px;
+        padding: 19px;
+        margin: 0 auto 76px;
+        background: #ffffff;
+        box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+        border-radius: 30px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .chartContainer {
+        width: 1060px;
+        padding: 30px 150px 0;
+        /* padding-right: 150px; */
+        margin-bottom: 75px;
+    }
+}
