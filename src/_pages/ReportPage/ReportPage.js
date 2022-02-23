@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Chart from 'components/Diagram';
 import Balance from 'components/Balance';
 import CurrentPeriod from '../../components/CurrentPeriod';
 import GoToMainButton from 'components/Buttons/GoToMainButton';
@@ -9,6 +10,7 @@ import Background from 'components/Background/Background';
 import TransactionsRatio from 'components/TransactionsRatio';
 import transactionsOperations from 'redux/transactions/transactions-operations';
 import AuthHeader from 'components/Header/AuthHeader';
+import Diagram from 'components/Diagram';
 import s from './ReportPage.module.css';
 
 const ReportPage = () => {
@@ -18,6 +20,8 @@ const ReportPage = () => {
     let selectedYear = date.getFullYear();
     const [month, setMonth] = useState(selectedMonth);
     const [year, setYear] = useState(selectedYear);
+    const [category, setCategory] = useState('');
+    const [transactionsType, setTransactionsType] = useState('cost');
 
     useEffect(() => {
         if ((month, year)) {
@@ -44,7 +48,6 @@ const ReportPage = () => {
         }
     };
 
-    const [transactionsType, setTransactionsType] = useState('cost');
     const onHandleChangeTransactionsType = () => {
         transactionsType === 'cost'
             ? setTransactionsType('incomes')
@@ -70,7 +73,12 @@ const ReportPage = () => {
             </div>
 
             <TransactionsRatio perMonth={month} perYear={year} />
-            <CategoriesReport month={month} year={year} />
+            <CategoriesReport
+                month={month}
+                year={year}
+                category={category}
+                type={transactionsType}
+            />
         </>
     );
 };

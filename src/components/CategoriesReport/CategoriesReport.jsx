@@ -1,11 +1,13 @@
 import { useSelector } from 'react-redux';
+import { BarChart, Bar } from 'recharts';
 import sprite from '../../images/reportIcons/symbol-defs.svg';
 import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import s from './CategoriesReport.module.css';
-import ChartCost from '../Charts';
+// import ChartCost from '../Charts';
 import { useState } from 'react';
 import ReportCostError from './ReportError';
+import Diagram from 'components/Diagram/Diagram';
 
 const incomesCategories = [
     { id: '1', category: 'Заработная плата', icon: 'salary' },
@@ -25,7 +27,7 @@ const costsCategories = [
     { id: '13', category: 'Прочее', icon: 'ufo' },
 ];
 
-export default function CategoriesReport() {
+export default function CategoriesReport({ month, year, category }) {
     const [transactionsType, setTransactionsType] = useState('cost');
 
     const onHandleChangeTransactionsType = () => {
@@ -125,6 +127,12 @@ export default function CategoriesReport() {
                     </ul>
                 )}
             </div>
+            <Diagram
+                month={month}
+                year={year}
+                category={category}
+                type={transactionsType}
+            />
         </>
     );
 }
