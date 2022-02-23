@@ -1,10 +1,8 @@
 import { useSelector } from 'react-redux';
-import { BarChart, Bar } from 'recharts';
 import sprite from '../../images/reportIcons/symbol-defs.svg';
 import { getTransactionsMonth } from '../../redux/transactions/transactions-selectors';
 import spriteGlobal from '../../images/globalIcons/symbol-defs.svg';
 import s from './CategoriesReport.module.css';
-// import ChartCost from '../Charts';
 import { useState } from 'react';
 import ReportCostError from './ReportError';
 import Diagram from 'components/Diagram/Diagram';

@@ -9,13 +9,11 @@ import transactionsOperations from 'redux/transactions/transactions-operations';
 import CostsButton from 'components/Buttons/CostsAndIncomesButtons/CostsButton';
 import IncomesButton from 'components/Buttons/CostsAndIncomesButtons/IncomesButton';
 import GoToReports from 'components/GoToReports';
-import s from './MainPage.module.css';
 import TransactionForm from 'components/TransactionForm';
 import TransactionList from 'components/TransactionListMobile/TransactionList';
-
 import Background from 'components/Background/Background';
 import CalendarForm from 'components/CalendarForm/CalendarForm';
-// import AvatarModal from '../../components/AvatarLoad';
+import s from './MainPage.module.css';
 
 const MainPage = () => {
     const [type, setType] = useState('incomes');
